@@ -1,0 +1,68 @@
+/***************************************************************************************
+File name: linux_pthread.c
+Description: Operating system adaptation layer, matching different architecture platforms.
+			 pthread implement.
+Author: wytaitaislee
+Version: V1.0.0
+Date: 2019-11-17
+History: 1. create file. -- 2019-11-17
+****************************************************************************************/
+
+#include "linux_pthread.h"
+
+/*@fn		  LFP_INT32 linux_pthread_create(LFP_PTHREAD_HADLE_T *pThreadHandle, LFP_INT32 iPrority,
+                                LFP_UINT32 uiStackSize, LFP_VOID* pStartTask, LFP_UINT32 uiArgs, LFP_VOID* pParams)
+* @brief 	  create a new thread.
+* @param[in]  LFP_PTHREAD_HADLE_T *pThreadHandle - the thread identifier
+* @param[in]  LFP_INT32 iPrority - the thread execute priority
+* @param[in]  LFP_INT32 uiStackSize - the thread stack size
+* @param[in]  LFP_VOID *pStartTask - the start function
+* @param[in]  LFP_VOID* pParams - the params num of the start function
+* @param[out] LFP_NULL
+* @return	  LFP_OK / LFP_ERR
+*/
+LFP_INT32 linux_pthread_create(LFP_PTHREAD_HADLE_T *pThreadHandle, LFP_INT32 iPrority,			\
+                                LFP_UINT32 uiStackSize, LFP_VOID* pStartTask, LFP_VOID* pParams)
+{
+	LFP_INT32 iRet = LFP_ERR;
+	LFP_PTHREAD_HADLE_T iHandle = 0, *pHandle = LFP_NULL;
+	
+	if(!pThreadHandle)
+	{	
+		pHandle = &iHandle;
+	}
+	else
+	{
+		pHandle = pThreadHandle;
+	}
+	iRet = pthread_create(pHandle, LFP_NULL, pStartTask, pParams);
+	return (0 == iRet) ? LFP_OK : LFP_ERR;
+}
+
+/*@fn		  LFP_INT32 linux_pthread_cancel(LFP_PTHREAD_HADLE_T hThreadHandle)
+* @brief 	  send a cancellation request to a thread
+* @param[in]  LFP_PTHREAD_HADLE_T hThreadHandle - the thread identifier
+* @param[out] LFP_NULL
+* @return	  LFP_OK / LFP_ERR
+*/
+LFP_INT32 linux_pthread_cancel(LFP_PTHREAD_HADLE_T hThreadHandle)
+{
+	LFP_INT32 iRet = LFP_ERR;
+
+	iRet = pthread_cancel(hThreadHandle);
+	return (0 == iRet) ? LFP_OK : LFP_ERR;
+}
+
+
+/*@fn		  LFP_INT32 linux_pthread_kill(LFP_PTHREAD_HADLE_T hThreadHandle, LFP_INT32 iSig)
+* @brief 	  send a signal to a thread
+* @param[in]  LFP_PTHREAD_HADLE_T hThreadHandle - the thread identifier
+* @param[in]  LFP_INT32 iSig - signal type
+* @param[out] LFP_NULL
+* @return	  LFP_OK / LFP_ERR
+*/
+LFP_INT32 linux_pthread_kill(LFP_PTHREAD_HADLE_T hThreadHandle, LFP_INT32 iSig)
+{
+	/* no assert here, for pthread status test */
+	return pthread_kill(hThreadHandle, iSig);
+}

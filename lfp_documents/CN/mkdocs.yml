@@ -1,0 +1,28 @@
+#the project name
+site_name: LFP Docs
+#the project access address
+dev_addr: 127.0.0.1:8000
+#pages layout
+nav:
+- introduce: index.md
+- project component:
+    - util: util/util.md
+    - arch: arch/arch.md
+    - arch_adapter: arch_adapter/arch_adapter.md
+    - exec: exec/exec.md
+    - include: include/include.md
+    - link_order: link_order/link_order.md
+    - main: main/main.md
+    - menuconfig: menuconfig/menuconfig.md
+    - modules:
+        - about: modules/module.md
+        - single_list: modules/single_list/single_list.md
+        - double_list: modules/double_list/double_list.md
+        - socket_app: modules/socket_app/socket_app.md
+    - rules.make: rules.make/rules.make.md
+- extensions:
+    - common knowledge: extensions/knowledge_extensions.md
+    - whiptail: extensions/whiptail.md
+    - markdown syntax: extensions/markdown.md
+- roads: roads/roads.md
+#theme: readthedocs

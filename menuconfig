@@ -1,0 +1,15 @@
+#macro linux system
+LFP_OS_LINUX = y
+LFP_FLAGS += -DLFP_OS_LINUX
+
+#macro single list
+LFP_SINGLE_LIST_MODULE = y
+LFP_FLAGS += -DLFP_SINGLE_LIST_MODULE
+
+#macro double list
+LFP_DOUBLE_LIST_MODULE = y
+LFP_FLAGS += -DLFP_DOUBLE_LIST_MODULE
+
+#macro socket communication
+LFP_SOCKET_APP = y
+LFP_FLAGS += -DLFP_SOCKET_APP
