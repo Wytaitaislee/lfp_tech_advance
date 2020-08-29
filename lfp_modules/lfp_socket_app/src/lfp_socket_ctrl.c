@@ -1,6 +1,6 @@
 /************************************************************************************
 File name: lfp_socket_init.c
-Description: Socket communication main entrance.
+Description: Socket communication control main entrance.
 Author: wytaitaislee
 Version: V1.0.0
 Date: 2020-03-29
@@ -21,12 +21,16 @@ LFP_STATIC LFP_DATA LFP_SOCKET_SERVER_MANAGE_T *pSocketServerManage = LFP_NULL;
 */
 LFP_INT32 lfp_socket_server_manage_init(LFP_VOID)
 {
+	LFP_INT32 iRet = LFP_ERR;
+
 	pSocketServerManage = LFP_MALLOC(sizeof(*pSocketServerManage));
 	LFP_ASSERT_ERR_RET(pSocketServerManage);
 	LFP_BUFF_BEZERO(pSocketServerManage, sizeof(*pSocketServerManage));
-	if(LFP_OK != lfp_mutex_create(&pSocketServerManage->mutex, LFP_NULL))
+	iRet = lfp_mutex_create(&pSocketServerManage->mutex, LFP_NULL);
+	if(LFP_OK != iRet)
 	{
-		LFP_SOCKET_CTRL_ERR("create metex err\n");
+		LFP_SOCKET_CTRL_ERR("create metex err, iRet = %d\n", iRet);
+		return LFP_ERR;
 	}
 	return LFP_OK;
 }
@@ -63,6 +67,7 @@ LFP_INT32 lfp_socket_package_entry_init(LFP_SOCKET_PACKAGE_T *pSocketPackage)
 	{
 		pSocketPackage->iPackageData = (LFP_INT8*)LFP_MALLOC(LFP_SOCKET_MAX_PACKAGE_LEN);
 	}
+	LFP_ASSERT_ERR_RET(pSocketPackage->iPackageData);
 	pSocketPackage->struHead.iMaxDataLen = LFP_SOCKET_MAX_PACKAGE_LEN;
 	LFP_BUFF_BEZERO(pSocketPackage->iPackageData, LFP_SOCKET_MAX_PACKAGE_LEN);
 	return LFP_OK;
@@ -83,7 +88,7 @@ LFP_INT32 lfp_socket_package_entry_fini(LFP_SOCKET_PACKAGE_T *pSocketPackage)
 }
 
 /*@fn		  LFP_INT32 lfp_socket_ctrl_entry_init(LFP_SOCKET_CTRL_T *pSocketCtrl)
-* @brief 	  socket communication entry init, include send and receive data description
+* @brief 	  socket communication entry init, including receiving/sending data description
 * @param[in]  LFP_NULL
 * @param[out] LFP_SOCKET_CTRL_T *pSocketCtrl - communication entry 
 * @return	  LFP_OK/LFP_ERR
