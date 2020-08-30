@@ -198,33 +198,33 @@ LFP_INT32 lfp_socket_desc_entry_fini(LFP_SOCKET_DESC_T **ppDesc)
 */
 LFP_INT32 lfp_socket_create_subtask(LFP_INT32 iSocket)
 {
-	LFP_UINT32 uuiCnt = 0;
+	LFP_UINT32 uiCnt = 0;
 	LFP_INT32 iRet = LFP_ERR;
 
 	LFP_ASSERT_ERR_RET(iSocket > 0);
 	LFP_ASSERT_ERR_RET(pSocketServerManage);
 
 	lfp_mutex_lock(&pSocketServerManage->mutex);
-	for(uuiCnt = 0; uuiCnt < LFP_NELEMENTS(pSocketServerManage->pSocketDesc); uuiCnt++)
+	for(uiCnt = 0; uiCnt < LFP_NELEMENTS(pSocketServerManage->pSocketDesc); uiCnt++)
 	{
-		if(!LFP_SOCKET_THIS_SERVER_DESC(pSocketServerManage, uuiCnt))
+		if(!LFP_SOCKET_THIS_SERVER_DESC(pSocketServerManage, uiCnt))
 		{
-			iRet = lfp_socket_desc_entry_init(&LFP_SOCKET_THIS_SERVER_DESC(pSocketServerManage, uuiCnt), iSocket);
+			iRet = lfp_socket_desc_entry_init(&LFP_SOCKET_THIS_SERVER_DESC(pSocketServerManage, uiCnt), iSocket);
 			break;
 		}
 	}
-	if(uuiCnt >= LFP_NELEMENTS(pSocketServerManage->pSocketDesc) || LFP_OK != iRet)
+	if(uiCnt >= LFP_NELEMENTS(pSocketServerManage->pSocketDesc) || LFP_OK != iRet)
 	{
 		LFP_SOCKET_CTRL_ERR("server malloc memory entry failed, iSocket = %d\n", iSocket);
 		lfp_mutex_unlock(&pSocketServerManage->mutex);
 		return LFP_ERR;
 	}
-	LFP_SOCKET_THIS_SERVER_DESC(pSocketServerManage, uuiCnt)->iSockFd = iSocket;
-	if(LFP_OK != lfp_pthread_create(LFP_NULL, LFP_NULL, LFP_NULL, (LFP_VOID*)lfp_socket_proc, LFP_SOCKET_THIS_SERVER_DESC(pSocketServerManage, uuiCnt)))
+	LFP_SOCKET_THIS_SERVER_DESC(pSocketServerManage, uiCnt)->iSockFd = iSocket;
+	if(LFP_OK != lfp_pthread_create(LFP_NULL, LFP_NULL, LFP_NULL, (LFP_VOID*)lfp_socket_proc, LFP_SOCKET_THIS_SERVER_DESC(pSocketServerManage, uiCnt)))
 	{
 		LFP_SOCKET_CTRL_ERR("create a new socket task err, iSocket = %d\n", iSocket);
-		LFP_SAFE_CLOSE_SOCKET(LFP_SOCKET_THIS_SERVER_DESC(pSocketServerManage, uuiCnt)->iSockFd);
-		LFP_SOCKET_THIS_SERVER_DESC(pSocketServerManage, uuiCnt)->iSockFd = LFP_INVALID_SOCKET;
+		LFP_SAFE_CLOSE_SOCKET(LFP_SOCKET_THIS_SERVER_DESC(pSocketServerManage, uiCnt)->iSockFd);
+		LFP_SOCKET_THIS_SERVER_DESC(pSocketServerManage, uiCnt)->iSockFd = LFP_INVALID_SOCKET;
 		lfp_mutex_unlock(&pSocketServerManage->mutex);
 		return LFP_ERR;
 	}
