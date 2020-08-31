@@ -53,7 +53,9 @@ LFP_INT32 lfp_socket_server_manage_fini(LFP_VOID)
 }
 
 /*@fn		  LFP_INT32 lfp_socket_server_manage_node_recycle(LFP_VOID)
-* @brief 	  socket server manage fini, recycle the malloc resources.
+* @brief 	  When a socket connection is disconnected and 
+			  no new connection is established for a period of time
+			  the resource occupation is released.
 * @param[in]  LFP_VOID
 * @param[out] LFP_NULL
 * @return	  LFP_OK/LFP_ERR

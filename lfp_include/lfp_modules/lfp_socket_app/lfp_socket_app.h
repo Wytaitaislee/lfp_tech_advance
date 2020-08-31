@@ -160,6 +160,17 @@ LFP_INT32 lfp_socket_server_manage_init(LFP_VOID);
 */
 LFP_INT32 lfp_socket_server_manage_fini(LFP_VOID);
 
+
+/*@fn		  LFP_INT32 lfp_socket_server_manage_node_recycle(LFP_VOID)
+* @brief 	  When a socket connection is disconnected and 
+			  no new connection is established for a period of time
+			  the resource occupation is released.
+* @param[in]  LFP_VOID
+* @param[out] LFP_NULL
+* @return	  LFP_OK/LFP_ERR
+*/
+LFP_INT32 lfp_socket_server_manage_node_recycle(LFP_VOID);
+
 /*@fn		  LFP_INT32 lfp_socket_package_entry_init(LFP_SOCKET_PACKAGE_T *pSocketPackage)
 * @brief 	  socket package entry init, if memory already malloced, clear the memory buffer.
 * @param[in]  LFP_NULL
