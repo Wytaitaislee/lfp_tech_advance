@@ -15,6 +15,7 @@ History: 1. create file. -- 2019-11-17
 #define LFP_SOCKET_MAX_LISTEN (64)		/* the maximum listen num */
 #define LFP_SOCKET_MAX_PACKAGE_LEN (1024 * 1024)	/* the maximum size of the single package */
 #define LFP_SOCKET_MAX_INPUT_CHAR_ONCE	(1024)
+#define LFP_SOCKET_EXIT_ALIVE_PERIOD (60 * 10)	/* max alive period when the socket exit */
 
 #define LFP_SOCKET_SERVER_ADDR ("127.0.0.1")
 #define LFP_SOCKET_SERVER_PORT	(8000)
@@ -67,6 +68,7 @@ typedef struct lfp_socket_ctrl_t
 typedef struct lfp_socket_desc_t
 {
 	LFP_SOCK iSockFd;
+	LFP_INT32 iExitTime;
 	LFP_SEM_T semSync;
 	LFP_SOCKET_CTRL_T struSocketCtrl;
 }LFP_SOCKET_DESC_T;

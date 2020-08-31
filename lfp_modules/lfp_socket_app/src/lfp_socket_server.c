@@ -80,8 +80,8 @@ LFP_INT32 lfp_socket_server_task(LFP_VOID* pArgs)
 	LFP_BUFF_BEZERO(&struSockAddrNew, sizeof(struSockAddrNew));
 	LFP_BUFF_BEZERO(&struSockLen, sizeof(struSockLen));
 
-	struSockAddrIn.sin_family = AF_INET;
-	struSockAddrIn.sin_port = htons(LFP_SOCKET_SERVER_PORT);
+	struSockAddrIn.sin_family = LFP_AF_INET;
+	struSockAddrIn.sin_port = htons(LFP_SLFP_OCKET_SERVER_PORT);
 	struSockAddrIn.sin_addr.s_addr = inet_addr(LFP_SOCKET_SERVER_ADDR);
 	
 	iSockServer = lfp_socket_create(LFP_AF_INET, LFP_SOCK_STREAM, LFP_IPPROTO_TCP);

@@ -48,6 +48,41 @@ LFP_INT32 lfp_socket_server_manage_fini(LFP_VOID)
 		lfp_mutex_destroy(&pSocketServerManage->mutex);
 		LFP_SAFE_FREE(pSocketServerManage);
 	}
+	pSocketServerManage = LFP_NULL;
+	return LFP_OK;
+}
+
+/*@fn		  LFP_INT32 lfp_socket_server_manage_node_recycle(LFP_VOID)
+* @brief 	  socket server manage fini, recycle the malloc resources.
+* @param[in]  LFP_VOID
+* @param[out] LFP_NULL
+* @return	  LFP_OK/LFP_ERR
+*/
+LFP_INT32 lfp_socket_server_manage_node_recycle(LFP_VOID)
+{
+	LFP_INT32 uiCnt = 0;
+	time_t struTimeNow;
+	LFP_INT32 iExitAliveTime = 0;
+
+	if(!pSocketServerManage)
+	{
+		LFP_SOCKET_CTRL_ERR("node recycle failed, pSocketServerManage is NULL\n");
+		return LFP_ERR;
+	}
+	lfp_mutex_lock(&pSocketServerManage->mutex);
+	for(uiCnt = 0; uiCnt < LFP_NELEMENTS(pSocketServerManage->pSocketDesc); uiCnt++)
+	{
+		if(LFP_INVALID_SOCKET != LFP_SOCKET_THIS_SERVER_DESC(pSocketServerManage, uiCnt)->iSockFd)
+		{
+			continue;
+		}
+		iExitAliveTime = struTimeNow - LFP_SOCKET_THIS_SERVER_DESC(pSocketServerManage, uiCnt)->iExitTime;
+		if(iExitAliveTime > LFP_SOCKET_EXIT_ALIVE_PERIOD)
+		{
+			lfp_socket_desc_entry_fini(&LFP_SOCKET_THIS_SERVER_DESC(pSocketServerManage, uiCnt));
+		}
+	}	
+	lfp_mutex_unlock(&pSocketServerManage->mutex);
 	return LFP_OK;
 }
 
@@ -462,7 +497,6 @@ LFP_INT32 lfp_socket_send_data(LFP_INT32 iSocket, LFP_CONST LFP_INT8* pData, LFP
 {
 	LFP_ASSERT_ERR_RET((iSocket >= 0) && (pData) && (iDataLen > 0));
 
-	
 	LFP_SOCKET_CTRL_ERR("send data to client, iDataLen = %d\n", iDataLen);
 	if(0 > lfp_socket_write(iSocket, pData, iDataLen))
 	{
