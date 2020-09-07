@@ -6,8 +6,8 @@ Version: V1.0.0
 Date: 2020-03-29
 History: 1. create file. -- 2020-03-29
 		 2. server uses pthread pool. -- 2020-05-26
+		 3. fdpool keep-alive mechanism -- 2020-08-31 
 ************************************************************************************/
-
 
 #include "lfp_modules.h"
 
