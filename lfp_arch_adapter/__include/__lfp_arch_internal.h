@@ -1,6 +1,7 @@
 /***************************************************************************************
 File name: __lfp_arch_internal.h
-Description: Private data structure of platform adaptation layer.
+Description: Private data structure of platform adaptation layer. the file only can be 
+             invoked by lfp_arch_xxxx.c
 Author: wytaitaislee
 Version: V1.0.0
 Date: 2020-03-10

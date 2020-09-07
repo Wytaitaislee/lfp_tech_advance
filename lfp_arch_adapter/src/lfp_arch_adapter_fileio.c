@@ -21,7 +21,7 @@ LFP_INT32 lfp_arch_adapter_fileio_register(LFP_VOID)
 {
 //    LFP_ADAPTER_FILEIO_INIT(fileio_open);
 //    LFP_ADAPTER_FILEIO_INIT(fileio_seek);
-	LFP_ADAPTER_FILEIO_INIT(fileio_fcntl);
+    LFP_ADAPTER_FILEIO_INIT(fileio_fcntl);
 
 //    LFP_ADAPTER_FILEIO_INIT(fileio_read);
 //    LFP_ADAPTER_FILEIO_INIT(fileio_write);
