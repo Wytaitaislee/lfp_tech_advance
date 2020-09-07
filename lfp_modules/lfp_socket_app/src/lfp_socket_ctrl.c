@@ -516,9 +516,8 @@ LFP_INT32 lfp_socket_send_data(LFP_INT32 iSocket, LFP_CONST LFP_INT8* pData, LFP
 */
 LFP_INT32 lfp_socket_module_init(LFP_VOID)
 {
-	LFP_ASSERT((LFP_OK == lfp_socket_server_manage_init()));
-	((LFP_OK == lfp_socket_server_init()));
-	((LFP_OK == lfp_socket_client_init()));
+	LFP_ASSERT_ERR_RET((LFP_OK == lfp_socket_server_manage_init()));
+	LFP_ASSERT_ERR_RET((LFP_OK == lfp_socket_server_init()));
 
     return LFP_OK;
 }
