@@ -1,10 +1,10 @@
-### Knowledge Graph
+### 项目简介
 
-> 知识/技能图谱。所描述/涉及的知识内容，不一定按照由浅入深的顺序去排布，**以自我提升为中心**，并应用到项目中，学以致用。
+> 在工作、优秀开源代码的阅读过程中，时常会遇到一些比较亮眼的编码方式，出于好奇、自我提升，将这些good taste加以消化，从架构层面扩展自己的知识视野。lfp取名lee's firmware platform。
 
 #### Mkdocs
 
-> 主要介绍如何使用 [MKdocs](https://mkdocs.readthedocs.io/en/stable/)来管理你的工程项目文档。
+> 项目文档主要以mkdown文档书写，并使用[MKdocs](https://mkdocs.readthedocs.io/en/stable/)进行文档服务器的部署，来管理工程项目文档。
 
 #### Util
 
