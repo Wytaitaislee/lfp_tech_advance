@@ -10,11 +10,11 @@
 
 > 基建部分，支撑项目的通用业务，例如日志输出等；
 
-#### 1. lfp_util_dbg
+#### lfp_util_dbg
 
 > 管理项目各模块的日志输出, 方便调试；
 
-#### 2. lfp util timer
+#### lfp util timer
 
 > 管理项目的基础时间相关业务，不随着OS/平台的变化而变化，如果依赖OS/平台，需要封装成`lfp_adapter`层;
 
