@@ -65,5 +65,5 @@
 #### 统计代码行数
 
 ```shell
-    find . "(" -name "*.c"  -or -name "*.cpp" -or -name "*.h" ")" -print | xargs wc -l
+find . "(" -name "*.c"  -or -name "*.cpp" -or -name "*.h" ")" -print | xargs wc -l
 ```
