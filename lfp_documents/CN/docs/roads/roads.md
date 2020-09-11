@@ -5,7 +5,7 @@
 
 ## Mkdocs
 
-> 主要介绍如何使用 [MKdocs](https://mkdocs.readthedocs.io/en/stable/)来管理你的工程项目文档。
+> 主要介绍如何使用 [MKdocs](https://mkdocs.org/)来管理工程项目文档。
 
 ## Util
 

@@ -6,7 +6,9 @@ dev_addr: 127.0.0.1:8000
 nav:
 - introduce: index.md
 - project component:
-    - util: util/util.md
+    - util: 
+        - util: util/util.md
+        - uitl_cmd: util/util_cmd.md
     - arch: arch/arch.md
     - arch_adapter: arch_adapter/arch_adapter.md
     - exec: exec/exec.md
