@@ -1,5 +1,6 @@
-@[toc](基于whiptail和shell脚本的交互式界面)
-[官方使用手册 https://linux.die.net/man/1/whiptail](https://linux.die.net/man/1/whiptail)
+# 基于whiptail和shell脚本的交互式界面
+
+[@官方使用手册](https://linux.die.net/man/1/whiptail)
 
 ## 1. 使用背景
 在linux环境下开发软件时，有时需要输入一连串的交互命令才能得到我们想要的数据或者结果，而每次我们都要重新输入这些指令，会比较繁琐。如果有一种直观的交互式界面工具来让用户输入关键信息，工具内部隐藏实现细节，是不是更方便、高效呢，本文描述一种在shell脚本中使用whiptail指令来编写交互式界面工具的方法。

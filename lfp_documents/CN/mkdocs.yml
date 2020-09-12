@@ -9,6 +9,7 @@ nav:
     - util: 
         - util: util/util.md
         - uitl cmd: util/util_cmd.md
+        - uitl timer: util/util_timer.md
     - arch: arch/arch.md
     - arch adapter: arch_adapter/arch_adapter.md
     - exec: exec/exec.md
