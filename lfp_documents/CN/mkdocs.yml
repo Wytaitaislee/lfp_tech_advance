@@ -8,23 +8,23 @@ nav:
 - project component:
     - util: 
         - util: util/util.md
-        - uitl_cmd: util/util_cmd.md
+        - uitl cmd: util/util_cmd.md
     - arch: arch/arch.md
-    - arch_adapter: arch_adapter/arch_adapter.md
+    - arch adapter: arch_adapter/arch_adapter.md
     - exec: exec/exec.md
     - include: include/include.md
-    - link_order: link_order/link_order.md
+    - link order: link_order/link_order.md
     - main: main/main.md
     - menuconfig: menuconfig/menuconfig.md
+    - rules.make: rules.make/rules.make.md
     - modules:
         - about: modules/module.md
         - single_list: modules/single_list/single_list.md
-        - double_list: modules/double_list/double_list.md
-        - socket_app: modules/socket_app/socket_app.md
-    - rules.make: rules.make/rules.make.md
+        - double list: modules/double_list/double_list.md
+        - socket app: modules/socket_app/socket_app.md
     - tools: tools/stats_tools.md
 - extensions:
-    - common knowledge: extensions/knowledge_extensions.md
+    - common knowledge: extensions/extensions.md
     - whiptail: extensions/whiptail.md
     - markdown syntax: extensions/markdown.md
 - roads: roads/roads.md
