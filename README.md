@@ -1,4 +1,4 @@
-# LFP
+# LFP tech advance
 
 [![PyPI Version][pypi-v-image]][pypi-v-link]
 [![Build Status][travis-image]][travis-link]
