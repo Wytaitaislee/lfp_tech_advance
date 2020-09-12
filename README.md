@@ -1,22 +1,40 @@
+# LFP
+
+[![PyPI Version][pypi-v-image]][pypi-v-link]
+[![Build Status][travis-image]][travis-link]
+[![Windows Build Status][appveyor-image]][appveyor-link]
+[![Coverage Status][codecov-image]][codecov-link]
+[![Landscale Code Health][landscape-image]][landscape-link]
+
+- View the [MkDocs documentation][mkdocs].
+- Project [release notes][release-notes].
+- Visit the [MkDocs wiki](https://github.com/mkdocs/mkdocs/wiki) for community
+  resources, including third party themes and a list of MkDocs users.
+- IRC channel: `#mkdocs` on freenode.
+- Discussions and support: <https://groups.google.com/forum/#!forum/mkdocs>
+
 ## 项目简介
 
-> 在工作、优秀开源代码的阅读过程中，时常会遇到一些比较亮眼的编码方式，出于好奇、自我提升，将这些good taste加以消化，从架构层面扩展自己的知识视野。lfp取名`lee's firmware platform`。
+在工作、优秀开源代码的阅读过程中，时常会遇到一些比较亮眼的编码方式，出于好奇、自我提升，将这些good taste加以消化，从架构层面扩展自己的知识视野。`lfp`**lee's firmware platform**。
 
-### Mkdocs
+## FEATURES
 
-> 项目文档主要以mkdown文档书写，使用[MKdocs](https://mkdocs.readthedocs.io/en/stable/)进行文档服务器的部署，达到管理/阅读工程项目文档的目的。
+### Mkdocs文档管理工具
 
+项目文档主要以mkdown文档书写，使用[MKdocs](https://mkdocs.readthedocs.io/en/stable/)进行文档服务器的部署，达到管理工程项目文档的目的。
+
+###
 ### lfp_util
 
-> 基建部分，支撑项目的通用业务，例如日志输出等；
+基础架构部分，支撑项目的通用业务，例如日志输出等、timer、串口交互等；
 
 #### lfp_util_dbg
 
-> 管理项目各模块的日志输出, 方便调试；
+管理项目各模块的日志输出, 方便调试；
 
 #### lfp util timer
 
-> 管理项目的基础时间相关业务，不随着OS/平台的变化而变化，如果依赖OS/平台，需要封装成`lfp_adapter`层;
+管理项目的基础时间相关业务，不随着OS/平台的变化而变化，如果依赖OS/平台，需要封装成`lfp_adapter`层;
 
 ### lfp_util_cmd
 
