@@ -90,4 +90,21 @@
 find . "(" -name "*.c"  -or -name "*.cpp" -or -name "*.h" ")" -print | xargs wc -l
 ```
 
+[appveyor-image]: https://img.shields.io/appveyor/ci/d0ugal/mkdocs/master.svg
+[appveyor-link]: https://ci.appveyor.com/project/d0ugal/mkdocs
+[codecov-image]: https://codecov.io/github/mkdocs/mkdocs/coverage.svg?branch=master
+[codecov-link]: https://codecov.io/github/mkdocs/mkdocs?branch=master
+[landscape-image]: https://landscape.io/github/mkdocs/mkdocs/master/landscape.svg?style=flat
+[landscape-link]: https://landscape.io/github/mkdocs/mkdocs/master
+[pypi-v-image]: https://img.shields.io/pypi/v/mkdocs.svg
+[pypi-v-link]: https://pypi.org/project/mkdocs/
+[travis-image]: https://img.shields.io/travis/mkdocs/mkdocs/master.svg
+[travis-link]: https://travis-ci.org/mkdocs/mkdocs
+
+[mkdocs]: https://www.mkdocs.org
+[release-notes]: https://www.mkdocs.org/about/release-notes/
+
+[PyPA Code of Conduct]: https://www.pypa.io/en/latest/code-of-conduct/
+
+
 [编码规则]: /index/
