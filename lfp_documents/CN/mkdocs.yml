@@ -22,6 +22,7 @@ nav:
         - double_list: modules/double_list/double_list.md
         - socket_app: modules/socket_app/socket_app.md
     - rules.make: rules.make/rules.make.md
+    - tools: tools/stats_tools.md
 - extensions:
     - common knowledge: extensions/knowledge_extensions.md
     - whiptail: extensions/whiptail.md
