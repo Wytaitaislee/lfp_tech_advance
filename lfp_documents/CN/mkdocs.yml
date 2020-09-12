@@ -18,6 +18,7 @@ nav:
     - main: main/main.md
     - menuconfig: menuconfig/menuconfig.md
     - rules.make: rules.make/rules.make.md
+    - programming rules: programming_rules/programming_rules.md
     - modules:
         - about: modules/module.md
         - single_list: modules/single_list/single_list.md
