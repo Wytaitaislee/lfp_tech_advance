@@ -1,4 +1,5 @@
 #include "lfp_arch_adapter.h"
+#include "__lfp_arch_adapter_typesdef.h"
 
 #define LFP_GET_SEMAPHORE_ENTRY()             (*(LFP_ARCH_ADAPTER_SEMAPHORE_T*)LFP_GET_CLASS_ENTRY(semaphore))
 #define LFP_ADAPTER_SEMAPHORE_INIT(FUNC)      LFP_ADAPTER_INIT(LFP_GET_SEMAPHORE_ENTRY(), FUNC)

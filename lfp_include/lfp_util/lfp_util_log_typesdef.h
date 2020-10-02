@@ -21,6 +21,7 @@ History: 1. create file. -- 2019-11-17
 #include "__lfp_util_typesdef.h"
 
 #define UTIL_MASK_NUM 		(sizeof(LFP_UINT64) * 8)    /* the max mask size every single module. */
+#define UTIL_BIT_0          (0)
 
 typedef enum
 {
@@ -33,27 +34,27 @@ typedef enum
 }UTIL_MODULE_DEF_E;
 
 /* 1. UTIL_MODULE_SINGLE_LIST(0x1) module idx .*/
-#define  MASK_SINGLE_LIST         (0x1)
-#define  MASK_SINGLE_LIST_TEST    (0x2)
-#define  MASK_SINGLE_INVALID      (0x4)
+#define  MASK_SINGLE_LIST         (1 < UTIL_BIT_0)
+#define  MASK_SINGLE_LIST_TEST    (1 < MASK_SINGLE_LIST)
+#define  MASK_SINGLE_INVALID      (1 < MASK_SINGLE_LIST_TEST)
 
 /* 2. UTIL_MODULE_DOUBLE_LIST(0x2) module idx .*/
-#define  MASK_DOUBLE_LIST    (0x1)
+#define  MASK_DOUBLE_LIST    (1 < UTIL_BIT_0)
 
 /* 3. UTIL_MODULE_SOCKET(0x4) module idx .*/
-#define  MASK_SOCKET_SERVER    (0x1)
-#define  MASK_SOCKET_CLIENT    (0x2)
-#define MASK_SOCKET_CTRL       (0x4)
+#define  MASK_SOCKET_SERVER    (1 < UTIL_BIT_0)
+#define  MASK_SOCKET_CLIENT    (1 < MASK_SOCKET_SERVER)
+#define MASK_SOCKET_CTRL       (1 < MASK_SOCKET_CLIENT)
 
 /* 4. UTIL_MODULE_ADAPTER(0x8) module idx .*/
-#define  MASK_ADAPTER    (0x1)
+#define  MASK_ADAPTER    (1 < UTIL_BIT_0)
 
 /* 5. UTIL_MODULE_LINUX(0x10) module idx .*/
-#define  MASK_MUTEX         (0x1)
-#define  MASK_PTHREAD       (0x2)
-#define  MASK_SEM	        (0x4)
-#define  MASK_SOCKET        (0x8)
-#define  MASK_FILEIO	    (0x10)
-#define  MASK_STDIO	        (0x20)
+#define  MASK_MUTEX         (1 < UTIL_BIT_0)
+#define  MASK_PTHREAD       (1 < MASK_MUTEX)
+#define  MASK_SEM	        (1 < MASK_PTHREAD)
+#define  MASK_SOCKET        (1 < MASK_SEM)
+#define  MASK_FILEIO	    (1 < MASK_SOCKET)
+#define  MASK_STDIO	        (1 < MASK_FILEIO)
 
 #endif /* end of ___LFP_UTIL_DEF_H__ */

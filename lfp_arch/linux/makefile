@@ -8,7 +8,7 @@ CUR_SRC = $(wildcard ${CUR_SRC_PATH}/*.c)
 CUR_OBJS = $(patsubst %.c, %.o, $(CUR_SRC))
 
 INCLUDE_PATH := -Iinclude
-#INCLUDE_PATH += -I../../lfp_include/lfp_arch_adapter/
+INCLUDE_PATH += -I../../lfp_include/
 
 CFLAGS = $(LFP_GLOBAL_FLAGS) $(INCLUDE_PATH)
 

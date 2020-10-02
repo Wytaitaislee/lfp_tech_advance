@@ -10,7 +10,6 @@ History: 1. create file. -- 2020-03-12
 #define __LFP_ARCH_ABSTRACT_H__
 
 #include "../__include/lfp_util.h"
-#include "../../lfp_arch_adapter/__include/__lfp_arch_internal.h"
 /* X86, 32. */
 #if defined (linux) || defined(unix) || defined(__unix__) || defined(__linux__)
 #define __ARCH linux

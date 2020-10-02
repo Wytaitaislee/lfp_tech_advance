@@ -1,4 +1,5 @@
 #include "lfp_arch_adapter.h"
+#include "__lfp_arch_adapter_typesdef.h"
 
 #define LFP_GET_SOCKET_ENTRY()             (*(LFP_ARCH_ADAPTER_SOCKET_T*)LFP_GET_CLASS_ENTRY(socket))
 #define LFP_ADAPTER_SOCKET_INIT(FUNC)      LFP_ADAPTER_INIT(LFP_GET_SOCKET_ENTRY(), FUNC)

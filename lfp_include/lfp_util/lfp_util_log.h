@@ -1,5 +1,5 @@
 /***************************************************************************************
-File name: lfp_util_dbg.h																	
+File name: lfp_util_log.h																	
 Description: util log debugging information control module.											
 Author: wytaitaislee																	
 Version: V1.0.0																			
@@ -7,7 +7,7 @@ Date: 2019-11-17
 History: 1. create file. -- 2019-11-17
 ****************************************************************************************/
 
-/************************the dbg util design rules*******************************************/
+/************************the log util design rules*******************************************/
 /* 1. there are tree different level of the UTIL module:									*/
 /*		CRIT : the most important message.													*/			
 /*		ERR  ：the message where error happens.												*/
@@ -18,8 +18,8 @@ History: 1. create file. -- 2019-11-17
 /*		LFP_UTIL_BASE(UTIL_LEVEL, UTIL_PRINTF, UTIL_MODULE_MASK2, ...)			            */
 /********************************************************************************************/
 
-#ifndef __LFP_UTIL_DBG_H__
-#define __LFP_UTIL_DBG_H__
+#ifndef __LFP_UTIL_LOG_H__
+#define __LFP_UTIL_LOG_H__
 
 #include "__lfp_util_typesdef.h"
 
@@ -125,4 +125,4 @@ do																								\
 		__util_base(UTIL_LEVEL, __FILE__, __FUNCTION__, __LINE__, __VA_ARGS__);					\
 	}																							\
 }while(0)
-#endif /* end of __LFP_UTIL_DBG_H__ */
+#endif /* end of __LFP_UTIL_LOG_H__ */
