@@ -11,10 +11,11 @@ History: 1. create file. -- 2019-11-17
 #ifndef __LFP_DOUBLE_LIST_H__
 #define __LFP_DOUBLE_LIST_H__
 
+#include "lfp_base.h"
+
 #define LFP_DOUBLE_LIST_MODULE_NAME     "double list"
 #define LFP_DOUBLE_LIST_SIGN_OK    		"lfp double list register successfully!"
 #define LFP_DOUBLE_LIST_SIGN_ERR   		"lfp double list register failed!"
-#include "../../__include/lfp_util.h"
 
 #define LFP_DOUBLE_LIST_ADD_ELEM (10)
 

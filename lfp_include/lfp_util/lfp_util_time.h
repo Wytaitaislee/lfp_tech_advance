@@ -1,15 +1,14 @@
 /***************************************************************************************
-File name: __lfp_util_time.h																	
+File name: lfp_util_time.h																	
 Description: time base implementation											
-Author: wytaitaislee																	
-Version: V1.0.0																			
+Author: wytaitaislee																																			
 Date: 2020-06-11																		
-History: 1. create file. -- 2020-06-11
+History: 1. create file. -- 2020.11.07
 ****************************************************************************************/
 #ifndef __LFP_UTIL_TIME_H__
 #define __LFP_UTIL_TIME_H__
 
-#include "__lfp_util_typesdef.h"
+#include "__include/__lfp_base_typesdef.h"
 
 /*@fn		  LFP_INT32 lfp_sleep_ms(LFP_UINT32 uiSleepMsSeconds);
 * @brief 	  delay milliseconds

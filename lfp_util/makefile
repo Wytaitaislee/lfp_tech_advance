@@ -9,8 +9,7 @@ CUR_SRC_PATH := $(shell pwd)/lfp_util
 CUR_SRC = $(foreach dir, $(CUR_SRC_PATH), $(wildcard ${dir}/*.c))
 CUR_OBJS = $(patsubst %.c, %.o, $(CUR_SRC))
 
-INCLUDE_PATH = -I${LFP_ROOT_PATH}/lfp_include/__include/
-INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/lfp_arch_adapter/
+INCLUDE_PATH := -I${LFP_ROOT_PATH}/lfp_include/lfp_util/
 
 CFLAGS = $(LFP_GLOBAL_FLAGS) $(INCLUDE_PATH)
 

@@ -1,10 +1,9 @@
 /***************************************************************************************
 File name: lfp_util_log.h																	
 Description: util log debugging information control module.											
-Author: wytaitaislee																	
-Version: V1.0.0																			
-Date: 2019-11-17																		
-History: 1. create file. -- 2019-11-17
+Author: wytaitaislee																																			
+Date: 2019.11.17																		
+History: 1. create file. -- 2019.11.17
 ****************************************************************************************/
 
 /************************the log util design rules*******************************************/
@@ -21,7 +20,7 @@ History: 1. create file. -- 2019-11-17
 #ifndef __LFP_UTIL_LOG_H__
 #define __LFP_UTIL_LOG_H__
 
-#include "__lfp_util_typesdef.h"
+#include "__include/__lfp_base_typesdef.h"
 
 #define LFP_UTIL_MAX_BUFF_SIZE	(4 * 1024)
 
@@ -84,7 +83,7 @@ LFP_INT32 lfp_util_module_get(LFP_UTIL_CTRL_T *pUtilMsg);
 * @param[out] LFP_NULL
 * @return	  the ptr of the str label / LFP_NULL
 */
-LFP_CONST LFP_CODE LFP_INT8* __util_get_maps(LFP_UTIL_LEVEL_E enumLevel);
+//LFP_CONST LFP_CODE LFP_INT8* __util_get_maps(LFP_UTIL_LEVEL_E enumLevel);
 
 /*@fn		  LFP_CONST LFP_INT8* __util_get_file(const LFP_INT8 *pFullPath)
 * @brief 	  get file name by the absolutely path of the file
@@ -92,7 +91,7 @@ LFP_CONST LFP_CODE LFP_INT8* __util_get_maps(LFP_UTIL_LEVEL_E enumLevel);
 * @param[out] LFP_NULL
 * @return	  the ptr of the file name / LFP_NULL
 */
-LFP_CONST LFP_CODE LFP_INT8* __util_get_file(LFP_CONST LFP_INT8 *pFullPath);
+//LFP_CONST LFP_CODE LFP_INT8* __util_get_file(LFP_CONST LFP_INT8 *pFullPath);
 
 /*@fn		 LFP_INT32 __util_open(LFP_UINT64 iLevel, LFP_UINT64 iModuleIdx, LFP_UINT64 iModuleMask)
 * @brief 	  if whether the util switch is open.
@@ -102,7 +101,7 @@ LFP_CONST LFP_CODE LFP_INT8* __util_get_file(LFP_CONST LFP_INT8 *pFullPath);
 * @param[out] NULL
 * @return	  LFP_OK / LFP_ERR
 */	
-LFP_INT32 __util_open(LFP_UINT64 iLevel, LFP_UINT64 iModuleIdx, LFP_UINT64 iModuleMask);
+//LFP_INT32 __util_open(LFP_UINT64 iLevel, LFP_UINT64 iModuleIdx, LFP_UINT64 iModuleMask);
 
 /*@fn		  LFP_INT32 __util_base(LFP_UTIL_LEVEL_E enumLevel, LFP_CONST LFP_INT8 *pFilePath, 
 										LFP_CONST LFP_INT8 *pFunc, LFP_INT32 iLine, LFP_CONST LFP_INT8 *fmt, ...)
@@ -113,7 +112,7 @@ LFP_INT32 __util_open(LFP_UINT64 iLevel, LFP_UINT64 iModuleIdx, LFP_UINT64 iModu
 * @param[out] NULL
 * @return	  LFP_OK / LFP_ERR
 */	
-LFP_INT32 __util_base(LFP_UTIL_LEVEL_E enumLevel, LFP_CONST LFP_INT8 *pFilePath, LFP_CONST LFP_INT8 *pFunc, 
+//LFP_INT32 __util_base(LFP_UTIL_LEVEL_E enumLevel, LFP_CONST LFP_INT8 *pFilePath, LFP_CONST LFP_INT8 *pFunc, 
 							LFP_INT32 iLine, LFP_CONST LFP_INT8 *fmt, ...);
 
 

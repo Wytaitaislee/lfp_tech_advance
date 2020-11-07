@@ -11,13 +11,9 @@ History: 1. create file. -- 2020-06-06
 #ifndef __LINUX_TYPESDEF_H__
 #define __LINUX_TYPESDEF_H__
 
-#include "lfp_util.h"
-#include <unistd.h>
+#include "lfp_base.h"
+#include <stddef.h>
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <fcntl.h>
-#include <errno.h>
 
 typedef size_t				LFP_SIZE_T;
 typedef ssize_t				LFP_SSIZE_T;

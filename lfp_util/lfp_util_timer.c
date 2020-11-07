@@ -7,7 +7,7 @@ Date: 2020-06-11
 History: 1. create file. -- 2020-06-11
 ****************************************************************************************/
 
-#include "lfp_util.h"
+#include "lfp_util_time.h"
 
 /*@fn		  LFP_INT32 lfp_sleep_ms(LFP_UINT32 uiSleepMsSeconds);
 * @brief 	  delay milliseconds

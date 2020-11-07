@@ -10,7 +10,7 @@ History: 1. create file. -- 2020-06-07
 #ifndef __LFP_ARCH_ADAPTER_PTHREAD_H__
 #define __LFP_ARCH_ADAPTER_PTHREAD_H__
 
-#include "lfp_arch_abstract.h"
+#include "lfp_base.h"
 
 /*@fn		  LFP_INT32 lfp_pthread_create(LFP_PTHREAD_HADLE_T *pThreadHandle, LFP_INT32 iPrority,
                                 LFP_UINT32 uiStackSize, LFP_VOID* pStartTask, LFP_UINT32 uiArgs, LFP_VOID* pParams)

@@ -2,13 +2,10 @@
 File name: lfp_socket_server.c
 Description: Socket communication server implementation.
 Author: wytaitaislee
-Version: V1.0.0
-Date: 2019-11-17
-History: 1. create file. -- 2019-11-17
+Date: 2019.11.17
+History: 1. create file. -- 2019.11.17
 ************************************************************************************/
-
-#include "lfp_modules.h"
-#include "lfp_arch_adapter.h"
+#include "lfp_socket_app.h"
 
 /*@fn		  LFP_VOID *lfp_socket_proc(LFP_VOID* pSockFd)
 * @brief 	  Socket server message processing task.

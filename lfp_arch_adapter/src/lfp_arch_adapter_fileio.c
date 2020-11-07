@@ -1,5 +1,6 @@
 #include "lfp_arch_adapter.h"
 #include "__lfp_arch_adapter_typesdef.h"
+#include "__lfp_arch_abstract.h"
 
 #define LFP_GET_FILEIO_ENTRY()             (*(LFP_ARCH_ADAPTER_FILEIO_T*)LFP_GET_CLASS_ENTRY(fileio))
 #define LFP_ADAPTER_FILEIO_INIT(FUNC)      LFP_ADAPTER_INIT(LFP_GET_FILEIO_ENTRY(), FUNC)

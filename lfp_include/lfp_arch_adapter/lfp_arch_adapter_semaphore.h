@@ -9,7 +9,8 @@ History: 1. create file. -- 2020-06-07
 
 #ifndef __LFP_ARCH_ADAPTER_SEMAPHORE_H__
 #define __LFP_ARCH_ADAPTER_SEMAPHORE_H__
-#include "lfp_arch_abstract.h"
+
+#include "lfp_base.h"
 
 /*@fn		   LFP_INT32 lfp_semaphore_init(LFP_SEM_T *pSem, LFP_INT32 iShared, LFP_UINT32 uInitValue)
 * @brief 	   semaphore init on lfp system.

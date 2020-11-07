@@ -10,10 +10,11 @@ History: 1. create file. -- 2019-11-17
 #ifndef __LFP_LIST_SINGLE_H__
 #define __LFP_LIST_SINGLE_H__
 
+#include "lfp_base.h"
+
 #define LFP_SINGLE_LIST_MODULE_NAME     "single list"
 #define LFP_SINGLE_LIST_SIGN_OK    		"lfp single list register successfully!"
 #define LFP_SINGLE_LIST_SIGN_ERR   		"lfp single list register failed!"
-#include "../../__include/lfp_util.h"
 
 #define LFP_SINGLE_LIST_ADD_ELEM (10)
 

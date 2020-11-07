@@ -12,8 +12,6 @@ History: 1. create file. -- 2019-11-17
 #ifndef __LFP_MODULES_H__
 #define __LFP_MODULES_H__
 
-#include "../__include/lfp_util.h"
-#include "../lfp_arch_adapter/lfp_arch_adapter.h"
 #ifdef LFP_SINGLE_LIST_MODULE
 #include "lfp_single_list/lfp_single_list.h"
 #endif

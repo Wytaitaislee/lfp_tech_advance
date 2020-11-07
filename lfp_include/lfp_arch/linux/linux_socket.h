@@ -15,6 +15,12 @@ History: 1. create file. -- 2020-05-30
 #include <sys/socket.h>
 #include<netinet/in.h>
 #include <arpa/inet.h>
+/* 
+#define lfp_os_data_structure_redirect(undername)
+do
+{
+	#define LFP_#undername #LFP_OS_#undername
+}while(0) */
 
 /* socket relevant typesdef */
 typedef struct sockaddr 		LFP_SOCK_ADDR_T;

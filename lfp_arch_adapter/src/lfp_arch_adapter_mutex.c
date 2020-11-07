@@ -1,5 +1,6 @@
 #include "lfp_arch_adapter.h"
 #include "__lfp_arch_adapter_typesdef.h"
+#include "__lfp_arch_abstract.h"
 
 #define LFP_GET_MUTEX_ENTRY()             (*(LFP_ARCH_ADAPTER_MUTEX_T*)LFP_GET_CLASS_ENTRY(mutex))
 #define LFP_ADAPTER_MUTEX_INIT(FUNC)      LFP_ADAPTER_INIT(LFP_GET_MUTEX_ENTRY(), FUNC)

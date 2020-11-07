@@ -11,7 +11,7 @@ History: 1. create file. -- 2020.03.10
 #ifndef __LFP_ARCH_ADAPTER_TYPESDEF_H__
 #define __LFP_ARCH_ADAPTER_TYPESDEF_H__
  
- #include "../../lfp_include/__include/lfp_util.h"
+ #include <stdio.h>
 
  #define LFP_PREFIX    lfp_
  #define LFP_ARCH_ADAPTER_UNDEF_RETURN(LFP_ADAPTER_RETURN)                  \

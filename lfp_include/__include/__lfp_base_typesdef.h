@@ -1,23 +1,21 @@
-/************************************************************************************
-File name: __lfp_util_typesdef.h
-Description: Internal basic data structure definition, 1. only can be invoked in 
-			 lfp_base directory; 2. Exposed from the lfp_base.h file to the upper layer.
+/******************************************************************************************
+File name: __lfp_base_typesdef.h
+Description: Internal basic data structure definition(types define).
 Author: wytaitaislee
-Version: V1.0.0(LFP_BASE_VERSION)
 Date: 2019-11-17
-History: 1. create file. -- 2019-11-17
-************************************************************************************/
+History: 1. create file. -- 2019.11.17
+		 2. delete irrelevant definitions, only keep basic data definitions  -- 2020.11.06
+*******************************************************************************************/
 
-#ifndef __LFP_UTIL_TYPESDEF_H__
-#define __LFP_UTIL_TYPESDEF_H__
+#ifndef __LFP_BASE_TYPESDEF_H__
+#define __LFP_BASE_TYPESDEF_H__
 
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <errno.h>
-#include <assert.h>
-#include <unistd.h>
-#include <stdarg.h>
+//#include <stdlib.h>
+//#include <string.h>
+//#include <errno.h>
+//#include <unistd.h>
+//#include <stdarg.h>
 
 #define LFP_BASE_VERSION "V1.0.0"
 
@@ -51,4 +49,4 @@ typedef void 					LFP_VOID;
 #define LFP_TRUE (1)
 #define LFP_FALSE (0)
 
-#endif /* end of __LFP_UTIL_TYPESDEF_H__ */
+#endif /* end of __LFP_BASE_TYPESDEF_H__ */

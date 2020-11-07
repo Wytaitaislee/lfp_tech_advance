@@ -1,11 +1,10 @@
 /***************************************************************************************
-File name: __lfp_util_def.h																	
-Description: Log information control module.											
-Author: wytaitaislee																	
-Version: V1.0.0																			
-Date: 2019-11-17																		
-History: 1. create file. -- 2019-11-17
-         2. adjust the output arch. -- 2020-03-12
+File name: lfp_util_log_typesdef.h																	
+Description: Log information control module, define the log switch of each module.										
+Author: wytaitaislee																																	
+Date: 2019.11.17																		
+History: 1. create file. -- 2019.11.17
+         2. only define switch bit. -- 2020.11.07
 ****************************************************************************************/
 
 /************************the dbg util design rules*******************************************/
@@ -18,7 +17,7 @@ History: 1. create file. -- 2019-11-17
 #ifndef __LFP_UTIL_DEF_H__
 #define __LFP_UTIL_DEF_H__
 
-#include "__lfp_util_typesdef.h"
+#include "__include/__lfp_base_typesdef.h"
 
 #define UTIL_MASK_NUM 		(sizeof(LFP_UINT64) * 8)    /* the max mask size every single module. */
 #define UTIL_BIT_0          (0)

@@ -10,7 +10,7 @@ History: 1. create file. -- 2020-06-07
 #ifndef __LFP_ARCH_ADAPTER_FILEIO_H__
 #define __LFP_ARCH_ADAPTER_FILEIO_H__
 
-#include "lfp_arch_abstract.h"
+#include "lfp_base.h"
 
 /*@fn		  LFP_INT32 lfp_fileio_fcntl(LFP_INT32 iFd, LFP_INT32 iStyle)
 * @brief 	  change the opned file character O_BLOCK / O_NONBLOCK, ect.

@@ -2,14 +2,13 @@
 File name: lfp_socket_init.c
 Description: Socket communication control main entrance.
 Author: wytaitaislee
-Version: V1.0.0
-Date: 2020-03-29
-History: 1. create file. -- 2020-03-29
-		 2. server uses pthread pool. -- 2020-05-26
-		 3. fdpool keep-alive mechanism -- 2020-08-31 
+Date: 2020.03.29
+History: 1. create file. -- 2020.03.29
+		 2. server uses pthread pool. -- 2020.05.26
+		 3. fdpool keep-alive mechanism -- 2020.08.31 
 ************************************************************************************/
 
-#include "lfp_modules.h"
+#include "lfp_socket_app.h"
 
 LFP_STATIC LFP_DATA LFP_SOCKET_SERVER_MANAGE_T *pSocketServerManage = LFP_NULL;
 

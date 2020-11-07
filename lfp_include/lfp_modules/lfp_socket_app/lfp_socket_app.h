@@ -10,7 +10,7 @@ History: 1. create file. -- 2019-11-17
 #ifndef __LFP_SOCKET_APP_H__
 #define __LFP_SOCKET_APP_H__
 
-#include "../../__include/lfp_util.h"
+#include "lfp_base.h"
 
 #define LFP_SOCKET_MAX_LISTEN (64)		/* the maximum listen num */
 #define LFP_SOCKET_MAX_PACKAGE_LEN (1024 * 1024)	/* the maximum size of the single package */

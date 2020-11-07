@@ -7,7 +7,7 @@ Date: 2020-03-30
 History: 1. create file. -- 2020-03-30
 ****************************************************************************************/
 
-#include "lfp_util.h"
+#include "lfp_util_usr_busybox.h"
 
 LFP_INT32 lfp_util_cmd_init(LFP_VOID)
 {
