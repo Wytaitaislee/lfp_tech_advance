@@ -6,6 +6,7 @@ Version: V1.0.0
 Date: 2019-11-17
 History: 1. create file. -- 2019-11-17
 ************************************************************************************/
+#ifdef LFP_SINGLE_LIST_MODULE
 
 #include "lfp_single_list.h"
 
@@ -364,3 +365,5 @@ LFP_INT32 lfp_single_list_module_test_init(LFP_VOID)
 	lfp_single_list_module_test();
 	return LFP_OK;
 }
+
+#endif

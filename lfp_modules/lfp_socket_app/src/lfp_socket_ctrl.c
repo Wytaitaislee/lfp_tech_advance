@@ -7,6 +7,7 @@ History: 1. create file. -- 2020.03.29
 		 2. server uses pthread pool. -- 2020.05.26
 		 3. fdpool keep-alive mechanism -- 2020.08.31 
 ************************************************************************************/
+#ifdef LFP_SOCKET_APP
 
 #include "lfp_socket_app.h"
 
@@ -520,5 +521,7 @@ LFP_INT32 lfp_socket_module_init(LFP_VOID)
 
     return LFP_OK;
 }
+
+#endif
 
 

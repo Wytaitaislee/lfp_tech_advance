@@ -10,6 +10,8 @@ History: 1. create file. -- 2019-11-17
 #ifndef __LFP_LIST_SINGLE_H__
 #define __LFP_LIST_SINGLE_H__
 
+#ifdef LFP_SINGLE_LIST_MODULE
+
 #include "lfp_base.h"
 
 #define LFP_SINGLE_LIST_MODULE_NAME     "single list"
@@ -103,11 +105,13 @@ LFP_INT32 lfp_single_list_delete_element(LFP_SINGLE_LIST_T *pList, LFP_SINGLE_LI
 LFP_INT32 lfp_single_list_destroy(LFP_SINGLE_LIST_T **ppList);
 
 /*@fn		  LFP_INT32 lfp_single_list_module_test_init(LFP_VOID)
-* @brief 	  test entrance for the single list module.
+* @brief 	  the single list test module main entrance.
 * @param[in]  LFP_VOID
 * @param[out] NULL
 * @return	  LFP_OK/LFP_ERR
 */
 LFP_INT32 lfp_single_list_module_test_init(LFP_VOID);
+
+#endif
 
 #endif

@@ -5,6 +5,8 @@ Author: wytaitaislee
 Date: 2019.11.17
 History: 1. create file. -- 2019.11.17
 ************************************************************************************/
+#ifdef LFP_SOCKET_APP
+
 #include "lfp_socket_app.h"
 
 /*@fn		  LFP_VOID *lfp_socket_proc(LFP_VOID* pSockFd)
@@ -119,3 +121,5 @@ LFP_INT32 lfp_socket_server_task(LFP_VOID* pArgs)
 	lfp_socket_create_ctrl_fini();
 	return LFP_OK;
 }
+
+#endif

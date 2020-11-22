@@ -10,7 +10,10 @@ History: 1. create file. -- 2019-11-17
 #ifndef __LFP_SOCKET_APP_H__
 #define __LFP_SOCKET_APP_H__
 
+#ifdef LFP_SOCKET_APP
+
 #include "lfp_base.h"
+#include "lfp_arch_adapter.h"
 
 #define LFP_SOCKET_MAX_LISTEN (64)		/* the maximum listen num */
 #define LFP_SOCKET_MAX_PACKAGE_LEN (1024 * 1024)	/* the maximum size of the single package */
@@ -277,5 +280,6 @@ LFP_INT32 lfp_socket_send_data_ctrl(LFP_SOCKET_DESC_T *pDesc);
 */
 LFP_INT32 lfp_socket_recv_data(LFP_SOCKET_DESC_T *pDesc);
 
+#endif
 
 #endif /* end of __LFP_SOCKET_APP_H__ */

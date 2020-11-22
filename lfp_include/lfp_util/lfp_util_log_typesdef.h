@@ -17,7 +17,7 @@ History: 1. create file. -- 2019.11.17
 #ifndef __LFP_UTIL_DEF_H__
 #define __LFP_UTIL_DEF_H__
 
-#include "__include/__lfp_base_typesdef.h"
+#include "__lfp_base_typesdef.h"
 
 #define UTIL_MASK_NUM 		(sizeof(LFP_UINT64) * 8)    /* the max mask size every single module. */
 #define UTIL_BIT_0          (0)

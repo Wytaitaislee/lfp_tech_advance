@@ -10,7 +10,7 @@ History: 1. create file. -- 2020-03-10
 #define __LFP_ARCH_ADAPTER_H__
 
 #include "lfp_base.h"
-#include "__lfp_arch_abstract.h"
+#include "__include/__lfp_arch_abstract.h"
 
 #define LFP_ADAPTER_INIT(ENTRY, FUNC)       ENTRY.FUNC = DEFINE_ARCH_ADAPTER(FUNC)
 #define LFP_GET_CLASS_ENTRY(classname)    lfp_get_arch_adapter_##classname##_entry()

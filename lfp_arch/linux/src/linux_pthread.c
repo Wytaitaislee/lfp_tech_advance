@@ -10,10 +10,10 @@ History: 1. create file. -- 2019-11-17
 
 #include "linux_pthread.h"
 
-/*@fn		  LFP_INT32 linux_pthread_create(LFP_PTHREAD_HADLE_T *pThreadHandle, LFP_INT32 iPrority,
+/*@fn		  LFP_INT32 linux_pthread_create(LINUX_PTHREAD_HADLE_T *pThreadHandle, LFP_INT32 iPrority,
                                 LFP_UINT32 uiStackSize, LFP_VOID* pStartTask, LFP_UINT32 uiArgs, LFP_VOID* pParams)
 * @brief 	  create a new thread.
-* @param[in]  LFP_PTHREAD_HADLE_T *pThreadHandle - the thread identifier
+* @param[in]  LINUX_PTHREAD_HADLE_T *pThreadHandle - the thread identifier
 * @param[in]  LFP_INT32 iPrority - the thread execute priority
 * @param[in]  LFP_INT32 uiStackSize - the thread stack size
 * @param[in]  LFP_VOID *pStartTask - the start function
@@ -21,11 +21,11 @@ History: 1. create file. -- 2019-11-17
 * @param[out] LFP_NULL
 * @return	  LFP_OK / LFP_ERR
 */
-LFP_INT32 linux_pthread_create(LFP_PTHREAD_HADLE_T *pThreadHandle, LFP_INT32 iPrority,			\
+LFP_INT32 linux_pthread_create(LINUX_PTHREAD_HADLE_T *pThreadHandle, LFP_INT32 iPrority,			\
                                 LFP_UINT32 uiStackSize, LFP_VOID* pStartTask, LFP_VOID* pParams)
 {
 	LFP_INT32 iRet = LFP_ERR;
-	LFP_PTHREAD_HADLE_T iHandle = 0, *pHandle = LFP_NULL;
+	LINUX_PTHREAD_HADLE_T iHandle = 0, *pHandle = LFP_NULL;
 	
 	if(!pThreadHandle)
 	{	
@@ -39,13 +39,13 @@ LFP_INT32 linux_pthread_create(LFP_PTHREAD_HADLE_T *pThreadHandle, LFP_INT32 iPr
 	return (0 == iRet) ? LFP_OK : LFP_ERR;
 }
 
-/*@fn		  LFP_INT32 linux_pthread_cancel(LFP_PTHREAD_HADLE_T hThreadHandle)
+/*@fn		  LFP_INT32 linux_pthread_cancel(LINUX_PTHREAD_HADLE_T hThreadHandle)
 * @brief 	  send a cancellation request to a thread
-* @param[in]  LFP_PTHREAD_HADLE_T hThreadHandle - the thread identifier
+* @param[in]  LINUX_PTHREAD_HADLE_T hThreadHandle - the thread identifier
 * @param[out] LFP_NULL
 * @return	  LFP_OK / LFP_ERR
 */
-LFP_INT32 linux_pthread_cancel(LFP_PTHREAD_HADLE_T hThreadHandle)
+LFP_INT32 linux_pthread_cancel(LINUX_PTHREAD_HADLE_T hThreadHandle)
 {
 	LFP_INT32 iRet = LFP_ERR;
 
@@ -54,14 +54,14 @@ LFP_INT32 linux_pthread_cancel(LFP_PTHREAD_HADLE_T hThreadHandle)
 }
 
 
-/*@fn		  LFP_INT32 linux_pthread_kill(LFP_PTHREAD_HADLE_T hThreadHandle, LFP_INT32 iSig)
+/*@fn		  LFP_INT32 linux_pthread_kill(LINUX_PTHREAD_HADLE_T hThreadHandle, LFP_INT32 iSig)
 * @brief 	  send a signal to a thread
-* @param[in]  LFP_PTHREAD_HADLE_T hThreadHandle - the thread identifier
+* @param[in]  LINUX_PTHREAD_HADLE_T hThreadHandle - the thread identifier
 * @param[in]  LFP_INT32 iSig - signal type
 * @param[out] LFP_NULL
 * @return	  LFP_OK / LFP_ERR
 */
-LFP_INT32 linux_pthread_kill(LFP_PTHREAD_HADLE_T hThreadHandle, LFP_INT32 iSig)
+LFP_INT32 linux_pthread_kill(LINUX_PTHREAD_HADLE_T hThreadHandle, LFP_INT32 iSig)
 {
 	/* no assert here, for pthread status test */
 	return pthread_kill(hThreadHandle, iSig);

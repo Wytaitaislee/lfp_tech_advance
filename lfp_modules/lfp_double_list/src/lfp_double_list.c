@@ -7,6 +7,8 @@ Date: 2020-05-05
 History: 1. create file. -- 2020-05-05
          2. refact at 2020-05-16
 ************************************************************************************/
+#ifdef LFP_DOUBLE_LIST_MODULE
+
 #include "lfp_double_list.h"
 
 #define LFP_DOUBLE_LIST_NODE_MALLOC(ppNode)                                         \
@@ -377,3 +379,5 @@ LFP_INT32 lfp_double_list_module_test_init(LFP_VOID)
 	lfp_double_list_module_test();
 	return LFP_OK;
 }
+
+#endif

@@ -10,6 +10,6 @@ History: 1. create file. -- 2020.11.07
 #ifndef __LFP_UTIL_USR_BUSYBOX_H__
 #define __LFP_UTIL_USR_BUSYBOX_H__
 
-#include "__include/__lfp_base_typesdef.h"
+#include "__lfp_base_typesdef.h"
 
 #endif /* end of __LFP_UTIL_USR_BUSYBOX_H__ */

@@ -8,6 +8,7 @@ History: 1. create file. -- 2019-11-17
 ****************************************************************************************/
 
 #include "lfp_base.h"
+#include "lfp_util_logs.h"
 #include "lfp_modules.h"
 
 #define LFP_MODLUE_REGISTER(func)	{#func, func}

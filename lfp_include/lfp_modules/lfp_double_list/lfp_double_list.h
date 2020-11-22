@@ -11,6 +11,8 @@ History: 1. create file. -- 2019-11-17
 #ifndef __LFP_DOUBLE_LIST_H__
 #define __LFP_DOUBLE_LIST_H__
 
+#ifdef LFP_DOUBLE_LIST_MODULE
+
 #include "lfp_base.h"
 
 #define LFP_DOUBLE_LIST_MODULE_NAME     "double list"
@@ -109,3 +111,5 @@ LFP_INT32 lfp_double_list_destroy(LFP_DOUBLE_LIST_T **pList);
 LFP_INT32 lfp_double_list_module_test_init(LFP_VOID);
 
 #endif
+
+#endif /* end of __LFP_DOUBLE_LIST_H__ */

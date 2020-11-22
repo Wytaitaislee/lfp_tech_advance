@@ -9,20 +9,60 @@ History: 1. create file. -- 2020-03-12
 #ifndef __LFP_ARCH_ABSTRACT_H__
 #define __LFP_ARCH_ABSTRACT_H__
 
+#define ARCH_NAME LFP_
+#define __OS_NAME_UPPER LINUX_
+#define __OS_NAME_LOWER linux_
 #include "lfp_base.h"
 /* X86, 32. */
 #if defined (linux) || defined(unix) || defined(__unix__) || defined(__linux__)
-#define __ARCH linux
-#define LFP_OS_LINUX
 #include "linux/linux.h"
-#define DEFINE_ARCH_ADAPTER(BASE_FUNC_NAME)    (linux_##BASE_FUNC_NAME)
 /* win32, wins64 */
 #elif defined(__WIN32__) || defined(__WIN64__)
 #include "windows/windows.h"
-#define DEFINE_ARCH_ADAPTER(BASE_FUNC_NAME)    (windows_##BASE_FUNC_NAME)
 #else
 /*someother platforms */
 #endif
+
+/* os arch typesdef to lfp arch typesdef adapter macros definition */
+#define __DEFINE_ARCH_TYPESDEF_ADAPTER(os, arch, item) typedef os##item arch##item
+#define __DEFINE_ARCH_TYPESDEF_ADAPTER_CONVERT(os, arch, item)  __DEFINE_ARCH_TYPESDEF_ADAPTER(os, arch, item) 
+#define DEFINE_ARCH_TYPESDEF_ADAPTER(BASE_NAME) __DEFINE_ARCH_TYPESDEF_ADAPTER_CONVERT(__OS_NAME_UPPER, ARCH_NAME, BASE_NAME)
+
+/* os arch MACROS to lfp arch MACROS adapter macros definition */
+#define __DEFINE_ARCH_MACROS_ADAPTER(os, arch, item) arch##item os##item
+#define DEFINE_ARCH_MACROS_ADAPTER(BASE_NAME) __DEFINE_ARCH_MACROS_ADAPTER(__OS_NAME_UPPER, ARCH_NAME, BASE_NAME)
+
+/* os arch function to lfp arch function adapter macros definition */
+#define __DEFINE_ARCH_ADAPTER(osname, basename)    (osname##basename)
+#define DEFINE_ARCH_ADAPTER(BASE_FUNC_NAME)    __DEFINE_ARCH_ADAPTER(__OS_NAME_LOWER, BASE_FUNC_NAME)
+
+/* socket relevant typesdef */
+DEFINE_ARCH_TYPESDEF_ADAPTER(SOCK_ADDR_T);
+DEFINE_ARCH_TYPESDEF_ADAPTER(SOCK_ADDRIN_T);
+DEFINE_ARCH_TYPESDEF_ADAPTER(SOCKLEN_T);
+DEFINE_ARCH_TYPESDEF_ADAPTER(MSGHDR_T);
+DEFINE_ARCH_TYPESDEF_ADAPTER(SOCK);
+#define DEFINE_ARCH_MACROS_ADAPTER(AF_INET)
+#define DEFINE_ARCH_MACROS_ADAPTER(SOCK_STREAM)
+#define DEFINE_ARCH_MACROS_ADAPTER(IPPROTO_TCP)
+
+/* mutex relevant typesdef */
+DEFINE_ARCH_TYPESDEF_ADAPTER(MUTEX_T);
+DEFINE_ARCH_TYPESDEF_ADAPTER(MUTEX_ATTR_T);
+
+/* pthread relevant typesdef */
+DEFINE_ARCH_TYPESDEF_ADAPTER(PTHREAD_HADLE_T);
+DEFINE_ARCH_TYPESDEF_ADAPTER(PTHREAD_ATTR_T);
+//DEFINE_ARCH_MACROS_CONVERT(ESRCH)
+
+/* semaphore relevant typesdef */
+DEFINE_ARCH_TYPESDEF_ADAPTER(SEM_T);
+
+/* comm datatypes typesdef */
+DEFINE_ARCH_TYPESDEF_ADAPTER(OFF_T);
+DEFINE_ARCH_TYPESDEF_ADAPTER(SIZE_T);
+DEFINE_ARCH_TYPESDEF_ADAPTER(SSIZE_T);
+DEFINE_ARCH_TYPESDEF_ADAPTER(FILE);
 
 /* Thread function cluster */
 typedef struct lfp_arch_adapter_pthread_t

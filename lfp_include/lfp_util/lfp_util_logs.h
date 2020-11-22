@@ -20,7 +20,7 @@ History: 1. create file. -- 2019.11.17
 #ifndef __LFP_UTIL_LOG_H__
 #define __LFP_UTIL_LOG_H__
 
-#include "__include/__lfp_base_typesdef.h"
+#include "__lfp_base_typesdef.h"
 
 #define LFP_UTIL_MAX_BUFF_SIZE	(4 * 1024)
 
@@ -112,7 +112,7 @@ LFP_INT32 lfp_util_module_get(LFP_UTIL_CTRL_T *pUtilMsg);
 * @param[out] NULL
 * @return	  LFP_OK / LFP_ERR
 */	
-//LFP_INT32 __util_base(LFP_UTIL_LEVEL_E enumLevel, LFP_CONST LFP_INT8 *pFilePath, LFP_CONST LFP_INT8 *pFunc, 
+LFP_INT32 __util_base(LFP_UTIL_LEVEL_E enumLevel, LFP_CONST LFP_INT8 *pFilePath, LFP_CONST LFP_INT8 *pFunc, 
 							LFP_INT32 iLine, LFP_CONST LFP_INT8 *fmt, ...);
 
 

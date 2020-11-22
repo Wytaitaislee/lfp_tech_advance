@@ -5,6 +5,8 @@ Author: wytaitaislee
 Date: 2019.11.17
 History: 1. create file. -- 2019.11.17
 ************************************************************************************/
+#ifdef LFP_SOCKET_APP
+
 #include "lfp_socket_app.h"
 
 /*@fn		  LFP_INT32 lfp_socket_client_task(LFP_VOID* pArgs)
@@ -86,3 +88,5 @@ my_return:
 	LFP_SAFE_CLOSE_SOCKET(iSockClient);
 	return iRet;
 }
+
+#endif

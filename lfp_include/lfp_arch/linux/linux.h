@@ -11,11 +11,11 @@ History: 1. create file. -- 2020-03-29
 #ifndef __LINUX_OS_H__
 #define __LINUX_OS_H__
 
-#include "linux_pthread.h"
-#include "linux_mutex.h"
-#include "linux_semaphore.h"
-#include "linux_socket.h"
-#include "linux_fileio.h"
-#include "linux_stdio.h"
+#include "linux/linux_pthread.h"
+#include "linux/linux_mutex.h"
+#include "linux/linux_semaphore.h"
+#include "linux/linux_socket.h"
+#include "linux/linux_fileio.h"
+#include "linux/linux_stdio.h"
 
 #endif	/*end of __LINUX_OS_H__ */
