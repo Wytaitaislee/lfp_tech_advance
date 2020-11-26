@@ -13,6 +13,7 @@ History: 1. create file. -- 2019-11-17
 #ifdef LFP_SINGLE_LIST_MODULE
 
 #include "lfp_base.h"
+#include "lfp_util_logs.h"
 
 #define LFP_SINGLE_LIST_MODULE_NAME     "single list"
 #define LFP_SINGLE_LIST_SIGN_OK    		"lfp single list register successfully!"

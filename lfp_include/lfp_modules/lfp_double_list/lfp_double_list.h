@@ -14,6 +14,7 @@ History: 1. create file. -- 2019-11-17
 #ifdef LFP_DOUBLE_LIST_MODULE
 
 #include "lfp_base.h"
+#include "lfp_util_logs.h"
 
 #define LFP_DOUBLE_LIST_MODULE_NAME     "double list"
 #define LFP_DOUBLE_LIST_SIGN_OK    		"lfp double list register successfully!"

@@ -32,21 +32,21 @@ do																					\
 #define LFP_ASSERT( c )																\
 do																					\
 {																					\
-	if( !(c) ){__LFP_ASSERT_FORMAT( c ); assert( c );}								\																			\
+	if( !(c) ){__LFP_ASSERT_FORMAT( c ); assert( c );}								\
 }while(0);
 
 /* assert return NULL */
 #define LFP_ASSERT_NULL_RET( c )													\
 do																					\
 {																					\
-	if( !(c) ){__LFP_ASSERT_FORMAT( c ); return LFP_NULL;}							\ 																				\
+	if( !(c) ){__LFP_ASSERT_FORMAT( c ); return LFP_NULL;}							\
 }while(0);
 
 /* assert return error */	
 #define LFP_ASSERT_ERR_RET( c )														\
 do																					\
 {																					\
-	if( !(c) ){__LFP_ASSERT_FORMAT( c ); return LFP_ERR;}							\																				\
+	if( !(c) ){__LFP_ASSERT_FORMAT( c ); return LFP_ERR;}							\
 }while(0);
 
 /* assert return ok */

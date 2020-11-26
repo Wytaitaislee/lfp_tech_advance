@@ -10,7 +10,10 @@ CUR_OBJS = $(patsubst %.c, %.o, $(CUR_SRC))
 
 lfp_modules_path = $(firstword $(subst lfp_modules,lfp_modules , $(PWD)))
 
-INCLUDE_PATH := -I${LFP_ROOT_PATH}/lfp_include/lfp_modules/lfp_double_list
+INCLUDE_PATH := -I${LFP_ROOT_PATH}/lfp_include/
+INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/__include/
+INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/lfp_util/
+INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/lfp_modules/lfp_double_list
 
 CFLAGS = $(LFP_GLOBAL_FLAGS) $(INCLUDE_PATH)
 LIB_OS = liblfp_double_list.a

@@ -30,7 +30,8 @@ History: 1. create file. -- 2020-03-12
 
 /* os arch MACROS to lfp arch MACROS adapter macros definition */
 #define __DEFINE_ARCH_MACROS_ADAPTER(os, arch, item) arch##item os##item
-#define DEFINE_ARCH_MACROS_ADAPTER(BASE_NAME) __DEFINE_ARCH_MACROS_ADAPTER(__OS_NAME_UPPER, ARCH_NAME, BASE_NAME)
+#define __DEFINE_ARCH_MACROS_ADAPTER_CONVERT(os, arch, item) __DEFINE_ARCH_MACROS_ADAPTER(os, arch, item)
+#define DEFINE_ARCH_MACROS_ADAPTER(BASE_NAME) __DEFINE_ARCH_MACROS_ADAPTER_CONVERT(__OS_NAME_UPPER, ARCH_NAME, BASE_NAME)
 
 /* os arch function to lfp arch function adapter macros definition */
 #define __DEFINE_ARCH_ADAPTER(osname, basename)    (osname##basename)

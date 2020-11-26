@@ -20,6 +20,7 @@ History: 1. create file. -- 2019.11.17
 #ifndef __LFP_UTIL_LOG_H__
 #define __LFP_UTIL_LOG_H__
 
+#include "lfp_util_log_typesdef.h"
 #include "__lfp_base_typesdef.h"
 
 #define LFP_UTIL_MAX_BUFF_SIZE	(4 * 1024)
