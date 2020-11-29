@@ -9,6 +9,8 @@ History: 1. create file. -- 2020-06-07
 ****************************************************************************************/
 
 #include "linux_socket.h"
+#include <fcntl.h>
+#include <errno.h>
 
 /*@fn		  LFP_INT32 linux_socket_create(LFP_INT32 iProFamily, LFP_INT32 iSocketType, LFP_INT32 iProtocal)
 * @brief 	  create a new socket

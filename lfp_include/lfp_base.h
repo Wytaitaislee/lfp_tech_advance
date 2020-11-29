@@ -12,5 +12,6 @@ History: 1. create file. -- 2020.11.07
 
 #include "__lfp_base_macros.h"
 #include "__lfp_base_typesdef.h"
+#include "lfp_util/lfp_util_log.h"
 
 #endif /* end of __LFP_BASE_H__ */

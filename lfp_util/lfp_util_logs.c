@@ -8,7 +8,8 @@ History: 1. create file. -- 2019-11-17
 ****************************************************************************************/
 
 #include "lfp_util_log_typesdef.h"
-#include "lfp_util_log.h"
+#include "lfp_base.h"
+#include <stdarg.h>
 
 LFP_UTIL_CTRL_T *g_pUtilCtrl = NULL;
 

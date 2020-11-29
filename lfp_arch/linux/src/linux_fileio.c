@@ -8,6 +8,7 @@ History: 1. create file. -- 2020-05-30
 ****************************************************************************************/
 
 #include "linux_fileio.h"
+#include <fcntl.h>
 
 /*@fn		  LFP_INT32 linux_fileio_fcntl(LFP_INT32 iFd, LFP_INT32 iStyle)
 * @brief 	  change the opned file character O_BLOCK / O_NONBLOCK, ect.

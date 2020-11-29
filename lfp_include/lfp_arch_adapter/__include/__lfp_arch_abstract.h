@@ -16,9 +16,17 @@ History: 1. create file. -- 2020-03-12
 /* X86, 32. */
 #if defined (linux) || defined(unix) || defined(__unix__) || defined(__linux__)
 #include "linux/linux.h"
+#define LFP_AF_INET         (LINUX_AF_INET)
+#define LFP_SOCK_STREAM     (LINUX_SOCK_STREAM)
+#define LFP_IPPROTO_TCP     (LINUX_IPPROTO_TCP)
+#define LFP_PTHREAD_ESRCH    (LINUX_PTHREAD_ESRCH)
 /* win32, wins64 */
 #elif defined(__WIN32__) || defined(__WIN64__)
 #include "windows/windows.h"
+#define LFP_AF_INET         (WINDOWS_AF_INET)
+#define LFP_SOCK_STREAM     (WINDOWS_SOCK_STREAM)
+#define LFP_IPPROTO_TCP     (WINDOWS_IPPROTO_TCP)
+#define LFP_PTHREAD_ESRCH   (WINDOWS_PTHREAD_ESRCH)
 #else
 /*someother platforms */
 #endif
@@ -28,14 +36,10 @@ History: 1. create file. -- 2020-03-12
 #define __DEFINE_ARCH_TYPESDEF_ADAPTER_CONVERT(os, arch, item)  __DEFINE_ARCH_TYPESDEF_ADAPTER(os, arch, item) 
 #define DEFINE_ARCH_TYPESDEF_ADAPTER(BASE_NAME) __DEFINE_ARCH_TYPESDEF_ADAPTER_CONVERT(__OS_NAME_UPPER, ARCH_NAME, BASE_NAME)
 
-/* os arch MACROS to lfp arch MACROS adapter macros definition */
-#define __DEFINE_ARCH_MACROS_ADAPTER(os, arch, item) arch##item os##item
-#define __DEFINE_ARCH_MACROS_ADAPTER_CONVERT(os, arch, item) __DEFINE_ARCH_MACROS_ADAPTER(os, arch, item)
-#define DEFINE_ARCH_MACROS_ADAPTER(BASE_NAME) __DEFINE_ARCH_MACROS_ADAPTER_CONVERT(__OS_NAME_UPPER, ARCH_NAME, BASE_NAME)
-
 /* os arch function to lfp arch function adapter macros definition */
 #define __DEFINE_ARCH_ADAPTER(osname, basename)    (osname##basename)
-#define DEFINE_ARCH_ADAPTER(BASE_FUNC_NAME)    __DEFINE_ARCH_ADAPTER(__OS_NAME_LOWER, BASE_FUNC_NAME)
+#define __DEFINE_ARCH_ADAPTER_CONVERT(os, item) __DEFINE_ARCH_ADAPTER(os, item)
+#define DEFINE_ARCH_ADAPTER(BASE_FUNC_NAME)    __DEFINE_ARCH_ADAPTER_CONVERT(__OS_NAME_LOWER, BASE_FUNC_NAME)
 
 /* socket relevant typesdef */
 DEFINE_ARCH_TYPESDEF_ADAPTER(SOCK_ADDR_T);
@@ -43,9 +47,6 @@ DEFINE_ARCH_TYPESDEF_ADAPTER(SOCK_ADDRIN_T);
 DEFINE_ARCH_TYPESDEF_ADAPTER(SOCKLEN_T);
 DEFINE_ARCH_TYPESDEF_ADAPTER(MSGHDR_T);
 DEFINE_ARCH_TYPESDEF_ADAPTER(SOCK);
-#define DEFINE_ARCH_MACROS_ADAPTER(AF_INET)
-#define DEFINE_ARCH_MACROS_ADAPTER(SOCK_STREAM)
-#define DEFINE_ARCH_MACROS_ADAPTER(IPPROTO_TCP)
 
 /* mutex relevant typesdef */
 DEFINE_ARCH_TYPESDEF_ADAPTER(MUTEX_T);
@@ -54,7 +55,6 @@ DEFINE_ARCH_TYPESDEF_ADAPTER(MUTEX_ATTR_T);
 /* pthread relevant typesdef */
 DEFINE_ARCH_TYPESDEF_ADAPTER(PTHREAD_HADLE_T);
 DEFINE_ARCH_TYPESDEF_ADAPTER(PTHREAD_ATTR_T);
-//DEFINE_ARCH_MACROS_CONVERT(ESRCH)
 
 /* semaphore relevant typesdef */
 DEFINE_ARCH_TYPESDEF_ADAPTER(SEM_T);

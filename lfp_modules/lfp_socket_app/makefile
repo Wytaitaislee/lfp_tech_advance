@@ -14,6 +14,7 @@ INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/__include/
 INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/lfp_util/
 INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/lfp_arch/
 INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/lfp_arch_adapter/
+INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/lfp_arch_adapter/__include/
 INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/lfp_modules/lfp_socket_app/
 
 CFLAGS = $(LFP_GLOBAL_FLAGS) $(INCLUDE_PATH)

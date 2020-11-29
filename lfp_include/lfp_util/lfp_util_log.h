@@ -102,7 +102,7 @@ LFP_INT32 lfp_util_module_get(LFP_UTIL_CTRL_T *pUtilMsg);
 * @param[out] NULL
 * @return	  LFP_OK / LFP_ERR
 */	
-//LFP_INT32 __util_open(LFP_UINT64 iLevel, LFP_UINT64 iModuleIdx, LFP_UINT64 iModuleMask);
+LFP_INT32 __util_open(LFP_UINT64 iLevel, LFP_UINT64 iModuleIdx, LFP_UINT64 iModuleMask);
 
 /*@fn		  LFP_INT32 __util_base(LFP_UTIL_LEVEL_E enumLevel, LFP_CONST LFP_INT8 *pFilePath, 
 										LFP_CONST LFP_INT8 *pFunc, LFP_INT32 iLine, LFP_CONST LFP_INT8 *fmt, ...)

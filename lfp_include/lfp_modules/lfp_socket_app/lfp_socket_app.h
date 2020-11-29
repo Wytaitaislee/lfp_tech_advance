@@ -14,7 +14,6 @@ History: 1. create file. -- 2019-11-17
 
 #include "lfp_base.h"
 #include "lfp_arch_adapter.h"
-#include "lfp_util_logs.h"
 #include <sys/socket.h>
 #include<netinet/in.h>
 #include <arpa/inet.h>

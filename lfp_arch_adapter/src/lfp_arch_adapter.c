@@ -1,4 +1,10 @@
 #include "lfp_arch_adapter.h"
+#include "lfp_arch_adapter_fileio.h"
+#include "lfp_arch_adapter_mutex.h"
+#include "lfp_arch_adapter_pthread.h"
+#include "lfp_arch_adapter_semaphore.h"
+#include "lfp_arch_adapter_socket.h"
+#include "lfp_arch_adapter_stdio.h"
 
 LFP_ARCH_ADAPTER_OS_T g_ArchAdapter = {0};
 
