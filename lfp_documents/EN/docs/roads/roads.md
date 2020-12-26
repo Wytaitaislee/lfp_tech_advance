@@ -1,33 +1,81 @@
-### The learning roads
+# 技术实践路线图
 
-> This is a learning road maps. The content mentioned is not in order, but is applied to the project based on what you want to learn.
+## 应用开发技术
 
-#### Mkdocs
+### 基础数据结构应用
 
-- About how to use [MKdocs](https://mkdocs.readthedocs.io/en/stable/) to manage your project documents.
+#### 单向链表的应用
 
-#### Util
+#### 双向链表的应用
 
-##### About logs out package, To manage the output format.
+### 多线程编程
 
-- About the usage of ***va_list***；
+#### 互斥量的应用
 
-- Unify of the output format；
+- 如何控制资源竞争
 
-#### Arch adaptation
+#### 信号量的应用
 
-- About how to compatible with different underlying operating system implementations；
+- 如何控制数据同步
 
-- About how to use structure function pointers to describe a cluster of underlying implementations；
+#### 锁的应用
 
-#### Modules
+- 如何保护临界区
 
-> The technology to learn. Including but not limited to :
+#### 信号的应用
+ 
+#### 线程池
 
-1. single_list - base datastructure.
-2. double_list - base datastructure.
-3. socket communication - how to comminication with other process, how to guarantee data integrity.
-4. mutil-thread，lock，mutex，semaphore ...etc - how to use Multithreading technology, how to control data synchronization.
-5. thread pool - how to manage High Concurrency Processing, how to improve processing efficiency.
-6. sqlite - how to store data.
+- 如何管理高并发，如何提高处理效率，如何降低资源消耗
 
+### 数据库应用
+
+#### sqlite数据库应用 
+
+- 如何存储数据；
+
+## 系统底层技术
+
+### 内存管理技术
+
+#### 物理内存、虚拟内存
+
+#### 进程虚拟内存分布情况
+
+#### 虚拟地址、线性地址、逻辑地址、物理地址
+
+#### 内存页表，为什么需要多级页表，内存缺页原理
+
+#### 内存页的换入换出（辅存的概念），频繁交换怎么存储在磁盘（SWAP）
+
+#### slab分配器，伙伴系统
+
+#### C库函数如何和linux内核系统交互，申请内存
+
+#### tcmalloc，malloc之内存劫持原理
+
+- 库劫持(例如动态库预加载劫持malloc内存分配);
+
+### 进程间通信技术
+
+##### IPC分类
+
+##### 各类IPC的使用场景
+
+#### 网络
+
+##### socket通信
+
+- 如何与其他进程进行通信，如何保证数据的完整性
+
+#### VFS
+
+##### 虚拟文件系统,各类文件系统抽象；
+
+#### 进程调度
+
+##### 多进程调度
+
+##### 资源分配/切换
+
+#### 驱动

@@ -1,20 +1,100 @@
 #the project name
-site_name: LFP Docs
+site_name: lfp documents
 #the project access address
 dev_addr: 127.0.0.1:8000
 #pages layout
 nav:
-- Introduce: index.md
-- Component:
-    - roads: roads/roads.md
-    - util: util/util.md
+- introduce: index.md
+- project component:
+    - util: 
+        - util: util/util.md
+        - uitl cmd: util/util_cmd.md
+        - uitl timer: util/util_timer.md
     - arch: arch/arch.md
-    - arch_adapter: arch_adapter/arch_adapter.md
+    - arch adapter: arch_adapter/arch_adapter.md
     - exec: exec/exec.md
     - include: include/include.md
-    - link_order: link_order/link_order.md
+    - link order: link_order/link_order.md
     - main: main/main.md
     - menuconfig: menuconfig/menuconfig.md
-    - modules:  modules/modules.md
     - rules.make: rules.make/rules.make.md
+    - programming rules: programming_rules/programming_rules.md
+    - modules:
+        - about: modules/module.md
+        - single_list: modules/single_list/single_list.md
+        - double list: modules/double_list/double_list.md
+        - socket app: modules/socket_app/socket_app.md
+    - tools: tools/stats_tools.md
+- extensions:
+    - common knowledge: extensions/extensions.md
+    - whiptail: extensions/whiptail.md
+    - markdown syntax: extensions/markdown.md
+- roads: roads/roads.md
 #theme: readthedocs
+
+# markdown extension
+markdown_extensions:
+  - admonition
+  - abbr
+  - attr_list
+  - def_list
+  - footnotes
+  - meta
+  - md_in_html
+  - toc:
+      permalink: true
+      slugify: !!python/name:pymdownx.slugs.uslugify
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      repo_url_shorthand: true
+      user: squidfunk
+      repo: mkdocs-material
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      check_paths: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+  
+theme:
+  name: material
+  language: zh
+  features:
+    - navigation.tabs
+    - toc.integrate
+    
+# Google Analytics
+google_analytics:
+  - !!python/object/apply:os.getenv ["GOOGLE_ANALYTICS_KEY"]
+  - auto
+
+extra:
+  alternate:
+    - name: English
+      link: https://squidfunk.github.io/mkdocs-material-insiders/en/
+      lang: en
+    - name: Deutsch
+      link: https://squidfunk.github.io/mkdocs-material-insiders/de/
+      lang: de
+    - name: 日本語
+      link: https://squidfunk.github.io/mkdocs-material-insiders/jp/
+      lang: jp

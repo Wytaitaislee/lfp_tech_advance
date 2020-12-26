@@ -1,5 +1,5 @@
 #the project name
-site_name: LFP Docs
+site_name: lfp documents
 #the project access address
 dev_addr: 127.0.0.1:8000
 #pages layout
@@ -31,3 +31,70 @@ nav:
     - markdown syntax: extensions/markdown.md
 - roads: roads/roads.md
 #theme: readthedocs
+
+# markdown extension
+markdown_extensions:
+  - admonition
+  - abbr
+  - attr_list
+  - def_list
+  - footnotes
+  - meta
+  - md_in_html
+  - toc:
+      permalink: true
+      slugify: !!python/name:pymdownx.slugs.uslugify
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink:
+      repo_url_shorthand: true
+      user: squidfunk
+      repo: mkdocs-material
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      check_paths: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+  
+theme:
+  name: material
+  language: zh
+  features:
+    - navigation.tabs
+    - toc.integrate
+    
+# Google Analytics
+google_analytics:
+  - !!python/object/apply:os.getenv ["GOOGLE_ANALYTICS_KEY"]
+  - auto
+
+extra:
+  alternate:
+    - name: English
+      link: https://squidfunk.github.io/mkdocs-material-insiders/en/
+      lang: en
+    - name: Deutsch
+      link: https://squidfunk.github.io/mkdocs-material-insiders/de/
+      lang: de
+    - name: 日本語
+      link: https://squidfunk.github.io/mkdocs-material-insiders/jp/
+      lang: jp
