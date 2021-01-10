@@ -4,6 +4,7 @@ site_name: lfp documents
 dev_addr: 127.0.0.1:8000
 #pages layout
 nav:
+- Home: home.md
 - introduce: index.md
 - project component:
     - util: 
@@ -81,6 +82,7 @@ theme:
   features:
     - navigation.tabs
     - toc.integrate
+  #custom_dir: docs/custom_theme
     
 # Google Analytics
 google_analytics:
