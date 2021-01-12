@@ -1,0 +1,1112 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.2">
+    
+    
+      
+        <title>whiptail - lfp documents</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.73f7c429.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.39b8e14a.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+        
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","None","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}),document.addEventListener("DOMContentSwitch",function(){ga("send","pageview",document.location.pathname)})</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#基于whiptail和shell脚本的交互式界面" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../.." title="lfp documents" class="md-header-nav__button md-logo" aria-label="lfp documents">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            lfp documents
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              whiptail
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../home.md" class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      introduce
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../util/util/" class="md-tabs__link">
+        project component
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../extensions/" class="md-tabs__link md-tabs__link--active">
+        extensions
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../roads/roads/" class="md-tabs__link">
+      roads
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="lfp documents" class="md-nav__button md-logo" aria-label="lfp documents">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    lfp documents
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="../../home.md" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="../.." class="md-nav__link">
+      introduce
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+    
+    <label class="md-nav__link" for="nav-3">
+      project component
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="project component" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        project component
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-1" type="checkbox" id="nav-3-1" >
+    
+    <label class="md-nav__link" for="nav-3-1">
+      util
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="util" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-1">
+        <span class="md-nav__icon md-icon"></span>
+        util
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../util/util/" class="md-nav__link">
+      util
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../util/util_cmd/" class="md-nav__link">
+      uitl cmd
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../util/util_timer/" class="md-nav__link">
+      uitl timer
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../arch/arch/" class="md-nav__link">
+      arch
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../arch_adapter/arch_adapter/" class="md-nav__link">
+      arch adapter
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../exec/exec/" class="md-nav__link">
+      exec
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../include/include/" class="md-nav__link">
+      include
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../link_order/link_order/" class="md-nav__link">
+      link order
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../main/main/" class="md-nav__link">
+      main
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../menuconfig/menuconfig/" class="md-nav__link">
+      menuconfig
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../rules.make/rules.make/" class="md-nav__link">
+      rules.make
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../programming_rules/programming_rules/" class="md-nav__link">
+      programming rules
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-11" type="checkbox" id="nav-3-11" >
+    
+    <label class="md-nav__link" for="nav-3-11">
+      modules
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="modules" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-11">
+        <span class="md-nav__icon md-icon"></span>
+        modules
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/module.md" class="md-nav__link">
+      about
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/single_list/single_list/" class="md-nav__link">
+      single_list
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/double_list/double_list/" class="md-nav__link">
+      double list
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/socket_app/socket_app/" class="md-nav__link">
+      socket app
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../tools/stats_tools.md" class="md-nav__link">
+      tools
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  
+
+
+  
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+    
+    <label class="md-nav__link" for="nav-4">
+      extensions
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="extensions" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        extensions
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../extensions/" class="md-nav__link">
+      common knowledge
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        whiptail
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      whiptail
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-使用背景" class="md-nav__link">
+    1. 使用背景
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-whiptail指令介绍" class="md-nav__link">
+    2. whiptail指令介绍
+  </a>
+  
+    <nav class="md-nav" aria-label="2. whiptail指令介绍">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-什么是whiptail" class="md-nav__link">
+    2.1 什么是whiptail
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-whiptail常用语法" class="md-nav__link">
+    2.2 whiptail常用语法
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-whiptail使用实例" class="md-nav__link">
+    3. whiptail使用实例
+  </a>
+  
+    <nav class="md-nav" aria-label="3. whiptail使用实例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-使用whiptail实现box-options" class="md-nav__link">
+    3.1 使用whiptail实现Box options
+  </a>
+  
+    <nav class="md-nav" aria-label="3.1 使用whiptail实现Box options">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#311-msgbox" class="md-nav__link">
+    3.1.1 msgbox
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#312-yesno" class="md-nav__link">
+    3.1.2 yesno
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#313-inputbox" class="md-nav__link">
+    3.1.3 inputbox
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#314-passwordbox" class="md-nav__link">
+    3.1.4 passwordbox
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#315-textbox" class="md-nav__link">
+    3.1.5 textbox
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#316-menu" class="md-nav__link">
+    3.1.6 menu
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#317-gauge" class="md-nav__link">
+    3.1.7 gauge
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-使用whiptail-optionsdepend-on-box-option" class="md-nav__link">
+    3.2 使用whiptail options，depend on box-option
+  </a>
+  
+    <nav class="md-nav" aria-label="3.2 使用whiptail options，depend on box-option">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#321-title" class="md-nav__link">
+    3.2.1 title
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#322-scrolltext" class="md-nav__link">
+    3.2.2 scrolltext
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-配合shell脚本实现用户交互" class="md-nav__link">
+    3.3 配合shell脚本实现用户交互
+  </a>
+  
+    <nav class="md-nav" aria-label="3.3 配合shell脚本实现用户交互">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#331-登陆界面" class="md-nav__link">
+    3.3.1 登陆界面
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#332-密码校验界面" class="md-nav__link">
+    3.3.2 密码校验界面
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#333-搜索界面" class="md-nav__link">
+    3.3.3 搜索界面
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#334-搜索结果展示" class="md-nav__link">
+    3.3.4 搜索结果展示
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#335-文件阅览界面" class="md-nav__link">
+    3.3.5 文件阅览界面
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../markdown/" class="md-nav__link">
+      markdown syntax
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="../../roads/roads/" class="md-nav__link">
+      roads
+    </a>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="基于whiptail和shell脚本的交互式界面">基于whiptail和shell脚本的交互式界面<a class="headerlink" href="#基于whiptail和shell脚本的交互式界面" title="Permanent link">&para;</a></h1>
+<p><a href="https://linux.die.net/man/1/whiptail">@官方使用手册</a></p>
+<h2 id="1-使用背景">1. 使用背景<a class="headerlink" href="#1-使用背景" title="Permanent link">&para;</a></h2>
+<p>在linux环境下开发软件时，有时需要输入一连串的交互命令才能得到我们想要的数据或者结果，而每次我们都要重新输入这些指令，会比较繁琐。如果有一种直观的交互式界面工具来让用户输入关键信息，工具内部隐藏实现细节，是不是更方便、高效呢，本文描述一种在shell脚本中使用whiptail指令来编写交互式界面工具的方法。</p>
+<h2 id="2-whiptail指令介绍">2. whiptail指令介绍<a class="headerlink" href="#2-whiptail指令介绍" title="Permanent link">&para;</a></h2>
+<h3 id="21-什么是whiptail">2.1 什么是whiptail<a class="headerlink" href="#21-什么是whiptail" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>linux man page 对whiltail的描述为：
+whiptail is a program that will let you present a variety of questions or display messages using dialog boxes from a shell script。（大意为：whiptail是一个允许你使用shell脚本中的对话框呈现各种问题或显示消息的程序）。</p>
+</blockquote>
+<h3 id="22-whiptail常用语法">2.2 whiptail常用语法<a class="headerlink" href="#22-whiptail常用语法" title="Permanent link">&para;</a></h3>
+<ul>
+<li>在linux终端下输入<code>whiptail</code>，可以看到如下输出：
+<div class="highlight"><pre><span></span><code><span class="n">Box</span> <span class="nl">options</span><span class="p">:</span>
+        <span class="o">--</span><span class="n">msgbox</span> <span class="o">&lt;</span><span class="n">text</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">height</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">width</span><span class="o">&gt;</span>
+        <span class="o">--</span><span class="n">yesno</span>  <span class="o">&lt;</span><span class="n">text</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">height</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">width</span><span class="o">&gt;</span>
+        <span class="o">--</span><span class="n">infobox</span> <span class="o">&lt;</span><span class="n">text</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">height</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">width</span><span class="o">&gt;</span>
+        <span class="o">--</span><span class="n">inputbox</span> <span class="o">&lt;</span><span class="n">text</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">height</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">width</span><span class="o">&gt;</span> <span class="p">[</span><span class="n">init</span><span class="p">]</span>
+        <span class="o">--</span><span class="n">passwordbox</span> <span class="o">&lt;</span><span class="n">text</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">height</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">width</span><span class="o">&gt;</span> <span class="p">[</span><span class="n">init</span><span class="p">]</span>
+        <span class="o">--</span><span class="n">textbox</span> <span class="o">&lt;</span><span class="n">file</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">height</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">width</span><span class="o">&gt;</span>
+        <span class="o">--</span><span class="n">menu</span> <span class="o">&lt;</span><span class="n">text</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">height</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">width</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">listheight</span><span class="o">&gt;</span> <span class="p">[</span><span class="n">tag</span> <span class="n">item</span><span class="p">]</span> <span class="p">...</span>
+        <span class="o">--</span><span class="n">checklist</span> <span class="o">&lt;</span><span class="n">text</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">height</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">width</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">listheight</span><span class="o">&gt;</span> <span class="p">[</span><span class="n">tag</span> <span class="n">item</span> <span class="n">status</span><span class="p">]...</span>
+        <span class="o">--</span><span class="n">radiolist</span> <span class="o">&lt;</span><span class="n">text</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">height</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">width</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">listheight</span><span class="o">&gt;</span> <span class="p">[</span><span class="n">tag</span> <span class="n">item</span> <span class="n">status</span><span class="p">]...</span>
+        <span class="o">--</span><span class="n">gauge</span> <span class="o">&lt;</span><span class="n">text</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">height</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">width</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">percent</span><span class="o">&gt;</span>
+<span class="nl">Options</span><span class="p">:</span> <span class="p">(</span><span class="n">depend</span> <span class="n">on</span> <span class="n">box</span><span class="o">-</span><span class="n">option</span><span class="p">)</span>
+        <span class="o">--</span><span class="n">clear</span>                         <span class="n">clear</span> <span class="n">screen</span> <span class="n">on</span> <span class="n">exit</span>
+        <span class="o">--</span><span class="n">defaultno</span>                     <span class="k">default</span> <span class="n">no</span> <span class="n">button</span>
+        <span class="o">--</span><span class="k">default</span><span class="o">-</span><span class="n">item</span> <span class="o">&lt;</span><span class="n">string</span><span class="o">&gt;</span>         <span class="n">set</span> <span class="k">default</span> <span class="n">string</span>
+        <span class="o">--</span><span class="n">fb</span><span class="p">,</span> <span class="o">--</span><span class="n">fullbuttons</span>             <span class="n">use</span> <span class="n">full</span> <span class="n">buttons</span>
+        <span class="o">--</span><span class="n">nocancel</span>                      <span class="n">no</span> <span class="n">cancel</span> <span class="n">button</span>
+        <span class="o">--</span><span class="n">yes</span><span class="o">-</span><span class="n">button</span> <span class="o">&lt;</span><span class="n">text</span><span class="o">&gt;</span>             <span class="n">set</span> <span class="n">text</span> <span class="n">of</span> <span class="n">yes</span> <span class="n">button</span>
+        <span class="o">--</span><span class="n">no</span><span class="o">-</span><span class="n">button</span> <span class="o">&lt;</span><span class="n">text</span><span class="o">&gt;</span>              <span class="n">set</span> <span class="n">text</span> <span class="n">of</span> <span class="n">no</span> <span class="n">button</span>
+        <span class="o">--</span><span class="n">ok</span><span class="o">-</span><span class="n">button</span> <span class="o">&lt;</span><span class="n">text</span><span class="o">&gt;</span>              <span class="n">set</span> <span class="n">text</span> <span class="n">of</span> <span class="n">ok</span> <span class="n">button</span>
+        <span class="o">--</span><span class="n">cancel</span><span class="o">-</span><span class="n">button</span> <span class="o">&lt;</span><span class="n">text</span><span class="o">&gt;</span>          <span class="n">set</span> <span class="n">text</span> <span class="n">of</span> <span class="n">cancel</span> <span class="n">button</span>
+        <span class="o">--</span><span class="n">noitem</span>                        <span class="n">don</span><span class="err">&#39;</span><span class="n">t</span> <span class="n">display</span> <span class="n">items</span>
+        <span class="o">--</span><span class="n">notags</span>                        <span class="n">don</span><span class="err">&#39;</span><span class="n">t</span> <span class="n">display</span> <span class="n">tags</span>
+        <span class="o">--</span><span class="n">separate</span><span class="o">-</span><span class="n">output</span>               <span class="n">output</span> <span class="n">one</span> <span class="n">line</span> <span class="n">at</span> <span class="n">a</span> <span class="n">time</span>
+        <span class="o">--</span><span class="n">output</span><span class="o">-</span><span class="n">fd</span> <span class="o">&lt;</span><span class="n">fd</span><span class="o">&gt;</span>                <span class="n">output</span> <span class="n">to</span> <span class="n">fd</span><span class="p">,</span> <span class="n">not</span> <span class="n">stdout</span>
+        <span class="o">--</span><span class="n">title</span> <span class="o">&lt;</span><span class="n">title</span><span class="o">&gt;</span>                 <span class="n">display</span> <span class="n">title</span>
+        <span class="o">--</span><span class="n">backtitle</span> <span class="o">&lt;</span><span class="n">backtitle</span><span class="o">&gt;</span>         <span class="n">display</span> <span class="n">backtitle</span>
+        <span class="o">--</span><span class="n">scrolltext</span>                    <span class="n">force</span> <span class="n">vertical</span> <span class="n">scrollbars</span>
+        <span class="o">--</span><span class="n">topleft</span>                       <span class="n">put</span> <span class="n">window</span> <span class="n">in</span> <span class="n">top</span><span class="o">-</span><span class="n">left</span> <span class="n">corner</span>
+        <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>                      <span class="n">print</span> <span class="n">this</span> <span class="n">message</span>
+        <span class="o">-</span><span class="n">v</span><span class="p">,</span> <span class="o">--</span><span class="n">version</span>                   <span class="n">print</span> <span class="n">version</span> <span class="n">information</span>
+</code></pre></div></li>
+</ul>
+<h2 id="3-whiptail使用实例">3. whiptail使用实例<a class="headerlink" href="#3-whiptail使用实例" title="Permanent link">&para;</a></h2>
+<h3 id="31-使用whiptail实现box-options">3.1 使用whiptail实现Box options<a class="headerlink" href="#31-使用whiptail实现box-options" title="Permanent link">&para;</a></h3>
+<h4 id="311-msgbox">3.1.1 msgbox<a class="headerlink" href="#311-msgbox" title="Permanent link">&para;</a></h4>
+<ul>
+<li>基本使用方法：<code>--msgbox &lt;text&gt; &lt;height&gt; &lt;width&gt;</code></li>
+<li>实例语法：<code>whiptail --title "welcome"--msgbox "欢迎来到wytaitai的博客!" 10 60</code></li>
+<li>效果图展示：
+<img alt="msgbox效果展示" src="https://img-blog.csdnimg.cn/20200614100343168.PNG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xqMTE1ODEzNzczNQ==,size_16,color_FFFFFF,t_70#pic_center" /></li>
+</ul>
+<h4 id="312-yesno">3.1.2 yesno<a class="headerlink" href="#312-yesno" title="Permanent link">&para;</a></h4>
+<ul>
+<li>基本使用方法：<code>--yesno  &lt;text&gt; &lt;height&gt; &lt;width&gt;</code></li>
+<li>实例语法：<code>whiptail --yesno "是否要退出当前界面?" 10 60</code></li>
+<li>效果展示：使用左/右导航键可以选中*yes*/*no*按钮，键入回车键确认选择
+<img alt="yesno效果展示" src="https://img-blog.csdnimg.cn/2020061410091466.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xqMTE1ODEzNzczNQ==,size_16,color_FFFFFF,t_70" /></li>
+</ul>
+<h4 id="313-inputbox">3.1.3 inputbox<a class="headerlink" href="#313-inputbox" title="Permanent link">&para;</a></h4>
+<ul>
+<li>基本使用方法：<code>--inputbox &lt;text&gt; &lt;height&gt; &lt;width&gt; [init]</code></li>
+<li>实例语法：<code>whiptail --inputbox "请在此框中进行搜索" 10 60 "whiptail usage"</code></li>
+<li>效果展示：*init*用来默认搜索关键字
+<img alt="inputbox效果展示" src="https://img-blog.csdnimg.cn/20200614101732863.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xqMTE1ODEzNzczNQ==,size_16,color_FFFFFF,t_70" /></li>
+</ul>
+<h4 id="314-passwordbox">3.1.4 passwordbox<a class="headerlink" href="#314-passwordbox" title="Permanent link">&para;</a></h4>
+<ul>
+<li>基本使用方法：<code>--passwordbox &lt;text&gt; &lt;height&gt; &lt;width&gt; [init]</code></li>
+<li>实例语法：<code>whiptail --passwordbox "请输入您的密码:" 10 60 "12345678"</code></li>
+<li>效果展示：使用方法和<code>inputbox</code>基本一致
+<img alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/20200614102335887.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xqMTE1ODEzNzczNQ==,size_16,color_FFFFFF,t_70" /></li>
+</ul>
+<h4 id="315-textbox">3.1.5 textbox<a class="headerlink" href="#315-textbox" title="Permanent link">&para;</a></h4>
+<ul>
+<li>基本使用方法：<code>--textbox &lt;file&gt; &lt;height&gt; &lt;width&gt;</code></li>
+<li>实例语法：<code>whiptail --textbox "whiptail_shell.sh" 30 60</code></li>
+<li>效果展示：
+<img alt="textbox效果展示" src="https://img-blog.csdnimg.cn/20200614103750189.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xqMTE1ODEzNzczNQ==,size_16,color_FFFFFF,t_70" /></li>
+</ul>
+<h4 id="316-menu">3.1.6 menu<a class="headerlink" href="#316-menu" title="Permanent link">&para;</a></h4>
+<ul>
+<li>基本使用方法：<code>--menu &lt;text&gt; &lt;height&gt; &lt;width&gt; &lt;listheight&gt; [tag item] ...</code></li>
+<li>实例语法：<code>whiptail --menu "请选择一个文件:" 15 60 4 "1" "whiptail_test1" "2" "whiptail_test2"</code></li>
+<li>效果展示：
+<img alt="menu效果展示" src="https://img-blog.csdnimg.cn/20200614112741932.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xqMTE1ODEzNzczNQ==,size_16,color_FFFFFF,t_70" /></li>
+</ul>
+<h4 id="317-gauge">3.1.7 gauge<a class="headerlink" href="#317-gauge" title="Permanent link">&para;</a></h4>
+<ul>
+<li>基本使用方法：<code>--gauge &lt;text&gt; &lt;height&gt; &lt;width&gt; &lt;percent&gt;</code></li>
+<li>实例语法：<code>whiptail --gauge "当前升级进度" 10 60 70</code></li>
+<li>效果展示：
+<img alt="gauge效果展示" src="https://img-blog.csdnimg.cn/2020061411334030.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xqMTE1ODEzNzczNQ==,size_16,color_FFFFFF,t_70" /></li>
+</ul>
+<h3 id="32-使用whiptail-optionsdepend-on-box-option">3.2 使用whiptail options，depend on box-option<a class="headerlink" href="#32-使用whiptail-optionsdepend-on-box-option" title="Permanent link">&para;</a></h3>
+<h4 id="321-title">3.2.1 title<a class="headerlink" href="#321-title" title="Permanent link">&para;</a></h4>
+<ul>
+<li>基本使用方法：<code>--title &lt;title&gt;</code></li>
+<li>实例语法：<code>whiptail --title "whiptail 练习" --msgbox "欢迎来到我的博客" 10 60</code></li>
+<li>效果展示：
+ <img alt="增加title效果展示" src="https://img-blog.csdnimg.cn/20200614114748959.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xqMTE1ODEzNzczNQ==,size_16,color_FFFFFF,t_70" /></li>
+</ul>
+<h4 id="322-scrolltext">3.2.2 scrolltext<a class="headerlink" href="#322-scrolltext" title="Permanent link">&para;</a></h4>
+<ul>
+<li>基本使用方法：<code>--scrolltext</code></li>
+<li>实例语法：<code>whiptail --scrolltext --textbox "whiptail_shell.sh" 30 60</code></li>
+<li>效果展示：右边垂直进度条，可以按*⬆<em>/</em>⬇*进行翻页阅读
+<img alt="scrolltext效果展示" src="https://img-blog.csdnimg.cn/20200614115902410.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xqMTE1ODEzNzczNQ==,size_16,color_FFFFFF,t_70" /></li>
+</ul>
+<h3 id="33-配合shell脚本实现用户交互">3.3 配合shell脚本实现用户交互<a class="headerlink" href="#33-配合shell脚本实现用户交互" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>命题：提示用户输入密码登录，密码正确时，显示欢迎界面，密码错误时，提示用户重新输入，并提示剩余尝试次数；登陆系统成功后，在当前目录下查找指定的文件，并将符合条件的文件列举出来供用户选择；用户选择相应的文件后，打开文件，并可以上下翻页查看文件内容；</p>
+</blockquote>
+<h4 id="331-登陆界面">3.3.1 登陆界面<a class="headerlink" href="#331-登陆界面" title="Permanent link">&para;</a></h4>
+<p><img alt="登陆界面" src="https://img-blog.csdnimg.cn/20200614180349888.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xqMTE1ODEzNzczNQ==,size_16,color_FFFFFF,t_70" /></p>
+<h4 id="332-密码校验界面">3.3.2 密码校验界面<a class="headerlink" href="#332-密码校验界面" title="Permanent link">&para;</a></h4>
+<p><img alt="密码校验失败" src="https://img-blog.csdnimg.cn/20200614180553277.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xqMTE1ODEzNzczNQ==,size_16,color_FFFFFF,t_70" />
+<img alt="密码校验成功" src="https://img-blog.csdnimg.cn/20200614180631682.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xqMTE1ODEzNzczNQ==,size_16,color_FFFFFF,t_70" /></p>
+<h4 id="333-搜索界面">3.3.3 搜索界面<a class="headerlink" href="#333-搜索界面" title="Permanent link">&para;</a></h4>
+<p><img alt="搜索输入界面" src="https://img-blog.csdnimg.cn/20200614180744773.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xqMTE1ODEzNzczNQ==,size_16,color_FFFFFF,t_70" /></p>
+<h4 id="334-搜索结果展示">3.3.4 搜索结果展示<a class="headerlink" href="#334-搜索结果展示" title="Permanent link">&para;</a></h4>
+<p><img alt="搜索结果展示" src="https://img-blog.csdnimg.cn/20200614180829772.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xqMTE1ODEzNzczNQ==,size_16,color_FFFFFF,t_70" /></p>
+<h4 id="335-文件阅览界面">3.3.5 文件阅览界面<a class="headerlink" href="#335-文件阅览界面" title="Permanent link">&para;</a></h4>
+<p><img alt="文件阅览" src="https://img-blog.csdnimg.cn/20200614180938915.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2xqMTE1ODEzNzczNQ==,size_16,color_FFFFFF,t_70" /></p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../extensions/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  上一页
+                </span>
+                common knowledge
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../markdown/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  下一页
+                </span>
+                markdown syntax
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.08c56446.min.js"></script>
+      <script src="../../assets/javascripts/bundle.6ced434e.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: ['navigation.tabs', 'toc.integrate'],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.8c7e0a7e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>

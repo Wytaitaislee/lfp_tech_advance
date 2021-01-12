@@ -1,0 +1,1131 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.2">
+    
+    
+      
+        <title>roads - lfp documents</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.73f7c429.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.39b8e14a.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+    
+      
+        
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","None","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}),document.addEventListener("DOMContentSwitch",function(){ga("send","pageview",document.location.pathname)})</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#技术实践路线图" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../.." title="lfp documents" class="md-header-nav__button md-logo" aria-label="lfp documents">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            lfp documents
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              roads
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../home.md" class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      introduce
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../util/util/" class="md-tabs__link">
+        project component
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../extensions/extensions/" class="md-tabs__link">
+        extensions
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  <li class="md-tabs__item">
+    <a href="./" class="md-tabs__link md-tabs__link--active">
+      roads
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="lfp documents" class="md-nav__button md-logo" aria-label="lfp documents">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    lfp documents
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="../../home.md" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  <li class="md-nav__item">
+    <a href="../.." class="md-nav__link">
+      introduce
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+    
+    <label class="md-nav__link" for="nav-3">
+      project component
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="project component" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        <span class="md-nav__icon md-icon"></span>
+        project component
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-1" type="checkbox" id="nav-3-1" >
+    
+    <label class="md-nav__link" for="nav-3-1">
+      util
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="util" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-1">
+        <span class="md-nav__icon md-icon"></span>
+        util
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../util/util/" class="md-nav__link">
+      util
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../util/util_cmd/" class="md-nav__link">
+      uitl cmd
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../util/util_timer/" class="md-nav__link">
+      uitl timer
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../arch/arch/" class="md-nav__link">
+      arch
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../arch_adapter/arch_adapter/" class="md-nav__link">
+      arch adapter
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../exec/exec/" class="md-nav__link">
+      exec
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../include/include/" class="md-nav__link">
+      include
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../link_order/link_order/" class="md-nav__link">
+      link order
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../main/main/" class="md-nav__link">
+      main
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../menuconfig/menuconfig/" class="md-nav__link">
+      menuconfig
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../rules.make/rules.make/" class="md-nav__link">
+      rules.make
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../programming_rules/programming_rules/" class="md-nav__link">
+      programming rules
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-11" type="checkbox" id="nav-3-11" >
+    
+    <label class="md-nav__link" for="nav-3-11">
+      modules
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="modules" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-11">
+        <span class="md-nav__icon md-icon"></span>
+        modules
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/module.md" class="md-nav__link">
+      about
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/single_list/single_list/" class="md-nav__link">
+      single_list
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/double_list/double_list/" class="md-nav__link">
+      double list
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../modules/socket_app/socket_app/" class="md-nav__link">
+      socket app
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../tools/stats_tools.md" class="md-nav__link">
+      tools
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" >
+    
+    <label class="md-nav__link" for="nav-4">
+      extensions
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="extensions" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        extensions
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../extensions/extensions/" class="md-nav__link">
+      common knowledge
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../extensions/whiptail/" class="md-nav__link">
+      whiptail
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../extensions/markdown/" class="md-nav__link">
+      markdown syntax
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        roads
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
+      roads
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#应用开发技术" class="md-nav__link">
+    应用开发技术
+  </a>
+  
+    <nav class="md-nav" aria-label="应用开发技术">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#基础数据结构应用" class="md-nav__link">
+    基础数据结构应用
+  </a>
+  
+    <nav class="md-nav" aria-label="基础数据结构应用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#单向链表的应用" class="md-nav__link">
+    单向链表的应用
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#双向链表的应用" class="md-nav__link">
+    双向链表的应用
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#多线程编程" class="md-nav__link">
+    多线程编程
+  </a>
+  
+    <nav class="md-nav" aria-label="多线程编程">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#互斥量的应用" class="md-nav__link">
+    互斥量的应用
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#信号量的应用" class="md-nav__link">
+    信号量的应用
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#锁的应用" class="md-nav__link">
+    锁的应用
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#信号的应用" class="md-nav__link">
+    信号的应用
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#线程池" class="md-nav__link">
+    线程池
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#数据库应用" class="md-nav__link">
+    数据库应用
+  </a>
+  
+    <nav class="md-nav" aria-label="数据库应用">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sqlite数据库应用" class="md-nav__link">
+    sqlite数据库应用
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#系统底层技术" class="md-nav__link">
+    系统底层技术
+  </a>
+  
+    <nav class="md-nav" aria-label="系统底层技术">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#内存管理技术" class="md-nav__link">
+    内存管理技术
+  </a>
+  
+    <nav class="md-nav" aria-label="内存管理技术">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#物理内存虚拟内存" class="md-nav__link">
+    物理内存、虚拟内存
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#进程虚拟内存分布情况" class="md-nav__link">
+    进程虚拟内存分布情况
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#虚拟地址线性地址逻辑地址物理地址" class="md-nav__link">
+    虚拟地址、线性地址、逻辑地址、物理地址
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#内存页表为什么需要多级页表内存缺页原理" class="md-nav__link">
+    内存页表，为什么需要多级页表，内存缺页原理
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#内存页的换入换出辅存的概念频繁交换怎么存储在磁盘swap" class="md-nav__link">
+    内存页的换入换出（辅存的概念），频繁交换怎么存储在磁盘（SWAP）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slab分配器伙伴系统" class="md-nav__link">
+    slab分配器，伙伴系统
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#c库函数如何和linux内核系统交互申请内存" class="md-nav__link">
+    C库函数如何和linux内核系统交互，申请内存
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tcmallocmalloc之内存劫持原理" class="md-nav__link">
+    tcmalloc，malloc之内存劫持原理
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#进程间通信技术" class="md-nav__link">
+    进程间通信技术
+  </a>
+  
+    <nav class="md-nav" aria-label="进程间通信技术">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ipc分类" class="md-nav__link">
+    IPC分类
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#各类ipc的使用场景" class="md-nav__link">
+    各类IPC的使用场景
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#网络" class="md-nav__link">
+    网络
+  </a>
+  
+    <nav class="md-nav" aria-label="网络">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#socket通信" class="md-nav__link">
+    socket通信
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vfs" class="md-nav__link">
+    VFS
+  </a>
+  
+    <nav class="md-nav" aria-label="VFS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#虚拟文件系统各类文件系统抽象" class="md-nav__link">
+    虚拟文件系统,各类文件系统抽象；
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#进程调度" class="md-nav__link">
+    进程调度
+  </a>
+  
+    <nav class="md-nav" aria-label="进程调度">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#多进程调度" class="md-nav__link">
+    多进程调度
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#资源分配切换" class="md-nav__link">
+    资源分配/切换
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#驱动" class="md-nav__link">
+    驱动
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="技术实践路线图">技术实践路线图<a class="headerlink" href="#技术实践路线图" title="Permanent link">&para;</a></h1>
+<h2 id="应用开发技术">应用开发技术<a class="headerlink" href="#应用开发技术" title="Permanent link">&para;</a></h2>
+<h3 id="基础数据结构应用">基础数据结构应用<a class="headerlink" href="#基础数据结构应用" title="Permanent link">&para;</a></h3>
+<h4 id="单向链表的应用">单向链表的应用<a class="headerlink" href="#单向链表的应用" title="Permanent link">&para;</a></h4>
+<h4 id="双向链表的应用">双向链表的应用<a class="headerlink" href="#双向链表的应用" title="Permanent link">&para;</a></h4>
+<h3 id="多线程编程">多线程编程<a class="headerlink" href="#多线程编程" title="Permanent link">&para;</a></h3>
+<h4 id="互斥量的应用">互斥量的应用<a class="headerlink" href="#互斥量的应用" title="Permanent link">&para;</a></h4>
+<ul>
+<li>如何控制资源竞争</li>
+</ul>
+<h4 id="信号量的应用">信号量的应用<a class="headerlink" href="#信号量的应用" title="Permanent link">&para;</a></h4>
+<ul>
+<li>如何控制数据同步</li>
+</ul>
+<h4 id="锁的应用">锁的应用<a class="headerlink" href="#锁的应用" title="Permanent link">&para;</a></h4>
+<ul>
+<li>如何保护临界区</li>
+</ul>
+<h4 id="信号的应用">信号的应用<a class="headerlink" href="#信号的应用" title="Permanent link">&para;</a></h4>
+<h4 id="线程池">线程池<a class="headerlink" href="#线程池" title="Permanent link">&para;</a></h4>
+<ul>
+<li>如何管理高并发，如何提高处理效率，如何降低资源消耗</li>
+</ul>
+<h3 id="数据库应用">数据库应用<a class="headerlink" href="#数据库应用" title="Permanent link">&para;</a></h3>
+<h4 id="sqlite数据库应用">sqlite数据库应用<a class="headerlink" href="#sqlite数据库应用" title="Permanent link">&para;</a></h4>
+<ul>
+<li>如何存储数据；</li>
+</ul>
+<h2 id="系统底层技术">系统底层技术<a class="headerlink" href="#系统底层技术" title="Permanent link">&para;</a></h2>
+<h3 id="内存管理技术">内存管理技术<a class="headerlink" href="#内存管理技术" title="Permanent link">&para;</a></h3>
+<h4 id="物理内存虚拟内存">物理内存、虚拟内存<a class="headerlink" href="#物理内存虚拟内存" title="Permanent link">&para;</a></h4>
+<h4 id="进程虚拟内存分布情况">进程虚拟内存分布情况<a class="headerlink" href="#进程虚拟内存分布情况" title="Permanent link">&para;</a></h4>
+<h4 id="虚拟地址线性地址逻辑地址物理地址">虚拟地址、线性地址、逻辑地址、物理地址<a class="headerlink" href="#虚拟地址线性地址逻辑地址物理地址" title="Permanent link">&para;</a></h4>
+<h4 id="内存页表为什么需要多级页表内存缺页原理">内存页表，为什么需要多级页表，内存缺页原理<a class="headerlink" href="#内存页表为什么需要多级页表内存缺页原理" title="Permanent link">&para;</a></h4>
+<h4 id="内存页的换入换出辅存的概念频繁交换怎么存储在磁盘swap">内存页的换入换出（辅存的概念），频繁交换怎么存储在磁盘（SWAP）<a class="headerlink" href="#内存页的换入换出辅存的概念频繁交换怎么存储在磁盘swap" title="Permanent link">&para;</a></h4>
+<h4 id="slab分配器伙伴系统">slab分配器，伙伴系统<a class="headerlink" href="#slab分配器伙伴系统" title="Permanent link">&para;</a></h4>
+<h4 id="c库函数如何和linux内核系统交互申请内存">C库函数如何和linux内核系统交互，申请内存<a class="headerlink" href="#c库函数如何和linux内核系统交互申请内存" title="Permanent link">&para;</a></h4>
+<h4 id="tcmallocmalloc之内存劫持原理">tcmalloc，malloc之内存劫持原理<a class="headerlink" href="#tcmallocmalloc之内存劫持原理" title="Permanent link">&para;</a></h4>
+<ul>
+<li>库劫持(例如动态库预加载劫持malloc内存分配);</li>
+</ul>
+<h3 id="进程间通信技术">进程间通信技术<a class="headerlink" href="#进程间通信技术" title="Permanent link">&para;</a></h3>
+<h5 id="ipc分类">IPC分类<a class="headerlink" href="#ipc分类" title="Permanent link">&para;</a></h5>
+<h5 id="各类ipc的使用场景">各类IPC的使用场景<a class="headerlink" href="#各类ipc的使用场景" title="Permanent link">&para;</a></h5>
+<h4 id="网络">网络<a class="headerlink" href="#网络" title="Permanent link">&para;</a></h4>
+<h5 id="socket通信">socket通信<a class="headerlink" href="#socket通信" title="Permanent link">&para;</a></h5>
+<ul>
+<li>如何与其他进程进行通信，如何保证数据的完整性</li>
+</ul>
+<h4 id="vfs">VFS<a class="headerlink" href="#vfs" title="Permanent link">&para;</a></h4>
+<h5 id="虚拟文件系统各类文件系统抽象">虚拟文件系统,各类文件系统抽象；<a class="headerlink" href="#虚拟文件系统各类文件系统抽象" title="Permanent link">&para;</a></h5>
+<h4 id="进程调度">进程调度<a class="headerlink" href="#进程调度" title="Permanent link">&para;</a></h4>
+<h5 id="多进程调度">多进程调度<a class="headerlink" href="#多进程调度" title="Permanent link">&para;</a></h5>
+<h5 id="资源分配切换">资源分配/切换<a class="headerlink" href="#资源分配切换" title="Permanent link">&para;</a></h5>
+<h4 id="驱动">驱动<a class="headerlink" href="#驱动" title="Permanent link">&para;</a></h4>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../../extensions/markdown/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  上一页
+                </span>
+                markdown syntax
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.08c56446.min.js"></script>
+      <script src="../../assets/javascripts/bundle.6ced434e.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: ['navigation.tabs', 'toc.integrate'],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.8c7e0a7e.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>
