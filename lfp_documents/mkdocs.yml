@@ -7,6 +7,7 @@ dev_addr: 192.168.0.107:10086
 repo_name: lfp_tech_advance
 repo_url: https://lee91.github.io/lfp_tech_advance/
 edit_uri: ""
+site_author: wytaitaislee
 
 site_description: >-
   技术演进
