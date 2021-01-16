@@ -4,17 +4,20 @@ site_name: lfp documents
 dev_addr: 192.168.0.107:10086
 
 # Repository
-repo_name: Lee91/lfp_tech_advance
+repo_name: lfp_tech_advance
 repo_url: https://lee91.github.io/lfp_tech_advance/
 edit_uri: ""
+
+site_description: >-
+  技术演进
 
 # Copyright
 copyright: Copyright &copy; 2019 - 2021 wytaitaislee
 
 #pages layout
 nav:
-- Home: home.md
-- introduce: index.md
+- 主页: index.md
+- 介绍: introduction/introduction.md
 - project component:
     - util: 
         - util: util/util.md
@@ -104,7 +107,7 @@ theme:
     text: Roboto
     code: Roboto Mono
   # 让浏览器的收藏夹中除显示相应的标题外，还以图标的方式区别不同的网站
-  favicon: assets/images/github.svg
+  favicon: assets/github.svg
   # 网站页面中的图标(网站名前面的图标)
   icon:
     logo: github
