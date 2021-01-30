@@ -12,6 +12,6 @@ LFP_OBJ_PATH = ${LFP_ROOT_PATH}/${LFP_EXEC_DIR}/${LFP_OBJDIR}
 LFP_EXEC_PATH = ${LFP_ROOT_PATH}/${LFP_EXEC_DIR}/${LFP_EXEC}
 
 include ${LFP_ROOT_PATH}/menuconfig
-include ${LFP_ROOT_PATH}/link_order
+include ${LFP_ROOT_PATH}/lfp_linking
 
 LFP_GLOBAL_FLAGS += ${LFP_FLAGS}

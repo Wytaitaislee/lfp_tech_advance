@@ -28,10 +28,10 @@ nav:
     - arch adapter: arch_adapter/arch_adapter.md
     - exec: exec/exec.md
     - include: include/include.md
-    - link order: link_order/link_order.md
+    - link order: lfp_linking/lfp_linking.md
     - main: main/main.md
     - menuconfig: menuconfig/menuconfig.md
-    - rules.make: rules.make/rules.make.md
+    - lfp_rules.make: lfp_rules.make/lfp_rules.make.md
     - programming rules: programming_rules/programming_rules.md
     - modules:
         - about: modules/module.md

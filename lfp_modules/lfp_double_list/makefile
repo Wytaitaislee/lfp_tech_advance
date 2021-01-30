@@ -3,7 +3,7 @@ LFP_ROOT_PATH = ../../
 endif
 
 
-include $(LFP_ROOT_PATH)/rules.make
+include $(LFP_ROOT_PATH)/lfp_rules.make
 CUR_SRC_PATH = $(shell pwd)/src
 CUR_SRC = $(wildcard ${CUR_SRC_PATH}/*.c)
 CUR_OBJS = $(patsubst %.c, %.o, $(CUR_SRC))

@@ -2,7 +2,7 @@ ifeq ($(LFP_ROOT_PATH),)
 LFP_ROOT_PATH = ../
 endif
 
-include $(LFP_ROOT_PATH)/rules.make
+include $(LFP_ROOT_PATH)/lfp_rules.make
 
 LIBS_PATH = ./$(LFP_OBJDIR)
 #CUR_OBJS := $(wildcard $(LIBS_PATH)/*.a)

@@ -73,11 +73,11 @@
 
 用以配置、裁剪控制模块；
 
-### link_order
+### lfp_linking
 
 库链接顺序，越是底层的库，链接时越是靠后；
 
-### rules.make
+### lfp_rules.make
 
 编译规则
 

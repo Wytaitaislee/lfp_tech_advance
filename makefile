@@ -1,7 +1,7 @@
 LFP_ROOT_PATH = $(shell pwd)
 export LFP_ROOT_PATH
 
-include ./rules.make
+include ./lfp_rules.make
 
 ALL_DIR = $(libs_src-y)
 LINK_OBJS = $(libs_obj-y)
