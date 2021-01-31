@@ -197,18 +197,91 @@
   
   
   
-    
+    <li class="md-tabs__item">
+      <a href="../../util/util_logs/" class="md-tabs__link">
+        基础组件
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../../util/util/" class="md-tabs__link">
-        project component
+      <a href="../../arch/arch/" class="md-tabs__link">
+        适配
       </a>
     </li>
   
 
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../app_modules/module.md" class="md-tabs__link">
+        应用模块
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../include/include/" class="md-tabs__link">
+        头文件组织原则
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../exec/exec/" class="md-tabs__link">
+        编译控制
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../programming_rules/programming_rules/" class="md-tabs__link">
+        编码规范
+      </a>
+    </li>
   
 
       
@@ -222,7 +295,7 @@
   
     <li class="md-tabs__item">
       <a href="../../extensions/extensions/" class="md-tabs__link">
-        extensions
+        知识拓展
       </a>
     </li>
   
@@ -234,8 +307,8 @@
 
 
   <li class="md-tabs__item">
-    <a href="../../roads/roads/" class="md-tabs__link">
-      roads
+    <a href="../../roadmapping/roadmapping/" class="md-tabs__link">
+      进阶线路图
     </a>
   </li>
 
@@ -391,33 +464,6 @@
     lfp util
   </a>
   
-    <nav class="md-nav" aria-label="lfp util">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#lfp_util_dbg" class="md-nav__link">
-    lfp_util_dbg
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#lfp-util-timer" class="md-nav__link">
-    lfp util timer
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#lfp_util_cmd" class="md-nav__link">
-    lfp_util_cmd
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
         
           <li class="md-nav__item">
@@ -463,8 +509,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#lfp_modules" class="md-nav__link">
-    lfp_modules
+  <a href="#lfp_app_busybox" class="md-nav__link">
+    lfp_app_busybox
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lfp_app_modules" class="md-nav__link">
+    lfp_app_modules
   </a>
   
 </li>
@@ -477,15 +530,15 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#link_order" class="md-nav__link">
-    link_order
+  <a href="#lfp_linking" class="md-nav__link">
+    lfp_linking
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#rulesmake" class="md-nav__link">
-    rules.make
+  <a href="#lfp_rulesmake" class="md-nav__link">
+    lfp_rules.make
   </a>
   
 </li>
@@ -522,37 +575,13 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
     
     <label class="md-nav__link" for="nav-3">
-      project component
+      基础组件
       <span class="md-nav__icon md-icon"></span>
     </label>
-    <nav class="md-nav" aria-label="project component" data-md-level="1">
+    <nav class="md-nav" aria-label="基础组件" data-md-level="1">
       <label class="md-nav__title" for="nav-3">
         <span class="md-nav__icon md-icon"></span>
-        project component
-      </label>
-      <ul class="md-nav__list" data-md-scrollfix>
-        
-        
-          
-          
-          
-
-
-
-  
-  <li class="md-nav__item md-nav__item--nested">
-    
-    
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-1" type="checkbox" id="nav-3-1" >
-    
-    <label class="md-nav__link" for="nav-3-1">
-      util
-      <span class="md-nav__icon md-icon"></span>
-    </label>
-    <nav class="md-nav" aria-label="util" data-md-level="2">
-      <label class="md-nav__title" for="nav-3-1">
-        <span class="md-nav__icon md-icon"></span>
-        util
+        基础组件
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -564,8 +593,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../util/util/" class="md-nav__link">
-      util
+    <a href="../../util/util_logs/" class="md-nav__link">
+      logs
     </a>
   </li>
 
@@ -577,21 +606,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../util/util_cmd/" class="md-nav__link">
-      uitl cmd
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../util/util_timer/" class="md-nav__link">
-      uitl timer
+    <a href="../../app_busybox/app_busybox/" class="md-nav__link">
+      app busybox
     </a>
   </li>
 
@@ -600,6 +616,30 @@
     </nav>
   </li>
 
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" >
+    
+    <label class="md-nav__link" for="nav-4">
+      适配
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="适配" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        <span class="md-nav__icon md-icon"></span>
+        适配
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
         
           
           
@@ -627,6 +667,158 @@
   </li>
 
         
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" >
+    
+    <label class="md-nav__link" for="nav-5">
+      应用模块
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="应用模块" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        应用模块
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../app_modules/module.md" class="md-nav__link">
+      about
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../app_modules/single_list/single_list/" class="md-nav__link">
+      single_list
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../app_modules/double_list/double_list/" class="md-nav__link">
+      double list
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../app_modules/socket_app/socket_app/" class="md-nav__link">
+      socket app
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" >
+    
+    <label class="md-nav__link" for="nav-6">
+      头文件组织原则
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="头文件组织原则" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon"></span>
+        头文件组织原则
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+
+  <li class="md-nav__item">
+    <a href="../../include/include/" class="md-nav__link">
+      include
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+
+  
+  <li class="md-nav__item md-nav__item--nested">
+    
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7" >
+    
+    <label class="md-nav__link" for="nav-7">
+      编译控制
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="编译控制" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        <span class="md-nav__icon md-icon"></span>
+        编译控制
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
           
           
           
@@ -647,21 +839,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../include/include/" class="md-nav__link">
-      include
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../link_order/link_order/" class="md-nav__link">
-      link order
+    <a href="../../lfp_linking/lfp_linking.md" class="md-nav__link">
+      linking
     </a>
   </li>
 
@@ -700,27 +879,19 @@
 
   <li class="md-nav__item">
     <a href="../../rules.make/rules.make/" class="md-nav__link">
-      rules.make
+      lfp_rules.make
     </a>
   </li>
 
         
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../programming_rules/programming_rules/" class="md-nav__link">
-      programming rules
-    </a>
+      </ul>
+    </nav>
   </li>
 
-        
-          
-          
-          
+    
+      
+      
+      
 
 
 
@@ -728,16 +899,16 @@
   <li class="md-nav__item md-nav__item--nested">
     
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3-11" type="checkbox" id="nav-3-11" >
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8" >
     
-    <label class="md-nav__link" for="nav-3-11">
-      modules
+    <label class="md-nav__link" for="nav-8">
+      编码规范
       <span class="md-nav__icon md-icon"></span>
     </label>
-    <nav class="md-nav" aria-label="modules" data-md-level="2">
-      <label class="md-nav__title" for="nav-3-11">
+    <nav class="md-nav" aria-label="编码规范" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
         <span class="md-nav__icon md-icon"></span>
-        modules
+        编码规范
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -749,53 +920,9 @@
 
 
   <li class="md-nav__item">
-    <a href="../../modules/module.md" class="md-nav__link">
-      about
+    <a href="../../programming_rules/programming_rules/" class="md-nav__link">
+      programming rules
     </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../modules/single_list/single_list/" class="md-nav__link">
-      single_list
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../modules/double_list/double_list/" class="md-nav__link">
-      double list
-    </a>
-  </li>
-
-        
-          
-          
-          
-
-
-
-  <li class="md-nav__item">
-    <a href="../../modules/socket_app/socket_app/" class="md-nav__link">
-      socket app
-    </a>
-  </li>
-
-        
-      </ul>
-    </nav>
   </li>
 
         
@@ -827,16 +954,16 @@
   <li class="md-nav__item md-nav__item--nested">
     
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" >
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9" >
     
-    <label class="md-nav__link" for="nav-4">
-      extensions
+    <label class="md-nav__link" for="nav-9">
+      知识拓展
       <span class="md-nav__icon md-icon"></span>
     </label>
-    <nav class="md-nav" aria-label="extensions" data-md-level="1">
-      <label class="md-nav__title" for="nav-4">
+    <nav class="md-nav" aria-label="知识拓展" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
         <span class="md-nav__icon md-icon"></span>
-        extensions
+        知识拓展
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
         
@@ -892,8 +1019,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../roads/roads/" class="md-nav__link">
-      roads
+    <a href="../../roadmapping/roadmapping/" class="md-nav__link">
+      进阶线路图
     </a>
   </li>
 
@@ -931,33 +1058,30 @@
 </ul>
 <h2 id="核心模块介绍">核心模块介绍<a class="headerlink" href="#核心模块介绍" title="Permanent link">&para;</a></h2>
 <h3 id="lfp-util">lfp util<a class="headerlink" href="#lfp-util" title="Permanent link">&para;</a></h3>
-<p>基础公共架构部分，支撑项目的通用业务，一是构成系统人机交互的重要桥梁，例如终端命令交互；二是为*upper层*提供基础服务，例如始终、日志等；</p>
-<h4 id="lfp_util_dbg">lfp_util_dbg<a class="headerlink" href="#lfp_util_dbg" title="Permanent link">&para;</a></h4>
-<p><strong><a href="/util/util/">日志系统</a></strong>，根据*模块-&gt;子模块...*的基础树形结构进行日志模块的分块管理，实现系统日志信息的精准定位和精确捕捉；</p>
-<h4 id="lfp-util-timer">lfp util timer<a class="headerlink" href="#lfp-util-timer" title="Permanent link">&para;</a></h4>
-<p><strong><a href="/util/">基础时间管理</a></strong>，服务不随着OS/平台的变化而变化，如果依赖OS/平台，转封装<code>lfp_adapter</code>层；</p>
-<h4 id="lfp_util_cmd">lfp_util_cmd<a class="headerlink" href="#lfp_util_cmd" title="Permanent link">&para;</a></h4>
-<p><strong><a href="/util/util_cmd/">终端命令</a></strong>, 实现用户交互。用户busybox实现, 通过串口交互实现和主程序的交互，完成状态查询、触发控制等；</p>
+<p>基础公共架构部分，支撑项目的通用业务，一是构成系统人机交互的重要桥梁，例如终端命令交互；二是为*upper层*提供基础服务，例如日志等；</p>
+<p><strong><a href="/util/util_logs/">日志系统</a></strong>，根据*模块-&gt;子模块...*的基础树形结构进行日志模块的分块管理，实现系统日志信息的精准定位和精确捕捉；</p>
 <h3 id="lfp_arch_adapter">lfp_arch_adapter<a class="headerlink" href="#lfp_arch_adapter" title="Permanent link">&para;</a></h3>
-<p><strong><a href="/arch_adapter/arch_adaprer/">架构适配层</a></strong>，用以兼容/适配不同的操作系统（或者cpu平台，预留，目前暂时适配不同操作系统）, 用户层无需感知系统的变化；</p>
+<p><strong><a href="/arch_adapter/arch_adapter/">架构适配层</a></strong>，用以兼容/适配不同的操作系统（或者cpu平台，预留，目前暂时适配不同操作系统）, 用户层无需感知系统的变化；</p>
 <h3 id="lfp_arch">lfp_arch<a class="headerlink" href="#lfp_arch" title="Permanent link">&para;</a></h3>
 <p><strong><a href="/arch/arch/">架构实现层</a></strong>，实现不同OS的系统层封装，上层应用业务不感知系统的差异性；</p>
 <h3 id="lfp_documents">lfp_documents<a class="headerlink" href="#lfp_documents" title="Permanent link">&para;</a></h3>
-<p>以<code>mkdown</code>编写的项目各模块的详细设计架构，以项目架构进行文档分层，设计和文档一致性，点击<a href="/./">项目文档</a>查看详细的项目文档架构；</p>
+<p>以<code>mkdown</code>编写的项目各模块的详细设计架构，以项目架构进行文档分层，设计和文档一致性，点击[项目文档][lfp documents]查看详细的项目文档架构；</p>
 <h3 id="lfp_exec">lfp_exec<a class="headerlink" href="#lfp_exec" title="Permanent link">&para;</a></h3>
 <p>可执行程序输出目录，各模块编译之后，最后在lfp_exec进行链接、组装，形成最终的可执行文件；</p>
 <h3 id="lfp_main">lfp_main<a class="headerlink" href="#lfp_main" title="Permanent link">&para;</a></h3>
 <p>项目主入口，各核心模块的注册启动；</p>
 <h3 id="lfp_include">lfp_include<a class="headerlink" href="#lfp_include" title="Permanent link">&para;</a></h3>
 <p>按照<code>src .c</code>层级架构，项目外部头文件，内部头文件不输出到此目录，直接存放在对应模块，以<code>__</code>作为文件前缀；</p>
-<h3 id="lfp_modules">lfp_modules<a class="headerlink" href="#lfp_modules" title="Permanent link">&para;</a></h3>
+<h3 id="lfp_app_busybox">lfp_app_busybox<a class="headerlink" href="#lfp_app_busybox" title="Permanent link">&para;</a></h3>
+<p><strong><a href="/app_busybox/app_busybox/">终端命令</a></strong>, 实现用户交互。用户busybox实现, 通过串口交互实现和主程序的交互，完成状态查询、触发控制等；</p>
+<h3 id="lfp_app_modules">lfp_app_modules<a class="headerlink" href="#lfp_app_modules" title="Permanent link">&para;</a></h3>
 <p>各应用模块业务代码，所有的应用都基于平台层实现，不能随意直接调用<code>lfp_arch</code>层代码，模块业务代码统一在模块中进行注册之后，再注册到<code>main</code>；</p>
 <h3 id="menuconfig">menuconfig<a class="headerlink" href="#menuconfig" title="Permanent link">&para;</a></h3>
 <p>用以配置、裁剪控制模块；</p>
-<h3 id="link_order">link_order<a class="headerlink" href="#link_order" title="Permanent link">&para;</a></h3>
+<h3 id="lfp_linking">lfp_linking<a class="headerlink" href="#lfp_linking" title="Permanent link">&para;</a></h3>
 <p>库链接顺序，越是底层的库，链接时越是靠后；</p>
-<h3 id="rulesmake">rules.make<a class="headerlink" href="#rulesmake" title="Permanent link">&para;</a></h3>
-<p>编译规则</p>
+<h3 id="lfp_rulesmake">lfp_rules.make<a class="headerlink" href="#lfp_rulesmake" title="Permanent link">&para;</a></h3>
+<p>编译管理，控制各组件的统一编译风格；</p>
 <h2 id="编码规则">编码规则<a class="headerlink" href="#编码规则" title="Permanent link">&para;</a></h2>
 <p>编码规则主要对项目中的编码习惯进行一个约定，后期随着工程的迭代，可能会引入新的编码规则，目的是一致的，就是促进项目的健壮性，朝着可维护性、可扩展性方向发展。你可以在<a href="/programming_rules/proogramming_rules/">lfp编码规则</a>处查看编码规则。</p>
                 
@@ -993,13 +1117,13 @@
           </a>
         
         
-          <a href="../../util/util/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../util/util_logs/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   下一页
                 </span>
-                util
+                logs
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">

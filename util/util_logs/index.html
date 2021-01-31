@@ -67,11 +67,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#arch-adaptation" class="md-skip">
-          跳转至
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -100,7 +95,7 @@
         <div class="md-header-nav__topic">
           <span class="md-ellipsis">
             
-              arch adapter
+              logs
             
           </span>
         </div>
@@ -190,13 +185,15 @@
         
   
   
+    
+  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../../util/util_logs/" class="md-tabs__link">
+      <a href="./" class="md-tabs__link md-tabs__link--active">
         基础组件
       </a>
     </li>
@@ -206,15 +203,13 @@
         
   
   
-    
-  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../../arch/arch/" class="md-tabs__link md-tabs__link--active">
+      <a href="../../arch/arch/" class="md-tabs__link">
         适配
       </a>
     </li>
@@ -392,12 +387,14 @@
       
 
 
+  
+
 
   
-  <li class="md-nav__item md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" >
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
     
     <label class="md-nav__link" for="nav-3">
       基础组件
@@ -416,11 +413,18 @@
           
 
 
+  
 
-  <li class="md-nav__item">
-    <a href="../../util/util_logs/" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+    
+    <a href="./" class="md-nav__link md-nav__link--active">
       logs
     </a>
+    
   </li>
 
         
@@ -447,14 +451,12 @@
       
 
 
-  
-
 
   
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" >
     
     <label class="md-nav__link" for="nav-4">
       适配
@@ -486,45 +488,11 @@
           
 
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        arch adapter
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-    
-    <a href="./" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../../arch_adapter/arch_adapter/" class="md-nav__link">
       arch adapter
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#arch-adaptation" class="md-nav__link">
-    Arch adaptation
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -899,24 +867,27 @@
               
                 
                 
-                  <h1>arch adapter</h1>
+                  <h1>logs</h1>
                 
-                <ol>
+                <ul>
 <li>
-<p>通过不同操作系统注册到平台层，进而适配支持不同的底层操作系统实现，app层保持一致的调用关系；</p>
+<p>不同模块日志封装, 通过主模块 + 子模块掩码的形式, 控制模块日志的输出;</p>
 </li>
 <li>
-<p>通过函数指针簇来描述不同的底层操作系统实现；</p>
+<p>不同的日志信息分等级打印, 目前分为ERR，INFO，CRIT三类，分别对应程序运行的“错误”，“通用信息”以及“关键信息”;</p>
 </li>
-</ol>
-<h2 id="arch-adaptation">Arch adaptation<a class="headerlink" href="#arch-adaptation" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>平台适配层，用以兼容/适配不同的操作系统（或者cpu平台，预留，目前暂时适配不同操作系统）</p>
-</blockquote>
-<ul>
-<li>如何适配支持不同的底层操作系统实现，app层保持一致的调用关系；</li>
-<li>如何使用一簇函数指针集合来描述不同的底层操作系统实现；</li>
-<li>如何使用宏定义描述平台层函数接口；</li>
+<li>
+<p>通过串口命令交互实现日志的控制输出;</p>
+</li>
+<li>
+<p>底层控制，使用可变宏参数***va_list***来控制不同类型参数日志的输出；</p>
+</li>
+<li>
+<p>底层控制，掌握***va_list***的使用来控制不同类型参数日志的输出；</p>
+</li>
+<li>
+<p>socket底层封装，多平台适配？还是C库适配？如果是平台层适配，后期移植到"<strong>lfp_adapter</strong>"层；</p>
+</li>
 </ul>
                 
               
@@ -936,7 +907,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
         
-          <a href="../../arch/arch/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../../introduction/introduction/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-footer-nav__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
             </div>
@@ -945,19 +916,19 @@
                 <span class="md-footer-nav__direction">
                   上一页
                 </span>
-                arch
+                介绍
               </div>
             </div>
           </a>
         
         
-          <a href="../../app_modules/single_list/single_list/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../../app_busybox/app_busybox/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-footer-nav__title">
               <div class="md-ellipsis">
                 <span class="md-footer-nav__direction">
                   下一页
                 </span>
-                single_list
+                app busybox
               </div>
             </div>
             <div class="md-footer-nav__button md-icon">

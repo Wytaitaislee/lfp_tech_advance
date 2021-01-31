@@ -67,11 +67,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#arch-adaptation" class="md-skip">
-          跳转至
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -100,7 +95,7 @@
         <div class="md-header-nav__topic">
           <span class="md-ellipsis">
             
-              arch adapter
+              Modules
             
           </span>
         </div>
@@ -206,15 +201,13 @@
         
   
   
-    
-  
 
 
   
   
   
     <li class="md-tabs__item">
-      <a href="../../arch/arch/" class="md-tabs__link md-tabs__link--active">
+      <a href="../../arch/arch/" class="md-tabs__link">
         适配
       </a>
     </li>
@@ -230,7 +223,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../app_modules/module.md" class="md-tabs__link">
+      <a href="../module.md" class="md-tabs__link">
         应用模块
       </a>
     </li>
@@ -447,14 +440,12 @@
       
 
 
-  
-
 
   
-  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+  <li class="md-nav__item md-nav__item--nested">
     
     
-      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" checked>
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4" >
     
     <label class="md-nav__link" for="nav-4">
       适配
@@ -486,45 +477,11 @@
           
 
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="__toc">
-        arch adapter
-        <span class="md-nav__icon md-icon"></span>
-      </label>
-    
-    <a href="./" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../../arch_adapter/arch_adapter/" class="md-nav__link">
       arch adapter
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#arch-adaptation" class="md-nav__link">
-    Arch adaptation
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
         
@@ -564,7 +521,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../app_modules/module.md" class="md-nav__link">
+    <a href="../module.md" class="md-nav__link">
       about
     </a>
   </li>
@@ -577,7 +534,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../app_modules/single_list/single_list/" class="md-nav__link">
+    <a href="../single_list/single_list/" class="md-nav__link">
       single_list
     </a>
   </li>
@@ -590,7 +547,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../app_modules/double_list/double_list/" class="md-nav__link">
+    <a href="../double_list/double_list/" class="md-nav__link">
       double list
     </a>
   </li>
@@ -603,7 +560,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../../app_modules/socket_app/socket_app/" class="md-nav__link">
+    <a href="../socket_app/socket_app/" class="md-nav__link">
       socket app
     </a>
   </li>
@@ -899,25 +856,9 @@
               
                 
                 
-                  <h1>arch adapter</h1>
+                  <h1>Modules</h1>
                 
-                <ol>
-<li>
-<p>通过不同操作系统注册到平台层，进而适配支持不同的底层操作系统实现，app层保持一致的调用关系；</p>
-</li>
-<li>
-<p>通过函数指针簇来描述不同的底层操作系统实现；</p>
-</li>
-</ol>
-<h2 id="arch-adaptation">Arch adaptation<a class="headerlink" href="#arch-adaptation" title="Permanent link">&para;</a></h2>
-<blockquote>
-<p>平台适配层，用以兼容/适配不同的操作系统（或者cpu平台，预留，目前暂时适配不同操作系统）</p>
-</blockquote>
-<ul>
-<li>如何适配支持不同的底层操作系统实现，app层保持一致的调用关系；</li>
-<li>如何使用一簇函数指针集合来描述不同的底层操作系统实现；</li>
-<li>如何使用宏定义描述平台层函数接口；</li>
-</ul>
+                
                 
               
               
@@ -932,41 +873,6 @@
       
         
 <footer class="md-footer">
-  
-    <div class="md-footer-nav">
-      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
-        
-          <a href="../../arch/arch/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
-            <div class="md-footer-nav__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-            </div>
-            <div class="md-footer-nav__title">
-              <div class="md-ellipsis">
-                <span class="md-footer-nav__direction">
-                  上一页
-                </span>
-                arch
-              </div>
-            </div>
-          </a>
-        
-        
-          <a href="../../app_modules/single_list/single_list/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-footer-nav__title">
-              <div class="md-ellipsis">
-                <span class="md-footer-nav__direction">
-                  下一页
-                </span>
-                single_list
-              </div>
-            </div>
-            <div class="md-footer-nav__button md-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-            </div>
-          </a>
-        
-      </nav>
-    </div>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
