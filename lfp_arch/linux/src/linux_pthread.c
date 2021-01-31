@@ -3,7 +3,6 @@ File name: linux_pthread.c
 Description: Operating system adaptation layer, matching different architecture platforms.
 			 pthread implement.
 Author: wytaitaislee
-Version: V1.0.0
 Date: 2019-11-17
 History: 1. create file. -- 2019-11-17
 ****************************************************************************************/

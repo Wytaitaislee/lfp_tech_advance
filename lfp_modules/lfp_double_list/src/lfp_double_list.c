@@ -2,7 +2,6 @@
 File name: lfp_double_list.c
 Description: Double linked list module implementation.
 Author: wytaitaislee
-Version: V1.0.0
 Date: 2020-05-05
 History: 1. create file. -- 2020-05-05
          2. refact at 2020-05-16

@@ -3,7 +3,6 @@ File name: linux_mutex.c
 Description: Operating system adaptation layer, matching different architecture platforms.
              mutex implement.
 Author: wytaitaislee
-Version: V1.0.0
 Date: 2020-03-29
 History: 1. create file. -- 2020-03-29
 ****************************************************************************************/

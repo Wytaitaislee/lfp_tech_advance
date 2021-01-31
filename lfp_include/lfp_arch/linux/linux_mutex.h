@@ -2,7 +2,6 @@
 File name: linux_mutex.h
 Description: the mutex management on linux system.
 Author: wytaitaislee
-Version: V1.0.0
 Date: 2020-03-29
 History: 1. create file. -- 2020-03-29
 ****************************************************************************************/

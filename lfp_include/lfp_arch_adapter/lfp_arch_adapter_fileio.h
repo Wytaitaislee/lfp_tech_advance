@@ -2,7 +2,6 @@
 File name: lfp_arch_adapter_fileio.h
 Description: System adaptation layer, matching different arch.
 Author: wytaitaislee
-Version: V1.0.0
 Date: 2020-06-07
 History: 1. create file. -- 2020-06-07
 ****************************************************************************************/

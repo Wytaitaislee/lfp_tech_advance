@@ -17,7 +17,11 @@ History: 1. create file. -- 2019.11.17
 //#include <unistd.h>
 //#include <stdarg.h>
 
-#define LFP_BASE_VERSION "V1.0.0"
+#define LFP_BASE_MAJOR	"V1"
+#define LFP_BASE_MINOR	"0"
+#define LFP_BASE_SUB	"0"
+#define __LFP_BASE_VERSION(major, minor, sub) (major##.##minor##.##sub)
+#define LFP_BASE_VERSION __LFP_BASE_VERSION(LFP_BASE_MAJOR, LFP_BASE_MINOR, LFP_BASE_SUB)
 
 typedef unsigned char			LFP_UINT8;
 typedef unsigned short 			LFP_UINT16;

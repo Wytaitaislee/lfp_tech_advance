@@ -2,7 +2,6 @@
 File name: lfp_double_list.h
 Description: Double linked list module data structure definition.
 Author: wytaitaislee
-Version: V1.0.0
 Date: 2019-11-17
 History: 1. create file. -- 2019-11-17
 		 2. refact at 2020-05-16 , interface becomes more compatible.

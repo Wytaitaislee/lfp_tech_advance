@@ -2,7 +2,6 @@
 File name: linux_fileio.c
 Description: the file io management on linux system.
 Author: wytaitaislee
-Version: V1.0.0
 Date: 2020-05-30
 History: 1. create file. -- 2020-05-30
 ****************************************************************************************/

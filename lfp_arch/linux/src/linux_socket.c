@@ -3,7 +3,6 @@ File name: linux_socket.c
 Description: Operating system adaptation layer, matching different architecture platforms.
 			 pthread implement.
 Author: wytaitaislee
-Version: V1.0.0
 Date: 2020-06-07
 History: 1. create file. -- 2020-06-07
 ****************************************************************************************/

@@ -2,7 +2,6 @@
 File name: lfp_socket_app.h
 Description: Socket general business module to support network communication.
 Author: wytaitaislee
-Version: V1.0.0
 Date: 2019-11-17
 History: 1. create file. -- 2019-11-17
 ************************************************************************************/

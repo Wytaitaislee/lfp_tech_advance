@@ -2,7 +2,6 @@
 File name: linux_semaphore.h
 Description: the semaphore management on linux system.
 Author: wytaitaislee
-Version: V1.0.0
 Date: 2020-06-07
 History: 1. create file. -- 2020-06-07
 ****************************************************************************************/

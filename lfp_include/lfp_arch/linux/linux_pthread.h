@@ -2,7 +2,6 @@
 File name: linux_pthread.h
 Description: the pthread management on linux system.
 Author: wytaitaislee
-Version: V1.0.0
 Date: 2019-11-17
 History: 1. create file. -- 2019-11-17
 ****************************************************************************************/

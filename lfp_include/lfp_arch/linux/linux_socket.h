@@ -2,7 +2,6 @@
 File name: linux_socket_base.h
 Description: the socket base function management on linux system.
 Author: wytaitaislee
-Version: V1.0.0
 Date: 2020-05-30
 History: 1. create file. -- 2020-05-30
          2. move socket base function to the lower layer -- 2020-06-07

@@ -4,7 +4,6 @@ Description: Application business module management layer to manage different
              application modules and achieve centralized configuration. 
              Only can be invoked by the upper layer.
 Author: wytaitaislee
-Version: V1.0.0
 Date: 2019-11-17
 History: 1. create file. -- 2019-11-17
 ************************************************************************************/

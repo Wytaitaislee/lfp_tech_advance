@@ -3,7 +3,6 @@ File name: linux_typesdef.h
 Description: redefine the types on linux system, the header file in "include" should quote
              this header file directly.
 Author: wytaitaislee
-Version: V1.0.0
 Date: 2020-06-06
 History: 1. create file. -- 2020-06-06
 ****************************************************************************************/

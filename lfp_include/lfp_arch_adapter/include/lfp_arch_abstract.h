@@ -2,7 +2,6 @@
 File name: __lfp_arch_abstract.h
 Description: System adaptation layer. Abstract different underlying implementations.
 Author: wytaitaislee
-Version: V1.0.0
 Date: 2020-03-12
 History: 1. create file. -- 2020-03-12
 ****************************************************************************************/
