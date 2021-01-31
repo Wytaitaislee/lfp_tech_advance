@@ -7,6 +7,7 @@ History: 1. create file. -- 2020-06-11
 ****************************************************************************************/
 
 #include "linux_time.h"
+#include "linux_typesdef.h"
 
 /*@fn		  LFP_INT32 linux_sleep_ms(LFP_UINT32 uiSleepMsSeconds);
 * @brief 	  delay milliseconds

@@ -5,5 +5,13 @@
         "**/.gitattributes": true,
         "**/.o": true,
         "**/.vscode": true
+    },
+    "files.associations": {
+        "lfp_double_list.h": "c",
+        "lfp_app_busybox.h": "c",
+        "lfp_arch_adapter_typesdef.h": "c",
+        "lfp_arch_adapter.h": "c",
+        "linux_time.h": "c",
+        "linux_typesdef.h": "c"
     }
 }

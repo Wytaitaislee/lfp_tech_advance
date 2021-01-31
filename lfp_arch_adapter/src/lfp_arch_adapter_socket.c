@@ -1,6 +1,13 @@
+/***************************************************************************************
+File name: lfp_arch_adapter_socket.h
+Description: System adaptation layer. Adapter to different socket on different OS.
+Author: wytaitaislee
+Date: 2020-03-12
+History: 1. create file. -- 2020-03-12
+****************************************************************************************/
+#include "lfp_arch_adapter_typesdef.h"
+#include "lfp_arch_abstract.h"
 #include "lfp_arch_adapter.h"
-#include "__lfp_arch_adapter_typesdef.h"
-#include "__lfp_arch_abstract.h"
 
 #define LFP_GET_SOCKET_ENTRY()             (*(LFP_ARCH_ADAPTER_SOCKET_T*)LFP_GET_CLASS_ENTRY(socket))
 #define LFP_ADAPTER_SOCKET_INIT(FUNC)      LFP_ADAPTER_INIT(LFP_GET_SOCKET_ENTRY(), FUNC)

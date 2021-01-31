@@ -8,6 +8,7 @@ History: 1. create file. -- 2020-03-29
 ****************************************************************************************/
 
 #include "linux_mutex.h"
+#include "linux_typesdef.h"
 
 /*@fn	      LFP_INT32 linux_mutex_create(LINUX_MUTEX_T *pMutex, LINUX_MUTEX_ATTR_T *pAttr)
 * @brief 	  create a new mutex.

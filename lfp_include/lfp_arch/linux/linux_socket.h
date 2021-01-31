@@ -10,7 +10,8 @@ History: 1. create file. -- 2020-05-30
 #ifndef __LINUX_SOCKET_H__
 #define __LINUX_SOCKET_H__
 
-#include "linux/__include/__linux_typesdef.h"
+#include "lfp_base.h"
+#include "linux/include/linux_typesdef.h"
 #include <sys/socket.h>
 #include<netinet/in.h>
 #include <arpa/inet.h>

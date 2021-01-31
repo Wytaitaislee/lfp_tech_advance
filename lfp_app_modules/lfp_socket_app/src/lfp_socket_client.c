@@ -8,6 +8,7 @@ History: 1. create file. -- 2019.11.17
 #ifdef LFP_SOCKET_APP
 
 #include "lfp_socket_app.h"
+#include <errno.h>
 
 /*@fn		  LFP_INT32 lfp_socket_client_task(LFP_VOID* pArgs)
 * @brief 	  socket communication client task

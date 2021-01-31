@@ -16,5 +16,6 @@ History: 1. create file. -- 2020-03-29
 #include "linux/linux_socket.h"
 #include "linux/linux_fileio.h"
 #include "linux/linux_stdio.h"
+#include "linux/linux_time.h"
 
 #endif	/*end of __LINUX_OS_H__ */

@@ -7,7 +7,7 @@ History: 1. create file. -- 2019-11-17
 ****************************************************************************************/
 
 #include "lfp_base.h"
-#include "lfp_modules.h"
+#include "lfp_app_modules.h"
 
 #define LFP_MODLUE_REGISTER(func)	{#func, func}
 typedef struct lfp_modules_register_t

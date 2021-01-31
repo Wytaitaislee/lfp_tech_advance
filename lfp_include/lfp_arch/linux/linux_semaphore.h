@@ -9,8 +9,8 @@ History: 1. create file. -- 2020-06-07
 #ifndef __LINUX_SEMAPHORE_H__
 #define __LINUX_SEMAPHORE_H__
 
+#include "lfp_base.h"
 #include <semaphore.h>
-#include "linux/__include/__linux_typesdef.h"
 
 typedef sem_t LINUX_SEM_T;
 #define LFP_SEM_NONSHARED   (0)

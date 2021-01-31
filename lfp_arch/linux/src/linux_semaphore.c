@@ -6,6 +6,7 @@ Date: 2020-06-07
 History: 1. create file. -- 2020-06-07
 ****************************************************************************************/
 #include "linux_semaphore.h"
+#include "linux_typesdef.h"
 
 /*@fn		   LFP_INT32 linux_semaphore_init(LINUX_SEM_T *pSem, LFP_INT32 iShared, LFP_UINT32 uiInitValue)
 * @brief 	   semaphore init on linux system.

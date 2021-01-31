@@ -1,6 +1,13 @@
+/***************************************************************************************
+File name: lfp_arch_adapter_pthread.h
+Description: System adaptation layer. Adapter to different pthread on different OS.
+Author: wytaitaislee
+Date: 2020-03-12
+History: 1. create file. -- 2020-03-12
+****************************************************************************************/
+#include "lfp_arch_adapter_typesdef.h"
+#include "lfp_arch_abstract.h"
 #include "lfp_arch_adapter.h"
-#include "__lfp_arch_adapter_typesdef.h"
-#include "__lfp_arch_abstract.h"
 
 #define LFP_GET_PTHREAD_ENTRY()             (*(LFP_ARCH_ADAPTER_PTHREAD_T*)LFP_GET_CLASS_ENTRY(pthread))
 #define LFP_ADAPTER_PTHREAD_INIT(FUNC)      LFP_ADAPTER_INIT(LFP_GET_PTHREAD_ENTRY(), FUNC)

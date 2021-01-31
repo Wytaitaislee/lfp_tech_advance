@@ -8,6 +8,7 @@ History: 1. create file. -- 2020-06-07
 ****************************************************************************************/
 
 #include "linux_socket.h"
+#include "linux_typesdef.h"
 #include <fcntl.h>
 #include <errno.h>
 

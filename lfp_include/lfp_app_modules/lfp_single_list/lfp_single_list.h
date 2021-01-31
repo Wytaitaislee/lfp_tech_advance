@@ -103,14 +103,6 @@ LFP_INT32 lfp_single_list_delete_element(LFP_SINGLE_LIST_T *pList, LFP_SINGLE_LI
 */
 LFP_INT32 lfp_single_list_destroy(LFP_SINGLE_LIST_T **ppList);
 
-/*@fn		  LFP_INT32 lfp_single_list_module_test_init(LFP_VOID)
-* @brief 	  the single list test module main entrance.
-* @param[in]  LFP_VOID
-* @param[out] NULL
-* @return	  LFP_OK/LFP_ERR
-*/
-LFP_INT32 lfp_single_list_module_test_init(LFP_VOID);
-
 #endif
 
 #endif

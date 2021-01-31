@@ -15,9 +15,9 @@ INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/include/
 
 CFLAGS = $(LFP_GLOBAL_FLAGS) $(INCLUDE_PATH)
 
-LIB_OS = liblfp_app_busybox.a
+LIB_TARGET = liblfp_app_busybox.a
 
-${LIB_OS}:$(CUR_OBJS)
+${LIB_TARGET}:$(CUR_OBJS)
 	$(LFP_AR) $(LFP_AR_FLAGS) $@ $^
 	cp $@ $(LFP_OBJ_PATH)
 

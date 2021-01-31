@@ -10,6 +10,7 @@ History: 1. create file. -- 2020.03.29
 #ifdef LFP_SOCKET_APP
 
 #include "lfp_socket_app.h"
+#include <errno.h>
 
 LFP_STATIC LFP_DATA LFP_SOCKET_SERVER_MANAGE_T *pSocketServerManage = LFP_NULL;
 

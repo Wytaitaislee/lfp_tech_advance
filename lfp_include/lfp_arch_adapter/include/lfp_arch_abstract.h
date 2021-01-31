@@ -120,6 +120,13 @@ typedef struct lfp_arch_adapter_stdio_t
 	LFP_INT32 (*stdio_close)(LFP_FILE* pFp);
 }LFP_ARCH_ADAPTER_STDIO_T;
 
+/* time function cluster */
+typedef struct lfp_arch_adapter_time_t
+{
+    LFP_INT32 (*sleep_ms)(LFP_UINT32 uiSleepMsSeconds);
+    LFP_INT32 (*sleep_s)(LFP_UINT32 uiSleepSeconds);
+}LFP_ARCH_ADAPTER_TIME_T;
+
 typedef struct lfp_arch_adapter_socket_t
 {
     LFP_INT32 (*socket_create)(LFP_INT32, LFP_INT32, LFP_INT32);
@@ -150,6 +157,7 @@ typedef struct lfp_arch_adapter_os_t
 	LFP_ARCH_ADAPTER_FILEIO_T		struArchAdapterFileio;
 	LFP_ARCH_ADAPTER_STDIO_T		struArchAdapterStdio;
     LFP_ARCH_ADAPTER_SOCKET_T       struArchAdapterSocket;
+    LFP_ARCH_ADAPTER_TIME_T         struArchAdapterTime;
 }LFP_ARCH_ADAPTER_OS_T;
 
 #endif /*end of __LFP_ARCH_ABSTRACT_H__ */

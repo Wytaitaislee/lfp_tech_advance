@@ -9,8 +9,8 @@ History: 1. create file. -- 2020-03-29
 #ifndef __LINUX_MUTEX_H__
 #define __LINUX_MUTEX_H__
 
+#include "lfp_base.h"
 #include <pthread.h>
-#include "linux/__include/__linux_typesdef.h"
 
 typedef pthread_mutex_t     LINUX_MUTEX_T;
 typedef pthread_mutexattr_t LINUX_MUTEX_ATTR_T;

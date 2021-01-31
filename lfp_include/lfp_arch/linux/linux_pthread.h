@@ -9,8 +9,8 @@ History: 1. create file. -- 2019-11-17
 #ifndef __LINUX_PTHREAD_H__
 #define __LINUX_PTHREAD_H__
 
+#include "lfp_base.h"
 #include <pthread.h>
-#include "linux/__include/__linux_typesdef.h"
 
 typedef pthread_t 			LINUX_PTHREAD_HADLE_T;
 typedef pthread_attr_t		LINUX_PTHREAD_ATTR_T;

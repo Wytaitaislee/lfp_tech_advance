@@ -17,7 +17,13 @@ History: 1. create file. -- 2019.11.17
 #ifndef __LFP_UTIL_DEF_H__
 #define __LFP_UTIL_DEF_H__
 
-#include "__lfp_base_typesdef.h"
+#include "lfp_base_typesdef.h"
+
+#define LFP_UTIL_MAX_BUFF_SIZE	(4 * 1024)
+
+#define LFP_UTIL_DEFAULT_LEVEL	((1 << UTIL_LEVEL_CRIT) | (1 << UTIL_LEVEL_ERR))
+#define LFP_UTIL_DEFAULT_IDX	((LFP_UINT64)~0)
+#define LFP_UTIL_DEFAULT_MASK	((LFP_UINT64)~0)
 
 #define UTIL_MASK_NUM 		(sizeof(LFP_UINT64) * 8)    /* the max mask size every single module. */
 #define UTIL_BIT_0          (0)
@@ -55,5 +61,6 @@ typedef enum
 #define  MASK_SOCKET        (1 < MASK_SEM)
 #define  MASK_FILEIO	    (1 < MASK_SOCKET)
 #define  MASK_STDIO	        (1 < MASK_FILEIO)
+#define  MASK_TIME	        (1 < MASK_STDIO)
 
 #endif /* end of ___LFP_UTIL_DEF_H__ */

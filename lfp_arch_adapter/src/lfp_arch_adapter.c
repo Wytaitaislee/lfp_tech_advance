@@ -5,6 +5,7 @@
 #include "lfp_arch_adapter_semaphore.h"
 #include "lfp_arch_adapter_socket.h"
 #include "lfp_arch_adapter_stdio.h"
+#include "lfp_arch_adapter_time.h"
 
 LFP_ARCH_ADAPTER_OS_T g_ArchAdapter = {0};
 
@@ -38,6 +39,11 @@ LFP_ARCH_ADAPTER_SOCKET_T* lfp_get_arch_adapter_socket_entry(LFP_VOID)
     return &g_ArchAdapter.struArchAdapterSocket;
 }
 
+LFP_ARCH_ADAPTER_SOCKET_T* lfp_get_arch_adapter_time_entry(LFP_VOID)
+{
+    return &g_ArchAdapter.struArchAdapterTime;
+}
+
 /*@fn		  LFP_STATIC LFP_CODE LFP_INT32 (*lfp_adapter_register[])(LFP_VOID)...
 * @brief 	  the adapter layer register -- the main register entrance, all register cluster.
 * @param[in]  LFP_NULL
@@ -52,6 +58,7 @@ LFP_STATIC LFP_CODE LFP_INT32 (*lfp_adapter_register[])(LFP_VOID) =
     lfp_arch_adapter_fileio_register,
     lfp_arch_adapter_stdio_register,
     lfp_arch_adapter_socket_register,
+    lfp_arch_adapter_time_register,
 };
 
 /*@fn		  LFP_INT32 lfp_arch_adapter_init(LFP_VOID)

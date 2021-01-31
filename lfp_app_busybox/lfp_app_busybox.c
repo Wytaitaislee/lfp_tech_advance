@@ -1,12 +1,12 @@
 /***************************************************************************************
-File name: lfp_util_cmd.c
+File name: lfp_app_busybox.c
 Description: the cmd tools for debugging the program
 Author: wytaitaislee
 Date: 2020-03-30
 History: 1. create file. -- 2020-03-30
 ****************************************************************************************/
 
-#include "lfp_util_app_busybox.h"
+#include "lfp_app_busybox.h"
 
 LFP_INT32 lfp_util_cmd_init(LFP_VOID)
 {

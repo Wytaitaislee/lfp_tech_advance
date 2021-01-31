@@ -5,7 +5,7 @@ LFP_AR_FLAGS = -rc
 LFP_MAKE = make
 LFP_GLOBAL_FLAGS = -g -W -O1 -Wall
 
-MAKEFLAGS += -rR --include-dir=$(CURDIR)/lfp_include/include
+#MAKEFLAGS += -rR --include-dir=$(CURDIR)/lfp_include/include $(CURDIR)/lfp_include/lfp_base_util/
 
 LFP_OBJDIR = objs
 LFP_EXEC = lfp_core

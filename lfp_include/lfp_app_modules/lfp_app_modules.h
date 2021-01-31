@@ -6,8 +6,8 @@ Date: 2019-11-17
 History: 1. create file. -- 2019-11-17
 ************************************************************************************/
 
-#ifndef __LFP_MODULES_H__
-#define __LFP_MODULES_H__
+#ifndef __LFP_APP_MODULES_H__
+#define __LFP_APP_MODULES_H__
 
 #ifdef LFP_SINGLE_LIST_MODULE
 /*@fn		  LFP_INT32 lfp_single_list_module_test_init(LFP_VOID)
@@ -33,4 +33,4 @@ LFP_INT32 lfp_double_list_module_test_init(LFP_VOID);
 #include "lfp_socket_app/lfp_socket_app.h"
 #endif
 
-#endif /* end of __LFP_MODULES_H__ */
+#endif /* end of __LFP_APP_MODULES_H__ */

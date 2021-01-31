@@ -23,20 +23,20 @@ $(CUR_SRC_PATH) = ? || exit -1;
 
 all:make_modules
 
-lfp_lib_modules = liblfp_modules.a
+lfp_lib_app_modules = liblfp_app_modules.a
 
 $(warning ${CUR_SRC_PATH})
 
 make_modules:ECHO_MODULES_DIR
 	for dir in $(CUR_SRC_PATH); do $(MAKE) -C $$dir ; done
-	@$(MAKE) lfp_modules
+	@$(MAKE) lfp_app_modules
 	
 ECHO_MODULES_DIR: 
 	@echo "Compiling $(shell pwd) ..." 
 
-lfp_modules:$(lfp_lib_modules)
+lfp_app_modules:$(lfp_lib_app_modules)
 
-$(lfp_lib_modules):
+$(lfp_lib_app_modules):
 	for lib in $(wildcard *.a); do $(LFP_AR) -x $$lib; done
 	$(LFP_AR) $(LFP_AR_FLAGS) $@ ./*.o
 	cp $@ $(LFP_OBJ_PATH)

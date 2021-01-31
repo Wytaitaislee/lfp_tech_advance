@@ -12,11 +12,7 @@ History: 1. create file. -- 2019-11-17
 #ifdef LFP_SOCKET_APP
 
 #include "lfp_base.h"
-#include "lfp_arch_adapter.h"
-#include <sys/socket.h>
-#include<netinet/in.h>
-#include <arpa/inet.h>
-#include <errno.h>
+#include "lfp_arch_adapter.h"	/* in order to import system dependency related header files */
 
 #define LFP_SOCKET_MAX_LISTEN (64)		/* the maximum listen num */
 #define LFP_SOCKET_MAX_PACKAGE_LEN (1024 * 1024)	/* the maximum size of the single package */

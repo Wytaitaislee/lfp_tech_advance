@@ -9,7 +9,7 @@ History: 1. create file. -- 2020-06-07
 #ifndef __LINUX_STDIOIO_H__
 #define __LINUX_STDIOIO_H__
 
-#include "linux/__include/__linux_typesdef.h"
+#include "lfp_base.h"
 
 #define LFP_STDIO_CRIT(...)   \
 	LFP_UTIL_BASE(UTIL_LEVEL_CRIT, UTIL_MODULE_LINUX, MASK_STDIO, __VA_ARGS__) 

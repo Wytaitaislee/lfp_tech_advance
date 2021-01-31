@@ -7,6 +7,7 @@ History: 1. create file. -- 2020-05-30
 ****************************************************************************************/
 
 #include "linux_fileio.h"
+#include "linux_typesdef.h"
 #include <fcntl.h>
 
 /*@fn		  LFP_INT32 linux_fileio_fcntl(LFP_INT32 iFd, LFP_INT32 iStyle)

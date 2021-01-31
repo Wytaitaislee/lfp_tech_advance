@@ -21,13 +21,7 @@ History: 1. create file. -- 2019.11.17
 #define __LFP_UTIL_LOG_H__
 
 #include "lfp_util_log_typesdef.h"
-#include "__lfp_base_typesdef.h"
-
-#define LFP_UTIL_MAX_BUFF_SIZE	(4 * 1024)
-
-#define LFP_UTIL_DEFAULT_LEVEL	((1 << UTIL_LEVEL_CRIT) | (1 << UTIL_LEVEL_ERR))
-#define LFP_UTIL_DEFAULT_IDX	((LFP_UINT64)~0)
-#define LFP_UTIL_DEFAULT_MASK	((LFP_UINT64)~0)
+#include "lfp_base_typesdef.h"
 
 typedef enum
 {

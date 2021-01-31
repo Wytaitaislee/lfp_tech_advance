@@ -10,7 +10,6 @@ History: 1. create file. -- 2020-06-06
 #ifndef __LINUX_TYPESDEF_H__
 #define __LINUX_TYPESDEF_H__
 
-#include "lfp_base.h"
 #include <stddef.h>
 #include <stdio.h>
 
