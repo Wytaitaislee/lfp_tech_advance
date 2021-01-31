@@ -27,19 +27,9 @@
 
 ### lfp util
 
-基础公共架构部分，支撑项目的通用业务，一是构成系统人机交互的重要桥梁，例如终端命令交互；二是为*upper层*提供基础服务，例如始终、日志等；
-
-#### lfp_util_dbg
+基础公共架构部分，支撑项目的通用业务，一是构成系统人机交互的重要桥梁，例如终端命令交互；二是为*upper层*提供基础服务，例如日志等；
 
 **[日志系统][lfp util]**，根据*模块->子模块...*的基础树形结构进行日志模块的分块管理，实现系统日志信息的精准定位和精确捕捉；
-
-#### lfp util timer
-
-**[基础时间管理][lfp util timer]**，服务不随着OS/平台的变化而变化，如果依赖OS/平台，转封装`lfp_adapter`层；
-
-#### lfp_util_cmd
-
-**[终端命令][lfp util cmd]**, 实现用户交互。用户busybox实现, 通过串口交互实现和主程序的交互，完成状态查询、触发控制等；
 
 ### lfp_arch_adapter
 
@@ -65,6 +55,10 @@
 
 按照`src .c`层级架构，项目外部头文件，内部头文件不输出到此目录，直接存放在对应模块，以`__`作为文件前缀；
 
+### lfp_app_busybox
+
+**[终端命令][lfp app busybox]**, 实现用户交互。用户busybox实现, 通过串口交互实现和主程序的交互，完成状态查询、触发控制等；
+
 ### lfp_app_modules
 
 各应用模块业务代码，所有的应用都基于平台层实现，不能随意直接调用`lfp_arch`层代码，模块业务代码统一在模块中进行注册之后，再注册到`main`；
@@ -79,19 +73,17 @@
 
 ### lfp_rules.make
 
-编译规则
+编译管理，控制各组件的统一编译风格；
 
 ## 编码规则
 
 编码规则主要对项目中的编码习惯进行一个约定，后期随着工程的迭代，可能会引入新的编码规则，目的是一致的，就是促进项目的健壮性，朝着可维护性、可扩展性方向发展。你可以在[lfp编码规则][programming rules]处查看编码规则。
 
 [mkdocs-material安装]: #mkdocs-material安装方法
-[lfp util cmd]: /util/util_cmd/
-[lfp util timer]: /util/
-[lfp util]: /util/util/
-[lfp arch adapter]: /arch_adapter/arch_adaprer/
+[lfp util]: /util/util_logs/
+[lfp arch adapter]: /arch_adapter/arch_adapter/
 [lfp arch]: /arch/arch/
-[lfp documents]: /./
+[lfp app busybox]: /app_busybox/app_busybox/
 [programming rules]: /programming_rules/proogramming_rules/
 
 

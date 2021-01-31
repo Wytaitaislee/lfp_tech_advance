@@ -1,7 +1,7 @@
 #the project name
 site_name: lfp documents
 #the project access address
-dev_addr: 192.168.0.107:10086
+dev_addr: localhost:10086
 
 # Repository
 repo_name: lfp_tech_advance
@@ -19,31 +19,33 @@ copyright: Copyright &copy; 2019 - 2021 wytaitaislee
 nav:
 - 主页: index.md
 - 介绍: introduction/introduction.md
-- project component:
-    - util: 
-        - util: util/util.md
-        - uitl cmd: util/util_cmd.md
-        - uitl timer: util/util_timer.md
+- 基础组件:
+    - logs: util/util_logs.md
+    - app busybox: app_busybox/app_busybox.md
+- 适配:
     - arch: arch/arch.md
     - arch adapter: arch_adapter/arch_adapter.md
-    - exec: exec/exec.md
+- 应用模块:
+    - about: app_modules/module.md
+    - single_list: app_modules/single_list/single_list.md
+    - double list: app_modules/double_list/double_list.md
+    - socket app: app_modules/socket_app/socket_app.md
+- 头文件组织原则:
     - include: include/include.md
-    - link order: lfp_linking/lfp_linking.md
+- 编译控制:
+    - exec: exec/exec.md
+    - linking: lfp_linking/lfp_linking.md
     - main: main/main.md
     - menuconfig: menuconfig/menuconfig.md
-    - lfp_rules.make: lfp_rules.make/lfp_rules.make.md
+    - lfp_rules.make: rules.make/rules.make.md
+- 编码规范:
     - programming rules: programming_rules/programming_rules.md
-    - modules:
-        - about: modules/module.md
-        - single_list: modules/single_list/single_list.md
-        - double list: modules/double_list/double_list.md
-        - socket app: modules/socket_app/socket_app.md
     - tools: tools/stats_tools.md
-- extensions:
+- 知识拓展:
     - common knowledge: extensions/extensions.md
     - whiptail: extensions/whiptail.md
     - markdown syntax: extensions/markdown.md
-- roads: roads/roads.md
+- 进阶线路图: roadmapping/roadmapping.md
 #theme: readthedocs
 
 # markdown extension
