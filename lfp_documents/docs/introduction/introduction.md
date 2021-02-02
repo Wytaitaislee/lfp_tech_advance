@@ -1,6 +1,6 @@
 # lfp documents
 
-在工作、优秀开源代码的阅读过程中，时常会遇到一些比较亮眼的编码方式，出于好奇、自我提升，将这些good taste加以消化，从架构层面扩展自己的知识视野。`lfp`取名**lee's firmware platform**，知识、技能*roads*中所描述、涉及的知识内容，不一定按照由浅入深的顺序去排列，主要还是**以自我兴趣、提升为前提和中心**，并应用到项目中，学以致用。
+在工作、优秀开源代码的阅读过程中，时常会遇到一些比较亮眼的编码方式，出于好奇、自我提升，将这些good taste加以消化，从架构层面扩展自己的知识视野。`lfp`取名 __lee's firmware platform__，知识、技能 _roadmapping_ 中所描述、涉及的知识内容，不一定按照由浅入深的顺序去排列，主要还是 __以自我兴趣、提升为前提和中心__，并应用到项目中，学以致用。
 
 ## mkdocs介绍
 
@@ -23,7 +23,7 @@
 - 和`mkdocs`一样，安装`mkdocs-material`需要`python`和`pip`前置安装；
 - 使用`pip install mkdocs-material`安装`mkdocs-material`，此时会同步安装`mkdocs`相关资源;
 
-## 核心模块介绍
+## 核心组件介绍
 
 ### lfp util
 
@@ -41,19 +41,20 @@
 
 ### lfp_documents
 
-以`mkdown`编写的项目各模块的详细设计架构，以项目架构进行文档分层，设计和文档一致性，点击[项目文档][lfp documents]查看详细的项目文档架构；
+以`markdown`编写的项目各模块的详细设计架构，以项目架构进行文档分层，设计和文档一致性。将文档使用`mkdocs`和`mkdocs-material`渲染后，发布到`Github Page`，点击[项目文档][lfp documents]查看详细的项目文档信息；
 
 ### lfp_exec
 
-可执行程序输出目录，各模块编译之后，最后在lfp_exec进行链接、组装，形成最终的可执行文件；
+可执行程序输出目录，各模块编译之后，最后在`lfp_exec`进行链接、组装，形成最终的可执行文件；
 
 ### lfp_main
 
-项目主入口，各核心模块的注册启动；
+项目主入口，实现各核心模块的注册启动；
 
 ### lfp_include
 
-按照`src .c`层级架构，项目外部头文件，内部头文件不输出到此目录，直接存放在对应模块，以`__`作为文件前缀；
+按照`src .c`层级架构，存放项目相关的头文件，不要为了图简单而将一系列都文件都包含到某一个头文件，再暴露出去供引用。头文件应包含哪些头文件仅取决于自身，而非包含该头文件的源文件：
+> 例如，编译源文件时需要用到头文件B，且源文件已包含头文件A，而索性将头文件B包含在头文件A中，这是错误的做法。
 
 ### lfp_app_busybox
 
@@ -69,7 +70,7 @@
 
 ### lfp_linking
 
-库链接顺序，越是底层的库，链接时越是靠后；
+库链接顺序管理，越是底层的库，链接时越是靠后；
 
 ### lfp_rules.make
 
@@ -85,6 +86,7 @@
 [lfp arch]: /arch/arch/
 [lfp app busybox]: /app_busybox/app_busybox/
 [programming rules]: /programming_rules/proogramming_rules/
+[lfp documents]: https://lee91.github.io/lfp_tech_advance/
 
 
 
