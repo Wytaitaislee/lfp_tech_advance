@@ -452,11 +452,11 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#核心模块介绍" class="md-nav__link">
-    核心模块介绍
+  <a href="#核心组件介绍" class="md-nav__link">
+    核心组件介绍
   </a>
   
-    <nav class="md-nav" aria-label="核心模块介绍">
+    <nav class="md-nav" aria-label="核心组件介绍">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1039,7 +1039,7 @@
                 
                 
                 <h1 id="lfp-documents">lfp documents<a class="headerlink" href="#lfp-documents" title="Permanent link">&para;</a></h1>
-<p>在工作、优秀开源代码的阅读过程中，时常会遇到一些比较亮眼的编码方式，出于好奇、自我提升，将这些good taste加以消化，从架构层面扩展自己的知识视野。<code>lfp</code>取名**lee's firmware platform**，知识、技能*roads*中所描述、涉及的知识内容，不一定按照由浅入深的顺序去排列，主要还是**以自我兴趣、提升为前提和中心**，并应用到项目中，学以致用。</p>
+<p>在工作、优秀开源代码的阅读过程中，时常会遇到一些比较亮眼的编码方式，出于好奇、自我提升，将这些good taste加以消化，从架构层面扩展自己的知识视野。<code>lfp</code>取名 <strong>lee's firmware platform</strong>，知识、技能 <em>roadmapping</em> 中所描述、涉及的知识内容，不一定按照由浅入深的顺序去排列，主要还是 <strong>以自我兴趣、提升为前提和中心</strong>，并应用到项目中，学以致用。</p>
 <h2 id="mkdocs介绍">mkdocs介绍<a class="headerlink" href="#mkdocs介绍" title="Permanent link">&para;</a></h2>
 <p><a href="www.mkdocs.org">MKdocs</a>是一个优秀的静态文档生成器。将文档源文件使用<code>Markdown</code>编写，文档的目录层级在<code>mkdocs.yml</code>文件中进行配置，运行<code>mkdocs serve</code>后即可在浏览器中看到编写的文档内容，排版格式简洁、美观。</p>
 <h3 id="mkdocs安装方法">mkdocs安装方法<a class="headerlink" href="#mkdocs安装方法" title="Permanent link">&para;</a></h3>
@@ -1056,7 +1056,7 @@
 <li>和<code>mkdocs</code>一样，安装<code>mkdocs-material</code>需要<code>python</code>和<code>pip</code>前置安装；</li>
 <li>使用<code>pip install mkdocs-material</code>安装<code>mkdocs-material</code>，此时会同步安装<code>mkdocs</code>相关资源;</li>
 </ul>
-<h2 id="核心模块介绍">核心模块介绍<a class="headerlink" href="#核心模块介绍" title="Permanent link">&para;</a></h2>
+<h2 id="核心组件介绍">核心组件介绍<a class="headerlink" href="#核心组件介绍" title="Permanent link">&para;</a></h2>
 <h3 id="lfp-util">lfp util<a class="headerlink" href="#lfp-util" title="Permanent link">&para;</a></h3>
 <p>基础公共架构部分，支撑项目的通用业务，一是构成系统人机交互的重要桥梁，例如终端命令交互；二是为*upper层*提供基础服务，例如日志等；</p>
 <p><strong><a href="/util/util_logs/">日志系统</a></strong>，根据*模块-&gt;子模块...*的基础树形结构进行日志模块的分块管理，实现系统日志信息的精准定位和精确捕捉；</p>
@@ -1065,13 +1065,16 @@
 <h3 id="lfp_arch">lfp_arch<a class="headerlink" href="#lfp_arch" title="Permanent link">&para;</a></h3>
 <p><strong><a href="/arch/arch/">架构实现层</a></strong>，实现不同OS的系统层封装，上层应用业务不感知系统的差异性；</p>
 <h3 id="lfp_documents">lfp_documents<a class="headerlink" href="#lfp_documents" title="Permanent link">&para;</a></h3>
-<p>以<code>mkdown</code>编写的项目各模块的详细设计架构，以项目架构进行文档分层，设计和文档一致性，点击[项目文档][lfp documents]查看详细的项目文档架构；</p>
+<p>以<code>markdown</code>编写的项目各模块的详细设计架构，以项目架构进行文档分层，设计和文档一致性。将文档使用<code>mkdocs</code>和<code>mkdocs-material</code>渲染后，发布到<code>Github Page</code>，点击<a href="https://lee91.github.io/lfp_tech_advance/">项目文档</a>查看详细的项目文档信息；</p>
 <h3 id="lfp_exec">lfp_exec<a class="headerlink" href="#lfp_exec" title="Permanent link">&para;</a></h3>
-<p>可执行程序输出目录，各模块编译之后，最后在lfp_exec进行链接、组装，形成最终的可执行文件；</p>
+<p>可执行程序输出目录，各模块编译之后，最后在<code>lfp_exec</code>进行链接、组装，形成最终的可执行文件；</p>
 <h3 id="lfp_main">lfp_main<a class="headerlink" href="#lfp_main" title="Permanent link">&para;</a></h3>
-<p>项目主入口，各核心模块的注册启动；</p>
+<p>项目主入口，实现各核心模块的注册启动；</p>
 <h3 id="lfp_include">lfp_include<a class="headerlink" href="#lfp_include" title="Permanent link">&para;</a></h3>
-<p>按照<code>src .c</code>层级架构，项目外部头文件，内部头文件不输出到此目录，直接存放在对应模块，以<code>__</code>作为文件前缀；</p>
+<p>按照<code>src .c</code>层级架构，存放项目相关的头文件，不要为了图简单而将一系列都文件都包含到某一个头文件，再暴露出去供引用。头文件应包含哪些头文件仅取决于自身，而非包含该头文件的源文件：</p>
+<blockquote>
+<p>例如，编译源文件时需要用到头文件B，且源文件已包含头文件A，而索性将头文件B包含在头文件A中，这是错误的做法。</p>
+</blockquote>
 <h3 id="lfp_app_busybox">lfp_app_busybox<a class="headerlink" href="#lfp_app_busybox" title="Permanent link">&para;</a></h3>
 <p><strong><a href="/app_busybox/app_busybox/">终端命令</a></strong>, 实现用户交互。用户busybox实现, 通过串口交互实现和主程序的交互，完成状态查询、触发控制等；</p>
 <h3 id="lfp_app_modules">lfp_app_modules<a class="headerlink" href="#lfp_app_modules" title="Permanent link">&para;</a></h3>
@@ -1079,7 +1082,7 @@
 <h3 id="menuconfig">menuconfig<a class="headerlink" href="#menuconfig" title="Permanent link">&para;</a></h3>
 <p>用以配置、裁剪控制模块；</p>
 <h3 id="lfp_linking">lfp_linking<a class="headerlink" href="#lfp_linking" title="Permanent link">&para;</a></h3>
-<p>库链接顺序，越是底层的库，链接时越是靠后；</p>
+<p>库链接顺序管理，越是底层的库，链接时越是靠后；</p>
 <h3 id="lfp_rulesmake">lfp_rules.make<a class="headerlink" href="#lfp_rulesmake" title="Permanent link">&para;</a></h3>
 <p>编译管理，控制各组件的统一编译风格；</p>
 <h2 id="编码规则">编码规则<a class="headerlink" href="#编码规则" title="Permanent link">&para;</a></h2>
