@@ -4,7 +4,7 @@
 
 ## mkdocs介绍
 
-[MKdocs](www.mkdocs.org)是一个优秀的静态文档生成器。将文档源文件使用`Markdown`编写，文档的目录层级在`mkdocs.yml`文件中进行配置，运行`mkdocs serve`后即可在浏览器中看到编写的文档内容，排版格式简洁、美观。
+[MKdocs](www.mkdocs.org)是一个优秀的静态文档生成器。将文档源文件使用`markdown`编写，文档的目录层级在`mkdocs.yml`文件中进行配置，运行`mkdocs serve`后即可在浏览器中看到编写的文档内容，排版格式简洁、美观。
 
 ### mkdocs安装方法
 
@@ -18,18 +18,28 @@
 
 `mkdocs-material`针对`mkdocs`提供的文档服务功能，对文档/特有功能做了渲染优化，偏向于google风格。丰富的主题/页面配置风格，能够为我们提供更好的用户体验。
 
-### mkdocs-material安装方法
+=== "mkdocs-material在线安装方法"
 
-- 和`mkdocs`一样，安装`mkdocs-material`需要`python`和`pip`前置安装；
-- 使用`pip install mkdocs-material`安装`mkdocs-material`，此时会同步安装`mkdocs`相关资源;
+	* 和`mkdocs`一样，安装`mkdocs-material`需要`python`和`pip`前置安装；
+	* 使用`pip install mkdocs-material`安装`mkdocs-material`，此时会同步安装`mkdocs`相关资源;
+
+=== "mkdocs-material离线安装方法"
+	
+	```
+	cd mkdocs-material
+	pip install -r requirements.txt
+	pip install mkdocs-minify-plugin
+	pip install mkdocs-redirects
+	npm install
+	```
 
 ## 核心组件介绍
 
 ### lfp util
 
-基础公共架构部分，支撑项目的通用业务，一是构成系统人机交互的重要桥梁，例如终端命令交互；二是为*upper层*提供基础服务，例如日志等；
+基础公共架构部分，支撑项目的通用业务，为 _upper层_提供基础服务，例如日志等；
 
-**[日志系统][lfp util]**，根据*模块->子模块...*的基础树形结构进行日志模块的分块管理，实现系统日志信息的精准定位和精确捕捉；
+**[日志系统][lfp util]**，根据 _模块->子模块..._的基础树形结构进行日志模块的分块管理，实现系统日志信息的精准定位和精确捕捉；
 
 ### lfp_arch_adapter
 
@@ -59,6 +69,10 @@
 ### lfp_app_busybox
 
 **[终端命令][lfp app busybox]**, 实现用户交互。用户busybox实现, 通过串口交互实现和主程序的交互，完成状态查询、触发控制等；
+
+### lfp_app_system
+
+应用app系统层，主要为上层应用app提供系统级别的控制，为后期扩展打基础。例如，安全函数、libc库劫持、内存劫持等；
 
 ### lfp_app_modules
 
