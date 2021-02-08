@@ -436,19 +436,6 @@
     mkdocs-material介绍
   </a>
   
-    <nav class="md-nav" aria-label="mkdocs-material介绍">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#mkdocs-material安装方法" class="md-nav__link">
-    mkdocs-material安装方法
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -511,6 +498,13 @@
           <li class="md-nav__item">
   <a href="#lfp_app_busybox" class="md-nav__link">
     lfp_app_busybox
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lfp_app_system" class="md-nav__link">
+    lfp_app_system
   </a>
   
 </li>
@@ -1041,7 +1035,7 @@
                 <h1 id="lfp-documents">lfp documents<a class="headerlink" href="#lfp-documents" title="Permanent link">&para;</a></h1>
 <p>在工作、优秀开源代码的阅读过程中，时常会遇到一些比较亮眼的编码方式，出于好奇、自我提升，将这些good taste加以消化，从架构层面扩展自己的知识视野。<code>lfp</code>取名 <strong>lee's firmware platform</strong>，知识、技能 <em>roadmapping</em> 中所描述、涉及的知识内容，不一定按照由浅入深的顺序去排列，主要还是 <strong>以自我兴趣、提升为前提和中心</strong>，并应用到项目中，学以致用。</p>
 <h2 id="mkdocs介绍">mkdocs介绍<a class="headerlink" href="#mkdocs介绍" title="Permanent link">&para;</a></h2>
-<p><a href="www.mkdocs.org">MKdocs</a>是一个优秀的静态文档生成器。将文档源文件使用<code>Markdown</code>编写，文档的目录层级在<code>mkdocs.yml</code>文件中进行配置，运行<code>mkdocs serve</code>后即可在浏览器中看到编写的文档内容，排版格式简洁、美观。</p>
+<p><a href="www.mkdocs.org">MKdocs</a>是一个优秀的静态文档生成器。将文档源文件使用<code>markdown</code>编写，文档的目录层级在<code>mkdocs.yml</code>文件中进行配置，运行<code>mkdocs serve</code>后即可在浏览器中看到编写的文档内容，排版格式简洁、美观。</p>
 <h3 id="mkdocs安装方法">mkdocs安装方法<a class="headerlink" href="#mkdocs安装方法" title="Permanent link">&para;</a></h3>
 <ul>
 <li>在设备上安装python及其包管理工具pip（目前windows下python安装包会默认安装pip工具）；</li>
@@ -1051,15 +1045,25 @@
 <p>更多安装指导详见<a href="https://www.mkdocs.org/#installing-mkdocs">mkdocs安装</a>；</p>
 <h2 id="mkdocs-material介绍">mkdocs-material介绍<a class="headerlink" href="#mkdocs-material介绍" title="Permanent link">&para;</a></h2>
 <p><code>mkdocs-material</code>针对<code>mkdocs</code>提供的文档服务功能，对文档/特有功能做了渲染优化，偏向于google风格。丰富的主题/页面配置风格，能够为我们提供更好的用户体验。</p>
-<h3 id="mkdocs-material安装方法">mkdocs-material安装方法<a class="headerlink" href="#mkdocs-material安装方法" title="Permanent link">&para;</a></h3>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">mkdocs-material在线安装方法</label><div class="tabbed-content">
 <ul>
 <li>和<code>mkdocs</code>一样，安装<code>mkdocs-material</code>需要<code>python</code>和<code>pip</code>前置安装；</li>
 <li>使用<code>pip install mkdocs-material</code>安装<code>mkdocs-material</code>，此时会同步安装<code>mkdocs</code>相关资源;</li>
 </ul>
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">mkdocs-material离线安装方法</label><div class="tabbed-content">
+<div class="highlight"><pre><span></span><code>cd mkdocs-material
+pip install -r requirements.txt
+pip install mkdocs-minify-plugin
+pip install mkdocs-redirects
+npm install
+</code></pre></div>
+</div>
+</div>
 <h2 id="核心组件介绍">核心组件介绍<a class="headerlink" href="#核心组件介绍" title="Permanent link">&para;</a></h2>
 <h3 id="lfp-util">lfp util<a class="headerlink" href="#lfp-util" title="Permanent link">&para;</a></h3>
-<p>基础公共架构部分，支撑项目的通用业务，一是构成系统人机交互的重要桥梁，例如终端命令交互；二是为*upper层*提供基础服务，例如日志等；</p>
-<p><strong><a href="/util/util_logs/">日志系统</a></strong>，根据*模块-&gt;子模块...*的基础树形结构进行日志模块的分块管理，实现系统日志信息的精准定位和精确捕捉；</p>
+<p>基础公共架构部分，支撑项目的通用业务，为 _upper层_提供基础服务，例如日志等；</p>
+<p><strong><a href="/util/util_logs/">日志系统</a></strong>，根据 _模块-&gt;子模块..._的基础树形结构进行日志模块的分块管理，实现系统日志信息的精准定位和精确捕捉；</p>
 <h3 id="lfp_arch_adapter">lfp_arch_adapter<a class="headerlink" href="#lfp_arch_adapter" title="Permanent link">&para;</a></h3>
 <p><strong><a href="/arch_adapter/arch_adapter/">架构适配层</a></strong>，用以兼容/适配不同的操作系统（或者cpu平台，预留，目前暂时适配不同操作系统）, 用户层无需感知系统的变化；</p>
 <h3 id="lfp_arch">lfp_arch<a class="headerlink" href="#lfp_arch" title="Permanent link">&para;</a></h3>
@@ -1077,6 +1081,8 @@
 </blockquote>
 <h3 id="lfp_app_busybox">lfp_app_busybox<a class="headerlink" href="#lfp_app_busybox" title="Permanent link">&para;</a></h3>
 <p><strong><a href="/app_busybox/app_busybox/">终端命令</a></strong>, 实现用户交互。用户busybox实现, 通过串口交互实现和主程序的交互，完成状态查询、触发控制等；</p>
+<h3 id="lfp_app_system">lfp_app_system<a class="headerlink" href="#lfp_app_system" title="Permanent link">&para;</a></h3>
+<p>应用app系统层，主要为上层应用app提供系统级别的控制，为后期扩展打基础。例如，安全函数、libc库劫持、内存劫持等；</p>
 <h3 id="lfp_app_modules">lfp_app_modules<a class="headerlink" href="#lfp_app_modules" title="Permanent link">&para;</a></h3>
 <p>各应用模块业务代码，所有的应用都基于平台层实现，不能随意直接调用<code>lfp_arch</code>层代码，模块业务代码统一在模块中进行注册之后，再注册到<code>main</code>；</p>
 <h3 id="menuconfig">menuconfig<a class="headerlink" href="#menuconfig" title="Permanent link">&para;</a></h3>
