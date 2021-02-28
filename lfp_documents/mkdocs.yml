@@ -45,7 +45,7 @@ nav:
     - tools: tools/stats_tools.md
 - 知识拓展:
     - common knowledge: extensions/extensions.md
-    - whiptail: extensions/whiptail.md
+    - whiptail: extensions/whiptail/whiptail.md
     - markdown syntax: extensions/markdown.md
 - 进阶线路图: roadmapping/roadmapping.md
 #theme: readthedocs
