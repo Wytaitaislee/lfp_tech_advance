@@ -8,6 +8,7 @@ History: 1. create file. -- 2019-11-17
 
 #include "lfp_base.h"
 #include "lfp_app_modules.h"
+#include "lfp_app_busybox.h"
 
 #define LFP_MODLUE_REGISTER(func)	{#func, func}
 typedef struct lfp_modules_register_t
@@ -20,6 +21,7 @@ LFP_STATIC LFP_CONST LFP_CODE LFP_MODULES_REGISTER_T g_ModulesRegister[] =
 {
 	LFP_MODLUE_REGISTER(lfp_util_module_init),
 	LFP_MODLUE_REGISTER(lfp_arch_adapter_init),
+	LFP_MODLUE_REGISTER(lfp_busybox_init),
 #ifdef LFP_SOCKET_APP
 	LFP_MODLUE_REGISTER(lfp_socket_module_init),
 #endif

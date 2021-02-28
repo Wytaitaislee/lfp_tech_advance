@@ -14,6 +14,7 @@ INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/lfp_arch/
 INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/lfp_arch_adapter/
 INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/lfp_arch_adapter/include/
 INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/lfp_app_modules/
+INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/lfp_app_busybox/
 
 CFLAGS = $(LFP_GLOBAL_FLAGS) $(INCLUDE_PATH)
 LIB_OS = liblfp_main.a

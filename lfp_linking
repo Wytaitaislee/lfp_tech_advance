@@ -1,6 +1,9 @@
 libs_src-y := $(LFP_ROOT_PATH)/lfp_main
 libs_obj-y := -llfp_main
 
+libs_src-y += $(LFP_ROOT_PATH)/lfp_app_busybox
+libs_obj-y += -llfp_app_busybox
+
 libs_src-y += $(LFP_ROOT_PATH)/lfp_app_modules
 libs_obj-y += -llfp_app_modules
 

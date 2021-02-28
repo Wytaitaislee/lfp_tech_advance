@@ -35,6 +35,7 @@ typedef enum
     UTIL_MODULE_SOCKET      = 0x4,
     UTIL_MODULE_ADAPTER     = 0x8,
     UTIL_MODULE_LINUX       = 0x10,
+    UTIL_MODULE_APP_BUSYBOX = 0x20,
     UTIL_MODULE_INVALID = (LFP_INT64)(-1),
 }UTIL_MODULE_DEF_E;
 
@@ -62,5 +63,8 @@ typedef enum
 #define  MASK_FILEIO	    (1 < MASK_SOCKET)
 #define  MASK_STDIO	        (1 < MASK_FILEIO)
 #define  MASK_TIME	        (1 < MASK_STDIO)
+
+/* 6. UTIL_MODEL_APP_BUSYBOX(0x20) module idx .*/
+#define MASK_APP_BUSYBOX    (1 < UTIL_BIT_0)
 
 #endif /* end of ___LFP_UTIL_DEF_H__ */
