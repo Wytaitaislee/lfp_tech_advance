@@ -6,7 +6,6 @@ Date: 2019-11-17
 History: 1. create file. -- 2019-11-17
 ****************************************************************************************/
 
-#include "lfp_util_log_typesdef.h"
 #include "lfp_base.h"
 #include <stdarg.h>
 
