@@ -30,6 +30,14 @@ History: 1. create file. -- 2019.11.17
 
 typedef enum
 {
+	UTIL_LEVEL_CRIT = 0x1,
+	UTIL_LEVEL_ERR  = 0x2,
+	UTIL_LEVEL_INFO = 0x4,
+	UTIL_LEVEL_MAX,
+}LFP_UTIL_LEVEL_E;
+
+typedef enum
+{
     UTIL_MODULE_SINGLE_LIST = 0x1,
     UTIL_MODULE_DOUBLE_LIST = 0x2,
     UTIL_MODULE_SOCKET      = 0x4,

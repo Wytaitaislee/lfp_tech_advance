@@ -21,15 +21,6 @@ History: 1. create file. -- 2019.11.17
 #define __LFP_UTIL_LOG_H__
 
 #include "lfp_util_log_typesdef.h"
-#include "lfp_base_typesdef.h"
-
-typedef enum
-{
-	UTIL_LEVEL_CRIT = 0x1,
-	UTIL_LEVEL_ERR  = 0x2,
-	UTIL_LEVEL_INFO = 0x4,
-	UTIL_LEVEL_MAX,
-}LFP_UTIL_LEVEL_E;
 
 typedef struct lfp_util_map_t
 {
