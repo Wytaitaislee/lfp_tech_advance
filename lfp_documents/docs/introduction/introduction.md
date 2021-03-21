@@ -25,13 +25,11 @@
 
 === "mkdocs-material离线安装方法"
 	
-	```
-	cd mkdocs-material
-	pip install -r requirements.txt
-	pip install mkdocs-minify-plugin
-	pip install mkdocs-redirects
-	npm install
-	```
+	* cd mkdocs-material
+	* pip install -r requirements.txt
+	* pip install mkdocs-minify-plugin
+	* pip install mkdocs-redirects
+	* npm install
 
 ## 核心组件介绍
 
