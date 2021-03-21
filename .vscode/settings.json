@@ -12,6 +12,11 @@
         "lfp_arch_adapter_typesdef.h": "c",
         "lfp_arch_adapter.h": "c",
         "linux_time.h": "c",
-        "linux_typesdef.h": "c"
+        "linux_typesdef.h": "c",
+        "lfp_arch_abstract.h": "c",
+        "lfp_app_modules.h": "c",
+        "lfp_base.h": "c",
+        "linux.h": "c",
+        "linux_pthread.h": "c"
     }
 }
