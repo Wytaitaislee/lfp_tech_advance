@@ -19,7 +19,7 @@ History: 1. create file. -- 2019.11.17
 LFP_INT32 lfp_socket_proc(LFP_VOID* pServerArgs)
 {
 	LFP_SOCKET_DESC_T *pServerDesc = LFP_NULL;
-	LFP_PTHREAD_HADLE_T struSendTid = 0, struRecvTid = 0;
+	LINUX_PTHREAD_HANDLE_T struSendTid = 0, struRecvTid = 0;
 	LFP_INT32 iRet = LFP_ERR;
 
 	LFP_ASSERT(pServerArgs);

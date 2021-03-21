@@ -39,7 +39,7 @@ LFP_ARCH_ADAPTER_SOCKET_T* lfp_get_arch_adapter_socket_entry(LFP_VOID)
     return &g_ArchAdapter.struArchAdapterSocket;
 }
 
-LFP_ARCH_ADAPTER_SOCKET_T* lfp_get_arch_adapter_time_entry(LFP_VOID)
+LFP_ARCH_ADAPTER_TIME_T* lfp_get_arch_adapter_time_entry(LFP_VOID)
 {
     return &g_ArchAdapter.struArchAdapterTime;
 }

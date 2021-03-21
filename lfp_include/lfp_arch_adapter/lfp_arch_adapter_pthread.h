@@ -11,10 +11,10 @@ History: 1. create file. -- 2020-06-07
 
 #include "lfp_base.h"
 
-/*@fn		  LFP_INT32 lfp_pthread_create(LFP_PTHREAD_HADLE_T *pThreadHandle, LFP_INT32 iPrority,
+/*@fn		  LFP_INT32 lfp_pthread_create(LINUX_PTHREAD_HANDLE_T *pThreadHandle, LFP_INT32 iPrority,
                                 LFP_UINT32 uiStackSize, LFP_VOID* pStartTask, LFP_UINT32 uiArgs, LFP_VOID* pParams)
 * @brief 	  create a new thread.
-* @param[in]  LFP_PTHREAD_HADLE_T *pThreadHandle - the thread identifier
+* @param[in]  LINUX_PTHREAD_HANDLE_T *pThreadHandle - the thread identifier
 * @param[in]  LFP_INT32 iPrority - the thread execute priority
 * @param[in]  LFP_INT32 uiStackSize - the thread stack size
 * @param[in]  LFP_VOID *pStartTask - the start function
@@ -22,25 +22,25 @@ History: 1. create file. -- 2020-06-07
 * @param[out] LFP_NULL
 * @return	  LFP_OK / LFP_ERR
 */
-LFP_INT32 lfp_pthread_create(LFP_PTHREAD_HADLE_T *pThreadHandle, LFP_INT32 iPrority, LFP_UINT32 uiStackSize, LFP_VOID* pStartTask, LFP_VOID* pParams);
+LFP_INT32 lfp_pthread_create(LINUX_PTHREAD_HANDLE_T *pThreadHandle, LFP_INT32 iPrority, LFP_UINT32 uiStackSize, LFP_VOID* pStartTask, LFP_VOID* pParams);
 
 
-/*@fn		  LFP_INT32 lfp_pthread_cancel(LFP_PTHREAD_HADLE_T hThreadHandle)
+/*@fn		  LFP_INT32 lfp_pthread_cancel(LINUX_PTHREAD_HANDLE_T hThreadHandle)
 * @brief 	  send a cancellation request to a thread
-* @param[in]  LFP_PTHREAD_HADLE_T hThreadHandle - the thread identifier
+* @param[in]  LINUX_PTHREAD_HANDLE_T hThreadHandle - the thread identifier
 * @param[out] LFP_NULL
 * @return	  LFP_OK / LFP_ERR
 */
-LFP_INT32 lfp_pthread_cancel(LFP_PTHREAD_HADLE_T hThreadHandle);
+LFP_INT32 lfp_pthread_cancel(LINUX_PTHREAD_HANDLE_T hThreadHandle);
 
-/*@fn		  LFP_INT32 lfp_pthread_kill(LFP_PTHREAD_HADLE_T hThreadHandle, LFP_INT32 iSig)
+/*@fn		  LFP_INT32 lfp_pthread_kill(LINUX_PTHREAD_HANDLE_T hThreadHandle, LFP_INT32 iSig)
 * @brief 	  send a signal to a thread
-* @param[in]  LFP_PTHREAD_HADLE_T hThreadHandle - the thread identifier
+* @param[in]  LINUX_PTHREAD_HANDLE_T hThreadHandle - the thread identifier
 * @param[in]  LFP_INT32 iSig - signal type
 * @param[out] LFP_NULL
 * @return	  LFP_OK / LFP_ERR
 */
-LFP_INT32 lfp_pthread_kill(LFP_PTHREAD_HADLE_T hThreadHandle, LFP_INT32 iSig);
+LFP_INT32 lfp_pthread_kill(LINUX_PTHREAD_HANDLE_T hThreadHandle, LFP_INT32 iSig);
 
 /*@fn		  LFP_INT32 lfp_arch_adapter_pthread_register(LFP_VOID)
 * @brief 	  the adapter layer register -- pthread cluster register

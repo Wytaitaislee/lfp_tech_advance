@@ -52,7 +52,7 @@ DEFINE_ARCH_TYPESDEF_ADAPTER(MUTEX_T);
 DEFINE_ARCH_TYPESDEF_ADAPTER(MUTEX_ATTR_T);
 
 /* pthread relevant typesdef */
-DEFINE_ARCH_TYPESDEF_ADAPTER(PTHREAD_HADLE_T);
+DEFINE_ARCH_TYPESDEF_ADAPTER(PTHREAD_HANDLE_T);
 DEFINE_ARCH_TYPESDEF_ADAPTER(PTHREAD_ATTR_T);
 
 /* semaphore relevant typesdef */
@@ -68,9 +68,9 @@ DEFINE_ARCH_TYPESDEF_ADAPTER(FILE);
 typedef struct lfp_arch_adapter_pthread_t
 {
     /* data */
-    LFP_INT32 (*pthread_create)(LFP_PTHREAD_HADLE_T *pThreadHandle, LFP_INT32 iPrority, LFP_UINT32 uiStackSize, LFP_VOID* pStartTask, LFP_VOID* pParams);
-    LFP_INT32 (*pthread_cancel)(LFP_PTHREAD_HADLE_T hThreadHandle);
-    LFP_INT32 (*pthread_kill)(LFP_PTHREAD_HADLE_T hThreadHandle, LFP_INT32 iSig);
+    LFP_INT32 (*pthread_create)(LFP_PTHREAD_HANDLE_T *pThreadHandle, LFP_INT32 iPrority, LFP_UINT32 uiStackSize, LFP_VOID* pStartTask, LFP_VOID* pParams);
+    LFP_INT32 (*pthread_cancel)(LFP_PTHREAD_HANDLE_T hThreadHandle);
+    LFP_INT32 (*pthread_kill)(LFP_PTHREAD_HANDLE_T hThreadHandle, LFP_INT32 iSig);
 }LFP_ARCH_ADAPTER_PTHREAD_T;
 
 /* Mutex function cluster */
