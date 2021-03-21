@@ -9,6 +9,6 @@ History: 1. create file. -- 2020-06-06
 #ifndef __WINDOWS_TYPESDEF_H__
 #define __WINDOWS_TYPESDEF_H__
 
-typedef void* 			    LFP_PTHREAD_HADLE_T;
+typedef void* 			    LINUX_PTHREAD_HANDLE_T;
 
 #endif	/*end of __WINDOWS_TYPESDEF_H__ */
