@@ -30,7 +30,13 @@ LFP_INT32 lfp_double_list_module_test_init(LFP_VOID);
 #endif
 
 #ifdef LFP_SOCKET_APP
-#include "lfp_socket_app/lfp_socket_app.h"
+/*@fn		  LFP_INT32 lfp_socket_module_init(LFP_VOID)
+* @brief 	  socket communication main entrance
+* @param[in]  LFP_VOID
+* @param[out] LFP_NULL
+* @return	  LFP_OK / LFP_ERR
+*/
+LFP_INT32 lfp_socket_module_init(LFP_VOID);
 #endif
 
 #endif /* end of __LFP_APP_MODULES_H__ */
