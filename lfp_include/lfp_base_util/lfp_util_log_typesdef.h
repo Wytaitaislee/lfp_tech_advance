@@ -1,10 +1,10 @@
 /***************************************************************************************
-File name: lfp_util_log_typesdef.h																	
-Description: Log information control module, define the log switch of each module.										
-Author: wytaitaislee																																	
-Date: 2019.11.17																		
-History: 1. create file. -- 2019.11.17
-         2. only define switch bit. -- 2020.11.07
+ * @fileName: lfp_util_log_typesdef.h
+ * @Description: Log information control module, define the log switch of each module.
+ * @Author: wytaitaislee
+ * @Date: 2020-08-16 16:05:58
+ * @LastEditors: wytaitaislee
+ * @LastEditTime: 2021-03-21 20:05:41
 ****************************************************************************************/
 
 /************************the dbg util design rules*******************************************/

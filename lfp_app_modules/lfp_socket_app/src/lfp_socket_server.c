@@ -1,10 +1,13 @@
 /************************************************************************************
-File name: lfp_socket_server.c
-Description: Socket communication server implementation.
-Author: wytaitaislee
-Date: 2019.11.17
-History: 1. create file. -- 2019.11.17
+
+ * @fileName: lfp_socket_server.c
+ * @Description: Socket communication server implementation.
+ * @Author: wytaitaislee
+ * @Date: 2020-08-16 16:05:59
+ * @LastEditors: wytaitaislee
+ * @LastEditTime: 2021-03-21 19:25:59
 ************************************************************************************/
+
 #ifdef LFP_SOCKET_APP
 
 #include "lfp_socket_app.h"

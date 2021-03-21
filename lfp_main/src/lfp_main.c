@@ -1,9 +1,10 @@
 /***************************************************************************************
-File name: lfp_main.c
-Description: lee's firmware platform main entrance.
-Author: wytaitaislee
-Date: 2019-11-17
-History: 1. create file. -- 2019-11-17
+ * @fileName: lfp_main.c
+ * @Description: lee's firmware platform main entrance.
+ * @Author: wytaitaislee
+ * @Date: 2020-08-16 16:05:58
+ * @LastEditors: wytaitaislee
+ * @LastEditTime: 2021-03-21 20:07:53
 ****************************************************************************************/
 
 #include "lfp_base.h"

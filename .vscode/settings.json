@@ -17,6 +17,7 @@
         "lfp_app_modules.h": "c",
         "lfp_base.h": "c",
         "linux.h": "c",
-        "linux_pthread.h": "c"
+        "linux_pthread.h": "c",
+        "lfp_socket_app.h": "c"
     }
 }

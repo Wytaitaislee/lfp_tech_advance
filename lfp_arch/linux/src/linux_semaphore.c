@@ -1,9 +1,10 @@
 /***************************************************************************************
-File name: linux_semaphore.c
-Description: the semaphore management on linux system.
-Author: wytaitaislee
-Date: 2020-06-07
-History: 1. create file. -- 2020-06-07
+ * @fileName: linux_semaphore.c
+ * @Description: the semaphore management on linux system.
+ * @Author: wytaitaislee
+ * @Date: 2020-08-16 16:05:57
+ * @LastEditors: wytaitaislee
+ * @LastEditTime: 2021-03-21 19:29:14
 ****************************************************************************************/
 #include "linux_semaphore.h"
 #include "linux_typesdef.h"

@@ -1,11 +1,12 @@
 /************************************************************************************
-File name: lfp_double_list.c
-Description: Double linked list module implementation.
-Author: wytaitaislee
-Date: 2020-05-05
-History: 1. create file. -- 2020-05-05
-         2. refact at 2020-05-16
+ * @fileName: lfp_double_list.c
+ * @Description: Double linked list module implementation.
+ * @Author: wytaitaislee
+ * @Date: 2020-08-16 16:05:59
+ * @LastEditors: wytaitaislee
+ * @LastEditTime: 2021-03-21 19:22:42
 ************************************************************************************/
+
 #ifdef LFP_DOUBLE_LIST_MODULE
 
 #include "lfp_double_list.h"

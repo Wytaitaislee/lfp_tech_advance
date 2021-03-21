@@ -1,9 +1,10 @@
 /***************************************************************************************
-File name: lfp_arch_adapter_fileio.h
-Description: System adaptation layer. Adapter to different fileio on different OS.
-Author: wytaitaislee
-Date: 2020-03-12
-History: 1. create file. -- 2020-03-12
+ * @fileName: lfp_arch_adapter_fileio.h
+ * @Description: System adaptation layer. Adapter to different fileio on different OS.
+ * @Author: wytaitaislee
+ * @Date: 2020-08-16 16:05:58
+ * @LastEditors: wytaitaislee
+ * @LastEditTime: 2021-03-21 19:30:35
 ****************************************************************************************/
 #include "lfp_arch_adapter_typesdef.h"
 #include "lfp_arch_abstract.h"

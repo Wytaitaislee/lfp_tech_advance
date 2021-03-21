@@ -1,9 +1,10 @@
 /***************************************************************************************
-File name: linux_mutex.h
-Description: the mutex management on linux system.
-Author: wytaitaislee
-Date: 2020-03-29
-History: 1. create file. -- 2020-03-29
+ * @fileName: linux_mutex.h
+ * @Description: the mutex management on linux system.
+ * @Author: wytaitaislee
+ * @Date: 2020-09-26 18:43:32
+ * @LastEditors: wytaitaislee
+ * @LastEditTime: 2021-03-21 19:57:42
 ****************************************************************************************/
 
 #ifndef __LINUX_MUTEX_H__

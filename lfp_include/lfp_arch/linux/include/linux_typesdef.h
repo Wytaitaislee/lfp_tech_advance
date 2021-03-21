@@ -1,10 +1,11 @@
 /***************************************************************************************
-File name: linux_typesdef.h
-Description: redefine the types on linux system, the header file in "include" should quote
-             this header file directly.
-Author: wytaitaislee
-Date: 2020-06-06
-History: 1. create file. -- 2020-06-06
+ * @fileName: linux_typesdef.h
+ * @Description: redefine the types on linux system, the header file in "include" should quote
+                 this header file directly.
+ * @Author: wytaitaislee
+ * @Date: 2020-09-26 18:43:32
+ * @LastEditors: wytaitaislee
+ * @LastEditTime: 2021-03-21 19:56:55
 ****************************************************************************************/
 
 #ifndef __LINUX_TYPESDEF_H__

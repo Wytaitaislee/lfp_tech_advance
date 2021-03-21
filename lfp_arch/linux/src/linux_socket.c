@@ -1,10 +1,11 @@
 /***************************************************************************************
-File name: linux_socket.c
-Description: Operating system adaptation layer, matching different architecture platforms.
-			 pthread implement.
-Author: wytaitaislee
-Date: 2020-06-07
-History: 1. create file. -- 2020-06-07
+ * @fileName: linux_socket.c
+ * @Description: Operating system adaptation layer, matching different architecture platforms.
+			 	  pthread implement.
+ * @Author: wytaitaislee
+ * @Date: 2020-08-16 16:05:57
+ * @LastEditors: wytaitaislee
+ * @LastEditTime: 2021-03-21 19:29:40
 ****************************************************************************************/
 
 #include "linux_socket.h"

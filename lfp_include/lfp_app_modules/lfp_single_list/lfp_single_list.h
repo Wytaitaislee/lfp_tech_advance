@@ -1,9 +1,10 @@
 /************************************************************************************
-File name: lfp_single_list.h
-Description: Single linked list module data structure definition.
-Author: wytaitaislee
-Date: 2019-11-17
-History: 1. create file. -- 2019-11-17
+ * @fileName: lfp_single_list.h
+ * @Description: Single linked list module data structure definition.
+ * @Author: wytaitaislee
+ * @Date: 2020-08-16 16:05:58
+ * @LastEditors: wytaitaislee
+ * @LastEditTime: 2021-03-21 19:52:33
 ************************************************************************************/
 
 #ifndef __LFP_LIST_SINGLE_H__

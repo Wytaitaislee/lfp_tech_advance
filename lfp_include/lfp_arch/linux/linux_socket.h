@@ -1,10 +1,10 @@
 /***************************************************************************************
-File name: linux_socket_base.h
-Description: the socket base function management on linux system.
-Author: wytaitaislee
-Date: 2020-05-30
-History: 1. create file. -- 2020-05-30
-         2. move socket base function to the lower layer -- 2020-06-07
+ * @fileName: linux_socket_base.h
+ * @Description:  the socket base function management on linux system.
+ * @Author: wytaitaislee
+ * @Date: 2020-09-26 18:43:32
+ * @LastEditors: wytaitaislee
+ * @LastEditTime: 2021-03-21 19:59:33
 ****************************************************************************************/
 
 #ifndef __LINUX_SOCKET_H__

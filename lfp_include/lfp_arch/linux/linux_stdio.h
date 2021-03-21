@@ -1,9 +1,10 @@
 /***************************************************************************************
-File name: linux_stdio.h
-Description: the standard io management on linux system.
-Author: wytaitaislee
-Date: 2020-06-07
-History: 1. create file. -- 2020-06-07
+ * @fileName: linux_stdio.h
+ * @Description: the standard io management on linux system.
+ * @Author: wytaitaislee
+ * @Date: 2020-09-26 18:43:32
+ * @LastEditors: wytaitaislee
+ * @LastEditTime: 2021-03-21 19:59:59
 ****************************************************************************************/
 
 #ifndef __LINUX_STDIOIO_H__

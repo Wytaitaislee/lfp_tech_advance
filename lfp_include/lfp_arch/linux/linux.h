@@ -1,10 +1,11 @@
 /***************************************************************************************
-File name: linux.h
-Description: the header file management about linux system, this header file 
-             can only be referenced by the arch layer.
-Author: wytaitaislee
-Date: 2020-03-29
-History: 1. create file. -- 2020-03-29
+ * @fileName: linux.h
+ * @Description: the header file management about linux system, this header file 
+                 can only be referenced by the arch layer.
+ * @Author: wytaitaislee
+ * @Date: 2020-09-26 18:43:32
+ * @LastEditors: wytaitaislee
+ * @LastEditTime: 2021-03-21 20:00:40
 ****************************************************************************************/
 
 #ifndef __LINUX_OS_H__

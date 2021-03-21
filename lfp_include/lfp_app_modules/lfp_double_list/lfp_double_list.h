@@ -1,10 +1,11 @@
 /************************************************************************************
-File name: lfp_double_list.h
-Description: Double linked list module data structure definition.
-Author: wytaitaislee
-Date: 2019-11-17
-History: 1. create file. -- 2019-11-17
-		 2. refact at 2020-05-16 , interface becomes more compatible.
+ * @fileName: lfp_double_list.h
+ * @Description: Double linked list module data structure definition.
+ * @Author: wytaitaislee
+ * @Date: 2020-08-16 16:05:58
+ * @LastEditors: wytaitaislee
+ * @LastEditTime: 2021-03-21 19:51:58
+ */
 ************************************************************************************/
 
 #ifndef __LFP_DOUBLE_LIST_H__

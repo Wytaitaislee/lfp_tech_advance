@@ -1,9 +1,10 @@
 /************************************************************************************
-File name: lfp_app_modules.h
-Description: only resigster main entrance of modules
-Author: wytaitaislee
-Date: 2019-11-17
-History: 1. create file. -- 2019-11-17
+ * @fileName: lfp_app_modules.h
+ * @Description: only resigster main entrance of modules
+ * @Author: wytaitaislee
+ * @Date: 2021-01-31 18:16:57
+ * @LastEditors: wytaitaislee
+ * @LastEditTime: 2021-03-21 19:53:58
 ************************************************************************************/
 
 #ifndef __LFP_APP_MODULES_H__

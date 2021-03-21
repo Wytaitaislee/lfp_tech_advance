@@ -1,9 +1,10 @@
 /************************************************************************************
-File name: lfp_socket_app.h
-Description: Socket general business module to support network communication.
-Author: wytaitaislee
-Date: 2019-11-17
-History: 1. create file. -- 2019-11-17
+ * @fileName: lfp_socket_app.h
+ * @Description: Socket general business module to support network communication.
+ * @Author: wytaitaislee
+ * @Date: 2020-08-16 16:05:58
+ * @LastEditors: wytaitaislee
+ * @LastEditTime: 2021-03-21 19:53:36
 ************************************************************************************/
 
 #ifndef __LFP_SOCKET_APP_H__

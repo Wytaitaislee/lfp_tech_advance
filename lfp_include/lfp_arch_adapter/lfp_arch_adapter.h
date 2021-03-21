@@ -1,9 +1,10 @@
 /***************************************************************************************
-File name: lfp_arch_adapter.h
-Description: System adaptation layer, matching different arch.
-Author: wytaitaislee
-Date: 2020-03-10
-History: 1. create file. -- 2020-03-10
+ * @fileName: lfp_arch_adapter.h
+ * @Description: System adaptation layer, matching different arch.
+ * @Author: wytaitaislee
+ * @Date: 2020-08-16 16:05:58
+ * @LastEditors: wytaitaislee
+ * @LastEditTime: 2021-03-21 20:05:15
 ****************************************************************************************/
 #ifndef __LFP_ARCH_ADAPTER_H__
 #define __LFP_ARCH_ADAPTER_H__

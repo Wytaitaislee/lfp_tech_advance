@@ -1,9 +1,10 @@
 /***************************************************************************************
-File name: linux_pthread.h
-Description: the pthread management on linux system.
-Author: wytaitaislee
-Date: 2019-11-17
-History: 1. create file. -- 2019-11-17
+ * @fileName: linux_pthread.h
+ * @Description: the pthread management on linux system.
+ * @Author: wytaitaislee
+ * @Date: 2020-09-26 18:43:32
+ * @LastEditors: wytaitaislee
+ * @LastEditTime: 2021-03-21 19:58:50
 ****************************************************************************************/
 
 #ifndef __LINUX_PTHREAD_H__
@@ -53,4 +54,5 @@ LFP_INT32 linux_pthread_cancel(LINUX_PTHREAD_HANDLE_T hThreadHandle);
 * @return	  LFP_OK / LFP_ERR
 */
 LFP_INT32 linux_pthread_kill(LINUX_PTHREAD_HANDLE_T hThreadHandle, LFP_INT32 iSig);
+
 #endif	/*end of __LINUX_PTHREAD_H__ */

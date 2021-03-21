@@ -1,10 +1,11 @@
 /***************************************************************************************
-File name: linux_pthread.c
-Description: Operating system adaptation layer, matching different architecture platforms.
-			 pthread implement.
-Author: wytaitaislee
-Date: 2019-11-17
-History: 1. create file. -- 2019-11-17
+ * @fileName: linux_pthread.c
+ * @Description: Operating system adaptation layer, matching different architecture platforms.
+			 	  pthread implement.
+ * @Author: wytaitaislee
+ * @Date: 2020-08-16 16:05:57
+ * @LastEditors: wytaitaislee
+ * @LastEditTime: 2021-03-21 19:28:45
 ****************************************************************************************/
 
 #include "linux_pthread.h"

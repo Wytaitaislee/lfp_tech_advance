@@ -1,11 +1,10 @@
 /*********************************************************************************************
-File name: lfp_base_macros.h																	
-Description: define the basic macro function structure(macros define).									
-Author: wytaitaislee																		
-Date: 2020-09-26																		
-History: 1. create file. -- 2020.09.26
-		 2. add the `assert` scenes -- 2020.11.06
-		 3. change the file name from __lfp_base_macros.h to lfp_base_macros.h  -- 2021.01.31
+ * @fileName: lfp_base_macros.h
+ * @Description: define the basic macro function structure(macros define).
+ * @Author: wytaitaislee
+ * @Date: 2020-09-26 16:55:41
+ * @LastEditors: wytaitaislee
+ * @LastEditTime: 2021-03-21 19:50:27
 **********************************************************************************************/
 
 #ifndef __LFP_BASE_MACROS_H__

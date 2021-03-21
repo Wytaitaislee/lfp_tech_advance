@@ -1,9 +1,10 @@
 /***************************************************************************************
-File name: linux_io.h
-Description: the file io management on linux system.
-Author: wytaitaislee
-Date: 2020-05-30
-History: 1. create file. -- 2020-05-30
+ * @fileName: linux_io.h
+ * @Description: the file io management on linux system.
+ * @Author: wytaitaislee
+ * @Date: 2020-09-26 18:43:32
+ * @LastEditors: wytaitaislee
+ * @LastEditTime: 2021-03-21 19:57:11
 ****************************************************************************************/
 
 #ifndef __LINUX_FILEIO_H__

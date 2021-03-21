@@ -1,12 +1,12 @@
 /************************************************************************************
-File name: lfp_socket_init.c
-Description: Socket communication control main entrance.
-Author: wytaitaislee
-Date: 2020.03.29
-History: 1. create file. -- 2020.03.29
-		 2. server uses pthread pool. -- 2020.05.26
-		 3. fdpool keep-alive mechanism -- 2020.08.31 
+ * @fileName: lfp_socket_init.c
+ * @Description: Socket communication control main entrance.
+ * @Author: wytaitaislee
+ * @Date: 2020-08-16 16:05:59
+ * @LastEditors: wytaitaislee
+ * @LastEditTime: 2021-03-21 19:25:32
 ************************************************************************************/
+
 #ifdef LFP_SOCKET_APP
 
 #include "lfp_socket_app.h"

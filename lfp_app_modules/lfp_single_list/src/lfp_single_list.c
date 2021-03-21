@@ -1,10 +1,12 @@
 /************************************************************************************
-File name: lfp_single_list.c
-Description: Single linked list module implementation.
-Author: wytaitaislee
-Date: 2019-11-17
-History: 1. create file. -- 2019-11-17
-************************************************************************************/
+ * @fileName: lfp_single_list.c
+ * @Description: Single linked list module implementation.
+ * @Author: wytaitaislee
+ * @Date: 2020-08-16 16:05:59
+ * @LastEditors: wytaitaislee
+ * @LastEditTime: 2021-03-21 19:24:06
+ ************************************************************************************/
+
 #ifdef LFP_SINGLE_LIST_MODULE
 
 #include "lfp_single_list.h"

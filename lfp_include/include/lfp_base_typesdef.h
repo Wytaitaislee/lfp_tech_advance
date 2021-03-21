@@ -1,11 +1,10 @@
 /*************************************************************************************************
-File name: __lfp_base_typesdef.h
-Description: Internal basic data structure definition(types define).
-Author: wytaitaislee
-Date: 2019-11-17
-History: 1. create file. -- 2019.11.17
-		 2. delete irrelevant definitions, only keep basic data definitions  -- 2020.11.06
-		 3. change the file name from __lfp_base_typesdef.h to lfp_base_typesdef.h  -- 2021.01.31
+ * @fileName: lfp_base_typesdef.h
+ * @Description: Internal basic data structure definition(types define).
+ * @Author: wytaitaislee
+ * @Date: 2020-08-16 16:05:58
+ * @LastEditors: wytaitaislee
+ * @LastEditTime: 2021-03-21 19:50:59
 **************************************************************************************************/
 
 #ifndef __LFP_BASE_TYPESDEF_H__

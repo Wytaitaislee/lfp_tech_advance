@@ -1,9 +1,10 @@
 /***************************************************************************************
-File name: lfp_util_log.h																	
-Description: util log debugging information control module.											
-Author: wytaitaislee																																			
-Date: 2019.11.17																		
-History: 1. create file. -- 2019.11.17
+ * @fileName: lfp_util_log.h
+ * @Description: util log debugging information control module.
+ * @Author: wytaitaislee
+ * @Date: 2020-08-16 16:05:58
+ * @LastEditors: wytaitaislee
+ * @LastEditTime: 2021-03-21 20:06:11
 ****************************************************************************************/
 
 /************************the log util design rules*******************************************/
