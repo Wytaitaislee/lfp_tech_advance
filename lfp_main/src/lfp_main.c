@@ -9,8 +9,7 @@
 
 #include "lfp_base.h"
 #include "lfp_arch_adapter.h"
-#include "lfp_app_modules.h"
-#include "lfp_app_busybox.h"
+#include "lfp_app_libs.h"
 
 #define LFP_MODLUE_REGISTER(func)	{#func, func}
 typedef struct lfp_components_register_t
@@ -31,11 +30,11 @@ LFP_STATIC LFP_CONST LFP_CODE LFP_COMPONENTS_REGISTER_T g_ComponentsRegister[] =
 
 LFP_STATIC LFP_CONST LFP_CODE LFP_COMPONENTS_REGISTER_T g_ComponentsTestRegister[] = 
 {
-#ifdef LFP_SINGLE_LIST_MODULE
-	LFP_MODLUE_REGISTER(lfp_single_list_module_test_init),
+#ifdef LFP_LIBS_SLIST
+	LFP_MODLUE_REGISTER(lfp_libs_slist_test_init),
 #endif
-#ifdef LFP_DOUBLE_LIST_MODULE
-	LFP_MODLUE_REGISTER(lfp_double_list_module_test_init),
+#ifdef LFP_LIBS_DLIST
+	LFP_MODLUE_REGISTER(lfp_libs_dlist_test_init),
 #endif
 };
 

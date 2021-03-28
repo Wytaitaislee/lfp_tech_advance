@@ -1,5 +1,3 @@
-LFP_ROOT_PATH = $(shell pwd)
-export LFP_ROOT_PATH
 
 include ./lfp_rules.make
 

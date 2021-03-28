@@ -1,5 +1,5 @@
 /************************************************************************************
- * @fileName: lfp_socket_app.h
+ * @fileName: lfp_libs_socket.h
  * @Description: Socket general business module to support network communication.
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:58
@@ -7,10 +7,10 @@
  * @LastEditTime: 2021-03-21 19:53:36
 ************************************************************************************/
 
-#ifndef __LFP_SOCKET_APP_H__
-#define __LFP_SOCKET_APP_H__
+#ifndef __LFP_LIBS_SOCKET_H__
+#define __LFP_LIBS_SOCKET_H__
 
-#ifdef LFP_SOCKET_APP
+#ifdef LFP_LIBS_SOCKET
 
 #include "lfp_base.h"
 #include "lfp_arch_adapter.h"	/* in order to import system dependency related header files */
@@ -282,4 +282,4 @@ LFP_INT32 lfp_socket_recv_data(LFP_SOCKET_DESC_T *pDesc);
 
 #endif
 
-#endif /* end of __LFP_SOCKET_APP_H__ */
+#endif /* end of __LFP_LIBS_SOCKET_H__ */

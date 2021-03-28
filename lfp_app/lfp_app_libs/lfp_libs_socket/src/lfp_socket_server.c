@@ -8,9 +8,9 @@
  * @LastEditTime: 2021-03-21 19:25:59
 ************************************************************************************/
 
-#ifdef LFP_SOCKET_APP
+#ifdef LFP_LIBS_SOCKET
 
-#include "lfp_socket_app.h"
+#include "lfp_libs_socket.h"
 #include <errno.h>
 
 /*@fn		  LFP_VOID *lfp_socket_proc(LFP_VOID* pSockFd)

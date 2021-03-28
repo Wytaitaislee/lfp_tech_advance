@@ -7,9 +7,9 @@
  * @LastEditTime: 2021-03-21 19:24:47
  ************************************************************************************/
 
-#ifdef LFP_SOCKET_APP
+#ifdef LFP_LIBS_SOCKET
 
-#include "lfp_socket_app.h"
+#include "lfp_libs_socket.h"
 #include <errno.h>
 
 /*@fn		  LFP_INT32 lfp_socket_client_task(LFP_VOID* pArgs)
@@ -24,7 +24,7 @@ LFP_INT32 lfp_socket_client_task(LFP_VOID* pClientArgs)
 	LFP_SOCK_ADDRIN_T struSockAddrIn;
 	LFP_SOCKET_DESC_T *pClientDesc = LFP_NULL;
 	LFP_INT32 iRet = LFP_ERR;
-	LINUX_PTHREAD_HANDLE_T struSendTid = 0, struRecvTid = 0;
+	LFP_PTHREAD_HANDLE_T struSendTid = 0, struRecvTid = 0;
 
 	LFP_BUFF_BEZERO(&struSockAddrIn, sizeof(struSockAddrIn));
 

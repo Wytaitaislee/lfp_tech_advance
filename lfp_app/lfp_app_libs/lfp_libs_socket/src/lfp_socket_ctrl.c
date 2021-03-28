@@ -7,9 +7,9 @@
  * @LastEditTime: 2021-03-21 19:25:32
 ************************************************************************************/
 
-#ifdef LFP_SOCKET_APP
+#ifdef LFP_LIBS_SOCKET
 
-#include "lfp_socket_app.h"
+#include "lfp_libs_socket.h"
 #include <errno.h>
 
 LFP_STATIC LFP_DATA LFP_SOCKET_SERVER_MANAGE_T *pSocketServerManage = LFP_NULL;

@@ -5,11 +5,12 @@ LFP_AR_FLAGS = -rc
 LFP_MAKE = make
 LFP_GLOBAL_FLAGS = -g -W -O1 -Wall
 
-#MAKEFLAGS += -rR --include-dir=$(CURDIR)/lfp_include/include $(CURDIR)/lfp_include/lfp_base_util/
-
 LFP_OBJDIR = objs
 LFP_EXEC = lfp_core
 LFP_EXEC_DIR = lfp_exec
+LFP_ROOT_PATH = $(firstword $(subst ${LFP_PRJ_NAME},${LFP_PRJ_NAME} ,$(shell pwd)))
+LFP_PRJ_NAME = lfp_tech_advance
+export LFP_ROOT_PATH LFP_PRJ_NAME
 LFP_OBJ_PATH = ${LFP_ROOT_PATH}/${LFP_EXEC_DIR}/${LFP_OBJDIR}
 LFP_EXEC_PATH = ${LFP_ROOT_PATH}/${LFP_EXEC_DIR}/${LFP_EXEC}
 
