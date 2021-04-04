@@ -4,24 +4,35 @@ LFP_ROOT_PATH = $(firstword $(subst ${LFP_PRJ_NAME},${LFP_PRJ_NAME} ,$(shell pwd
 endif
 include ${LFP_ROOT_PATH}/lfp_rules.make
 
-ifeq ($(LFP_LIBS_SLIST,y)
+CUR_PATH = $(shell pwd)
+
 #lib single list
-CUR_SRC_PATH = $(shell pwd)/lfp_libs_slist
+ifeq ($(LFP_LIBS_SLIST,y)
+CUR_SRC_PATH = $(CUR_PATH)/lfp_libs_slist
 endif
 
-ifeq ($(LFP_LIBS_DLIST),y)
 #lib double list
-CUR_SRC_PATH += $(shell pwd)/lfp_libs_dlist
+ifeq ($(LFP_LIBS_DLIST),y)
+CUR_SRC_PATH += $(CUR_PATH)/lfp_libs_dlist
 endif
 
-ifeq ($(LFP_LIBS_SOCKET),y)
 #lib socket
-CUR_SRC_PATH += $(shell pwd)/lfp_libs_socket
+ifeq ($(LFP_LIBS_SOCKET),y)
+CUR_SRC_PATH += $(CUR_PATH)/lfp_libs_socket
 endif
+
+#lib socket
+ifeq ($(LFP_LIBS_THREADPOOL),y)
+CUR_SRC_PATH += $(CUR_PATH)/lfp_libs_threadpool
+endif
+
+#lib safe c
+CUR_SRC_PATH += $(CUR_PATH)/lfp_libs_safec
+
+#lib open sources
+CUR_SRC_PATH += $(CUR_PATH)/lfp_libs_open_sources
 
 $(CUR_SRC_PATH) = ? || exit -1;
-
-all:make_app_libs
 
 lfp_app_libs = liblfp_app_libs.a
 
@@ -30,7 +41,7 @@ make_app_libs:ECHO_LIBS_DIR
 	@$(MAKE) lfp_app_libs_assemble
 	
 ECHO_LIBS_DIR: 
-	@echo "Compiling $(shell pwd) ..." 
+	@echo "Compiling $(CUR_SRC_PATH) ..." 
 
 lfp_app_libs_assemble:$(lfp_app_libs)
 
