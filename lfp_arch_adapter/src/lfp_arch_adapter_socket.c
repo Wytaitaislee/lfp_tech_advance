@@ -1,11 +1,11 @@
-/***************************************************************************************
+/*
  * @fileName: lfp_arch_adapter_socket.h
  * @Description: System adaptation layer. Adapter to different socket on different OS.
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:58
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-03-21 19:32:15
-****************************************************************************************/
+ * @LastEditTime: 2021-04-04 16:03:00
+*/
 #include "lfp_arch_adapter_typesdef.h"
 #include "lfp_arch_abstract.h"
 #include "lfp_arch_adapter.h"

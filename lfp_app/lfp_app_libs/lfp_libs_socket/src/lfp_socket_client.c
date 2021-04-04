@@ -1,11 +1,11 @@
-/************************************************************************************
+/*
  * @fileName: lfp_socket_client.c
  * @Description: Socket communication client implementation.
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:59
  * @LastEditors: wytaitaislee
  * @LastEditTime: 2021-03-21 19:24:47
- ************************************************************************************/
+ */
 
 #ifdef LFP_LIBS_SOCKET
 

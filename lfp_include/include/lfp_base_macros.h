@@ -1,11 +1,11 @@
-/*********************************************************************************************
+/*
  * @fileName: lfp_base_macros.h
  * @Description: define the basic macro function structure(macros define).
  * @Author: wytaitaislee
  * @Date: 2020-09-26 16:55:41
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-03-21 19:50:27
-**********************************************************************************************/
+ * @LastEditTime: 2021-04-04 16:03:52
+*/
 
 #ifndef __LFP_BASE_MACROS_H__
 #define __LFP_BASE_MACROS_H__

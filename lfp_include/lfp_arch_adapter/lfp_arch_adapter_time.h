@@ -1,11 +1,11 @@
-/***************************************************************************************
+/*
  * @fileName: lfp_arch_adapter_time.h
  * @Description: System adaptation layer, matching different arch.
  * @Author: wytaitaislee
  * @Date: 2021-01-31 20:44:23
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-03-21 20:04:55
-****************************************************************************************/
+ * @LastEditTime: 2021-04-04 16:08:42
+*/
 
 #ifndef __LFP_ARCH_ADAPTER_TIME_H__
 #define __LFP_ARCH_ADAPTER_TIME_H__

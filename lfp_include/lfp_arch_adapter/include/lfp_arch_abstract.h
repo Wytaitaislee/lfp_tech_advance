@@ -1,11 +1,11 @@
-/***************************************************************************************
+/*
  * @fileName: lfp_arch_abstract.h
  * @Description: System adaptation layer. Abstract different underlying implementations.
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:58
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-03-21 20:01:52
-****************************************************************************************/
+ * @LastEditTime: 2021-04-04 16:07:05
+*/
 #ifndef __LFP_ARCH_ABSTRACT_H__
 #define __LFP_ARCH_ABSTRACT_H__
 

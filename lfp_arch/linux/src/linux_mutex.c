@@ -1,12 +1,12 @@
-/***************************************************************************************
+/*
  * @fileName: linux_mutex.c
  * @Description: Operating system adaptation layer, matching different architecture platforms.
              mutex implement.
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:57
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-03-21 19:28:06
-****************************************************************************************/
+ * @LastEditTime: 2021-04-04 16:00:30
+*/
 
 #include "linux_mutex.h"
 #include "linux_typesdef.h"

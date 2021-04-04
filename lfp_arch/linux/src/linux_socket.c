@@ -1,12 +1,12 @@
-/***************************************************************************************
+/*
  * @fileName: linux_socket.c
  * @Description: Operating system adaptation layer, matching different architecture platforms.
 			 	  pthread implement.
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:57
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-03-21 19:29:40
-****************************************************************************************/
+ * @LastEditTime: 2021-04-04 16:01:28
+*/
 
 #include "linux_socket.h"
 #include "linux_typesdef.h"

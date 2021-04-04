@@ -1,19 +1,11 @@
 /*
- * @fileName: 
- * @Description: 
- * @Author: wytaitaislee
- * @Date: 2021-01-31 14:52:35
- * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-03-21 19:30:09
- */
-/***************************************************************************************
  * @fileName: linux_time.c
  * @Description: the time revelant management on linux system
  * @Author: wytaitaislee
  * @Date: 2021-01-31 14:52:35
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-03-21 19:29:59
-****************************************************************************************/
+ * @LastEditTime: 2021-04-04 16:01:45
+*/
 
 #include "linux_time.h"
 #include "linux_typesdef.h"

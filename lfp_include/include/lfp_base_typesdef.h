@@ -1,11 +1,11 @@
-/*************************************************************************************************
+/*
  * @fileName: lfp_base_typesdef.h
  * @Description: Internal basic data structure definition(types define).
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:58
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-03-21 19:50:59
-**************************************************************************************************/
+ * @LastEditTime: 2021-04-04 16:04:01
+*/
 
 #ifndef __LFP_BASE_TYPESDEF_H__
 #define __LFP_BASE_TYPESDEF_H__

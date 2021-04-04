@@ -1,11 +1,11 @@
-/************************************************************************************
+/*
  * @fileName: lfp_libs_socket.h
  * @Description: Socket general business module to support network communication.
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:58
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-03-21 19:53:36
-************************************************************************************/
+ * @LastEditTime: 2021-04-04 16:04:36
+*/
 
 #ifndef __LFP_LIBS_SOCKET_H__
 #define __LFP_LIBS_SOCKET_H__

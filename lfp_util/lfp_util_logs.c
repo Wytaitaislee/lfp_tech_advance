@@ -1,11 +1,11 @@
-/***************************************************************************************
+/*
  * @fileName: lfp_util.c
  * @Description: Log information control module.
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:59
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-03-21 20:08:24
- ****************************************************************************************/
+ * @LastEditTime: 2021-04-04 16:10:09
+ */
 
 #include "lfp_base.h"
 #include <stdarg.h>

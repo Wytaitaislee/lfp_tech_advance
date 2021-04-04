@@ -1,12 +1,12 @@
-/************************************************************************************
+/*
 
  * @fileName: lfp_socket_server.c
  * @Description: Socket communication server implementation.
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:59
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-03-21 19:25:59
-************************************************************************************/
+ * @LastEditTime: 2021-04-04 15:59:28
+*/
 
 #ifdef LFP_LIBS_SOCKET
 

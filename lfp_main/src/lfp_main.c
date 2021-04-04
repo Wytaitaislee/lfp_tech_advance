@@ -1,11 +1,11 @@
-/***************************************************************************************
+/*
  * @fileName: lfp_main.c
  * @Description: lee's firmware platform main entrance.
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:58
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-03-21 20:07:53
-****************************************************************************************/
+ * @LastEditTime: 2021-04-04 16:09:59
+*/
 
 #include "lfp_base.h"
 #include "lfp_arch_adapter.h"

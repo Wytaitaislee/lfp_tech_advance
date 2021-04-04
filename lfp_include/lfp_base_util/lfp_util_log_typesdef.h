@@ -1,11 +1,11 @@
-/***************************************************************************************
+/*
  * @fileName: lfp_util_log_typesdef.h
  * @Description: Log information control module, define the log switch of each module.
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:58
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-03-21 20:05:41
-****************************************************************************************/
+ * @LastEditTime: 2021-04-04 16:09:03
+*/
 
 /************************the dbg util design rules*******************************************/
 /* 1. every module has it's own idx(UTIL_MODULE_DEF_E) 										*/

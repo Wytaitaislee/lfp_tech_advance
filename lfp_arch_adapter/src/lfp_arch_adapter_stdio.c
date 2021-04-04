@@ -1,11 +1,11 @@
-/***************************************************************************************
+/*
  * @fileName: lfp_arch_adapter_stdio.h
  * @Description: System adaptation layer. Adapter to different stdio on different OS.
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:58
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-03-21 19:32:43
-****************************************************************************************/
+ * @LastEditTime: 2021-04-04 16:03:09
+*/
 #include "lfp_arch_adapter_typesdef.h"
 #include "lfp_arch_abstract.h"
 #include "lfp_arch_adapter.h"

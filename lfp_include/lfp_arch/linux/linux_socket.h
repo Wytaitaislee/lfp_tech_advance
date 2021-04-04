@@ -1,11 +1,11 @@
-/***************************************************************************************
+/*
  * @fileName: linux_socket_base.h
  * @Description:  the socket base function management on linux system.
  * @Author: wytaitaislee
  * @Date: 2020-09-26 18:43:32
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-03-21 19:59:33
-****************************************************************************************/
+ * @LastEditTime: 2021-04-04 16:06:22
+*/
 
 #ifndef __LINUX_SOCKET_H__
 #define __LINUX_SOCKET_H__

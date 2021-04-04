@@ -1,11 +1,11 @@
-/***************************************************************************************
+/*
  * @fileName: lfp_arch_adapter_fileio.h
  * @Description: System adaptation layer, matching different arch.
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:58
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-03-21 20:02:42
-****************************************************************************************/
+ * @LastEditTime: 2021-04-04 16:07:22
+*/
 
 #ifndef __LFP_ARCH_ADAPTER_FILEIO_H__
 #define __LFP_ARCH_ADAPTER_FILEIO_H__

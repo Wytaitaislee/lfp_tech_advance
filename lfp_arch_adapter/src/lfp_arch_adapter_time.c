@@ -1,11 +1,11 @@
-/***************************************************************************************
+/*
  * @fileName: lfp_arch_adapter_time.c
  * @Description: System adaptation layer. Adapter to different time on different OS.
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:59
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-03-21 19:32:59
-****************************************************************************************/
+ * @LastEditTime: 2021-04-04 16:03:18
+*/
 
 #include "lfp_arch_adapter_typesdef.h"
 #include "lfp_arch_abstract.h"

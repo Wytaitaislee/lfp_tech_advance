@@ -1,11 +1,11 @@
-/***************************************************************************************
+/*
  * @fileName: lfp_arch_adapter_semaphore.h
  * @Description: System adaptation layer, matching different arch.
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:58
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-03-21 20:03:46
-****************************************************************************************/
+ * @LastEditTime: 2021-04-04 16:08:00
+*/
 
 #ifndef __LFP_ARCH_ADAPTER_SEMAPHORE_H__
 #define __LFP_ARCH_ADAPTER_SEMAPHORE_H__

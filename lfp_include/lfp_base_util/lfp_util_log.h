@@ -1,11 +1,11 @@
-/***************************************************************************************
+/*
  * @fileName: lfp_util_log.h
  * @Description: util log debugging information control module.
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:58
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-03-21 20:06:11
-****************************************************************************************/
+ * @LastEditTime: 2021-04-04 16:09:32
+*/
 
 /************************the log util design rules*******************************************/
 /* 1. there are tree different level of the UTIL module:									*/

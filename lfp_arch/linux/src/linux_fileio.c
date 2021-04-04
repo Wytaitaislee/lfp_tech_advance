@@ -1,11 +1,11 @@
-/***************************************************************************************
+/*
  * @fileName: linux_fileio.c
  * @Description: the file io management on linux system.
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:57
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-03-21 19:27:24
-****************************************************************************************/
+ * @LastEditTime: 2021-04-04 16:00:21
+*/
 
 #include "linux_fileio.h"
 #include "linux_typesdef.h"

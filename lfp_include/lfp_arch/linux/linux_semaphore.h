@@ -1,11 +1,11 @@
-/***************************************************************************************
+/*
  * @fileName: linux_semaphore.h
  * @Description: the semaphore management on linux system.
  * @Author: wytaitaislee
  * @Date: 2020-09-26 18:43:32
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-03-21 19:59:07
-****************************************************************************************/
+ * @LastEditTime: 2021-04-04 16:06:12
+*/
 
 #ifndef __LINUX_SEMAPHORE_H__
 #define __LINUX_SEMAPHORE_H__

@@ -1,11 +1,11 @@
-/***************************************************************************************
+/*
  * @fileName: linux_stdio.h
  * @Description: the standard io management on linux system.
  * @Author: wytaitaislee
  * @Date: 2020-09-26 18:43:32
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-03-21 19:59:59
-****************************************************************************************/
+ * @LastEditTime: 2021-04-04 16:06:30
+*/
 
 #ifndef __LINUX_STDIOIO_H__
 #define __LINUX_STDIOIO_H__

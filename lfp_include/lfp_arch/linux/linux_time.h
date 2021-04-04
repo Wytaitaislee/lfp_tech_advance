@@ -1,11 +1,11 @@
-/***************************************************************************************
+/*
  * @fileName: linux_time.h
  * @Description: the standard time management on linux system.
  * @Author: wytaitaislee
  * @Date: 2021-01-31 17:50:48
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-03-21 20:00:15
-****************************************************************************************/
+ * @LastEditTime: 2021-04-04 16:06:38
+*/
 
 #ifndef __LINUX_TIME_H__
 #define __LINUX_TIME_H__

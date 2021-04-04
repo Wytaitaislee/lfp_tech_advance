@@ -1,11 +1,11 @@
-/***************************************************************************************
+/*
  * @fileName: lfp_app_busybox.c
  * @Description: the cmd tools for debugging the program
  * @Author: wytaitaislee
  * @Date: 2021-01-31 11:34:26
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-03-21 19:21:55
-****************************************************************************************/
+ * @LastEditTime: 2021-04-04 15:58:16
+*/
 
 #include "lfp_app_busybox.h"
 

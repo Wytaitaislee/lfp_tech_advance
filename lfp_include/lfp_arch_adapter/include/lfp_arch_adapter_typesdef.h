@@ -1,12 +1,12 @@
-/***************************************************************************************
+/*
  * @fileName: lfp_arch_adapter_typesdef.h
  * @Description: Private data structure of platform adaptation layer. the file only can be 
                  invoked by lfp_arch_xxxx.c
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:58
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-03-21 20:02:25
-****************************************************************************************/
+ * @LastEditTime: 2021-04-04 16:07:14
+*/
 #ifndef __LFP_ARCH_ADAPTER_TYPESDEF_H__
 #define __LFP_ARCH_ADAPTER_TYPESDEF_H__
  

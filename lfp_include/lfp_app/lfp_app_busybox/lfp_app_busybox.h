@@ -1,12 +1,12 @@
-/***************************************************************************************
+/*
  * @fileName: lfp_app_busybox.h
  * @Description: Simulate the realization of busybox function for debugging interaction 
                   of app code.
  * @Author: wytaitaislee
  * @Date: 2020-11-07 23:34:24
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-03-21 19:51:37
-****************************************************************************************/
+ * @LastEditTime: 2021-04-04 16:04:09
+*/
 
 #ifndef __LFP_APP_BUSYBOX_H__
 #define __LFP_APP_BUSYBOX_H__

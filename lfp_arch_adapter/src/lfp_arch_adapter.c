@@ -1,11 +1,11 @@
-/************************************************************************************
+/*
  * @fileName: lfp_arch_adapter.c
  * @Description: the system adapter functions implementations.
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:58
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-03-21 19:34:45
- ************************************************************************************/
+ * @LastEditTime: 2021-04-04 16:03:27
+ */
 #include "lfp_arch_adapter.h"
 #include "lfp_arch_adapter_fileio.h"
 #include "lfp_arch_adapter_mutex.h"

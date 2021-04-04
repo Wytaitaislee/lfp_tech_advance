@@ -1,11 +1,11 @@
-/************************************************************************************
+/*
  * @fileName: lfp_socket_init.c
  * @Description: Socket communication control main entrance.
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:59
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-03-21 19:25:32
-************************************************************************************/
+ * @LastEditTime: 2021-04-04 15:59:17
+*/
 
 #ifdef LFP_LIBS_SOCKET
 
