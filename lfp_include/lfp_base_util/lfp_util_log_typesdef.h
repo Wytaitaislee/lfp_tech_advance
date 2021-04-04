@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:58
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-04-04 16:09:03
+ * @LastEditTime: 2021-04-04 18:32:24
 */
 
 /************************the dbg util design rules*******************************************/
@@ -38,8 +38,8 @@ typedef enum
 
 typedef enum
 {
-    UTIL_MODULE_SINGLE_LIST = 0x1,
-    UTIL_MODULE_DOUBLE_LIST = 0x2,
+    UTIL_MODULE_SLIST       = 0x1,
+    UTIL_MODULE_DLIST       = 0x2,
     UTIL_MODULE_SOCKET      = 0x4,
     UTIL_MODULE_ADAPTER     = 0x8,
     UTIL_MODULE_LINUX       = 0x10,
@@ -47,13 +47,13 @@ typedef enum
     UTIL_MODULE_INVALID = (LFP_INT64)(-1),
 }UTIL_MODULE_DEF_E;
 
-/* 1. UTIL_MODULE_SINGLE_LIST(0x1) module idx .*/
-#define  MASK_SINGLE_LIST         (1 < UTIL_BIT_0)
-#define  MASK_SINGLE_LIST_TEST    (1 < MASK_SINGLE_LIST)
-#define  MASK_SINGLE_INVALID      (1 < MASK_SINGLE_LIST_TEST)
+/* 1. UTIL_MODULE_LIBS_SLIST(0x1) module idx .*/
+#define  MASK_SLIST               (1 < UTIL_BIT_0)
+#define  MASK_SLIST_TEST          (1 < MASK_SINGLE_LIST)
+#define  MASK_SLIST_INVALID       (1 < MASK_SLIST_TEST)
 
-/* 2. UTIL_MODULE_DOUBLE_LIST(0x2) module idx .*/
-#define  MASK_DOUBLE_LIST    (1 < UTIL_BIT_0)
+/* 2. UTIL_MODULE_DLIST(0x2) module idx .*/
+#define  MASK_DLIST              (1 < UTIL_BIT_0)
 
 /* 3. UTIL_MODULE_SOCKET(0x4) module idx .*/
 #define  MASK_SOCKET_SERVER    (1 < UTIL_BIT_0)

@@ -4,13 +4,13 @@
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:58
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-04-04 18:15:20
+ * @LastEditTime: 2021-04-04 18:33:05
 */
 
 #ifndef __LFP_SLIST_H__
 #define __LFP_SLIST_H__
 
-#ifdef LFP_SLIST_MODULE
+#ifdef LFP_LIBS_SLIST
 
 #include "lfp_base.h"
 

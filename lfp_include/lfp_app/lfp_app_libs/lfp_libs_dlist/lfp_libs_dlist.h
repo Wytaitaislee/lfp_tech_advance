@@ -4,13 +4,13 @@
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:58
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-03-28 17:13:47
+ * @LastEditTime: 2021-04-04 18:39:10
  */
 
 #ifndef __LFP_DLIST_H__
 #define __LFP_DLIST_H__
 
-#ifdef LFP_DLIST_MODULE
+#ifdef LFP_LIBS_DLIST
 
 #include "lfp_base.h"
 
@@ -31,8 +31,8 @@
 typedef struct lfp_dlist_t
 {
 	LFP_INT32 data;
-	struct LFP_DLIST_T *pPrev;
-	struct LFP_DLIST_T *pNext;
+	struct lfp_dlist_t *pPrev;
+	struct lfp_dlist_t *pNext;
 }LFP_DLIST_T;
 
 /*@fn		  LFP_INT32 lfp_double_list_create_head(struct LFP_DLIST_T** ppList)
