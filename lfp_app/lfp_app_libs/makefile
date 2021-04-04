@@ -7,7 +7,7 @@ include ${LFP_ROOT_PATH}/lfp_rules.make
 CUR_PATH = $(shell pwd)
 
 #lib single list
-ifeq ($(LFP_LIBS_SLIST,y)
+ifeq ($(LFP_LIBS_SLIST),y)
 CUR_SRC_PATH = $(CUR_PATH)/lfp_libs_slist
 endif
 

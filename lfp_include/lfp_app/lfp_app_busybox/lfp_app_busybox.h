@@ -5,7 +5,7 @@
  * @Author: wytaitaislee
  * @Date: 2020-11-07 23:34:24
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-04-04 16:04:09
+ * @LastEditTime: 2021-04-04 17:39:44
 */
 
 #ifndef __LFP_APP_BUSYBOX_H__
@@ -32,12 +32,12 @@ typedef struct lfp_app_busybox_t
     LFP_CONST LFP_INT8       **ppArgv;
 }LFP_APP_BUSYBOX_T;
 
-/*@fn		  LFP_INT32 lfp_busybox_init(LFP_VOID)
+/*@fn		  LFP_INT32 lfp_app_busybox_init(LFP_VOID)
 * @brief 	  loading command modules
 * @param[in]  LFP_VOID
 * @param[out] LFP_NULL
 * @return	  LFP_OK / LFP_ERR
 */
-LFP_INT32 lfp_busybox_init(LFP_VOID);
+LFP_INT32 lfp_app_busybox_init(LFP_VOID);
 
 #endif /* end of __LFP_APP_BUSYBOX_H__ */

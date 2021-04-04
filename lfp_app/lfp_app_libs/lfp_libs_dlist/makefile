@@ -13,8 +13,8 @@ lfp_app_libs_path = $(firstword $(subst lfp_app_libs,lfp_app_libs , $(PWD)))
 INCLUDE_PATH := -I${LFP_ROOT_PATH}/lfp_include/
 INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/include/
 INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/lfp_base_util/
-INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/lfp_app_libs/
-INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/lfp_app_libs/lfp_libs_dlist/
+INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/lfp_app/lfp_app_libs/
+INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/lfp_app/lfp_app_libs/lfp_libs_dlist/
 
 CFLAGS = $(LFP_GLOBAL_FLAGS) $(INCLUDE_PATH)
 LIB_OS = liblfp_dlist.a

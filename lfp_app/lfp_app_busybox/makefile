@@ -12,7 +12,7 @@ CUR_OBJS = $(patsubst %.c, %.o, $(CUR_SRC))
 INCLUDE_PATH := -I${LFP_ROOT_PATH}/lfp_include/lfp_base_util/
 INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/
 INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/include/
-INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/lfp_app_busybox/
+INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/lfp_app/lfp_app_busybox/
 
 CFLAGS = $(LFP_GLOBAL_FLAGS) $(INCLUDE_PATH)
 

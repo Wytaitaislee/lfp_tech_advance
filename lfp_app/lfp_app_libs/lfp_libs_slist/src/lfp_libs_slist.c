@@ -4,12 +4,13 @@
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:59
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-03-28 17:26:25
+ * @LastEditTime: 2021-04-04 18:10:58
  */
 
 #ifdef LFP_LIBS_SLIST
 
-#include "lfp_slist.h"
+#include "lfp_base.h"
+#include "lfp_libs_slist.h"
 
 #define LFP_SLIST_NODE_MALLOC(ppNode)											\
 do																				\

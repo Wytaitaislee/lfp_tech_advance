@@ -4,6 +4,9 @@ LFP_ROOT_PATH = $(firstword $(subst ${LFP_PRJ_NAME},${LFP_PRJ_NAME} ,$(shell pwd
 endif
 include ${LFP_ROOT_PATH}/lfp_rules.make
 
+INCLUDE_PATH := -I${LFP_ROOT_PATH}/lfp_include/
+INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/include/
+
 CUR_SRC_PATH = lfp_app_busybox lfp_app_libs lfp_app_modules lfp_app_unity_test
 
 apps:$(CUR_SRC_PATH)

@@ -4,67 +4,71 @@
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:58
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-04-04 16:09:59
+ * @LastEditTime: 2021-04-04 17:54:42
 */
 
 #include "lfp_base.h"
 #include "lfp_arch_adapter.h"
-#include "lfp_app_libs.h"
+#include "lfp_app_init.h"
 
-#define LFP_MODLUE_REGISTER(func)	{#func, func}
-typedef struct lfp_components_register_t
-{
-	LFP_CONST LFP_INT8* pModuleName;
-	LFP_INT32 (*lfp_components_register)(LFP_VOID);
-}LFP_COMPONENTS_REGISTER_T;
-
-LFP_STATIC LFP_CONST LFP_CODE LFP_COMPONENTS_REGISTER_T g_ComponentsRegister[] = 
+/*
+lfp module registration initialization
+*/
+LFP_STATIC LFP_CONST LFP_CODE LFP_COMPONENTS_REGISTER_T g_componentsRegister[] = 
 {
 	LFP_MODLUE_REGISTER(lfp_util_module_init),
 	LFP_MODLUE_REGISTER(lfp_arch_adapter_init),
-	LFP_MODLUE_REGISTER(lfp_busybox_init),
-#ifdef LFP_SOCKET_APP
-	LFP_MODLUE_REGISTER(lfp_socket_module_init),
-#endif
+	LFP_MODLUE_REGISTER(lfp_app_init),
 };
 
-LFP_STATIC LFP_CONST LFP_CODE LFP_COMPONENTS_REGISTER_T g_ComponentsTestRegister[] = 
+/*
+Registration and initialization of each test component module of lfp
+*/
+LFP_STATIC LFP_CONST LFP_CODE LFP_COMPONENTS_REGISTER_T g_componentsTestRegister[] = 
 {
-#ifdef LFP_LIBS_SLIST
-	LFP_MODLUE_REGISTER(lfp_libs_slist_test_init),
-#endif
-#ifdef LFP_LIBS_DLIST
-	LFP_MODLUE_REGISTER(lfp_libs_dlist_test_init),
-#endif
+	LFP_MODLUE_REGISTER(lfp_app_test_init),
 };
 
+/*@fn		  LFP_INT32 lfp_wytaitai_main_entrance(LFP_VOID)
+* @brief 	  the main entrance of the project
+* @param[in]  LFP_VOID
+* @param[out] NULL
+* @return	  LFP_OK/LFP_ERR
+*/
 LFP_STATIC LFP_INT32 lfp_wytaitai_main_entrance(LFP_VOID)
 {
 	LFP_UINT32 uiModules = 0;
 	
-	for(uiModules = 0; uiModules < LFP_NELEMENTS(g_ComponentsRegister); uiModules++)
+	for(uiModules = 0; uiModules < LFP_NELEMENTS(g_componentsRegister); uiModules++)
 	{
-		if(LFP_NULL != g_ComponentsRegister[uiModules].lfp_components_register)
+		if(LFP_NULL != g_componentsRegister[uiModules].lfp_components_register)
 		{
-			g_ComponentsRegister[uiModules].lfp_components_register();
+			g_componentsRegister[uiModules].lfp_components_register();
 		}
 	}
 	return LFP_OK;
 }
 
+/*@fn		  LFP_INT32 lfp_wytaitai_test_entrance(LFP_VOID)
+* @brief 	  the test main entrance of the project
+* @param[in]  LFP_VOID
+* @param[out] NULL
+* @return	  LFP_OK/LFP_ERR
+*/
 LFP_STATIC LFP_INT32 lfp_wytaitai_test_entrance(LFP_VOID)
 {
 	LFP_UINT32 uiModules = 0;
 	
-	for(uiModules = 0; uiModules < LFP_NELEMENTS(g_ComponentsTestRegister); uiModules++)
+	for(uiModules = 0; uiModules < LFP_NELEMENTS(g_componentsTestRegister); uiModules++)
 	{
-		if(LFP_NULL != g_ComponentsTestRegister[uiModules].lfp_components_register)
+		if(LFP_NULL != g_componentsTestRegister[uiModules].lfp_components_register)
 		{
-			g_ComponentsTestRegister[uiModules].lfp_components_register();
+			g_componentsTestRegister[uiModules].lfp_components_register();
 		}
 	}
 	return LFP_OK;
 }
+
 /*@fn		  LFP_INT32 main(LFP_VOID)
 * @brief 	  the main entrance of the project
 * @param[in]  LFP_VOID
