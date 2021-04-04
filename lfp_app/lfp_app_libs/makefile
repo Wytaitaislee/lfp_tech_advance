@@ -27,10 +27,10 @@ CUR_SRC_PATH += $(CUR_PATH)/lfp_libs_threadpool
 endif
 
 #lib safe c
-CUR_SRC_PATH += $(CUR_PATH)/lfp_libs_safec
+#CUR_SRC_PATH += $(CUR_PATH)/lfp_libs_safec
 
 #lib open sources
-CUR_SRC_PATH += $(CUR_PATH)/lfp_libs_open_sources
+#CUR_SRC_PATH += $(CUR_PATH)/lfp_libs_open_sources
 
 $(CUR_SRC_PATH) = ? || exit -1;
 
