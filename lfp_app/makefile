@@ -2,44 +2,55 @@ ifeq ($(LFP_PRJ_NAME)$(LFP_ROOT_PATH),)
 LFP_PRJ_NAME = lfp_tech_advance
 LFP_ROOT_PATH = $(firstword $(subst ${LFP_PRJ_NAME},${LFP_PRJ_NAME} ,$(shell pwd)))
 endif
-include ${LFP_ROOT_PATH}/lfp_rules.make
 
-CUR_OBJS = $(patsubst %.c, %.o, ./)
+include ${LFP_ROOT_PATH}/lfp_rules.make
+CUR_PATH = $(shell pwd)
+
+include $(CUR_PATH)/lfp_app_linking
+
+APP_ALL = $(libs_app_src-y)
+LINK_OBJS = $(libs_app_obj-y)
+
+CUR_OBJS = $(patsubst %.c, %.o, $(wildcard *.c))
 
 INCLUDE_PATH := -I${LFP_ROOT_PATH}/lfp_include/
 INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/include/
+INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/lfp_base_util/
+INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/lfp_app/
+INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/lfp_app/lfp_app_busybox/
+INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/lfp_app/lfp_app_libs/
+INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/lfp_app/lfp_app_modules/
+INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/lfp_app/lfp_app_unity_test/
 
-CUR_SRC_PATH = lfp_app_busybox \
-			   lfp_app_libs \
-			   
-			   #lfp_app_modules \
-			   #lfp_app_unity_test
+CFLAGS = $(LFP_GLOBAL_FLAGS) $(INCLUDE_PATH)
 
-lfp_app = liblfp_app.a
+$(APP_ALL) = ? || exit -1;
 
-make_app:ECHO_LIBS_DIR
-	for dir in $(CUR_SRC_PATH); do $(MAKE) -C $$dir ; done
-	@$(MAKE) lfp_register
-	@$(MAKE) lfp_app_assemble
+lfp_app = liblfp_app_init.a
+
+libs_obj-y += -l$(lfp_app)
+
+app_all:$(APP_ALL)
+
+$(APP_ALL):ECHO_SUB_DIR
+	@for dir in $@; do $(MAKE) -C $$dir ; done
+	@$(MAKE) lfp_app_init
 	
-ECHO_LIBS_DIR: 
-	@echo "Compiling $(CUR_SRC_PATH) ..." 
-
-lfp_register:$(CUR_OBJS)
+ECHO_SUB_DIR: 
+	@echo "Compiling " $(APP_ALL) "..." 
+	
+lfp_app_init:$(CUR_OBJS)
+	$(LFP_AR) $(LFP_AR_FLAGS) $(lfp_app) $^
+	cp $(lfp_app) $(LFP_OBJ_PATH)
 
 %.o:%.c
 	$(LFP_CC) $(CFLAGS) -c -o $@ $^
-
-lfp_app_assemble:$(lfp_app)
-
-$(lfp_app):
-	for lib in $(wildcard *.a); do $(LFP_AR) -x $$lib; done
-	$(LFP_AR) $(LFP_AR_FLAGS) $@ ./*.o
-	cp $@ $(LFP_OBJ_PATH)
 	
 clean:
-	@for dir in $(CUR_SRC_PATH); do $(MAKE) -C $$dir clean; done
-	rm -rf ./*a ./*so ./*.o
+	@for dir in $(APP_ALL); do $(MAKE) -C $$dir clean; done
+	@rm -rf ./*a ./*so ./*.o
+
+
 
 
 	

@@ -4,10 +4,11 @@
  * @Author: wytaitaislee
  * @Date: 2021-04-04 17:03:09
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-04-04 17:51:18
+ * @LastEditTime: 2021-04-05 11:25:41
  */
 
 #include "lfp_base.h"
+#include "lfp_app_init.h"
 #include "lfp_app_libs.h"
 #include "lfp_app_busybox.h"
 #include "lfp_app_modules.h"
@@ -36,9 +37,9 @@ LFP_INT32 lfp_app_init(LFP_VOID)
 	
 	for(uiModules = 0; uiModules < LFP_NELEMENTS(g_lfpAppRegister); uiModules++)
 	{
-		if(LFP_NULL != g_componentsTestRegister[uiModules].lfp_components_register)
+		if(LFP_NULL != g_lfpAppRegister[uiModules].lfp_components_register)
 		{
-			g_componentsTestRegister[uiModules].lfp_components_register();
+			g_lfpAppRegister[uiModules].lfp_components_register();
 		}
 	}
 	return LFP_OK;

@@ -2,7 +2,6 @@ libs_src-y := $(LFP_ROOT_PATH)/lfp_main
 libs_obj-y := -llfp_main
 
 libs_src-y += $(LFP_ROOT_PATH)/lfp_app
-libs_obj-y += -llfp_app
 
 libs_src-y += $(LFP_ROOT_PATH)/lfp_arch_adapter
 libs_obj-y += -llfp_arch_adapter

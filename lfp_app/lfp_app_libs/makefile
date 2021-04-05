@@ -6,53 +6,25 @@ include ${LFP_ROOT_PATH}/lfp_rules.make
 
 CUR_PATH = $(shell pwd)
 
-#lib single list
-ifeq ($(LFP_LIBS_SLIST),y)
-CUR_SRC_PATH = $(CUR_PATH)/lfp_libs_slist
-endif
+include $(CUR_PATH)/lfp_app_libs_linking
 
-#lib double list
-ifeq ($(LFP_LIBS_DLIST),y)
-CUR_SRC_PATH += $(CUR_PATH)/lfp_libs_dlist
-endif
+APP_LIBS_ALL = $(libs_app_libs_src-y)
+LINK_OBJS = $(libs_app_libs_obj-y)
 
-#lib socket
-ifeq ($(LFP_LIBS_SOCKET),y)
-CUR_SRC_PATH += $(CUR_PATH)/lfp_libs_socket
-endif
+$(APP_LIBS_ALL) = ? || exit -1;
 
-#lib socket
-ifeq ($(LFP_LIBS_THREADPOOL),y)
-CUR_SRC_PATH += $(CUR_PATH)/lfp_libs_threadpool
-endif
+app_libs_all:$(APP_LIBS_ALL)
 
-#lib safe c
-#CUR_SRC_PATH += $(CUR_PATH)/lfp_libs_safec
-
-#lib open sources
-#CUR_SRC_PATH += $(CUR_PATH)/lfp_libs_open_sources
-
-$(CUR_SRC_PATH) = ? || exit -1;
-
-lfp_app_libs = liblfp_app_libs.a
-
-make_app_libs:ECHO_LIBS_DIR
-	for dir in $(CUR_SRC_PATH); do $(MAKE) -C $$dir ; done
-	@$(MAKE) lfp_app_libs_assemble
+$(APP_LIBS_ALL):ECHO_LIBS_DIR
+	for dir in $@; do $(MAKE) -C $$dir ; done
 	
 ECHO_LIBS_DIR: 
-	@echo "Compiling $(CUR_SRC_PATH) ..." 
-
-lfp_app_libs_assemble:$(lfp_app_libs)
-
-$(lfp_app_libs):
-	for lib in $(wildcard *.a); do $(LFP_AR) -x $$lib; done
-	$(LFP_AR) $(LFP_AR_FLAGS) $@ ./*.o
-	cp $@ $(LFP_OBJ_PATH)
+	@echo "Compiling $(APP_LIBS_ALL) ..." 
 	
 clean:
-	@for dir in $(CUR_SRC_PATH); do $(MAKE) -C $$dir clean; done
-	rm -rf ./*a ./*so ./*.o
+	@for dir in $(APP_LIBS_ALL); do $(MAKE) -C $$dir clean; done
+	@rm -rf ./*a ./*so ./*.o
+
 
 	
 	
