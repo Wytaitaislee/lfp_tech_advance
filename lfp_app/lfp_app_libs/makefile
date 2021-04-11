@@ -9,7 +9,6 @@ CUR_PATH = $(shell pwd)
 include $(CUR_PATH)/lfp_app_libs_linking
 
 APP_LIBS_ALL = $(libs_app_libs_src-y)
-LINK_OBJS = $(libs_app_libs_obj-y)
 
 $(APP_LIBS_ALL) = ? || exit -1;
 

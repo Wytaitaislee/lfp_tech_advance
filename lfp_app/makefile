@@ -9,7 +9,6 @@ CUR_PATH = $(shell pwd)
 include $(CUR_PATH)/lfp_app_linking
 
 APP_ALL = $(libs_app_src-y)
-LINK_OBJS = $(libs_app_obj-y)
 
 CUR_OBJS = $(patsubst %.c, %.o, $(wildcard *.c))
 
@@ -27,8 +26,6 @@ CFLAGS = $(LFP_GLOBAL_FLAGS) $(INCLUDE_PATH)
 $(APP_ALL) = ? || exit -1;
 
 lfp_app = liblfp_app_init.a
-
-libs_obj-y += -l$(lfp_app)
 
 app_all:$(APP_ALL)
 

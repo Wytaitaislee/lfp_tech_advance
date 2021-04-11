@@ -1,5 +1,7 @@
-libs_app_src-y := $(CUR_PATH)/lfp_app_busybox
-libs_app_obj-y := -llfp_app_busybox
+#libs_app_obj-y += -llfp_app_init
+
+libs_app_src-y += $(CUR_PATH)/lfp_app_busybox
+libs_app_obj-y += -llfp_app_busybox
 
 libs_app_src-y += $(CUR_PATH)/lfp_app_libs
 
@@ -8,3 +10,5 @@ libs_app_src-y += $(CUR_PATH)/lfp_app_libs
 
 #libs_app_src-y += $(CUR_PATH)/lfp_app_unity_test
 #libs_app_obj-y += -llfp_app_unity_test
+
+$(shell echo LFP_LINK_OBJS += $(libs_app_obj-y) >> $(LFP_ROOT_PATH)/.config)

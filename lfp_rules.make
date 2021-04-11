@@ -11,12 +11,11 @@ LFP_EXEC_DIR = lfp_exec
 LFP_PRJ_NAME = lfp_tech_advance
 LFP_ROOT_PATH = $(firstword $(subst ${LFP_PRJ_NAME},${LFP_PRJ_NAME} ,$(shell pwd)))
 export LFP_ROOT_PATH LFP_PRJ_NAME
-LFP_OBJ_PATH = ${LFP_ROOT_PATH}/${LFP_EXEC_DIR}/${LFP_OBJDIR}
-LFP_EXEC_PATH = ${LFP_ROOT_PATH}/${LFP_EXEC_DIR}/${LFP_EXEC}
+LFP_OBJ_PATH = $(LFP_ROOT_PATH)/$(LFP_EXEC_DIR)/$(LFP_OBJDIR)
+LFP_EXEC_PATH = $(LFP_ROOT_PATH)/$(LFP_EXEC_DIR)/$(LFP_EXEC)
 
-include ${LFP_ROOT_PATH}/menuconfig
-include ${LFP_ROOT_PATH}/lfp_linking
+include $(LFP_ROOT_PATH)/menuconfig
 
-export $(libs_obj-y)
-
-LFP_GLOBAL_FLAGS += ${LFP_FLAGS}
+define lfp_auto_generate_linking
+	@echo "my name is "
+endef

@@ -1,5 +1,5 @@
-libs_src-y := $(LFP_ROOT_PATH)/lfp_main
-libs_obj-y := -llfp_main
+libs_src-y += $(LFP_ROOT_PATH)/lfp_main
+libs_obj-y += -llfp_main
 
 libs_src-y += $(LFP_ROOT_PATH)/lfp_app
 
@@ -18,9 +18,10 @@ libs_src-y += $(LFP_ROOT_PATH)/lfp_util
 libs_obj-y += -llfp_util
 
 #common system component, must be the last
-libs_base-y = -lpthread
+libs_base-y += -lpthread
 
 libs_obj-y += $(libs_base-y)
+$(shell echo LFP_LINK_OBJS += $(libs_obj-y) >> $(LFP_ROOT_PATH)/.config)
 
 
 

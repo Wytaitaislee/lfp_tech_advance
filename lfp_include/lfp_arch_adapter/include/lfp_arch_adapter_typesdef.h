@@ -5,7 +5,7 @@
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:58
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-04-04 16:07:14
+ * @LastEditTime: 2021-04-11 12:11:31
 */
 #ifndef __LFP_ARCH_ADAPTER_TYPESDEF_H__
 #define __LFP_ARCH_ADAPTER_TYPESDEF_H__
@@ -51,7 +51,7 @@ LFP_ADAPTER_RETURN lfp_##LFP_ADAPTER_FUNCTION_NAME(LFP_ADAPTER_PARAM_TYPE1 value
     else                                                                                                    \
     {                                                                                                       \
         LFP_ARCH_ADAPTER_UNDEF(LFP_ADAPTER_RETURN, LFP_CLASS, LFP_ADAPTER_FUNCTION_NAME);                   \
-    }                                                                                                       \                                         
+    }                                                                                                       \ 
 }
 
 /* General structure definition, 2 parameters. */

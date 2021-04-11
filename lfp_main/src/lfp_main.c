@@ -18,7 +18,7 @@ LFP_STATIC LFP_CONST LFP_CODE LFP_COMPONENTS_REGISTER_T g_componentsRegister[] =
 {
 	LFP_MODLUE_REGISTER(lfp_util_module_init),
 	LFP_MODLUE_REGISTER(lfp_arch_adapter_init),
-	LFP_MODLUE_REGISTER(lfp_app_init),
+	//LFP_MODLUE_REGISTER(lfp_app_init),
 };
 
 /*
@@ -26,7 +26,7 @@ Registration and initialization of each test component module of lfp
 */
 LFP_STATIC LFP_CONST LFP_CODE LFP_COMPONENTS_REGISTER_T g_componentsTestRegister[] = 
 {
-	LFP_MODLUE_REGISTER(lfp_app_test_init),
+	//LFP_MODLUE_REGISTER(lfp_app_test_init),
 };
 
 /*@fn		  LFP_INT32 lfp_wytaitai_main_entrance(LFP_VOID)

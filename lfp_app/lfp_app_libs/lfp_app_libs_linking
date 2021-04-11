@@ -1,28 +1,21 @@
 #lib double list
 
-ifeq ($(LFP_LIBS_DLIST),y)
-libs_app_libs_src-y := $(CUR_PATH)/lfp_libs_dlist
-libs_app_libs_obj-y := -llfp_libs_dlist
-endif
+libs_app_libs_src-$(LFP_LIBS_DLIST) := $(CUR_PATH)/lfp_libs_dlist
+libs_app_libs_obj-$(LFP_LIBS_DLIST) := -llfp_libs_dlist
 
 #lib single list
-
-ifeq ($(LFP_LIBS_SLIST),y)
-libs_app_libs_src-y += $(CUR_PATH)/lfp_libs_slist
-libs_app_libs_obj-y += -llfp_libs_slist
-endif
+libs_app_libs_src-$(LFP_LIBS_SLIST) += $(CUR_PATH)/lfp_libs_slist
+libs_app_libs_obj-$(LFP_LIBS_SLIST)  += -llfp_libs_slist
 
 #lib socket
-ifeq ($(LFP_LIBS_SOCKET),y)
-libs_app_libs_src-y += $(CUR_PATH)/lfp_libs_socket
-libs_app_libs_obj-y += -llfp_libs_socket
-endif
+libs_app_libs_src-$(LFP_LIBS_SOCKET) += $(CUR_PATH)/lfp_libs_socket
+libs_app_libs_obj-$(LFP_LIBS_SOCKET) += -llfp_libs_socket
 
 #lib threadpool
-ifeq ($(LFP_LIBS_THREADPOOL),y)
-libs_app_libs_src += $(CUR_PATH)/lfp_libs_threadpool
-libs_app_libs_obj-y += -llfp_libs_threadpool
-endif
+libs_app_libs_src-$(LFP_LIBS_THREADPOOL) += $(CUR_PATH)/lfp_libs_threadpool
+libs_app_libs_obj-$(LFP_LIBS_THREADPOOL) += -llfp_libs_threadpool
+
+$(shell echo LFP_LINK_OBJS += $(libs_app_libs_obj-y) >> $(LFP_ROOT_PATH)/.config)
 
 
 

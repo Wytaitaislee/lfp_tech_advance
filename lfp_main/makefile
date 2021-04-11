@@ -2,7 +2,7 @@ ifeq ($(LFP_PRJ_NAME)$(LFP_ROOT_PATH),)
 LFP_PRJ_NAME = lfp_tech_advance
 LFP_ROOT_PATH = $(firstword $(subst ${LFP_PRJ_NAME},${LFP_PRJ_NAME} ,$(shell pwd)))
 endif
-include ${LFP_ROOT_PATH}/lfp_rules.make
+include $(LFP_ROOT_PATH)/lfp_rules.make
 
 CUR_SRC_PATH = $(shell pwd)/src
 CUR_SRC = $(wildcard ${CUR_SRC_PATH}/*.c)
@@ -18,9 +18,9 @@ INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/lfp_app/
 INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/lfp_app/lfp_app_libs/
 
 CFLAGS = $(LFP_GLOBAL_FLAGS) $(INCLUDE_PATH)
-LIB_OS = liblfp_main.a
+LIB_MAIN = liblfp_main.a
 
-${LIB_OS}:$(CUR_OBJS)
+$(LIB_MAIN):$(CUR_OBJS)
 	$(LFP_AR) $(LFP_AR_FLAGS) $@ $^
 	cp $@ $(LFP_OBJ_PATH)
 
