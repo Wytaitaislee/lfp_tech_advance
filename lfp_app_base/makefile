@@ -6,6 +6,8 @@ endif
 include ${LFP_ROOT_PATH}/lfp_rules.make
 CUR_PATH = $(shell pwd)
 
+include $(CUR_PATH)/lfp_app_linking
+
 APP_ALL = $(libs_app_src-y)
 
 CUR_OBJS = $(patsubst %.c, %.o, $(wildcard *.c))
@@ -21,9 +23,9 @@ INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/lfp_app/lfp_app_unity_test/
 
 CFLAGS = $(LFP_GLOBAL_FLAGS) $(INCLUDE_PATH)
 
-#$(APP_ALL) = ? || exit -1;
+$(APP_ALL) = ? || exit -1;
 
-lfp_app = liblfp_app.a
+lfp_app = liblfp_app_init.a
 
 app_all:$(APP_ALL)
 
