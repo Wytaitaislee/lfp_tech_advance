@@ -23,31 +23,39 @@ nav:
 - 介绍: introduction/introduction.md
 - 基础组件:
     - logs: util/util_logs.md
-    - app busybox: app_busybox/app_busybox.md
 - 适配:
     - arch: arch/arch.md
     - arch adapter: arch_adapter/arch_adapter.md
-- 应用模块:
-    - about: app_modules/modules.md
-    - single_list: app_modules/single_list/single_list.md
-    - double list: app_modules/double_list/double_list.md
-    - socket app: app_modules/socket_app/socket_app.md
-- 头文件组织原则:
+- 应用服务:
+    - 关于: app_base/app_base.md
+    - 算法: 
+        - 排序算法: app_base/app_algo/app_algo_sort/app_algo_sort.md
+    - 用户层busybox: app_base/app_busybox/app_busybox.md
+    - 封装库: 
+        - 单向链表: app_base/app_libs/app_slist/app_slist.md
+        - 双向链表: app_base/app_libs/app_dlist/app_dlist.md
+        - 线程池: app_base/app_libs/app_threadpool/app_threadpool.md
+        - 安全函数: app_base/app_libs/app_safec/app_safec.md
+        - socket: app_base/app_libs/app_socket/app_socket.md
+- 应用: 
+    - 关于: app/app.md
+- 头文件:
     - include: include/include.md
-- 编译控制:
+- 工程控制:
     - exec: exec/exec.md
     - linking: lfp_linking/lfp_linking.md
     - main: main/main.md
     - menuconfig: menuconfig/menuconfig.md
     - lfp_rules.make: rules.make/rules.make.md
 - 编码规范:
-    - programming rules: programming_rules/programming_rules.md
-    - tools: tools/stats_tools.md
-- 知识拓展:
-    - common knowledge: extensions/extensions.md
-    - whiptail: extensions/whiptail/whiptail.md
-    - markdown syntax: extensions/markdown.md
-- 进阶线路图: roadmapping/roadmapping.md
+    - 编码规范: programming_rules/programming_rules.md
+    - 工具: tools/stats_tools.md
+- 进阶: 
+    - 进阶线路图: roadmapping/roadmapping.md
+    - 扩展:
+        - 通用知识: roadmapping/extensions/extensions.md
+        - whiptail: roadmapping/extensions/whiptail/whiptail.md
+        - markdown语法: roadmapping/extensions/markdown.md
 #theme: readthedocs
 
 # markdown extension

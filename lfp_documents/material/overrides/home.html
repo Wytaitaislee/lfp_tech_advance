@@ -12,12 +12,12 @@
           <img src="assets/images/illustration.png" alt="" width="1659" height="1200" draggable="false">
         </div>
         <div class="tx-hero__content">
-          <h1>lfp技术演进</h1>
+          <h1>Technical documentation</h1>
           <p>{{ config.site_description }}.</p>
-          <a href="{{ index | url }}" title="介绍" class="md-button">
+          <a href="{{ page.next_page.url | url }}" title="{{ page.next_page.title | e }}" class="md-button md-button--primary">
             如何开始
           </a>
-          <a href="{{ index | url }}" title="统一规范" class="md-button">
+          <a href="{{ 'introduction/' | url }}" title="编码规范" class="md-button">
             编码规范
           </a>
         </div>
