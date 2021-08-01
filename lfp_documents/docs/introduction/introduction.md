@@ -1,6 +1,6 @@
 # lfp documents
 
-在工作、优秀开源代码的阅读过程中，时常会遇到一些比较亮眼的编码方式，出于好奇、自我提升，将这些good taste加以消化，从架构层面扩展自己的知识视野。`lfp`取名 __lee's firmware platform__，知识、技能 _roadmapping_ 中所描述、涉及的知识内容，不一定按照由浅入深的顺序去排列，主要还是 __以自我兴趣、提升为前提和中心__，并应用到项目中，学以致用。
+在工作、优秀开源代码的阅读过程中，时常会遇到一些比较亮眼的编码方式，编码技能，出于自我进步和提升，将这些good taste加以消化，从架构层面扩展自己的知识视野。`lfp`取名 __lee's firmware platform__，知识、技能 _roadmapping_ 中所描述、涉及的知识内容，不一定按照由浅入深的顺序去排列，主要还是 __以自我兴趣、提升为前提和中心__，并应用到项目中，学以致用。
 
 ## mkdocs介绍
 
@@ -25,6 +25,7 @@
 
 === "mkdocs-material离线安装方法"
 	
+
 	* cd mkdocs-material
 	* pip install -r requirements.txt
 	* pip install mkdocs-minify-plugin
@@ -33,23 +34,41 @@
 
 ## 核心组件介绍
 
+> __lfp__ 组件的主要目录构成，本章节根据      __lfp_system_arch.drawio__ 中的层级顺序，由低向高的层级进行介绍；
+
 ### lfp util
 
 基础公共架构部分，支撑项目的通用业务，为 _upper层_提供基础服务，例如日志等；
 
 **[日志系统][lfp util]**，根据 _模块->子模块..._的基础树形结构进行日志模块的分块管理，实现系统日志信息的精准定位和精确捕捉；
 
-### lfp_arch_adapter
-
-**[架构适配层][lfp arch adapter]**，用以兼容/适配不同的操作系统（或者cpu平台，预留，目前暂时适配不同操作系统）, 用户层无需感知系统的变化；
-
 ### lfp_arch
 
 **[架构实现层][lfp arch]**，实现不同OS的系统层封装，上层应用业务不感知系统的差异性；
 
+### lfp_arch_adapter
+
+**[架构适配层][lfp arch adapter]**，用以兼容/适配不同的操作系统（或者cpu平台，预留，目前暂时适配不同操作系统）, 用户层无需感知系统的变化；
+
 ### lfp_documents
 
 以`markdown`编写的项目各模块的详细设计架构，以项目架构进行文档分层，设计和文档一致性。将文档使用`mkdocs`和`mkdocs-material`渲染后，发布到`Github Page`，点击[项目文档][lfp documents]查看详细的项目文档信息；
+
+### lfp_include
+
+按照`src .c`层级架构，存放项目相关的头文件，不要为了图简单而将一系列都文件都包含到某一个头文件，再暴露出去供引用。头文件应包含哪些头文件仅取决于自身，而非包含该头文件的源文件：
+
+> 例如，编译源文件时需要用到头文件B，且源文件已包含头文件A，而索性将头文件B包含在头文件A中，这是错误的做法。
+>
+> 头文件A是否应该包含头文件B，取决于头文件中定义的数据结构/函数声明是否需要头文件B中的数据结构；
+
+### lfp_app_base
+
+**[app的基础服务][lfp app base]**，主要为上层应用app提供系统级的通用基础组件，为后期扩展打基础。例如算法封装、用户串口命令、常用的业务模块封装库（链表、线程池等）、开源代码、数据库等；
+
+### lfp_app
+
+**[应用业务层][lfp app]**，根据不同的业务场景，构建不同的app模块；
 
 ### lfp_exec
 
@@ -59,34 +78,13 @@
 
 项目主入口，实现各核心模块的注册启动；
 
-### lfp_include
-
-按照`src .c`层级架构，存放项目相关的头文件，不要为了图简单而将一系列都文件都包含到某一个头文件，再暴露出去供引用。头文件应包含哪些头文件仅取决于自身，而非包含该头文件的源文件：
-> 例如，编译源文件时需要用到头文件B，且源文件已包含头文件A，而索性将头文件B包含在头文件A中，这是错误的做法。
-
-### lfp_app_busybox
-
-**[终端命令][lfp app busybox]**, 实现用户交互。用户busybox实现, 通过串口交互实现和主程序的交互，完成状态查询、触发控制等；
-
-### lfp_app_libs
-
-应用app封装libs，主要为上层应用app提供系统级的通用基础组件，为后期扩展打基础。例如，基础数据结构、安全函数、libc库劫持、内存劫持等；
-
-### lfp_app_unity_test
-
-为了测试基础组件而对应生成的测试程序，例如测试各类数据结构、安全函数、库封装等等；
-
-### lfp_app_modules
-
-各应用模块业务代码，所有的应用都基于平台层实现，不能随意直接调用`lfp_arch`层代码，模块业务代码统一在模块中进行注册之后，再注册到`main`；
-
 ### menuconfig
 
 用以配置、裁剪控制模块；
 
 ### lfp_linking
 
-库链接顺序管理，越是底层的库，链接时越是靠后；
+库链接顺序管理，每一层及的模块独立控制，越是底层的库，链接时越是靠后，确保链接顺序正常；
 
 ### lfp_rules.make
 
@@ -98,11 +96,12 @@
 
 [mkdocs-material安装]: #mkdocs-material安装方法
 [lfp util]: /util/util_logs/
+[lfp arch]:   /arch/arch/
 [lfp arch adapter]: /arch_adapter/arch_adapter/
-[lfp arch]: /arch/arch/
-[lfp app busybox]: /app_busybox/app_busybox/
 [programming rules]: /programming_rules/proogramming_rules/
 [lfp documents]: https://lee91.github.io/lfp_tech_advance/
+[lfp app base]: /app_base/app_base/
+[lfp app]: /app/app/
 
 
 
