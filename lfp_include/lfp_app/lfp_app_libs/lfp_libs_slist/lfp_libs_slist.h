@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:58
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-04-04 18:33:05
+ * @LastEditTime: 2021-08-07 17:23:19
 */
 
 #ifndef __LFP_SLIST_H__
@@ -14,7 +14,7 @@
 
 #include "lfp_base.h"
 
-#define LFP_SLIST_MODULE_NAME     "single list"
+#define LFP_SLIST_MODULE_NAME       "single list"
 #define LFP_SLIST_SIGN_OK    		"lfp single list register successfully!"
 #define LFP_SLIST_SIGN_ERR   		"lfp single list register failed!"
 
