@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:59
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-04-04 18:10:58
+ * @LastEditTime: 2021-08-07 17:20:28
  */
 
 #ifdef LFP_LIBS_SLIST
@@ -16,6 +16,7 @@
 do																				\
 {																				\
 	*ppNode = (LFP_SLIST_T *)LFP_MALLOC(sizeof(LFP_SLIST_T));					\
+	LFP_ASSERT_ERR_RET(*ppNode);												\
 	(*ppNode)->pNext = LFP_NULL;												\
 	(*ppNode)->data = 0;														\
 }while(0);
