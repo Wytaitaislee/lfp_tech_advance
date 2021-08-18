@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2020-09-26 16:55:41
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-04-04 16:03:52
+ * @LastEditTime: 2021-08-18 22:11:54
 */
 
 #ifndef __LFP_BASE_MACROS_H__
@@ -82,5 +82,55 @@ do 																					\
 {																					\
 	util("module %s !\n", sign);													\
 }while(0);
+
+/**
+ The offset of the structure element relative to the starting 
+ address of the structure.
+*/
+#define LFP_OFFSETOF(type, member)													\
+do																					\
+{																					\
+	((size_t)&((type*)0)->member)													\
+} while (0);
+
+/** 
+ * LFP_CONTAINER_OF - cast a member of a structure out to the containing structure 
+ * @ptr:    the pointer to the member. 
+ * @type:   the type of the container struct this is embedded in. 
+ * @member: the name of the member within the struct. 
+ */ 
+#define LFP_CONTAINER_OF(ptr, type, member)											\
+do																					\
+{																					\
+	const typeof(((type*)0)->member)*__mptr = (ptr);								\
+	(type*)((char*)(__mptr) - LFP_OFFSETOF(type, member))							\
+} while (0);
+
+/**
+ * get the structure entity where the linked list element is located.
+ */
+#define LFP_LIST_ENTRY(ptr, type, member)   LFP_CONTAINER_OF(ptr, type, member)
+
+/**
+ * LFP_LIST_FOR_EACH	-	iterate over a list(from head)
+ * @pos:	the &struct list_head to use as a loop cursor.
+ * @head:	the head for your list.
+*/
+#define LFP_LIST_FOR_EACH(pos, head)												\
+do																					\
+{																					\
+	for(pos = (head)->next; pos != (head); pos = pos->next)							\
+} while (0);
+
+/**
+ * LFP_LIST_FOR_EACH_PREV	-	iterate over a list(from tail)
+ * @pos:	the &struct list_head to use as a loop cursor.
+ * @head:	the head for your list.
+*/
+#define LFP_LIST_FOR_EACH_PREV(pos, head)											\
+do																					\
+{																					\
+	for(pos = (head)->prev; pos != (head); pos = pos->prev)							\
+} while (0);
 
 #endif /* end of __LFP_BASE_MACROS_H__ */
