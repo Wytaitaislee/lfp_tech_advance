@@ -4,14 +4,13 @@
  * @Author: wytaitaislee
  * @Date: 2021-04-04 17:03:09
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-08-21 16:28:04
+ * @LastEditTime: 2021-08-21 16:34:18
  */
 
 #include "lfp_base.h"
 #include "lfp_app_init.h"
 #include "lfp_app_libs.h"
 #include "lfp_app_busybox.h"
-#include "lfp_app_modules.h"
 #include "lfp_app_unity_test.h"
 
 LFP_INT32 lfp_app_unity_test_init(LFP_VOID);
