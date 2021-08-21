@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2021-01-31 11:34:26
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-08-21 16:03:21
+ * @LastEditTime: 2021-08-21 16:21:12
 */
 
 #include "lfp_app_busybox.h"
@@ -21,6 +21,12 @@ do                                                                              
 #define LFP_BUSYBOX_DEFINE_GETTIME      "getTime"
 #define LFP_BUSYBOX_DEFINE_GETTIME_HELP "todo"
 
+/*@fn		  LFP_STATIC LFP_INT32 lfp_app_busybox_gettime(LFP_INT8 iArgs, LFP_CONST LFP_INT8 **ppArgv)
+* @brief 	  usrbusybox - get the system time
+* @param[in]  LFP_NULL
+* @param[out] LFP_NULL
+* @return	  LFP_OK
+*/
 LFP_STATIC LFP_INT32 lfp_app_busybox_gettime(LFP_INT8 iArgs, LFP_CONST LFP_INT8 **ppArgv)
 {
     (LFP_VOID)iArgs;
@@ -28,6 +34,12 @@ LFP_STATIC LFP_INT32 lfp_app_busybox_gettime(LFP_INT8 iArgs, LFP_CONST LFP_INT8 
     return LFP_OK;
 }
 
+/*@fn		  
+* @brief 	  the usrbusybox excel.
+* @param[in]  NULL
+* @param[out] NULL
+* @return	  NULL
+*/
 LFP_STATIC LFP_CONST LFP_CODE LFP_APP_BUSYBOX_T gAppBusyBoxExcel[] = 
 {
     LFP_APP_BUSYBOX_REGISTER(LFP_BUSYBOX_DEFINE_GETTIME, 
@@ -37,6 +49,12 @@ LFP_STATIC LFP_CONST LFP_CODE LFP_APP_BUSYBOX_T gAppBusyBoxExcel[] =
     
 };
 
+/*@fn		  LFP_INT32 lfp_busybox_recv_proc(LFP_APP_BUSYBOX_T *pAppBusybox)
+* @brief 	  usrbusybox exec control.
+* @param[in]  LFP_NULL
+* @param[out] LFP_NULL
+* @return	  LFP_OK
+*/
 LFP_INT32 lfp_busybox_recv_proc(LFP_APP_BUSYBOX_T *pAppBusybox)
 {
     LFP_UINT32 uiForEach = 0;
@@ -58,7 +76,7 @@ LFP_INT32 lfp_busybox_recv_proc(LFP_APP_BUSYBOX_T *pAppBusybox)
 }
 
 /*@fn		  LFP_INT32 lfp_busybox_init(LFP_VOID)
-* @brief 	  loading command modules
+* @brief 	  loading usr command modules
 * @param[in]  LFP_VOID
 * @param[out] LFP_NULL
 * @return	  LFP_OK / LFP_ERR
