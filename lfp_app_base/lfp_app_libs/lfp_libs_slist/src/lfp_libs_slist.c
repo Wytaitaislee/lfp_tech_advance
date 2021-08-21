@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:59
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-08-07 17:20:28
+ * @LastEditTime: 2021-08-21 16:25:16
  */
 
 #ifdef LFP_LIBS_SLIST
@@ -12,6 +12,9 @@
 #include "lfp_base.h"
 #include "lfp_libs_slist.h"
 
+/*@fn		  LFP_SLIST_NODE_MALLOC
+* @brief 	  singly linked list node alloc macro.
+*/
 #define LFP_SLIST_NODE_MALLOC(ppNode)											\
 do																				\
 {																				\
@@ -21,6 +24,9 @@ do																				\
 	(*ppNode)->data = 0;														\
 }while(0);
 
+/*@fn		  LFP_SLIST_NODE_FREE
+* @brief 	  singly linked list node free macro.
+*/
 #define LFP_SLIST_NODE_FREE(pNode)												\
 do																				\
 {																				\
@@ -28,8 +34,6 @@ do																				\
 	pNode->data = 0;															\
 	pNode = LFP_NULL;															\
 }while(0);
-
-
 
 /*@fn		  LFP_INT32 lfp_slist_create_head(LFP_SLIST_T** ppList)
 * @brief 	  create the head node of single list
