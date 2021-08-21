@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2021-04-04 17:03:09
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-04-05 11:25:41
+ * @LastEditTime: 2021-08-21 16:28:04
  */
 
 #include "lfp_base.h"
@@ -20,7 +20,6 @@ LFP_CONST LFP_CODE LFP_COMPONENTS_REGISTER_T g_lfpAppRegister[] =
 {
 	LFP_MODLUE_REGISTER(lfp_app_busybox_init),
 	LFP_MODLUE_REGISTER(lfp_app_libs_init),
-	LFP_MODLUE_REGISTER(lfp_app_modules_init),
 	LFP_MODLUE_REGISTER(lfp_app_unity_test_init),
 };
 
