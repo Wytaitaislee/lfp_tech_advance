@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:58
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-08-21 16:03:55
+ * @LastEditTime: 2021-08-21 16:13:32
  */
 #include "lfp_arch_adapter.h"
 #include "lfp_arch_adapter_fileio.h"
@@ -17,36 +17,78 @@
 
 LFP_ARCH_ADAPTER_OS_T g_ArchAdapter = {0};
 
+/*@fn		  LFP_ARCH_ADAPTER_PTHREAD_T* lfp_get_arch_adapter_pthread_entry(LFP_VOID)
+* @brief 	  get the pthread function ptr entry.
+* @param[in]      LFP_NULL
+* @param[out]     LFP_NULL
+* @return	  LFP_ARCH_ADAPTER_PTHREAD_T*
+*/
 LFP_ARCH_ADAPTER_PTHREAD_T* lfp_get_arch_adapter_pthread_entry(LFP_VOID)
 {
     return &g_ArchAdapter.struArchAdapterPthread;
 }
 
+/*@fn		  LFP_ARCH_ADAPTER_MUTEX_T* lfp_get_arch_adapter_mutex_entry(LFP_VOID)
+* @brief 	  get the mutex function ptr entry.
+* @param[in]      LFP_NULL
+* @param[out]     LFP_NULL
+* @return	  LFP_ARCH_ADAPTER_MUTEX_T*
+*/
 LFP_ARCH_ADAPTER_MUTEX_T* lfp_get_arch_adapter_mutex_entry(LFP_VOID)
 {
     return &g_ArchAdapter.struArchAdapterMutex;
 }
 
+/*@fn		  LFP_ARCH_ADAPTER_SEMAPHORE_T* lfp_get_arch_adapter_semaphore_entry(LFP_VOID)
+* @brief 	  get the semaphore function ptr entry.
+* @param[in]      LFP_NULL
+* @param[out]     LFP_NULL
+* @return	  LFP_ARCH_ADAPTER_SEMAPHORE_T*
+*/
 LFP_ARCH_ADAPTER_SEMAPHORE_T* lfp_get_arch_adapter_semaphore_entry(LFP_VOID)
 {
     return &g_ArchAdapter.struArchAdapterSem;
 }
 
+/*@fn		  LFP_ARCH_ADAPTER_FILEIO_T* lfp_get_arch_adapter_fileio_entry(LFP_VOID)
+* @brief 	  get the fileio function ptr entry.
+* @param[in]      LFP_NULL
+* @param[out]     LFP_NULL
+* @return	  LFP_ARCH_ADAPTER_FILEIO_T*
+*/
 LFP_ARCH_ADAPTER_FILEIO_T* lfp_get_arch_adapter_fileio_entry(LFP_VOID)
 {
     return &g_ArchAdapter.struArchAdapterFileio;
 }
 
+/*@fn		  LFP_ARCH_ADAPTER_STDIO_T* lfp_get_arch_adapter_stdio_entry(LFP_VOID)
+* @brief 	  get the stdio function ptr entry.
+* @param[in]      LFP_NULL
+* @param[out]     LFP_NULL
+* @return	  LFP_ARCH_ADAPTER_STDIO_T*
+*/
 LFP_ARCH_ADAPTER_STDIO_T* lfp_get_arch_adapter_stdio_entry(LFP_VOID)
 {
     return &g_ArchAdapter.struArchAdapterStdio;
 }
 
+/*@fn		  LFP_ARCH_ADAPTER_SOCKET_T* lfp_get_arch_adapter_socket_entry(LFP_VOID)
+* @brief 	  get the socket function ptr entry.
+* @param[in]      LFP_NULL
+* @param[out]     LFP_NULL
+* @return	  LFP_ARCH_ADAPTER_SOCKET_T*
+*/
 LFP_ARCH_ADAPTER_SOCKET_T* lfp_get_arch_adapter_socket_entry(LFP_VOID)
 {
     return &g_ArchAdapter.struArchAdapterSocket;
 }
 
+/*@fn		  LFP_ARCH_ADAPTER_TIME_T* lfp_get_arch_adapter_time_entry(LFP_VOID)
+* @brief 	  get the time function ptr entry.
+* @param[in]      LFP_NULL
+* @param[out]     LFP_NULL
+* @return	  LFP_ARCH_ADAPTER_TIME_T*
+*/
 LFP_ARCH_ADAPTER_TIME_T* lfp_get_arch_adapter_time_entry(LFP_VOID)
 {
     return &g_ArchAdapter.struArchAdapterTime;
