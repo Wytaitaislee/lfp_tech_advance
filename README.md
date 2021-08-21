@@ -11,21 +11,6 @@
 
 自我提升，保持技术热情。lfp取名 lee's firmware platform。
 
-## 特性
-
-### 支持Mkdocs文档管理工具
-
-项目文档主要以mkdown文档书写，使用[MKdocs](https://mkdocs.readthedocs.io/en/stable/)进行文档服务器的部署，达到管理工程项目文档的目的，点击[项目文档][lfp document]查看完整、详细的项目文档。
-
-### 总体架构
-
-![总体架构](lfp_documents/docs/roadmapping/res/%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84.png)
-
-### 基础组件
-
- * usrbusybox、DB、open sources、libs package；
-
- * 多OS适配。对不同OS进行适配封装，应用层业务使用`lfp_arch_adapter`组件可以无需关心具体的系统差异；
 
 
 [pypi-v-image]: https://img.shields.io/pypi/v/mkdocs.svg
