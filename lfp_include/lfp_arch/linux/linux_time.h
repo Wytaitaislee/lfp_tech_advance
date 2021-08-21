@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2021-01-31 17:50:48
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-04-04 16:06:38
+ * @LastEditTime: 2021-08-21 15:12:31
 */
 
 #ifndef __LINUX_TIME_H__
@@ -12,11 +12,11 @@
 
 #include "lfp_base.h"
 
-#define LFP_STDIO_CRIT(...)   \
+#define LFP_TIME_CRIT(...)   \
 	LFP_UTIL_BASE(UTIL_LEVEL_CRIT, UTIL_MODULE_LINUX, MASK_TIME, __VA_ARGS__) 
-#define LFP_STDIO_ERR(...)   \
+#define LFP_TIME_ERR(...)   \
 	LFP_UTIL_BASE(UTIL_LEVEL_ERR, UTIL_MODULE_LINUX, MASK_TIME, __VA_ARGS__) 
-#define LFP_STDIO_INFO(...)   \
+#define LFP_TIME_INFO(...)   \
 	LFP_UTIL_BASE(UTIL_LEVEL_INFO, UTIL_MODULE_LINUX, MASK_TIME, __VA_ARGS__)
 
 /*@fn		  LFP_INT32 linux_sleep_ms(LFP_UINT32 uiSleepMsSeconds);

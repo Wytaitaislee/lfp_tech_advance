@@ -5,9 +5,11 @@
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:57
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-04-04 16:00:42
+ * @LastEditTime: 2021-08-21 15:54:36
 */
 
+#include <signal.h>
+#include <unistd.h>
 #include "linux_pthread.h"
 #include "linux_typesdef.h"
 
@@ -28,6 +30,8 @@ LFP_INT32 linux_pthread_create(LINUX_PTHREAD_HANDLE_T *pThreadHandle, LFP_INT32 
 	LFP_INT32 iRet = LFP_ERR;
 	LINUX_PTHREAD_HANDLE_T iHandle = 0, *pHandle = LFP_NULL;
 	
+	(LFP_VOID)iPrority;
+	(LFP_VOID)uiStackSize;
 	if(!pThreadHandle)
 	{	
 		pHandle = &iHandle;

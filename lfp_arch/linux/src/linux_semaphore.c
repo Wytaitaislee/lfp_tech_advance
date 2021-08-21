@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:57
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-04-04 16:01:00
+ * @LastEditTime: 2021-08-21 15:55:04
 */
 
 #include "linux_semaphore.h"
@@ -39,6 +39,7 @@ LFP_INT32 linux_semaphore_wait(LINUX_SEM_T *pSem, LFP_INT32 iWaitTime)
     //LFP_UINT32 iWaits = 0;
 
     LFP_ASSERT_ERR_RET(pSem);
+    (LFP_VOID)iWaitTime;
     /*
     iWaits = (LFP_SEM_WAIT_FOREVER == iWaitTime) ? ((LFP_INT32)LFP_SEM_WAIT_FOREVER) : 0
     while(1)

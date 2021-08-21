@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:58
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-04-04 16:08:53
+ * @LastEditTime: 2021-08-21 15:34:02
 */
 #ifndef __LFP_ARCH_ADAPTER_H__
 #define __LFP_ARCH_ADAPTER_H__
@@ -77,4 +77,13 @@ LFP_ARCH_ADAPTER_STDIO_T* lfp_get_arch_adapter_stdio_entry(LFP_VOID);
 * @return	  LFP_ARCH_ADAPTER_SOCKET_T*
 */
 LFP_ARCH_ADAPTER_SOCKET_T* lfp_get_arch_adapter_socket_entry(LFP_VOID);
+
+/*@fn		  LFP_ARCH_ADAPTER_TIME_T* lfp_get_arch_adapter_time_entry(LFP_VOID)
+* @brief 	  get the time function ptr entry.
+* @param[in]      LFP_NULL
+* @param[out]     LFP_NULL
+* @return	  LFP_ARCH_ADAPTER_TIME_T*
+*/
+LFP_ARCH_ADAPTER_TIME_T* lfp_get_arch_adapter_time_entry(LFP_VOID);
+
 #endif /*end of __LFP_ARCH_ADAPTER_H__ */

@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:58
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-04-04 16:03:27
+ * @LastEditTime: 2021-08-21 16:03:55
  */
 #include "lfp_arch_adapter.h"
 #include "lfp_arch_adapter_fileio.h"
@@ -77,13 +77,13 @@ LFP_STATIC LFP_CODE LFP_INT32 (*lfp_adapter_register[])(LFP_VOID) =
 */
 LFP_INT32 lfp_arch_adapter_init(LFP_VOID)
 {
-    LFP_INT32 iRegisterModules = 0;
+    LFP_UINT32 uiRegisterModules = 0;
 
-    for(iRegisterModules = 0; iRegisterModules < LFP_NELEMENTS(lfp_adapter_register); iRegisterModules++)
+    for(uiRegisterModules = 0; uiRegisterModules < LFP_NELEMENTS(lfp_adapter_register); uiRegisterModules++)
     {
-        if(LFP_NULL != lfp_adapter_register[iRegisterModules])
+        if(LFP_NULL != lfp_adapter_register[uiRegisterModules])
         {
-            lfp_adapter_register[iRegisterModules]();
+            lfp_adapter_register[uiRegisterModules]();
         }
     }
     return LFP_OK;

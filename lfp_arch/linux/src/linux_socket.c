@@ -5,13 +5,14 @@
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:57
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-04-04 16:01:28
+ * @LastEditTime: 2021-08-21 15:55:59
 */
 
-#include "linux_socket.h"
-#include "linux_typesdef.h"
 #include <fcntl.h>
 #include <errno.h>
+#include <unistd.h>
+#include "linux_socket.h"
+#include "linux_typesdef.h"
 
 /*@fn		  LFP_INT32 linux_socket_create(LFP_INT32 iProFamily, LFP_INT32 iSocketType, LFP_INT32 iProtocal)
 * @brief 	  create a new socket
@@ -50,7 +51,7 @@ LFP_INT32 linux_socket_bind(LFP_INT32 iSocket, LFP_CONST LINUX_SOCK_ADDR_T *pStr
 	iRet = bind(iSocket, pStruAddr, iSockLen);
 	if(0 != iRet)
 	{
-		LFP_LINUX_SOCKET_ERR("binding to socket[%d] errno[%d][%s], iRet[%d]\n", 
+		LFP_LINUX_SOCKET_ERR("binding to socket[%d] errno[%d][%s], iRet[%d]\n", \
 								iSocket, errno, strerror(errno), iRet);
 		return LFP_ERR;
 	}
@@ -140,7 +141,7 @@ LFP_INT32 linux_socket_close(LFP_INT32 iSocket)
 */
 LINUX_SSIZE_T linux_socket_write(LFP_INT32 iSocket, LFP_CONST LFP_VOID* pBuf, LINUX_SIZE_T iLen)
 {
-	LFP_ASSERT_ERR_RET((iSocket > 0) && (iLen >= 0));
+	LFP_ASSERT_ERR_RET((iSocket > 0) && (iLen > 0));
 	LFP_ASSERT_ERR_RET(pBuf);
 	return write(iSocket, pBuf, iLen);
 }

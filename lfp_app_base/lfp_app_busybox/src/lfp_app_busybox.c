@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2021-01-31 11:34:26
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-04-04 15:58:16
+ * @LastEditTime: 2021-08-21 16:03:21
 */
 
 #include "lfp_app_busybox.h"
@@ -23,6 +23,8 @@ do                                                                              
 
 LFP_STATIC LFP_INT32 lfp_app_busybox_gettime(LFP_INT8 iArgs, LFP_CONST LFP_INT8 **ppArgv)
 {
+    (LFP_VOID)iArgs;
+    (LFP_VOID)ppArgv;
     return LFP_OK;
 }
 
@@ -37,13 +39,13 @@ LFP_STATIC LFP_CONST LFP_CODE LFP_APP_BUSYBOX_T gAppBusyBoxExcel[] =
 
 LFP_INT32 lfp_busybox_recv_proc(LFP_APP_BUSYBOX_T *pAppBusybox)
 {
-    LFP_INT32 iForEach = 0;
+    LFP_UINT32 uiForEach = 0;
 
     LFP_ASSERT_ERR_RET(pAppBusybox);
     LFP_ASSERT_ERR_RET(pAppBusybox->pCmdHelpInfo);
-    for(iForEach = 0; iForEach < LFP_NELEMENTS(gAppBusyBoxExcel); iForEach++)
+    for(uiForEach = 0; uiForEach < LFP_NELEMENTS(gAppBusyBoxExcel); uiForEach++)
     {
-        if(gAppBusyBoxExcel[iForEach].pCmdName == pAppBusybox->pCmdName)
+        if(gAppBusyBoxExcel[uiForEach].pCmdName == pAppBusybox->pCmdName)
         {
             if(pAppBusybox->pCallbackBusybox)
             {

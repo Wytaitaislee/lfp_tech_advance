@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:58
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-04-04 17:54:42
+ * @LastEditTime: 2021-08-21 15:35:35
 */
 
 #include "lfp_base.h"
@@ -27,6 +27,7 @@ Registration and initialization of each test component module of lfp
 LFP_STATIC LFP_CONST LFP_CODE LFP_COMPONENTS_REGISTER_T g_componentsTestRegister[] = 
 {
 	//LFP_MODLUE_REGISTER(lfp_app_test_init),
+	{LFP_NULL, LFP_NULL},
 };
 
 /*@fn		  LFP_INT32 lfp_wytaitai_main_entrance(LFP_VOID)

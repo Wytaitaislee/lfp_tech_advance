@@ -4,11 +4,12 @@
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:59
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-04-04 16:10:09
+ * @LastEditTime: 2021-08-21 15:47:15
  */
 
 #include "lfp_base.h"
 #include <stdarg.h>
+#include <string.h>
 
 LFP_UTIL_CTRL_T *g_pUtilCtrl = NULL;
 

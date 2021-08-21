@@ -4,11 +4,12 @@
  * @Author: wytaitaislee
  * @Date: 2021-01-31 14:52:35
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-04-04 16:01:45
+ * @LastEditTime: 2021-08-21 15:49:35
 */
 
 #include "linux_time.h"
 #include "linux_typesdef.h"
+#include <unistd.h>
 
 /*@fn		  LFP_INT32 linux_sleep_ms(LFP_UINT32 uiSleepMsSeconds);
 * @brief 	  delay milliseconds

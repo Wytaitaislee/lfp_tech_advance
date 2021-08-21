@@ -5,7 +5,7 @@
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:58
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-04-11 12:11:31
+ * @LastEditTime: 2021-08-21 16:01:36
 */
 #ifndef __LFP_ARCH_ADAPTER_TYPESDEF_H__
 #define __LFP_ARCH_ADAPTER_TYPESDEF_H__
@@ -41,8 +41,8 @@ LFP_ADAPTER_RETURN lfp_##LFP_ADAPTER_FUNCTION_NAME()                            
 }
 
 /* General structure definition, 1 parameters. */
-#define LFP_ARCH_ADAPTER1(LFP_ADAPTER_CLASS, LFP_ADAPTER_FUNCTION_NAME, LFP_ADAPTER_RETURN, LFP_ADAPTER_PARAM_TYPE1)    \
-LFP_ADAPTER_RETURN lfp_##LFP_ADAPTER_FUNCTION_NAME(LFP_ADAPTER_PARAM_TYPE1 value)                     \
+#define LFP_ARCH_ADAPTER1(LFP_ADAPTER_CLASS, LFP_ADAPTER_FUNCTION_NAME, LFP_ADAPTER_RETURN, LFP_ADAPTER_PARAM_TYPE1)\
+LFP_ADAPTER_RETURN lfp_##LFP_ADAPTER_FUNCTION_NAME(LFP_ADAPTER_PARAM_TYPE1 value)                           \
 {                                                                                                           \
     if(NULL != LFP_ADAPTER_CLASS.LFP_ADAPTER_FUNCTION_NAME)                                                 \
     {                                                                                                       \
@@ -51,7 +51,7 @@ LFP_ADAPTER_RETURN lfp_##LFP_ADAPTER_FUNCTION_NAME(LFP_ADAPTER_PARAM_TYPE1 value
     else                                                                                                    \
     {                                                                                                       \
         LFP_ARCH_ADAPTER_UNDEF(LFP_ADAPTER_RETURN, LFP_CLASS, LFP_ADAPTER_FUNCTION_NAME);                   \
-    }                                                                                                       \ 
+    }                                                                                                       \
 }
 
 /* General structure definition, 2 parameters. */
@@ -67,7 +67,7 @@ LFP_ADAPTER_RETURN lfp_##LFP_ADAPTER_FUNCTION_NAME(LFP_ADAPTER_PARAM_TYPE1 value
     else                                                                                                    \
     {                                                                                                       \
         LFP_ARCH_ADAPTER_UNDEF(LFP_ADAPTER_RETURN, LFP_CLASS, LFP_ADAPTER_FUNCTION_NAME);                   \
-    }                                                                                                       \                                         
+    }                                                                                                       \
 }
 
 /* General structure definition, 3 parameters. */
@@ -84,7 +84,7 @@ LFP_ADAPTER_RETURN lfp_##LFP_ADAPTER_FUNCTION_NAME(LFP_ADAPTER_PARAM_TYPE1 value
     else                                                                                                    \
     {                                                                                                       \
         LFP_ARCH_ADAPTER_UNDEF(LFP_ADAPTER_RETURN, LFP_CLASS, LFP_ADAPTER_FUNCTION_NAME);                   \
-    }                                                                                                       \                                         
+    }                                                                                                       \
 }
 
 /* General structure definition, 4 parameters. */
@@ -103,18 +103,18 @@ LFP_ADAPTER_RETURN lfp_##LFP_ADAPTER_FUNCTION_NAME(LFP_ADAPTER_PARAM_TYPE1 value
     else                                                                                                    \
     {                                                                                                       \
         LFP_ARCH_ADAPTER_UNDEF(LFP_ADAPTER_RETURN, LFP_CLASS, LFP_ADAPTER_FUNCTION_NAME);                   \
-    }                                                                                                       \                                         
+    }                                                                                                       \
 }
 
 /* General structure definition, 5 parameters. */
 #define LFP_ARCH_ADAPTER5(LFP_ADAPTER_CLASS, LFP_ADAPTER_FUNCTION_NAME, LFP_ADAPTER_RETURN,                 \
                             LFP_ADAPTER_PARAM_TYPE1, LFP_ADAPTER_PARAM_TYPE2, LFP_ADAPTER_PARAM_TYPE3,      \
-                             LFP_ADAPTER_PARAM_TYPE4, LFP_ADAPTER_PARAM_TYPE5)     \
+                             LFP_ADAPTER_PARAM_TYPE4, LFP_ADAPTER_PARAM_TYPE5)                              \
 LFP_ADAPTER_RETURN lfp_##LFP_ADAPTER_FUNCTION_NAME(LFP_ADAPTER_PARAM_TYPE1 value1,                          \
                                                     LFP_ADAPTER_PARAM_TYPE2 value2,                         \
                                                     LFP_ADAPTER_PARAM_TYPE3 value3,                         \
                                                     LFP_ADAPTER_PARAM_TYPE4 value4,                         \
-                                                    LFP_ADAPTER_PARAM_TYPE5 value5)                        \
+                                                    LFP_ADAPTER_PARAM_TYPE5 value5)                         \
 {                                                                                                           \
     if(NULL != LFP_ADAPTER_CLASS.LFP_ADAPTER_FUNCTION_NAME)                                                 \
     {                                                                                                       \
@@ -123,7 +123,7 @@ LFP_ADAPTER_RETURN lfp_##LFP_ADAPTER_FUNCTION_NAME(LFP_ADAPTER_PARAM_TYPE1 value
     else                                                                                                    \
     {                                                                                                       \
         LFP_ARCH_ADAPTER_UNDEF(LFP_ADAPTER_RETURN, LFP_CLASS, LFP_ADAPTER_FUNCTION_NAME);                   \
-    }                                                                                                       \                                         
+    }                                                                                                       \
 }
 
 /* General structure definition, 6 parameters. */
@@ -135,7 +135,7 @@ LFP_ADAPTER_RETURN lfp_##LFP_ADAPTER_FUNCTION_NAME(LFP_ADAPTER_PARAM_TYPE1 value
                                                     LFP_ADAPTER_PARAM_TYPE3 value3,                         \
                                                     LFP_ADAPTER_PARAM_TYPE4 value4,                         \
                                                     LFP_ADAPTER_PARAM_TYPE5 value5,                         \
-                                                    LFP_ADAPTER_PARAM_TYPE6 value6)                        \
+                                                    LFP_ADAPTER_PARAM_TYPE6 value6)                         \
 {                                                                                                           \
     if(NULL != LFP_ADAPTER_CLASS.LFP_ADAPTER_FUNCTION_NAME)                                                 \
     {                                                                                                       \
@@ -144,7 +144,7 @@ LFP_ADAPTER_RETURN lfp_##LFP_ADAPTER_FUNCTION_NAME(LFP_ADAPTER_PARAM_TYPE1 value
     else                                                                                                    \
     {                                                                                                       \
         LFP_ARCH_ADAPTER_UNDEF(LFP_ADAPTER_RETURN, LFP_CLASS, LFP_ADAPTER_FUNCTION_NAME);                   \
-    }                                                                                                       \                                         
+    }                                                                                                       \
 }
 
 #endif /*end of __LFP_ARCH_ADAPTER_TYPESDEF_H__ */

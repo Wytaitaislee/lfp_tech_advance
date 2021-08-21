@@ -22,6 +22,8 @@
         "lfp_libs_slist.h": "c",
         "lfp_libs_dlist.h": "c",
         "lfp_app_init.h": "c",
-        "type_traits": "cpp"
+        "type_traits": "cpp",
+        "linux_socket.h": "c",
+        "signal.h": "c"
     }
 }
