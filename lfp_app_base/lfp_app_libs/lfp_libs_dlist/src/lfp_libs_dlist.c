@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:59
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-08-07 19:29:39
+ * @LastEditTime: 2021-08-21 16:23:28
 */
 
 #ifdef LFP_LIBS_DLIST
@@ -12,6 +12,9 @@
 #include "lfp_base.h"
 #include "lfp_libs_dlist.h"
 
+/*@fn		  LFP_DLIST_INIT
+* @brief 	  doubly linked list init macro.
+*/
 #define LFP_DLIST_INIT(pNode)
 do                                                                                  \
 {                                                                                   \
@@ -20,6 +23,9 @@ do                                                                              
     pNode->pPrev = pNode;                                                           \
 }while(0);
 
+/*@fn		  LFP_DLIST_NODE_MALLOC
+* @brief 	  doubly linked list node alloc macro.
+*/
 #define LFP_DLIST_NODE_MALLOC(ppNode)                                               \
 do                                                                                  \
 {                                                                                   \
@@ -30,6 +36,9 @@ do                                                                              
     (*ppNode)->pPrev = LFP_NULL;                                                    \
 } while (0);
 
+/*@fn		  LFP_DLIST_NODE_MALLOC
+* @brief 	  doubly linked list node free macro.
+*/
 #define LFP_DLIST_NODE_FREE(pNode)                                                  \
 do                                                                                  \
 {                                                                                   \
