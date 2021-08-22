@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:58
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-04-04 16:04:01
+ * @LastEditTime: 2021-08-22 10:20:20
 */
 
 #ifndef __LFP_BASE_TYPESDEF_H__
@@ -33,6 +33,7 @@ typedef void 					LFP_VOID;
 #define	LFP_STATIC static
 #define LFP_CONST  const
 #define LFP_RESTRICT  restrict
+#define	LFP_INLINE inline
 #define LFP_CODE
 #define LFP_DATA
 
