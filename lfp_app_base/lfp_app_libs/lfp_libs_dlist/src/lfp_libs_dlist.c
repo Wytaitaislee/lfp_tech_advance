@@ -1,10 +1,10 @@
 /*
  * @fileName: lfp_libs_dlist.c
- * @Description: Doubly linked list package library.
+ * @Description: Double linked list package library.
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:59
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-08-22 10:35:09
+ * @LastEditTime: 2021-08-22 10:53:36
 */
 
 #ifdef LFP_LIBS_DLIST
@@ -13,7 +13,7 @@
 #include "lfp_libs_dlist.h"
 
 /*@fn		  LFP_DLIST_INIT
-* @brief 	  doubly linked list init macro.
+* @brief 	  double linked list init macro.
 */
 #define LFP_DLIST_INIT(pNode)
 do                                                                                  \
@@ -24,7 +24,7 @@ do                                                                              
 }while(0);
 
 /*@fn		  LFP_DLIST_NODE_MALLOC
-* @brief 	  doubly linked list node alloc macro.
+* @brief 	  double linked list node alloc macro.
 */
 #define LFP_DLIST_NODE_MALLOC(ppNode)                                               \
 do                                                                                  \
@@ -37,7 +37,7 @@ do                                                                              
 } while (0);
 
 /*@fn		  LFP_DLIST_NODE_MALLOC
-* @brief 	  doubly linked list node free macro.
+* @brief 	  double linked list node free macro.
 */
 #define LFP_DLIST_NODE_FREE(pNode)                                                  \
 do                                                                                  \
@@ -135,26 +135,26 @@ LFP_INT32 lfp_dlist_delete(LFP_DLIST_T *pDelNode)
     return __lfp_delete_entry(pDelNode->pPrev, pDelNode->pNext);
 }
 
-/*@fn		  LFP_INT32 lfp_dlist_destroy(LFP_DLIST_T *pList)
+/*@fn		  LFP_INT32 lfp_dlist_destroy(LFP_DLIST_T **pList)
 * @brief 	  destroy the list
-* @param[in]  LFP_DLIST_T *pList - the address of the head of the list
+* @param[in]  LFP_DLIST_T **ppList -  the ptr of the head ptr whom pointer to the double linked list
 * @param[out] LFP_NULL
 * @return	  LFP_OK/LFP_ERR
 */
-LFP_INT32 lfp_dlist_destroy(LFP_DLIST_T *pList)
+LFP_INT32 lfp_dlist_destroy(LFP_DLIST_T **ppList)
 {
 	LFP_DLIST_T *pTmp = LFP_NULL;
 	LFP_DLIST_T *pWalk = LFP_NULL;
 	
-	LFP_ASSERT_ERR_RET(pList);
-	pWalk = pList;
+	LFP_ASSERT_ERR_RET(ppList);
+	pWalk = *ppList;
 	while(pWalk)
 	{
 		pTmp = pWalk;
 		pWalk = pWalk->pNext;
 		LFP_DLIST_NODE_FREE(pTmp);
 	}	
-	pList = LFP_NULL;
+	*ppList = (LFP_DLIST_T*)LFP_NULL;
 	return LFP_OK;
 }
 
