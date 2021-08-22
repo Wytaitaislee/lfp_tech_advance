@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:58
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-08-18 21:59:55
+ * @LastEditTime: 2021-08-22 10:35:30
  */
 
 #ifndef __LFP_DLIST_H__
@@ -32,8 +32,8 @@ typedef struct lfp_dlist_t
 	struct lfp_dlist_t *pNext;
 }LFP_DLIST_T;
 
-/*@fn		  LFP_INT32 lfp_dlist_init(struct LFP_DLIST_T** ppList)
-* @brief 	  double list init 
+/*@fn         LFP_INT32 lfp_dlist_init(struct LFP_DLIST_T** ppList)
+* @brief      create the head node of double list
 * @param[in]  the ptr of the head ptr whom pointer to the double list
 * @param[out] the same as param[in]
 * @return     LFP_OK/LFP_ERR
@@ -57,9 +57,10 @@ LFP_INT32 lfp_dlist_add(LFP_DLIST_T *pList, LFP_DLIST_T *pNewNode);
 * @return	  LFP_OK/LFP_ERR
 */
 LFP_INT32 lfp_dlist_add_tail(LFP_DLIST_T *pList, LFP_DLIST_T *pNewNode);
-/*@fn		  LFP_INT32 lfp_dlist_delete(LFP_DLIST_T *pList)
+
+/*@fn		  LFP_INT32 lfp_dlist_delete(LFP_DLIST_T *pDelNode)
 * @brief 	  delete a node from the list
-* @param[in]  LFP_DLIST_T *pList - the head of the list
+* @param[in]  LFP_DLIST_T *pDelNode - the node to be deleted
 * @param[out] LFP_NULL
 * @return	  LFP_OK/LFP_ERR
 */

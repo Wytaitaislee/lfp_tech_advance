@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:59
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-08-21 16:23:28
+ * @LastEditTime: 2021-08-22 10:35:09
 */
 
 #ifdef LFP_LIBS_DLIST
@@ -55,6 +55,7 @@ do                                                                              
 */
 LFP_INT32 lfp_dlist_init(LFP_DLIST_T **ppList)
 {
+    LFP_ASSERT_ERR_RET(ppList);
     LFP_DLIST_NODE_MALLOC(ppList);
     LFP_DLIST_INIT(*ppList);
     return LFP_OK;
@@ -68,7 +69,7 @@ LFP_INT32 lfp_dlist_init(LFP_DLIST_T **ppList)
 * @param[out] NULL
 * @return	  LFP_OK/LFP_ERR
 */
-static LFP_INT32 __lfp_dlist_add(LFP_DLIST_T *pPrev, LFP_DLIST_T *pNext, LFP_DLIST_T *pNewNode)
+LFP_STATIC LFP_INLINE LFP_INT32 __lfp_dlist_add(LFP_DLIST_T *pPrev, LFP_DLIST_T *pNext, LFP_DLIST_T *pNewNode)
 {
     LFP_ASSERT_ERR_RET(pList && pNewNode && pNewNode);
     pNewNode->pPrev = pPrev;
@@ -87,7 +88,7 @@ static LFP_INT32 __lfp_dlist_add(LFP_DLIST_T *pPrev, LFP_DLIST_T *pNext, LFP_DLI
 */
 LFP_INT32 lfp_dlist_add(LFP_DLIST_T *pList, LFP_DLIST_T *pNewNode)
 {
-    LFP_ASSERT_ERR_RET(*pList && *pNewNode);
+    LFP_ASSERT_ERR_RET(pList && pNewNode);
 
     return __lfp_dlist_add(pList, pList->pNext, pNewNode);
 }
@@ -101,30 +102,37 @@ LFP_INT32 lfp_dlist_add(LFP_DLIST_T *pList, LFP_DLIST_T *pNewNode)
 */
 LFP_INT32 lfp_dlist_add_tail(LFP_DLIST_T *pList, LFP_DLIST_T *pNewNode)
 {
-    LFP_ASSERT_ERR_RET(*pList && *pNewNode);
+    LFP_ASSERT_ERR_RET(pList && pNewNode);
 
     return __lfp_dlist_add(pList->pPrev, pList, pNewNode);
 }
 
-/*@fn		  LFP_INT32 lfp_dlist_delete(LFP_DLIST_T *pList)
+/*@fn		  LFP_INT32 __lfp_delete_entry(LFP_DLIST_T *pPrev, LFP_DLIST_T *pNext)
+* @brief 	  delete a node by making the prev/next node
+* @param[in]  LFP_DLIST_T *pPrev - the previous node
+* @param[in]  LFP_DLIST_T *pNext - the next node
+* @param[out] LFP_NULL
+* @return	  LFP_OK/LFP_ERR
+* @note       This is only for internal list manipulation where we know the prev/next entries already!
+*/
+LFP_STATIC LFP_INLINE LFP_INT32 __lfp_delete_entry(LFP_DLIST_T *pPrev, LFP_DLIST_T *pNext)
+{
+    LFP_ASSERT_ERR_RET(pPrev && pNext);
+    pPrev->pNext = pNext;
+    pNext->pPrev = pPrev;
+    return HPR_OK;
+}
+
+/*@fn		  LFP_INT32 lfp_dlist_delete(LFP_DLIST_T *pDelNode)
 * @brief 	  delete a node from the list
-* @param[in]  LFP_DLIST_T *pList - the head of the list
+* @param[in]  LFP_DLIST_T *pDelNode - the node to be deleted
 * @param[out] LFP_NULL
 * @return	  LFP_OK/LFP_ERR
 */
-LFP_INT32 lfp_dlist_delete(LFP_DLIST_T *pList, LFP_DLIST_T *pDelNode)
+LFP_INT32 lfp_dlist_delete(LFP_DLIST_T *pDelNode)
 {
-    LFP_DLIST_T **ppWalk = NULL;
-
-    LFP_ASSERT_ERR_RET(pList && pDelNode);
-    ppWalk = &pList;
-    while((*ppWalk)->pNext != pDelNode)
-    {
-        ppWalk = &(*ppWalk)->pNext;
-    }
-    (*ppWalk)->pPrev->pNext = pDelNode->pNext;
-    (*ppWalk)->pNext = pDelNode->pNext;
-    return HPR_OK;
+    LFP_ASSERT_ERR_RET(pDelNode);
+    return __lfp_delete_entry(pDelNode->pPrev, pDelNode->pNext);
 }
 
 /*@fn		  LFP_INT32 lfp_dlist_destroy(LFP_DLIST_T *pList)
