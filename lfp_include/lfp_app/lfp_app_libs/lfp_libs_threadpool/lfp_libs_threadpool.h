@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2021-03-21 18:00:21
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-08-22 16:52:13
+ * @LastEditTime: 2021-08-22 22:57:56
  */
 
 #ifndef __LFP_LIBS_THREADPOOL_H__
@@ -13,22 +13,31 @@
 #include "lfp_arch_adapter.h"
 #include "lfp_libs_dlist.h"
 
+#define LFP_THREADPOOL_CRIT(...)   \
+        LFP_UTIL_BASE(UTIL_LEVEL_CRIT, UTIL_MODULE_DLIST, MASK_DLIST, __VA_ARGS__)
+#define LFP_THREADPOOL_ERR(...)   \
+        LFP_UTIL_BASE(UTIL_LEVEL_ERR, UTIL_MODULE_DLIST, MASK_DLIST, __VA_ARGS__)
+#define LFP_THREADPOOL_INFO(...)   \
+        LFP_UTIL_BASE(UTIL_LEVEL_INFO, UTIL_MODULE_DLIST, MASK_DLIST, __VA_ARGS__) 
+
 typedef struct work_item_t
 {
-    LFP_SEM_T   semphore;
-    LFP_DLIST_T *work_entry;
+    LFP_DLIST_T *list;
+    LFP_VOID    *pWorkData;
 }WORK_ITEM_T;
 
 typedef struct work_queue_t
 {
     LFP_UINT32  uiQueueCnt;
-    WORK_ITEM_T *pWorkList;
+    WORK_ITEM_T *pWorkHead;
 }WORK_QUEUE_T;
 
-typedef struct thread_info_t
+typedef struct thread_queue_t
 {
-    LFP_DLIST_T *pInfoList;
-}THREAD_INFO_T;
+    LFP_SEM_T   semphore;
+    LFP_TIME_T  uiWorkerTime;
+    LFP_DLIST_T *pThreadHead;
+}THREAD_QUEUE_T;
 
 typedef enum
 {
@@ -47,6 +56,6 @@ typedef struct lfp_threadpool_t
     HPR_UINT32 uiThreadTimeOut;
     LFP_VOID (*handler)(LFP_VOID*);
     WORK_QUEUE_T *pWorkQueue;
-    THREAD_INFO_T *pThreadQueue;
+    THREAD_QUEUE_T *pThreadQueue;
 }LFP_THREADPOOL_T;
 #endif /* end of __LFP_APP_THREADPOOL_H__ */
