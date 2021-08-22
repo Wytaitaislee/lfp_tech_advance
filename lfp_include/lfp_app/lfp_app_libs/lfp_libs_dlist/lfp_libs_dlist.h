@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:58
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-08-22 15:52:05
+ * @LastEditTime: 2021-08-22 15:53:10
  */
 
 #ifndef __LFP_DLIST_H__
@@ -15,8 +15,8 @@
 #include "lfp_base.h"
 
 #define LFP_DLIST_MODULE_NAME       "double list"
-#define LFP_DLIST_SIGN_OK    		"lfp double list register successfully!"
-#define LFP_DLIST_SIGN_ERR   		"lfp double list register failed!"
+#define LFP_DLIST_SIGN_OK    	    "lfp double list register successfully!"
+#define LFP_DLIST_SIGN_ERR   	    "lfp double list register failed!"
 
 #define LFP_DLIST_CRIT(...)   \
         LFP_UTIL_BASE(UTIL_LEVEL_CRIT, UTIL_MODULE_DLIST, MASK_DLIST, __VA_ARGS__)
