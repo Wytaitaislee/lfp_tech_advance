@@ -24,6 +24,9 @@
         "lfp_app_init.h": "c",
         "type_traits": "cpp",
         "linux_socket.h": "c",
-        "signal.h": "c"
+        "signal.h": "c",
+        "lfp_base_typesdef.h": "c",
+        "lfp_base_macros.h": "c",
+        "linux_semaphore.h": "c"
     }
 }
