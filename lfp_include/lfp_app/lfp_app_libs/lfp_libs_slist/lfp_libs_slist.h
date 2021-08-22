@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:58
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-08-07 17:23:19
+ * @LastEditTime: 2021-08-22 10:53:13
 */
 
 #ifndef __LFP_SLIST_H__
@@ -30,62 +30,34 @@
 /*single list structure definition */
 typedef struct lfp_slist_t
 {
-	LFP_INT32 data;
 	struct lfp_slist_t *pNext;
 }LFP_SLIST_T;
 
-/*@fn		  LFP_INT32 lfp_slist_create_head(LFP_SLIST_T** ppList)
-* @brief 	  create the head node of single list
-* @param[in]  the ptr of the head ptr whom pointer to the single list
+/*@fn		  LFP_INT32 lfp_slist_init(LFP_SLIST_T** ppList)
+* @brief 	  create the head node of single linked list
+* @param[in]  LFP_SLIST_T **ppList the ptr of the head ptr whom pointer to the single linked list
 * @param[out] the same as param[in]
 * @return     LFP_OK/LFP_ERR
 */
-LFP_INT32 lfp_slist_create_head(LFP_SLIST_T **ppList);
+LFP_INT32 lfp_slist_init(LFP_SLIST_T **ppList);
 
-/*@fn		  LFP_INT32 lfp_slist_add_element(LFP_SLIST_T *pHead, LFP_UINT32 uiNum)
-* @brief 	  add a specific num of nodes to the end of the single list
-* @param[in]  LFP_SLIST_T *pHead - the head of the list
-* @param[in]  LFP_UINT32 uiNum - the num of the specific nodes
+/*@fn		  LFP_INT32 lfp_slist_add(LFP_SLIST_T *pList, LFP_SLIST_T *pNewNode)
+* @brief      Insert a new node after the specified head.
+* @param[in]  LFP_SLIST_T *pList - the head of list
+* @param[in]  LFP_SLIST_T *pNewNode - new node to be added
 * @param[out] NULL
-* @return     LFP_OK/LFP_ERR
-*/
-LFP_INT32 lfp_slist_add_element(LFP_SLIST_T *pList, LFP_UINT32 uiNum);
-
-
-/*@fn		  LFP_INT32 lfp_slist_append_node(LFP_SLIST_T *pList, LFP_SLIST_T *pAddNode)
-* @brief 	  append a new node to the end of the single list
-* @param[in]  LFP_SLIST_T *pList - the head of the list
-* @param[in]  LFP_SLIST_T *pAddNode - the node to be added
-* @param[out] LFP_NULL
-* @return     LFP_OK/LFP_ERR
-*/
-LFP_INT32 lfp_slist_append_node(LFP_SLIST_T *pList, LFP_SLIST_T *pAddNode);
-
-/*@fn		  LFP_INT32 lfp_slist_insert_element_by_node( LFP_SLIST_T *pList, 
-			   					    LFP_SLIST_T *pPrev, 
-                        					    LFP_INT32 iData)
-* @brief 	  add a new node to the single list(before a specific node)
-* @param[in]  LFP_SLIST_T *pList - the head of list
-* @param[in]  LFP_SLIST_T *pPrev - the previous element of the inserted element
-* @param[in]  LFP_INT32 iData - the data of the new node
-* @param[out] LFP_NULL
-* @note		  if *pNode does not exist in the list, return LFP_ERR
 * @return	  LFP_OK/LFP_ERR
 */
-LFP_INT32 lfp_slist_insert_element_by_node(LFP_SLIST_T *pList, LFP_SLIST_T *pNode, LFP_INT32 iData);
+LFP_INT32 lfp_slist_add(LFP_SLIST_T *pList, LFP_SLIST_T *pNewNode);
 
-/*@fn		  LFP_INT32 lfp_slist_insert_element_by_pos( LFP_SLIST_T *pList, 
-								   LFP_INT32 iPos, 
-								   LFP_INT32 iData)														LFP_INT32 iData)
-* @brief 	  add a new node to the single list(before a specific position)
+/*@fn		  LFP_INT32 lfp_slist_add_tail(LFP_SLIST_T *pList, LFP_SLIST_T *pNewNode)
+* @brief      Insert a new node at the end of the single linked list.
 * @param[in]  LFP_SLIST_T *pList - the head of list
-* @param[in]  LFP_INT32 iPos - the specific position
-* @param[in]  LFP_INT32 iData - the data of the new node
-* @param[out] LFP_NULL
-* @note		  if the length of the list is smaller than iPos, add a new node at the end of the list
+* @param[in]  LFP_SLIST_T *pNewNode - new node to be added
+* @param[out] NULL
 * @return	  LFP_OK/LFP_ERR
 */
-LFP_INT32 lfp_slist_insert_element_by_pos(LFP_SLIST_T *pList, LFP_INT32 iPos, LFP_INT32 iData);
+LFP_INT32 lfp_slist_add_tail(LFP_SLIST_T *pList, LFP_SLIST_T *pNewNode);
 
 /*@fn		  LFP_INT32 lfp_slist_delete_element(LFP_SLIST_T *pList, LFP_SLIST_T *pNode)
 * @brief 	  delete a node from the list
@@ -94,11 +66,11 @@ LFP_INT32 lfp_slist_insert_element_by_pos(LFP_SLIST_T *pList, LFP_INT32 iPos, LF
 * @param[out] NULL
 * @return	  LFP_OK/LFP_ERR
 */
-LFP_INT32 lfp_slist_delete_element(LFP_SLIST_T *pList, LFP_SLIST_T *pNode);
+LFP_INT32 lfp_slist_delete(LFP_SLIST_T *pList, LFP_SLIST_T *pDelNode);
 
-/*@fn		  LFP_INT32 lfp_slist_destroy(LFP_SLIST_T *ppList)
+/*@fn		  LFP_INT32 lfp_slist_destroy(LFP_SLIST_T **pList)
 * @brief 	  destroy the list
-* @param[in]  LFP_SLIST_T **ppList - the address of the head of the list
+* @param[in]  LFP_SLIST_T **pList - the ptr of the head ptr whom pointer to the single linked list
 * @param[out] LFP_NULL
 * @return	  LFP_OK/LFP_ERR
 */
