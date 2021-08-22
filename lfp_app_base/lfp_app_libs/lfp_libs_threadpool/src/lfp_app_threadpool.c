@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2021-03-21 17:59:18
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-08-22 23:01:14
+ * @LastEditTime: 2021-08-22 23:04:53
  */
 
 #include "lfp_base.h"
@@ -31,6 +31,7 @@ LFP_INT32 work_queue_add(WORK_QUEUE_T *pWorkQueue, LFP_VOID *pData)
     pWorkItem->pWorkData = pData;
     if(LFP_OK != lfp_dlist_add(pWorkQueue->pWorkHead, pWorkItem->list))
     {
+        LFP_SAFE_FREE(pWorkItem);
         return LFP_ERR;
     }
     pWorkQueue->uiQueueCnt++;
