@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:58
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-08-22 10:35:30
+ * @LastEditTime: 2021-08-22 15:52:05
  */
 
 #ifndef __LFP_DLIST_H__
@@ -28,8 +28,8 @@
 /*double list structure definition */
 typedef struct lfp_dlist_t
 {
-	struct lfp_dlist_t *pPrev;
-	struct lfp_dlist_t *pNext;
+    struct lfp_dlist_t *pPrev;
+    struct lfp_dlist_t *pNext;
 }LFP_DLIST_T;
 
 /*@fn         LFP_INT32 lfp_dlist_init(struct LFP_DLIST_T** ppList)
@@ -40,37 +40,37 @@ typedef struct lfp_dlist_t
 */
 LFP_INT32 lfp_dlist_init(LFP_DLIST_T** ppList);
 
-/*@fn		  LFP_INT32 lfp_dlist_add(LFP_DLIST_T *pList, LFP_DLIST_T *pNewNode)
+/*@fn         LFP_INT32 lfp_dlist_add(LFP_DLIST_T *pList, LFP_DLIST_T *pNewNode)
 * @brief      Insert a new node after the specified head.
 * @param[in]  LFP_DLIST_T *pList - the head of list
 * @param[in]  LFP_DLIST_T *pNewNode - new node to be added
 * @param[out] NULL
-* @return	  LFP_OK/LFP_ERR
+* @return     LFP_OK/LFP_ERR
 */
 LFP_INT32 lfp_dlist_add(LFP_DLIST_T *pList, LFP_DLIST_T *pNewNode);
 
-/*@fn		  LFP_INT32 lfp_dlist_add_tail(LFP_DLIST_T *pList, LFP_DLIST_T *pNewNode)
+/*@fn	      LFP_INT32 lfp_dlist_add_tail(LFP_DLIST_T *pList, LFP_DLIST_T *pNewNode)
 * @brief      Insert a new node before the specified head.
 * @param[in]  LFP_DLIST_T *pList - the head of list
 * @param[in]  LFP_DLIST_T *pNewNode - new node to be added
 * @param[out] NULL
-* @return	  LFP_OK/LFP_ERR
+* @return     LFP_OK/LFP_ERR
 */
 LFP_INT32 lfp_dlist_add_tail(LFP_DLIST_T *pList, LFP_DLIST_T *pNewNode);
 
-/*@fn		  LFP_INT32 lfp_dlist_delete(LFP_DLIST_T *pDelNode)
-* @brief 	  delete a node from the list
+/*@fn	      LFP_INT32 lfp_dlist_delete(LFP_DLIST_T *pDelNode)
+* @brief      delete a node from the list
 * @param[in]  LFP_DLIST_T *pDelNode - the node to be deleted
 * @param[out] LFP_NULL
-* @return	  LFP_OK/LFP_ERR
+* @return     LFP_OK/LFP_ERR
 */
 LFP_INT32 lfp_dlist_delete(LFP_DLIST_T *pList, LFP_DLIST_T *pDelNode);
 
-/*@fn		  LFP_INT32 lfp_dlist_destroy(LFP_DLIST_T *pList)
-* @brief 	  destroy the list
+/*@fn	      LFP_INT32 lfp_dlist_destroy(LFP_DLIST_T *pList)
+* @brief      destroy the list
 * @param[in]  LFP_DLIST_T *pList - the address of the head of the list
 * @param[out] LFP_NULL
-* @return	  LFP_OK/LFP_ERR
+* @return     LFP_OK/LFP_ERR
 */
 LFP_INT32 lfp_dlist_destroy(LFP_DLIST_T *pList);
 
