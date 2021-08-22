@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:58
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-08-22 10:20:20
+ * @LastEditTime: 2021-08-22 16:25:11
 */
 
 #ifndef __LFP_BASE_TYPESDEF_H__
@@ -28,6 +28,7 @@ typedef int 					LFP_INT32;
 typedef long long 				LFP_INT64;
 typedef long 					LFP_LONG;
 typedef void 					LFP_VOID;
+typedef time_t                  LFP_TIME_T;
 
 /* key words definition .*/
 #define	LFP_STATIC static
