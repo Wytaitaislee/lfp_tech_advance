@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2021-03-21 18:00:21
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-08-22 22:57:56
+ * @LastEditTime: 2021-08-25 22:55:43
  */
 
 #ifndef __LFP_LIBS_THREADPOOL_H__
@@ -29,14 +29,14 @@ typedef struct work_item_t
 typedef struct work_queue_t
 {
     LFP_UINT32  uiQueueCnt;
-    WORK_ITEM_T *pWorkHead;
+    WORK_ITEM_T *pWorkQueueHead;
 }WORK_QUEUE_T;
 
 typedef struct thread_queue_t
 {
     LFP_SEM_T   semphore;
     LFP_TIME_T  uiWorkerTime;
-    LFP_DLIST_T *pThreadHead;
+    LFP_DLIST_T *pThreadQueueHead;
 }THREAD_QUEUE_T;
 
 typedef enum
