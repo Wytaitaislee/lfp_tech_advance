@@ -22,21 +22,21 @@
 
 typedef struct work_item_t
 {
-    LFP_DLIST_T *list;
+    LFP_DLIST_T *pNode;
     LFP_VOID    *pWorkData;
-}WORK_ITEM_T;
+}WORK_LIST_T;
 
 typedef struct work_queue_t
 {
     LFP_UINT32  uiQueueCnt;
-    WORK_ITEM_T *pWorkQueueHead;
+    WORK_LIST_T *pstruWorkList;
 }WORK_QUEUE_T;
 
 typedef struct thread_queue_t
 {
     LFP_SEM_T   semphore;
     LFP_TIME_T  uiWorkerTime;
-    LFP_DLIST_T *pThreadQueueHead;
+    LFP_DLIST_T *pNode;
 }THREAD_QUEUE_T;
 
 typedef enum
