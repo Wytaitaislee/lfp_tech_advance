@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2021-08-26 22:13:23
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-08-26 22:52:43
+ * @LastEditTime: 2021-08-27 07:33:57
  */
 
 #ifndef __LFP_LIBS_LIST_H__
@@ -62,7 +62,7 @@ do																					            \
 {																					            \
 	for(list_loop = (head)->pPrev;                                                              \
         list_loop != (head);                                                                    \
-        list_loop = list_loop->pPrev)		                                                    \
+        list_loop = (list_loop)->pPrev)		                                                    \
 } while (0);
 
 /**

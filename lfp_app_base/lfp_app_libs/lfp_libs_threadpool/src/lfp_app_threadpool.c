@@ -4,18 +4,20 @@
  * @Author: wytaitaislee
  * @Date: 2021-03-21 17:59:18
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-08-26 23:03:29
+ * @LastEditTime: 2021-08-27 07:31:22
  */
 
 #include "lfp_base.h"
 #include "lfp_libs_dlist.h"
+#include "lfp_libs_list.h"
 #include "lfp_libs_threadpool.h"
 
 WORK_QUEUE_T *work_queue_init(LFP_VOID)
 {
+    LFP_INT32 iRet = LFP_ERR;
     WORK_QUEUE_T *pWorkQueue = NULL;
 
-    pWorkQueue = (WORK_QUEUE_T*)LFP_MALLOC(sizeof(WORK_QUEUE_T)));
+    pWorkQueue = (WORK_QUEUE_T*)LFP_MALLOC(sizeof(WORK_QUEUE_T));
     LFP_ASSERT_NULL_RET(pWorkQueue);
     pWorkQueue->uiQueueCnt = 0;
     iRet = lfp_dlist_init(&pWorkQueue->listHead);
@@ -51,8 +53,8 @@ LFP_STATIC WORK_ITEM_T* work_queue_pop(WORK_QUEUE_T *pWorkQueue)
     WORK_ITEM_T *pWorkItem = LFP_NULL;
 
     LFP_ASSERT_ERR_RET(pWorkQueue);
-    pWorkItem = LFP_LIST_FIRST_ENTRY(pWorkQueue->listHead, (WORK_ITEM_T), list);
-    (LFP_VOID)lfp_dlist_delete(pWorkQueue->listHead->pNext);
+    pWorkItem = LFP_LIST_FIRST_ENTRY(&(pWorkQueue->listHead), (WORK_ITEM_T), list);
+    (LFP_VOID)lfp_dlist_delete(&(pWorkQueue->listHead)->pNext);
     return pWorkItem;
 }
 
