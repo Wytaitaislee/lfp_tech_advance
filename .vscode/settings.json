@@ -27,6 +27,7 @@
         "signal.h": "c",
         "lfp_base_typesdef.h": "c",
         "lfp_base_macros.h": "c",
-        "linux_semaphore.h": "c"
+        "linux_semaphore.h": "c",
+        "lfp_libs_threadpool.h": "c"
     }
 }
