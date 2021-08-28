@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2021-03-21 17:59:18
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-08-27 07:31:22
+ * @LastEditTime: 2021-08-28 23:02:09
  */
 
 #include "lfp_base.h"
@@ -38,7 +38,7 @@ LFP_INT32 work_queue_add(WORK_QUEUE_T *pWorkQueue, LFP_VOID *pData)
     pWorkItem = (WORK_ITEM_T*)LFP_MALLOC(sizeof(WORK_ITEM_T));
     LFP_ASSERT_ERR_RET(pWorkItem);
     pWorkItem->pWorkData = pData;
-    if(LFP_OK != lfp_dlist_add_tail(pWorkQueue->listHead, pWorkItem->list))
+    if(LFP_OK != lfp_dlist_add_tail(&pWorkQueue->listHead, &pWorkItem->list))
     {
         LFP_SAFE_FREE(pWorkItem);
         return LFP_ERR;
@@ -53,8 +53,8 @@ LFP_STATIC WORK_ITEM_T* work_queue_pop(WORK_QUEUE_T *pWorkQueue)
     WORK_ITEM_T *pWorkItem = LFP_NULL;
 
     LFP_ASSERT_ERR_RET(pWorkQueue);
-    pWorkItem = LFP_LIST_FIRST_ENTRY(&(pWorkQueue->listHead), (WORK_ITEM_T), list);
-    (LFP_VOID)lfp_dlist_delete(&(pWorkQueue->listHead)->pNext);
+    pWorkItem = LFP_LIST_FIRST_ENTRY(pWorkQueue->listHead, WORK_ITEM_T, list);
+    (LFP_VOID)lfp_dlist_delete(&pWorkQueue->listHead, pWorkQueue->listHead.pNext);
     return pWorkItem;
 }
 
