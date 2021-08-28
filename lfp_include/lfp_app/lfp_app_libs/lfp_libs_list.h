@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2021-08-26 22:13:23
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-08-27 07:33:57
+ * @LastEditTime: 2021-08-28 23:02:00
  */
 
 #ifndef __LFP_LIBS_LIST_H__
@@ -15,11 +15,7 @@
  The offset of the structure element relative to the starting 
  address of the structure.
 */
-#define LFP_OFFSETOF(type, member)\
-do																					\
-{																					\
-	((size_t)&((type*)0)->member)													\
-} while (0);
+#define LFP_OFFSETOF(type, member)     ((size_t)&((type*)0)->member)
 
 /** 
  * LFP_CONTAINER_OF - cast a member of a structure out to the containing structure 
@@ -27,17 +23,15 @@ do																					\
  * @type:   the type of the container struct this is embedded in. 
  * @member: the name of the member within the struct. 
  */ 
-#define LFP_CONTAINER_OF(ptr, type, member)\
-do																					\
-{																					\
+#define LFP_CONTAINER_OF(ptr, type, member) ({\
 	const typeof(((type*)0)->member)*__mptr = (ptr);								\
-	(type*)((char*)(__mptr) - LFP_OFFSETOF(type, member))							\
-} while (0);
+	(type*)((char*)(__mptr) - LFP_OFFSETOF(type, member));;})
 
 /**
  * get the structure entity where the linked list element is located.
  */
-#define LFP_LIST_ENTRY(ptr, type, member)   LFP_CONTAINER_OF(ptr, type, member)
+#define LFP_LIST_ENTRY(ptr, type, member)\
+    LFP_CONTAINER_OF(ptr, type, member)
 
 /**
  * LFP_LIST_FOR_EACH	-	iterate over a list(from head)
@@ -45,12 +39,9 @@ do																					\
  * @head:	    the head for your list.
 */
 #define LFP_LIST_FOR_EACH(list_loop, head)\
-do																					            \
-{																					            \
 	for(list_loop = (head)->pNext;                                                              \
         list_loop != (head);                                                                    \
-        list_loop = list_loop->pNext)		                                                    \
-} while (0);
+        list_loop = list_loop->pNext)		                                                    
 
 /**
  * LFP_LIST_FOR_EACH_PREV	-	iterate over a list(from tail)
@@ -58,12 +49,9 @@ do																					            \
  * @head:	    the head for your list.
 */
 #define LFP_LIST_FOR_EACH_PREV(list_loop, head)\
-do																					            \
-{																					            \
 	for(list_loop = (head)->pPrev;                                                              \
         list_loop != (head);                                                                    \
-        list_loop = (list_loop)->pPrev)		                                                    \
-} while (0);
+        list_loop = (list_loop)->pPrev)
 
 /**
  * LFP_LIST_FIRST_ENTRY - get the first entry element from a list
@@ -73,10 +61,7 @@ do																					            \
  * Note, that list is expected to be not empty.
  */
 #define LFP_LIST_FIRST_ENTRY(list_head, type, member)\
-do                                                                                              \
-{                                                                                               \
-    LFP_LIST_ENTRY(list_head->pNext, type, member)                                              \
-} while (0);
+    LFP_LIST_ENTRY(list_head.pNext, type, member)
 
 /**
  * list_next_entry - get the next element in list
@@ -84,10 +69,7 @@ do                                                                              
  * @member:	the name of the list_head within the struct.
  */
 #define LFP_LIST_NEXT_ENTRY(entry, member)\
-do                                                                                              \
-{                                                                                               \
     LFP_LIST_ENTRY((entry)->member.pNext, typeof(*(entry)), member)                             \
-} while (0);
 
 /**
  * LFP_LIST_FOR_EACH_ENTRY	-	iterate over a entry(from the head entry)
@@ -95,11 +77,8 @@ do                                                                              
  * @head:	    the head for your list.
 */
 #define LFP_LIST_FOR_EACH_ENTRY(entry_loop, list_head, member)\
-do                                                                                              \
-{                                                                                               \
     for(entry_loop = LFP_LIST_FIRST_ENTRY(list_head, typeof(*(entry_loop)), member);            \
         entry_loop->member != (head);                                                           \
-        entry_loop = LFP_LIST_NEXT_ENTRY(entry_loop, member))                                   \
-} while (0);
+        entry_loop = LFP_LIST_NEXT_ENTRY(entry_loop, member))
 
 #endif /*__LFP_LIBS_LIST_H__*/
