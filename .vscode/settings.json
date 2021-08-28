@@ -28,6 +28,8 @@
         "lfp_base_typesdef.h": "c",
         "lfp_base_macros.h": "c",
         "linux_semaphore.h": "c",
-        "lfp_libs_threadpool.h": "c"
+        "lfp_libs_threadpool.h": "c",
+        "lfp_libs_list.h": "c",
+        "lfp_util_log.h": "c"
     }
 }
