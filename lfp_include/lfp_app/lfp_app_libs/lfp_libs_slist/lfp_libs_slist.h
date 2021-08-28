@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:58
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-08-22 10:53:13
+ * @LastEditTime: 2021-08-28 21:46:48
 */
 
 #ifndef __LFP_SLIST_H__
@@ -30,7 +30,7 @@
 /*single list structure definition */
 typedef struct lfp_slist_t
 {
-	struct lfp_slist_t *pNext;
+    struct lfp_slist_t *pNext;
 }LFP_SLIST_T;
 
 /*@fn		  LFP_INT32 lfp_slist_init(LFP_SLIST_T** ppList)
