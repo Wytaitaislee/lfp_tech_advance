@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:59
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-08-22 10:52:58
+ * @LastEditTime: 2021-08-30 22:30:49
  */
 
 #ifdef LFP_LIBS_SLIST
@@ -15,33 +15,31 @@
 /*@fn		  LFP_SLIST_INIT
 * @brief 	  single linked list init macro.
 */
-#define LFP_SLIST_INIT(pNode)													\
+#define LFP_SLIST_INIT(pNode)\
 do																				\
 {																				\
 	LFP_ASSERT_ERR_RET(pNode);													\
-	pList->pNext = pList;														\
+	(pNode)->pNext = pNode;														\
 } while (0);
 
 /*@fn		  LFP_SLIST_NODE_MALLOC
 * @brief 	  single linked list node alloc macro.
 */
-#define LFP_SLIST_NODE_MALLOC(ppNode)											\
+#define LFP_SLIST_NODE_MALLOC(ppNode)\
 do																				\
 {																				\
 	*ppNode = (LFP_SLIST_T *)LFP_MALLOC(sizeof(LFP_SLIST_T));					\
 	LFP_ASSERT_ERR_RET(*ppNode);												\
 	(*ppNode)->pNext = LFP_NULL;												\
-	(*ppNode)->data = 0;														\
 }while(0);
 
 /*@fn		  LFP_SLIST_NODE_FREE
 * @brief 	  single linked list node free macro.
 */
-#define LFP_SLIST_NODE_FREE(pNode)												\
+#define LFP_SLIST_NODE_FREE(pNode)\
 do																				\
 {																				\
 	pNode->pNext = LFP_NULL;													\
-	pNode->data = 0;															\
 	pNode = LFP_NULL;															\
 }while(0);
 
@@ -72,7 +70,7 @@ LFP_STATIC LFP_INT32 __lfp_slist_add(LFP_SLIST_T *pPrev, LFP_SLIST_T *pNext, LFP
 	LFP_ASSERT_ERR_RET(pPrev && pNext && pNewNode);
 	pNewNode->pNext = pNext;
 	pPrev->pNext = pNewNode;
-	return HPR_OK;
+	return LFP_OK;
 }
 
 /*@fn		  LFP_INT32 lfp_slist_add(LFP_SLIST_T *pList, LFP_SLIST_T *pNewNode)
@@ -117,7 +115,7 @@ LFP_STATIC LFP_INLINE LFP_INT32 __lfp_delete_entry(LFP_SLIST_T *pPrev, LFP_SLIST
 {
     LFP_ASSERT_ERR_RET(pPrev && pNext);
     pPrev->pNext = pNext;
-    return HPR_OK;
+    return LFP_OK;
 }
 
 /*@fn		  LFP_INT32 lfp_slist_delete_element(LFP_SLIST_T *pList, LFP_SLIST_T *pNode)
