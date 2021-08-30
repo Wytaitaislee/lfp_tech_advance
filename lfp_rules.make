@@ -3,7 +3,7 @@ LFP_CC = ${LFP_CROSS_COMPILER_PREFIX}gcc
 LFP_AR = ar
 LFP_AR_FLAGS = -rc
 LFP_MAKE = make
-LFP_GLOBAL_FLAGS = -g -W -O1 -Wall
+LFP_GLOBAL_FLAGS := -g -W -O1 -Wall
 
 LFP_OBJDIR = objs
 LFP_EXEC = lfp_core
@@ -15,6 +15,8 @@ LFP_OBJ_PATH = $(LFP_ROOT_PATH)/$(LFP_EXEC_DIR)/$(LFP_OBJDIR)
 LFP_EXEC_PATH = $(LFP_ROOT_PATH)/$(LFP_EXEC_DIR)/$(LFP_EXEC)
 
 include $(LFP_ROOT_PATH)/menuconfig
+
+LFP_GLOBAL_FLAGS += $(LFP_FLAGS)
 
 define lfp_auto_generate_linking
 	@echo "my name is "
