@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:58
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-08-28 23:04:56
+ * @LastEditTime: 2021-08-30 22:28:14
  */
 
 #ifndef __LFP_DLIST_H__
@@ -64,15 +64,15 @@ LFP_INT32 lfp_dlist_add_tail(LFP_DLIST_T *pList, LFP_DLIST_T *pNewNode);
 * @param[out] LFP_NULL
 * @return     LFP_OK/LFP_ERR
 */
-LFP_INT32 lfp_dlist_delete(LFP_DLIST_T *pList, LFP_DLIST_T *pDelNode);
+LFP_INT32 lfp_dlist_delete(LFP_DLIST_T *pDelNode);
 
-/*@fn	      LFP_INT32 lfp_dlist_destroy(LFP_DLIST_T *pList)
+/*@fn	      LFP_INT32 lfp_dlist_destroy(LFP_DLIST_T **ppList)
 * @brief      destroy the list
-* @param[in]  LFP_DLIST_T *pList - the address of the head of the list
+* @param[in]  LFP_DLIST_T **pList - the address of the head of the list
 * @param[out] LFP_NULL
 * @return     LFP_OK/LFP_ERR
 */
-LFP_INT32 lfp_dlist_destroy(LFP_DLIST_T *pList);
+LFP_INT32 lfp_dlist_destroy(LFP_DLIST_T **ppList);
 
 #endif
 

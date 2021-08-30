@@ -11,8 +11,8 @@ CUR_OBJS = $(patsubst %.c, %.o, $(CUR_SRC))
 INCLUDE_PATH := -I${LFP_ROOT_PATH}/lfp_include/
 INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/include/
 INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/lfp_base_util/
-INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/lfp_app/lfp_app_libs/
-INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/lfp_app/lfp_app_libs/lfp_libs_slist/
+INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/lfp_app_base/lfp_app_libs/
+INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/lfp_app_base/lfp_app_libs/lfp_libs_slist/
 
 CFLAGS = $(LFP_GLOBAL_FLAGS) $(INCLUDE_PATH)
 
