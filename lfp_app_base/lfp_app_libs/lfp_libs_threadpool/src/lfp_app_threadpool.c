@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2021-03-21 17:59:18
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-08-28 23:02:09
+ * @LastEditTime: 2021-08-30 22:26:16
  */
 
 #include "lfp_base.h"
@@ -54,7 +54,7 @@ LFP_STATIC WORK_ITEM_T* work_queue_pop(WORK_QUEUE_T *pWorkQueue)
 
     LFP_ASSERT_ERR_RET(pWorkQueue);
     pWorkItem = LFP_LIST_FIRST_ENTRY(pWorkQueue->listHead, WORK_ITEM_T, list);
-    (LFP_VOID)lfp_dlist_delete(&pWorkQueue->listHead, pWorkQueue->listHead.pNext);
+    (LFP_VOID)lfp_dlist_delete(pWorkQueue->listHead.pNext);
     return pWorkItem;
 }
 
