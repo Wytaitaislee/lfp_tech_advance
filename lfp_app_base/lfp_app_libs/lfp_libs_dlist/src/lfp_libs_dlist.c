@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:59
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-08-22 10:53:36
+ * @LastEditTime: 2021-08-30 22:28:57
 */
 
 #ifdef LFP_LIBS_DLIST
@@ -15,21 +15,21 @@
 /*@fn		  LFP_DLIST_INIT
 * @brief 	  double linked list init macro.
 */
-#define LFP_DLIST_INIT(pNode)
+#define LFP_DLIST_INIT(pNode)\
 do                                                                                  \
 {                                                                                   \
     LFP_ASSERT_ERR_RET(pNode);                                                      \
-    pNode->pNext = pNode;                                                           \
-    pNode->pPrev = pNode;                                                           \
+    (pNode)->pNext = pNode;                                                           \
+    (pNode)->pPrev = pNode;                                                           \
 }while(0);
 
 /*@fn		  LFP_DLIST_NODE_MALLOC
 * @brief 	  double linked list node alloc macro.
 */
-#define LFP_DLIST_NODE_MALLOC(ppNode)                                               \
+#define LFP_DLIST_NODE_MALLOC(ppNode)\
 do                                                                                  \
 {                                                                                   \
-    LFP_ASSERT_ERR_RET(ppNode);                                                     \                                                                                \
+    LFP_ASSERT_ERR_RET(ppNode);                                                     \
     *ppNode = (LFP_DLIST_T *)LFP_MALLOC(sizeof(LFP_DLIST_T));                       \
     LFP_ASSERT_ERR_RET(*ppNode);                                                    \
     (*ppNode)->pNext = LFP_NULL;                                                    \
@@ -39,10 +39,10 @@ do                                                                              
 /*@fn		  LFP_DLIST_NODE_MALLOC
 * @brief 	  double linked list node free macro.
 */
-#define LFP_DLIST_NODE_FREE(pNode)                                                  \
+#define LFP_DLIST_NODE_FREE(pNode)\
 do                                                                                  \
 {                                                                                   \
-    LFP_ASSERT_ERR_RET(*ppNode)                                                     \
+    LFP_ASSERT_ERR_RET(pNode)                                                       \
     pNode->pNext = LFP_NULL;                                                        \
     pNode->pPrev = LFP_NULL;                                                        \
 } while (0);
@@ -71,12 +71,12 @@ LFP_INT32 lfp_dlist_init(LFP_DLIST_T **ppList)
 */
 LFP_STATIC LFP_INLINE LFP_INT32 __lfp_dlist_add(LFP_DLIST_T *pPrev, LFP_DLIST_T *pNext, LFP_DLIST_T *pNewNode)
 {
-    LFP_ASSERT_ERR_RET(pList && pNewNode && pNewNode);
+    LFP_ASSERT_ERR_RET(pPrev && pNext && pNewNode);
     pNewNode->pPrev = pPrev;
-    pNewNode->pNext = pPNext;
+    pNewNode->pNext = pNext;
     pPrev->pNext = pNewNode;
     pNext->pPrev = pNewNode;
-    return HPR_OK;
+    return LFP_OK;
 }
 
 /*@fn		  LFP_INT32 lfp_dlist_add(LFP_DLIST_T *pList, LFP_DLIST_T *pNewNode)
@@ -120,7 +120,7 @@ LFP_STATIC LFP_INLINE LFP_INT32 __lfp_delete_entry(LFP_DLIST_T *pPrev, LFP_DLIST
     LFP_ASSERT_ERR_RET(pPrev && pNext);
     pPrev->pNext = pNext;
     pNext->pPrev = pPrev;
-    return HPR_OK;
+    return LFP_OK;
 }
 
 /*@fn		  LFP_INT32 lfp_dlist_delete(LFP_DLIST_T *pDelNode)
