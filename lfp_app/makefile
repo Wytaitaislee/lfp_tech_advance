@@ -16,7 +16,6 @@ INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/lfp_base_util/
 INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/lfp_app/
 INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/lfp_app/lfp_app_busybox/
 INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/lfp_app/lfp_app_libs/
-INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/lfp_app/lfp_app_modules/
 INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/lfp_app/lfp_app_unity_test/
 
 CFLAGS = $(LFP_GLOBAL_FLAGS) $(INCLUDE_PATH)
