@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:59
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-08-30 22:30:49
+ * @LastEditTime: 2021-09-02 22:34:06
  */
 
 #ifdef LFP_LIBS_SLIST
@@ -25,12 +25,12 @@ do																				\
 /*@fn		  LFP_SLIST_NODE_MALLOC
 * @brief 	  single linked list node alloc macro.
 */
-#define LFP_SLIST_NODE_MALLOC(ppNode)\
+#define LFP_SLIST_NODE_MALLOC(pNode)\
 do																				\
 {																				\
-	*ppNode = (LFP_SLIST_T *)LFP_MALLOC(sizeof(LFP_SLIST_T));					\
-	LFP_ASSERT_ERR_RET(*ppNode);												\
-	(*ppNode)->pNext = LFP_NULL;												\
+	(pNode) = (LFP_SLIST_T *)LFP_MALLOC(sizeof(LFP_SLIST_T));					\
+	LFP_ASSERT_ERR_RET(pNode);													\
+	(pNode)->pNext = LFP_NULL;													\
 }while(0);
 
 /*@fn		  LFP_SLIST_NODE_FREE
@@ -43,17 +43,17 @@ do																				\
 	pNode = LFP_NULL;															\
 }while(0);
 
-/*@fn		  LFP_INT32 lfp_slist_init(LFP_SLIST_T** ppList)
+/*@fn		  LFP_INT32 lfp_slist_init(LFP_SLIST_T* pList)
 * @brief 	  create the head node of single linked list
-* @param[in]  LFP_SLIST_T **ppList the ptr of the head ptr whom pointer to the single linked list
+* @param[in]  LFP_SLIST_T *pList the head ptr whom pointer to the single linked list
 * @param[out] the same as param[in]
 * @return     LFP_OK/LFP_ERR
 */
-LFP_INT32 lfp_slist_init(LFP_SLIST_T **ppList)
+LFP_INT32 lfp_slist_init(LFP_SLIST_T *pList)
 {
-	LFP_ASSERT_ERR_RET(ppList);
-	LFP_SLIST_NODE_MALLOC(ppList);
-	LFP_SLIST_INIT(*ppList);
+	LFP_ASSERT_ERR_RET(pList);
+	LFP_SLIST_NODE_MALLOC(pList);
+	LFP_SLIST_INIT(pList);
 	return LFP_OK;
 }
 

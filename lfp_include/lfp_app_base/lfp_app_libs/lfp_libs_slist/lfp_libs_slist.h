@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:58
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-08-28 21:46:48
+ * @LastEditTime: 2021-09-02 22:31:26
 */
 
 #ifndef __LFP_SLIST_H__
@@ -33,13 +33,13 @@ typedef struct lfp_slist_t
     struct lfp_slist_t *pNext;
 }LFP_SLIST_T;
 
-/*@fn		  LFP_INT32 lfp_slist_init(LFP_SLIST_T** ppList)
+/*@fn		  LFP_INT32 lfp_slist_init(LFP_SLIST_T* pList)
 * @brief 	  create the head node of single linked list
-* @param[in]  LFP_SLIST_T **ppList the ptr of the head ptr whom pointer to the single linked list
+* @param[in]  LFP_SLIST_T *pList the head ptr whom pointer to the single linked list
 * @param[out] the same as param[in]
 * @return     LFP_OK/LFP_ERR
 */
-LFP_INT32 lfp_slist_init(LFP_SLIST_T **ppList);
+LFP_INT32 lfp_slist_init(LFP_SLIST_T *pList);
 
 /*@fn		  LFP_INT32 lfp_slist_add(LFP_SLIST_T *pList, LFP_SLIST_T *pNewNode)
 * @brief      Insert a new node after the specified head.
