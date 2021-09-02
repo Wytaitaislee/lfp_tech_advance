@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2021-03-21 18:00:21
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-08-27 07:14:42
+ * @LastEditTime: 2021-09-02 22:41:08
  */
 
 #ifndef __LFP_LIBS_THREADPOOL_H__
@@ -23,7 +23,7 @@
 
 typedef struct work_item_t
 {
-    LFP_DLIST_T list;
+    LFP_DLIST_T listNode;
     LFP_VOID    *pWorkData;
 }WORK_ITEM_T;
 

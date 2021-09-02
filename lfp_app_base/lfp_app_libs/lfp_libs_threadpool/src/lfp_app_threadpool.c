@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2021-03-21 17:59:18
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-08-30 22:26:16
+ * @LastEditTime: 2021-09-02 23:08:01
  */
 
 #include "lfp_base.h"
@@ -38,7 +38,7 @@ LFP_INT32 work_queue_add(WORK_QUEUE_T *pWorkQueue, LFP_VOID *pData)
     pWorkItem = (WORK_ITEM_T*)LFP_MALLOC(sizeof(WORK_ITEM_T));
     LFP_ASSERT_ERR_RET(pWorkItem);
     pWorkItem->pWorkData = pData;
-    if(LFP_OK != lfp_dlist_add_tail(&pWorkQueue->listHead, &pWorkItem->list))
+    if(LFP_OK != lfp_dlist_add_tail(&pWorkQueue->listHead, &pWorkItem->listNode))
     {
         LFP_SAFE_FREE(pWorkItem);
         return LFP_ERR;
@@ -48,29 +48,44 @@ LFP_INT32 work_queue_add(WORK_QUEUE_T *pWorkQueue, LFP_VOID *pData)
 }
 
 /* pop from the head */
-LFP_STATIC WORK_ITEM_T* work_queue_pop(WORK_QUEUE_T *pWorkQueue)
+LFP_STATIC LFP_VOID* work_queue_pop(WORK_QUEUE_T *pWorkQueue)
 {
     WORK_ITEM_T *pWorkItem = LFP_NULL;
+    LFP_VOID *pData = LFP_NULL;
 
-    LFP_ASSERT_ERR_RET(pWorkQueue);
-    pWorkItem = LFP_LIST_FIRST_ENTRY(pWorkQueue->listHead, WORK_ITEM_T, list);
+    LFP_ASSERT_NULL_RET(pWorkQueue);
+    pWorkItem = LFP_LIST_FIRST_ENTRY(&pWorkQueue->listHead, WORK_ITEM_T, listNode);
     (LFP_VOID)lfp_dlist_delete(pWorkQueue->listHead.pNext);
-    return pWorkItem;
+    pData = pWorkItem->pWorkData;
+    LFP_SAFE_FREE(pWorkItem);
+    return pData;
+}
+
+LFP_STATIC LFP_VOID lfp_threadpool_worker(LFP_VOID *pArgs)
+{
+    (LFP_VOID)pArgs;
+    return;
 }
 
 LFP_INT32 lfp_threadpool_create(LFP_UINT32 uiMaxThreads, LFP_UINT32 uiThreadTimeout, 
                                 LFP_VOID (*handler)(LFP_VOID*))
 {
-    
+    (LFP_VOID)uiMaxThreads;
+    (LFP_UINT32)uiThreadTimeout;
+    (LFP_VOID)handler;
+   return LFP_OK;
 }
 
 
 LFP_INT32 lfp_threadpool_dispatch(LFP_THREADPOOL_T *pThreadPool, LFP_VOID* pUsrData)
 {
-
+    (LFP_VOID)pThreadPool;
+    (LFP_VOID)pUsrData;
+    return LFP_OK;
 }
 
 LFP_INT32 lfp_threadpool_destory(LFP_THREADPOOL_T *pThreadPool)
 {
-
+    (LFP_VOID)pThreadPool;
+    return LFP_OK;
 }

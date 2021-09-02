@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2021-08-26 22:13:23
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-08-28 23:02:00
+ * @LastEditTime: 2021-09-02 23:00:41
  */
 
 #ifndef __LFP_LIBS_LIST_H__
@@ -61,7 +61,7 @@
  * Note, that list is expected to be not empty.
  */
 #define LFP_LIST_FIRST_ENTRY(list_head, type, member)\
-    LFP_LIST_ENTRY(list_head.pNext, type, member)
+    LFP_LIST_ENTRY((list_head)->pNext, type, member)
 
 /**
  * list_next_entry - get the next element in list
