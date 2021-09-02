@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:59
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-08-30 22:28:57
+ * @LastEditTime: 2021-09-02 22:36:11
 */
 
 #ifdef LFP_LIBS_DLIST
@@ -16,24 +16,24 @@
 * @brief 	  double linked list init macro.
 */
 #define LFP_DLIST_INIT(pNode)\
-do                                                                                  \
-{                                                                                   \
-    LFP_ASSERT_ERR_RET(pNode);                                                      \
-    (pNode)->pNext = pNode;                                                           \
-    (pNode)->pPrev = pNode;                                                           \
+do                                                                                      \
+{                                                                                       \
+    LFP_ASSERT_ERR_RET(pNode);                                                          \
+    (pNode)->pNext = pNode;                                                             \
+    (pNode)->pPrev = pNode;                                                             \
 }while(0);
 
 /*@fn		  LFP_DLIST_NODE_MALLOC
 * @brief 	  double linked list node alloc macro.
 */
-#define LFP_DLIST_NODE_MALLOC(ppNode)\
+#define LFP_DLIST_NODE_MALLOC(pNode)\
 do                                                                                  \
 {                                                                                   \
-    LFP_ASSERT_ERR_RET(ppNode);                                                     \
-    *ppNode = (LFP_DLIST_T *)LFP_MALLOC(sizeof(LFP_DLIST_T));                       \
-    LFP_ASSERT_ERR_RET(*ppNode);                                                    \
-    (*ppNode)->pNext = LFP_NULL;                                                    \
-    (*ppNode)->pPrev = LFP_NULL;                                                    \
+    LFP_ASSERT_ERR_RET(pNode);                                                      \
+    (pNode) = (LFP_DLIST_T *)LFP_MALLOC(sizeof(LFP_DLIST_T));                       \
+    LFP_ASSERT_ERR_RET(pNode);                                                      \
+    (pNode)->pNext = LFP_NULL;                                                      \
+    (pNode)->pPrev = LFP_NULL;                                                      \
 } while (0);
 
 /*@fn		  LFP_DLIST_NODE_MALLOC
@@ -47,17 +47,17 @@ do                                                                              
     pNode->pPrev = LFP_NULL;                                                        \
 } while (0);
 
-/*@fn		  LFP_INT32 lfp_dlist_init(struct LFP_DLIST_T** ppList)
+/*@fn		  LFP_INT32 lfp_dlist_init(struct LFP_DLIST_T* pList)
 * @brief 	  create the head node of double list
-* @param[in]  the ptr of the head ptr whom pointer to the double list
+* @param[in]  the head ptr whom pointer to the double list
 * @param[out] the same as param[in]
 * @return     LFP_OK/LFP_ERR
 */
-LFP_INT32 lfp_dlist_init(LFP_DLIST_T **ppList)
+LFP_INT32 lfp_dlist_init(LFP_DLIST_T *pList)
 {
-    LFP_ASSERT_ERR_RET(ppList);
-    LFP_DLIST_NODE_MALLOC(ppList);
-    LFP_DLIST_INIT(*ppList);
+    LFP_ASSERT_ERR_RET(pList);
+    LFP_DLIST_NODE_MALLOC(pList);
+    LFP_DLIST_INIT(pList);
     return LFP_OK;
 }
 
