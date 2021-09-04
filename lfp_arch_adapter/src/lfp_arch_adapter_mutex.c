@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:58
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-04-04 16:02:23
+ * @LastEditTime: 2021-09-04 14:44:58
 */
 #include "lfp_arch_adapter_typesdef.h"
 #include "lfp_arch_abstract.h"
@@ -14,7 +14,7 @@
 #define LFP_ADAPTER_MUTEX_INIT(FUNC)      LFP_ADAPTER_INIT(LFP_GET_MUTEX_ENTRY(), FUNC)
 
 /* the definition of mutex cluster */
-LFP_ARCH_ADAPTER2(LFP_GET_MUTEX_ENTRY(), mutex_create, LFP_INT32, LFP_MUTEX_T*, LFP_MUTEX_ATTR_T*);
+LFP_ARCH_ADAPTER2(LFP_GET_MUTEX_ENTRY(), mutex_init, LFP_INT32, LFP_MUTEX_T*, LFP_MUTEX_ATTR_T*);
 LFP_ARCH_ADAPTER1(LFP_GET_MUTEX_ENTRY(), mutex_lock, LFP_INT32, LFP_MUTEX_T*);
 LFP_ARCH_ADAPTER1(LFP_GET_MUTEX_ENTRY(), mutex_unlock, LFP_INT32, LFP_MUTEX_T*);
 LFP_ARCH_ADAPTER1(LFP_GET_MUTEX_ENTRY(), mutex_destroy, LFP_INT32, LFP_MUTEX_T*);
@@ -27,7 +27,7 @@ LFP_ARCH_ADAPTER1(LFP_GET_MUTEX_ENTRY(), mutex_destroy, LFP_INT32, LFP_MUTEX_T*)
 */
 LFP_INT32 lfp_arch_adapter_mutex_register(LFP_VOID)
 {
-    LFP_ADAPTER_MUTEX_INIT(mutex_create);
+    LFP_ADAPTER_MUTEX_INIT(mutex_init);
     LFP_ADAPTER_MUTEX_INIT(mutex_lock);
     LFP_ADAPTER_MUTEX_INIT(mutex_unlock);
     LFP_ADAPTER_MUTEX_INIT(mutex_destroy);

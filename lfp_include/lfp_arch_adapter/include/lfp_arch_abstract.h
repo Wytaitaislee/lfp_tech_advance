@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:58
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-04-04 16:07:05
+ * @LastEditTime: 2021-09-04 14:45:05
 */
 #ifndef __LFP_ARCH_ABSTRACT_H__
 #define __LFP_ARCH_ABSTRACT_H__
@@ -77,7 +77,7 @@ typedef struct lfp_arch_adapter_pthread_t
 /* Mutex function cluster */
 typedef struct lfp_arch_adapter_mutex_t
 {
-    LFP_INT32 (*mutex_create)(LFP_MUTEX_T* mutex, LFP_MUTEX_ATTR_T* pAttr);
+    LFP_INT32 (*mutex_init)(LFP_MUTEX_T* mutex, LFP_MUTEX_ATTR_T* pAttr);
     LFP_INT32 (*mutex_lock)(LFP_MUTEX_T* mutex);
     LFP_INT32 (*mutex_unlock)(LFP_MUTEX_T* mutex);
     LFP_INT32 (*mutex_destroy)(LFP_MUTEX_T* mutex);
