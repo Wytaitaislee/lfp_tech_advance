@@ -35,4 +35,11 @@ LFP_INT32 linux_sleep_ms(LFP_UINT32 uiSleepMsSeconds);
 */
 LFP_INT32 linux_sleep_s(LFP_UINT32 uiSleepSeconds);
 
+/*@fn		   LFP_TIME_T linux_get_time(LFP_TIME_T *ptTime)
+* @brief 	   get the system time
+* @param[out]  LFP_TIME_T *ptTime - system time 
+* @return	   LFP_TIME_T
+*/
+LFP_TIME_T linux_get_time(LFP_TIME_T *ptTime);
+
 #endif	/*end of __LINUX_TIME_H__ */

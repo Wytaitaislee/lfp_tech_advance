@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2021-01-31 20:44:23
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-04-04 16:08:42
+ * @LastEditTime: 2021-09-04 12:12:41
 */
 
 #ifndef __LFP_ARCH_ADAPTER_TIME_H__
@@ -27,6 +27,13 @@ LFP_INT32 lfp_sleep_ms(LFP_UINT32 uiSleepMsSeconds);
 * @return	  LFP_OK / LFP_ERR
 */
 LFP_INT32 lfp_sleep_s(LFP_UINT32 uiSleepSeconds);
+
+/*@fn		   LFP_TIME_T lfp_get_time(LFP_TIME_T *ptTime)
+* @brief 	   get the system time
+* @param[out]  LFP_TIME_T *ptTime - system time 
+* @return	   LFP_TIME_T
+*/
+LFP_TIME_T lfp_get_time(LFP_TIME_T *ptTime);
 
 /*@fn		  LFP_INT32 lfp_arch_adapter_time_register(LFP_VOID)
 * @brief 	  the adapter layer register -- time cluster register
