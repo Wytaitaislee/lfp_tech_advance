@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2021-08-26 22:13:23
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-09-02 23:00:41
+ * @LastEditTime: 2021-09-04 15:53:32
  */
 
 #ifndef __LFP_LIBS_LIST_H__
@@ -78,7 +78,7 @@
 */
 #define LFP_LIST_FOR_EACH_ENTRY(entry_loop, list_head, member)\
     for(entry_loop = LFP_LIST_FIRST_ENTRY(list_head, typeof(*(entry_loop)), member);            \
-        entry_loop->member != (head);                                                           \
+        &entry_loop->member != (list_head);                                                     \
         entry_loop = LFP_LIST_NEXT_ENTRY(entry_loop, member))
 
 #endif /*__LFP_LIBS_LIST_H__*/
