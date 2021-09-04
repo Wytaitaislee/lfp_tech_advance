@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:59
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-09-02 22:34:06
+ * @LastEditTime: 2021-09-04 15:04:37
  */
 
 #ifdef LFP_LIBS_SLIST
@@ -148,26 +148,25 @@ LFP_INT32 lfp_slist_delete(LFP_SLIST_T *pList, LFP_SLIST_T *pDelNode)
 	return LFP_OK;
 }
 
-/*@fn		  LFP_INT32 lfp_slist_destroy(LFP_SLIST_T **pList)
+/*@fn		  LFP_INT32 lfp_slist_destroy(LFP_SLIST_T*pList)
 * @brief 	  destroy the list
-* @param[in]  LFP_SLIST_T **pList - the ptr of the head ptr whom pointer to the single linked list
+* @param[in]  LFP_SLIST_T *pList - the head ptr whom pointer to the single linked list
 * @param[out] LFP_NULL
 * @return	  LFP_OK/LFP_ERR
 */
-LFP_INT32 lfp_slist_destroy(LFP_SLIST_T **ppList)
+LFP_INT32 lfp_slist_destroy(LFP_SLIST_T *pList)
 {
 	LFP_SLIST_T* pTmp = LFP_NULL;
 	LFP_SLIST_T* pWalk = LFP_NULL;
 	
-	LFP_ASSERT_ERR_RET(ppList && *ppList);
-	pWalk = *ppList;
+	LFP_ASSERT_ERR_RET(pList);
+	pWalk = pList;
 	while(pWalk)
 	{
 		pTmp = pWalk;
 		pWalk = pWalk->pNext;
 		LFP_SLIST_NODE_FREE(pTmp);
 	}
-	*ppList = (LFP_SLIST_T*)LFP_NULL;
 	return LFP_OK;
 }
 

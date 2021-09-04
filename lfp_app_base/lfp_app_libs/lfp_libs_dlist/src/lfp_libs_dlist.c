@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:59
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-09-02 22:36:11
+ * @LastEditTime: 2021-09-04 15:01:02
 */
 
 #ifdef LFP_LIBS_DLIST
@@ -135,26 +135,25 @@ LFP_INT32 lfp_dlist_delete(LFP_DLIST_T *pDelNode)
     return __lfp_delete_entry(pDelNode->pPrev, pDelNode->pNext);
 }
 
-/*@fn		  LFP_INT32 lfp_dlist_destroy(LFP_DLIST_T **pList)
+/*@fn		  LFP_INT32 lfp_dlist_destroy(LFP_DLIST_T *pList)
 * @brief 	  destroy the list
-* @param[in]  LFP_DLIST_T **ppList -  the ptr of the head ptr whom pointer to the double linked list
+* @param[in]  LFP_DLIST_T *pList -  the head ptr whom pointer to the double linked list
 * @param[out] LFP_NULL
 * @return	  LFP_OK/LFP_ERR
 */
-LFP_INT32 lfp_dlist_destroy(LFP_DLIST_T **ppList)
+LFP_INT32 lfp_dlist_destroy(LFP_DLIST_T *pList)
 {
 	LFP_DLIST_T *pTmp = LFP_NULL;
 	LFP_DLIST_T *pWalk = LFP_NULL;
 	
-	LFP_ASSERT_ERR_RET(ppList);
-	pWalk = *ppList;
+	LFP_ASSERT_ERR_RET(pList);
+	pWalk = pList;
 	while(pWalk)
 	{
 		pTmp = pWalk;
 		pWalk = pWalk->pNext;
 		LFP_DLIST_NODE_FREE(pTmp);
 	}	
-	*ppList = (LFP_DLIST_T*)LFP_NULL;
 	return LFP_OK;
 }
 
