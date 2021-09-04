@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:58
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-09-04 14:45:05
+ * @LastEditTime: 2021-09-04 16:05:00
 */
 #ifndef __LFP_ARCH_ABSTRACT_H__
 #define __LFP_ARCH_ABSTRACT_H__
@@ -126,6 +126,7 @@ typedef struct lfp_arch_adapter_time_t
 {
     LFP_INT32 (*sleep_ms)(LFP_UINT32 uiSleepMsSeconds);
     LFP_INT32 (*sleep_s)(LFP_UINT32 uiSleepSeconds);
+    LFP_TIME_T (*get_time)(LFP_TIME_T *ptTime);
 }LFP_ARCH_ADAPTER_TIME_T;
 
 typedef struct lfp_arch_adapter_socket_t
