@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:58
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-04-04 16:07:30
+ * @LastEditTime: 2021-09-04 22:33:20
 */
 
 #ifndef __LFP_ARCH_ADAPTER_MUTEX_H__
@@ -12,13 +12,13 @@
 
 #include "lfp_base.h"
 
-/*@fn	      LFP_INT32 lfp_mutex_create(LFP_MUTEX_T *pMutex, LFP_MUTEX_ATTR_T *pAttr)
+/*@fn	      LFP_INT32 lfp_mutex_init(LFP_MUTEX_T *pMutex, LFP_MUTEX_ATTR_T *pAttr)
 * @brief      create a new mutex.
 * @param[in]  LFP_MUTEX_ATTR_T *pAttr - the init attr
 * @param[out] LFP_MUTEX_T *pMutex - the mutex itself
 * @return     LFP_OK / LFP_ERR
 */
-LFP_INT32 lfp_mutex_create(LFP_MUTEX_T *pMutex, LFP_MUTEX_ATTR_T *pAttr);
+LFP_INT32 lfp_mutex_init(LFP_MUTEX_T *pMutex, LFP_MUTEX_ATTR_T *pAttr);
 
 /*@fn	      LFP_INT32 lfp_mutex_lock(LFP_MUTEX_T *pMutex);
 * @brief      lock
