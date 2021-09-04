@@ -32,7 +32,11 @@
         "lfp_libs_list.h": "c",
         "lfp_util_log.h": "c",
         "lfp_libs_socket.h": "c",
-        "errno.h": "c"
+        "errno.h": "c",
+        "lfp_arch_adapter_semaphore.h": "c",
+        "lfp_arch_adapter_pthread.h": "c",
+        "lfp_arch_adapter_mutex.h": "c",
+        "lfp_arch_adapter_time.h": "c"
     },
     "cmake.configureOnOpen": true
 }
