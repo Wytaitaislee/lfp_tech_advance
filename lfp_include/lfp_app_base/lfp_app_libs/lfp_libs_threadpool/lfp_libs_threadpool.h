@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2021-03-21 18:00:21
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-09-04 16:02:30
+ * @LastEditTime: 2021-09-04 20:05:10
  */
 
 #ifndef __LFP_LIBS_THREADPOOL_H__
@@ -25,22 +25,28 @@ typedef LFP_VOID* (work_handle)(LFP_VOID*, ...);
 
 typedef struct work_item_t
 {
-    LFP_DLIST_T listNode;
     work_handle *pWorkHandle;
     LFP_VOID    *pWorkData;
+    LFP_DLIST_T node;
 }WORK_ITEM_T;
 
 typedef struct work_queue_t
 {
-    LFP_UINT32  uiQueueCnt;
+    LFP_UINT32  uiWorkQueueCnt;
     LFP_DLIST_T listHead;
 }WORK_QUEUE_T;
 
-typedef struct thread_queue_t
+typedef struct thread_item_t
 {
     LFP_SEM_T   semphore;
     LFP_BOOL    bWorking;
     LFP_TIME_T  uiWorkerTime;
+    LFP_DLIST_T node;
+}THREAD_ITEM_T;
+
+typedef struct thread_queue_t
+{
+    LFP_UINT32 uiThreadQueueCnt;
     LFP_DLIST_T listHead;
 }THREAD_QUEUE_T;
 
