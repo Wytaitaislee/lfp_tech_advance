@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2021-03-21 18:00:21
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-09-02 22:41:08
+ * @LastEditTime: 2021-09-04 16:02:30
  */
 
 #ifndef __LFP_LIBS_THREADPOOL_H__
@@ -21,9 +21,12 @@
 #define LFP_THREADPOOL_INFO(...)   \
         LFP_UTIL_BASE(UTIL_LEVEL_INFO, UTIL_MODULE_DLIST, MASK_DLIST, __VA_ARGS__) 
 
+typedef LFP_VOID* (work_handle)(LFP_VOID*, ...);
+
 typedef struct work_item_t
 {
     LFP_DLIST_T listNode;
+    work_handle *pWorkHandle;
     LFP_VOID    *pWorkData;
 }WORK_ITEM_T;
 
@@ -36,13 +39,14 @@ typedef struct work_queue_t
 typedef struct thread_queue_t
 {
     LFP_SEM_T   semphore;
+    LFP_BOOL    bWorking;
     LFP_TIME_T  uiWorkerTime;
     LFP_DLIST_T listHead;
 }THREAD_QUEUE_T;
 
 typedef enum
 {
-    LFP_THREADPOOL_STATE_INVALID,
+    LFP_THREADPOOL_STATE_INVALID = 0,
     LFP_THREADPOOL_STATE_WORKING,
     LFP_THREADPOOL_STATE_EXIT
 }LFP_THREADPOOL_STATE_E;
@@ -55,7 +59,7 @@ typedef struct lfp_threadpool_t
     LFP_UINT32 uiThreadAlive;
     LFP_UINT32 uiThreadIdle;
     LFP_UINT32 uiThreadTimeOut;
-    LFP_VOID (*handler)(LFP_VOID*);
+    LFP_VOID (*threadpool_worker)(LFP_VOID*);
     WORK_QUEUE_T *pstruWorkQueue;
     THREAD_QUEUE_T *pstruThreadQueue;
 }LFP_THREADPOOL_T;
