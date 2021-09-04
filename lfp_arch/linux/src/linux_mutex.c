@@ -5,19 +5,19 @@
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:57
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-04-04 16:00:30
+ * @LastEditTime: 2021-09-04 16:07:54
 */
 
 #include "linux_mutex.h"
 #include "linux_typesdef.h"
 
-/*@fn	      LFP_INT32 linux_mutex_create(LINUX_MUTEX_T *pMutex, LINUX_MUTEX_ATTR_T *pAttr)
+/*@fn	      LFP_INT32 linux_mutex_init(LINUX_MUTEX_T *pMutex, LINUX_MUTEX_ATTR_T *pAttr)
 * @brief 	  create a new mutex.
 * @param[in]  LINUX_MUTEX_ATTR_T *pAttr - the init attr
 * @param[out] LINUX_MUTEX_T *pMutex - the mutex itself
 * @return	  LFP_OK / LFP_ERR
 */
-LFP_INT32 linux_mutex_create(LINUX_MUTEX_T *pMutex, LINUX_MUTEX_ATTR_T *pAttr)
+LFP_INT32 linux_mutex_init(LINUX_MUTEX_T *pMutex, LINUX_MUTEX_ATTR_T *pAttr)
 {
     LFP_INT32 iRet = -1;
     iRet = pthread_mutex_init(pMutex, pAttr);
