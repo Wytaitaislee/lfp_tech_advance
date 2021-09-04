@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2020-09-26 16:55:41
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-08-26 22:13:58
+ * @LastEditTime: 2021-09-04 22:30:26
 */
 
 #ifndef __LFP_BASE_MACROS_H__
@@ -35,6 +35,14 @@ do																					\
 {																					\
 	if( !(c) ){__LFP_ASSERT_FORMAT( c ); assert( c );}								\
 }while(0);
+
+/* assert return NULL */
+#define LFP_ASSERT_VOID_RET( c )\
+do																					\
+{																					\
+	if( !(c) ){__LFP_ASSERT_FORMAT( c ); return;}									\
+}while(0);
+
 
 /* assert return NULL */
 #define LFP_ASSERT_NULL_RET( c )\
