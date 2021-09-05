@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2021-03-21 17:59:18
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-09-05 16:59:27
+ * @LastEditTime: 2021-09-05 17:31:27
  */
 
 #include <errno.h>
@@ -37,16 +37,16 @@ WORK_QUEUE_T *work_queue_init(LFP_VOID)
 /* add to the tail */
 LFP_INT32 work_queue_add(WORK_QUEUE_T *pstruWorkQueue, work_handle workHandle, LFP_VOID *pData)
 {
-    WORK_ITEM_T *pWorkItem = LFP_NULL;
+    WORK_ITEM_T *pstruWorkItem = LFP_NULL;
 
     LFP_ASSERT_ERR_RET(pstruWorkQueue && workHandle && pData);
-    pWorkItem = (WORK_ITEM_T*)LFP_MALLOC(sizeof(WORK_ITEM_T));
-    LFP_ASSERT_ERR_RET(pWorkItem);
-    pWorkItem->pWorkData = pData;
-    pWorkItem->workHandle = workHandle;
-    if(LFP_OK != lfp_dlist_add_tail(&pstruWorkQueue->listHead, &pWorkItem->node))
+    pstruWorkItem = (WORK_ITEM_T*)LFP_MALLOC(sizeof(WORK_ITEM_T));
+    LFP_ASSERT_ERR_RET(pstruWorkItem);
+    pstruWorkItem->pWorkData = pData;
+    pstruWorkItem->workHandle = workHandle;
+    if(LFP_OK != lfp_dlist_add_tail(&pstruWorkQueue->listHead, &pstruWorkItem->node))
     {
-        LFP_SAFE_FREE(pWorkItem);
+        LFP_SAFE_FREE(pstruWorkItem);
         return LFP_ERR;
     }
     pstruWorkQueue->uiWorkQueueCnt++;
@@ -56,14 +56,14 @@ LFP_INT32 work_queue_add(WORK_QUEUE_T *pstruWorkQueue, work_handle workHandle, L
 /* pop from the head */
 LFP_STATIC WORK_ITEM_T* work_queue_pop(WORK_QUEUE_T *pstruWorkQueue)
 {
-    WORK_ITEM_T *pWorkItem = LFP_NULL;
+    WORK_ITEM_T *pstruWorkItem = LFP_NULL;
 
     LFP_ASSERT_NULL_RET(pstruWorkQueue);
-    pWorkItem = LFP_LIST_FIRST_ENTRY(&pstruWorkQueue->listHead, WORK_ITEM_T, node);
-    LFP_ASSERT_NULL_RET(pWorkItem);
+    pstruWorkItem = LFP_LIST_FIRST_ENTRY(&pstruWorkQueue->listHead, WORK_ITEM_T, node);
+    LFP_ASSERT_NULL_RET(pstruWorkItem);
     pstruWorkQueue->uiWorkQueueCnt--;
     (LFP_VOID)lfp_dlist_delete(pstruWorkQueue->listHead.pNext);
-    return pWorkItem;
+    return pstruWorkItem;
 }
 
 LFP_STATIC LFP_INT32 work_queue_destroy(WORK_QUEUE_T *pstruWorkQueue)
@@ -165,7 +165,7 @@ LFP_STATIC LFP_INLINE LFP_VOID lfp_threadpool_set_thread_working(THREAD_ITEM_T *
 
 LFP_STATIC LFP_VOID lfp_threadpool_worker(LFP_VOID *pArgs)
 {
-    WORK_ITEM_T *pWorkItem = LFP_NULL; 
+    WORK_ITEM_T *pstruWorkItem = LFP_NULL; 
     LFP_THREADPOOL_T *pstruThreadPool = (LFP_THREADPOOL_T *)pArgs;
     THREAD_ITEM_T *pstruThreadItem = LFP_NULL;
 
@@ -193,8 +193,8 @@ LFP_STATIC LFP_VOID lfp_threadpool_worker(LFP_VOID *pArgs)
         }
         lfp_mutex_lock(&pstruThreadPool->mutex);
         pstruThreadPool->uiThreadIdle--;
-        pWorkItem = work_queue_pop(pstruThreadPool->pstruWorkQueue);
-        if(!pWorkItem)
+        pstruWorkItem = work_queue_pop(pstruThreadPool->pstruWorkQueue);
+        if(!pstruWorkItem)
         {
             lfp_mutex_unlock(&pstruThreadPool->mutex);
             continue;        
@@ -202,7 +202,7 @@ LFP_STATIC LFP_VOID lfp_threadpool_worker(LFP_VOID *pArgs)
         lfp_threadpool_set_thread_working(pstruThreadItem);
         lfp_mutex_unlock(&pstruThreadPool->mutex);
 
-        pWorkItem->workHandle(pWorkItem->pWorkData);
+        pstruWorkItem->workHandle(pstruWorkItem->pWorkData);
     }
 worker_exit:
     if(pstruThreadItem)
