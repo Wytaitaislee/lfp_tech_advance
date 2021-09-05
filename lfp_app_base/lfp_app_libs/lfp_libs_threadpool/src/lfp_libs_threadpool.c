@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2021-03-21 17:59:18
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-09-05 16:04:51
+ * @LastEditTime: 2021-09-05 16:59:27
  */
 
 #include <errno.h>
@@ -35,15 +35,15 @@ WORK_QUEUE_T *work_queue_init(LFP_VOID)
 }
 
 /* add to the tail */
-LFP_INT32 work_queue_add(WORK_QUEUE_T *pstruWorkQueue, work_handle *pWorkHandle, LFP_VOID *pData)
+LFP_INT32 work_queue_add(WORK_QUEUE_T *pstruWorkQueue, work_handle workHandle, LFP_VOID *pData)
 {
     WORK_ITEM_T *pWorkItem = LFP_NULL;
 
-    LFP_ASSERT_ERR_RET(pstruWorkQueue && pWorkHandle && pData);
+    LFP_ASSERT_ERR_RET(pstruWorkQueue && workHandle && pData);
     pWorkItem = (WORK_ITEM_T*)LFP_MALLOC(sizeof(WORK_ITEM_T));
     LFP_ASSERT_ERR_RET(pWorkItem);
     pWorkItem->pWorkData = pData;
-    pWorkItem->pWorkHandle = pWorkHandle;
+    pWorkItem->workHandle = workHandle;
     if(LFP_OK != lfp_dlist_add_tail(&pstruWorkQueue->listHead, &pWorkItem->node))
     {
         LFP_SAFE_FREE(pWorkItem);
@@ -75,7 +75,7 @@ LFP_STATIC LFP_INT32 work_queue_destroy(WORK_QUEUE_T *pstruWorkQueue)
     LFP_LIST_FOR_EACH_ENTRY(pstruWorkItem, &pstruWorkQueue->listHead, node)
     {
         pstruWorkItem->pWorkData = LFP_NULL;
-        pstruWorkItem->pWorkHandle = LFP_NULL;
+        pstruWorkItem->workHandle = LFP_NULL;
     }
     (LFP_VOID)lfp_dlist_destroy(&pstruWorkQueue->listHead);
     LFP_SAFE_FREE(pstruWorkQueue);
@@ -202,7 +202,7 @@ LFP_STATIC LFP_VOID lfp_threadpool_worker(LFP_VOID *pArgs)
         lfp_threadpool_set_thread_working(pstruThreadItem);
         lfp_mutex_unlock(&pstruThreadPool->mutex);
 
-        pWorkItem->pWorkHandle(pWorkItem->pWorkData);
+        pWorkItem->workHandle(pWorkItem->pWorkData);
     }
 worker_exit:
     if(pstruThreadItem)
@@ -249,14 +249,55 @@ freeAllRes:
     (LFP_VOID)work_queue_destroy(pstruThreadPool->pstruWorkQueue);
     (LFP_VOID)lfp_mutex_destroy(&pstruThreadPool->mutex);
     LFP_SAFE_FREE(pstruThreadPool);
-    retrun LFP_ERR;
+    return LFP_ERR;
 }
 
+LFP_STATIC LFP_INLINE LFP_INT32 lfp_threadpool_active_the_latest_idle_worker(THREAD_QUEUE_T *pstruThreadQueue)
+{
+    THREAD_ITEM_T *pstruThreadItem = LFP_NULL;
+    THREAD_ITEM_T *pstruThreadTmp = LFP_NULL;
+    LFP_ASSERT_ERR_RET(pstruThreadQueue);
 
-LFP_INT32 lfp_threadpool_dispatch(LFP_THREADPOOL_T *pstruThreadPool, LFP_VOID* pUsrData)
+    LFP_LIST_FOR_EACH_ENTRY(pstruThreadTmp, &pstruThreadQueue->listHead, node)
+    {
+        if(!pstruThreadTmp->bWorking && pstruThreadTmp->uiWorkerTime > pstruThreadItem->uiWorkerTime)
+        {
+            pstruThreadItem = pstruThreadTmp;
+        }
+    }
+    LFP_ASSERT_ERR_RET(pstruThreadItem);
+    lfp_semaphore_post(&pstruThreadItem->semphore);
+    return LFP_OK;
+}
+
+LFP_INT32 lfp_threadpool_dispatch(LFP_THREADPOOL_T *pstruThreadPool, 
+                                  work_handle workHandle, 
+                                  LFP_VOID* pUsrData)
 {
     (LFP_VOID)pstruThreadPool;
     (LFP_VOID)pUsrData;
+    
+
+    lfp_mutex_lock(&pstruThreadPool->mutex);
+    work_queue_add(pstruThreadPool->pstruWorkQueue, workHandle, pUsrData);
+    
+
+    if(0 == pstruThreadPool->uiThreadIdle && pstruThreadPool->uiThreadAlive < pstruThreadPool->uiThreadMax)
+    {
+        //if(LFP_OK != lfp_pthread_create())
+        //{
+        //    LFP_PTHREAD_ERR("create a new worker failed\n");
+        //}
+        //else
+        {
+            pstruThreadPool->uiThreadAlive++;
+        }
+    }
+    if(lfp_threadpool_active_the_latest_idle_worker(pstruThreadPool->pstruThreadQueue))
+    {
+        LFP_THREADPOOL_ERR("active the latest idle worker failed\n");
+    }
+    lfp_mutex_unlock(&pstruThreadPool->mutex);
     
     return LFP_OK;
 }

@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2021-03-21 18:00:21
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-09-04 20:05:10
+ * @LastEditTime: 2021-09-05 17:01:01
  */
 
 #ifndef __LFP_LIBS_THREADPOOL_H__
@@ -21,11 +21,11 @@
 #define LFP_THREADPOOL_INFO(...)   \
         LFP_UTIL_BASE(UTIL_LEVEL_INFO, UTIL_MODULE_DLIST, MASK_DLIST, __VA_ARGS__) 
 
-typedef LFP_VOID* (work_handle)(LFP_VOID*, ...);
+typedef LFP_VOID* (*work_handle)(LFP_VOID*, ...);
 
 typedef struct work_item_t
 {
-    work_handle *pWorkHandle;
+    work_handle workHandle;
     LFP_VOID    *pWorkData;
     LFP_DLIST_T node;
 }WORK_ITEM_T;
