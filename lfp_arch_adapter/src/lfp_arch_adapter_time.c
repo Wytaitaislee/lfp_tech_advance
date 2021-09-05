@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:59
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-09-04 12:04:18
+ * @LastEditTime: 2021-09-05 17:05:55
 */
 
 #include "lfp_arch_adapter_typesdef.h"
@@ -17,7 +17,7 @@
 /* the definition of time cluster */
 LFP_ARCH_ADAPTER1(LFP_GET_TIME_ENTRY(), sleep_ms, LFP_INT32, LFP_UINT32);
 LFP_ARCH_ADAPTER1(LFP_GET_TIME_ENTRY(), sleep_s, LFP_INT32, LFP_UINT32);
-LFP_ARCH_ADAPTER1(LFP_GET_TIME_ENTRY(), get_time, LFP_INT32, LFP_TIME_T);
+LFP_ARCH_ADAPTER1(LFP_GET_TIME_ENTRY(), get_time, LFP_INT32, LFP_TIME_T*);
 
 /*@fn		  LFP_INT32 lfp_arch_adapter_time_register(LFP_VOID)
 * @brief 	  the adapter layer register -- time cluster register
