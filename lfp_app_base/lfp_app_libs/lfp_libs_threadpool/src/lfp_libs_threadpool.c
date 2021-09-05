@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2021-03-21 17:59:18
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-09-04 22:35:33
+ * @LastEditTime: 2021-09-05 16:04:51
  */
 
 #include <errno.h>
@@ -233,6 +233,11 @@ LFP_INT32 lfp_threadpool_create(LFP_UINT32 uiMaxThreads, LFP_UINT32 uiThreadTime
     }
     pstruThreadPool->pstruThreadQueue = thread_queue_init();
     pstruThreadPool->pstruWorkQueue = work_queue_init();
+    if(!pstruThreadPool->pstruThreadQueue || !pstruThreadPool->pstruWorkQueue)
+    {
+        LFP_THREADPOOL_ERR("pthreadpool mutex init failed, iRet[%d], err[%s]", iRet, strerror(errno));
+        goto freeAllRes;
+    }
     pstruThreadPool->threadpool_worker = lfp_threadpool_worker;
     pstruThreadPool->uiThreadMax = uiMaxThreads;
     pstruThreadPool->uiThreadTimeOut = uiThreadTimeout;
@@ -252,6 +257,7 @@ LFP_INT32 lfp_threadpool_dispatch(LFP_THREADPOOL_T *pstruThreadPool, LFP_VOID* p
 {
     (LFP_VOID)pstruThreadPool;
     (LFP_VOID)pUsrData;
+    
     return LFP_OK;
 }
 
