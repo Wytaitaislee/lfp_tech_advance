@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2021-03-21 17:59:18
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-09-05 17:31:27
+ * @LastEditTime: 2021-09-06 22:29:21
  */
 
 #include <errno.h>
@@ -17,6 +17,11 @@
 #include "lfp_arch_adapter_semaphore.h"
 #include "lfp_libs_threadpool.h"
 
+/*@fn		  WORK_QUEUE_T *work_queue_init(LFP_VOID)
+* @brief 	  work queue init.
+* @param[in]  LFP_VOID
+* @return	  WORK_QUEUE_T* / LFP_NULL
+*/
 WORK_QUEUE_T *work_queue_init(LFP_VOID)
 {
     LFP_INT32 iRet = LFP_ERR;
@@ -34,7 +39,13 @@ WORK_QUEUE_T *work_queue_init(LFP_VOID)
     return pstruWorkQueue;
 }
 
-/* add to the tail */
+/*@fn		  LFP_INT32 work_queue_add(WORK_QUEUE_T *pstruWorkQueue, work_handle workHandle, LFP_VOID *pData)
+* @brief 	  add a new work request to the tail of the work queue.
+* @param[in]  WORK_QUEUE_T *pstruWorkQueue - the work queue entry.
+* @param[in]  work_handle workHandle - work function ptr entry.
+* @param[in]  LFP_VOID *pData - work data.
+* @return	  LFP_OK / LFP_ERR
+*/
 LFP_INT32 work_queue_add(WORK_QUEUE_T *pstruWorkQueue, work_handle workHandle, LFP_VOID *pData)
 {
     WORK_ITEM_T *pstruWorkItem = LFP_NULL;
@@ -53,7 +64,11 @@ LFP_INT32 work_queue_add(WORK_QUEUE_T *pstruWorkQueue, work_handle workHandle, L
     return LFP_OK;
 }
 
-/* pop from the head */
+/*@fn		  LFP_STATIC WORK_ITEM_T* work_queue_pop(WORK_QUEUE_T *pstruWorkQueue)
+* @brief 	  get a work item form the head of the work queue.
+* @param[in]  WORK_QUEUE_T *pstruWorkQueue - the work queue entry.
+* @return	  WORK_ITEM_T* / LFP_NULL
+*/
 LFP_STATIC WORK_ITEM_T* work_queue_pop(WORK_QUEUE_T *pstruWorkQueue)
 {
     WORK_ITEM_T *pstruWorkItem = LFP_NULL;
@@ -66,6 +81,11 @@ LFP_STATIC WORK_ITEM_T* work_queue_pop(WORK_QUEUE_T *pstruWorkQueue)
     return pstruWorkItem;
 }
 
+/*@fn		  LFP_STATIC LFP_INT32 work_queue_destroy(WORK_QUEUE_T *pstruWorkQueue)
+* @brief 	  destroy the specified work queue .
+* @param[in]  WORK_QUEUE_T *pstruWorkQueue - the work queue entry.
+* @return	  LFP_OK / LFP_ERR
+*/
 LFP_STATIC LFP_INT32 work_queue_destroy(WORK_QUEUE_T *pstruWorkQueue)
 {
     WORK_ITEM_T *pstruWorkItem = NULL;
@@ -82,7 +102,11 @@ LFP_STATIC LFP_INT32 work_queue_destroy(WORK_QUEUE_T *pstruWorkQueue)
     return LFP_OK;
 }
 
-/* pop from the head */
+/*@fn		  LFP_STATIC THREAD_QUEUE_T* thread_queue_init(LFP_VOID)
+* @brief 	  thread queue init.
+* @param[in]  LFP_VOID
+* @return	  THREAD_QUEUE_T* / LFP_NULL
+*/
 LFP_STATIC THREAD_QUEUE_T* thread_queue_init(LFP_VOID)
 {
     LFP_INT32 iRet = LFP_ERR;
@@ -100,7 +124,11 @@ LFP_STATIC THREAD_QUEUE_T* thread_queue_init(LFP_VOID)
     return pstruThreadQueue;
 }
 
-/* add to the tail */
+/*@fn		  LFP_STATIC THREAD_ITEM_T* thread_queue_add(THREAD_QUEUE_T *pstruThreadQueue)
+* @brief 	  add a new thread request to the tail of the thread queue.
+* @param[in]  THREAD_QUEUE_T *pstruThreadQueue - the thread queue entry.
+* @return	  THREAD_ITEM_T* / LFP_NULL
+*/
 LFP_STATIC THREAD_ITEM_T* thread_queue_add(THREAD_QUEUE_T *pstruThreadQueue)
 {
     THREAD_ITEM_T *pThreadItem = LFP_NULL;
@@ -125,7 +153,11 @@ LFP_STATIC THREAD_ITEM_T* thread_queue_add(THREAD_QUEUE_T *pstruThreadQueue)
     return pThreadItem;
 }
 
-/* pop from the head */
+/*@fn		  LFP_STATIC LFP_INT32 thread_queue_delete(THREAD_ITEM_T *pThreadItem)
+* @brief 	  delete a specified threadinfo from the head of the thread queue.
+* @param[in]  THREAD_ITEM_T *pThreadItem - the thread queue entry.
+* @return	  LFP_OK / LFP_ERR
+*/
 LFP_STATIC LFP_INT32 thread_queue_delete(THREAD_ITEM_T *pThreadItem)
 {
     LFP_ASSERT_ERR_RET(pThreadItem);
@@ -135,6 +167,11 @@ LFP_STATIC LFP_INT32 thread_queue_delete(THREAD_ITEM_T *pThreadItem)
     return LFP_OK;
 }
 
+/*@fn		  LFP_STATIC LFP_INT32 thread_queue_destroy(THREAD_QUEUE_T *pstruThreadQueue)
+* @brief 	  destroy the specified thread queue .
+* @param[in]  WORK_QUEUE_T *pstruWorkQueue - the thread queue entry.
+* @return	  LFP_OK / LFP_ERR
+*/
 LFP_STATIC LFP_INT32 thread_queue_destroy(THREAD_QUEUE_T *pstruThreadQueue)
 {
     THREAD_ITEM_T *pThreadEntry = LFP_NULL;
@@ -150,19 +187,35 @@ LFP_STATIC LFP_INT32 thread_queue_destroy(THREAD_QUEUE_T *pstruThreadQueue)
     return LFP_OK;
 }
 
-/* only in lfp_threadpool_worker , no need to lock again */
+/*@fn		  LFP_STATIC LFP_INLINE LFP_VOID lfp_threadpool_set_thread_idle(THREAD_ITEM_T *pstruThreadItem)
+* @brief 	  set a thread worker to be idle .
+* @param[out] THREAD_ITEM_T *pstruThreadItem - the threadinfo entry.
+* @return	  LFP_VOID
+* @note       only in lfp_threadpool_worker , no need to lock again
+*/
 LFP_STATIC LFP_INLINE LFP_VOID lfp_threadpool_set_thread_idle(THREAD_ITEM_T *pstruThreadItem)
 {
     pstruThreadItem->bWorking = LFP_FALSE;
     pstruThreadItem->uiWorkerTime = 0; 
 }
 
+/*@fn		  LFP_STATIC LFP_INLINE LFP_VOID lfp_threadpool_set_thread_working(THREAD_ITEM_T *pstruThreadItem)
+* @brief 	  set a thread worker to be working .
+* @param[out] THREAD_ITEM_T *pstruThreadItem - the threadinfo entry.
+* @return	  LFP_VOID
+* @note       only in lfp_threadpool_worker , no need to lock again
+*/
 LFP_STATIC LFP_INLINE LFP_VOID lfp_threadpool_set_thread_working(THREAD_ITEM_T *pstruThreadItem)
 {
     pstruThreadItem->bWorking = LFP_TRUE;
     pstruThreadItem->uiWorkerTime = lfp_get_time(NULL);
 }
 
+/*@fn		  LFP_STATIC LFP_VOID lfp_threadpool_worker(LFP_VOID *pArgs)
+* @brief 	  the thread worker.
+* @param[in]  LFP_VOID *pArgs - thread worker args.
+* @return	  LFP_VOID
+*/
 LFP_STATIC LFP_VOID lfp_threadpool_worker(LFP_VOID *pArgs)
 {
     WORK_ITEM_T *pstruWorkItem = LFP_NULL; 
@@ -216,6 +269,12 @@ worker_exit:
     return;
 }
 
+/*@fn		  LFP_INT32 lfp_threadpool_create(LFP_UINT32 uiMaxThreads, LFP_UINT32 uiThreadTimeout)
+* @brief 	  create a threadpool entry.
+* @param[in]  LFP_UINT32 uiMaxThreads - the maximum of the threadpool threads.
+* @param[in]  LFP_UINT32 uiThreadTimeout - work thread timeout
+* @return	  LFP_OK / LFP_ERR
+*/
 LFP_INT32 lfp_threadpool_create(LFP_UINT32 uiMaxThreads, LFP_UINT32 uiThreadTimeout)
 {
     LFP_INT32 iRet = LFP_ERR;
@@ -252,6 +311,11 @@ freeAllRes:
     return LFP_ERR;
 }
 
+/*@fn		  LFP_STATIC LFP_INLINE LFP_INT32 lfp_threadpool_active_the_latest_idle_worker(THREAD_QUEUE_T *pstruThreadQueue)
+* @brief 	  find and activate the most idle thread recently.
+* @param[in]  THREAD_QUEUE_T *pstruThreadQueue - the thread queue.
+* @return	  LFP_OK / LFP_ERR
+*/
 LFP_STATIC LFP_INLINE LFP_INT32 lfp_threadpool_active_the_latest_idle_worker(THREAD_QUEUE_T *pstruThreadQueue)
 {
     THREAD_ITEM_T *pstruThreadItem = LFP_NULL;
@@ -270,6 +334,15 @@ LFP_STATIC LFP_INLINE LFP_INT32 lfp_threadpool_active_the_latest_idle_worker(THR
     return LFP_OK;
 }
 
+/*@fn		  LFP_INT32 lfp_threadpool_dispatch(LFP_THREADPOOL_T *pstruThreadPool, 
+                                  work_handle workHandle, 
+                                  LFP_VOID* pUsrData)
+* @brief 	  thread dispatch, 1. manage thread worker; 2. activate the most idle thread recently
+* @param[in]  LFP_THREADPOOL_T *pstruThreadPool - threadpool entrty
+* @param[in]  work_handle workHandle - work function ptr entry.
+* @param[in]  LFP_VOID *pUsrData - work data.
+* @return	  LFP_OK / LFP_ERR
+*/
 LFP_INT32 lfp_threadpool_dispatch(LFP_THREADPOOL_T *pstruThreadPool, 
                                   work_handle workHandle, 
                                   LFP_VOID* pUsrData)
@@ -302,6 +375,11 @@ LFP_INT32 lfp_threadpool_dispatch(LFP_THREADPOOL_T *pstruThreadPool,
     return LFP_OK;
 }
 
+/*@fn		  LFP_INT32 lfp_threadpool_destroy(LFP_THREADPOOL_T *pstruThreadPool)
+* @brief 	  destory the specified threadpool entry.
+* @param[in]  LFP_THREADPOOL_T *pstruThreadPool - threadpool entrty
+* @return	  LFP_OK / LFP_ERR
+*/
 LFP_INT32 lfp_threadpool_destroy(LFP_THREADPOOL_T *pstruThreadPool)
 {
     (LFP_VOID)pstruThreadPool;
