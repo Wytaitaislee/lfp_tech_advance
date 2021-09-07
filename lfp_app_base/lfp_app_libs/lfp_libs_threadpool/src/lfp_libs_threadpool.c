@@ -46,7 +46,7 @@ WORK_QUEUE_T *work_queue_init(LFP_VOID)
 * @param[in]  LFP_VOID *pData - work data.
 * @return	  LFP_OK / LFP_ERR
 */
-LFP_INT32 work_queue_add(WORK_QUEUE_T *pstruWorkQueue, work_handle workHandle, LFP_VOID *pData)
+LFP_INT32 work_queue_add(WORK_QUEUE_T *pstruWorkQueue, work_handle workHandle, LFP_VOID *pData)/*work_queue_t*, int argc, work_item_t* */
 {
     WORK_ITEM_T *pstruWorkItem = LFP_NULL;
 
@@ -69,7 +69,7 @@ LFP_INT32 work_queue_add(WORK_QUEUE_T *pstruWorkQueue, work_handle workHandle, L
 * @param[in]  WORK_QUEUE_T *pstruWorkQueue - the work queue entry.
 * @return	  WORK_ITEM_T* / LFP_NULL
 */
-LFP_STATIC WORK_ITEM_T* work_queue_pop(WORK_QUEUE_T *pstruWorkQueue)
+LFP_STATIC WORK_ITEM_T* work_queue_pop(WORK_QUEUE_T *pstruWorkQueue)/*work_queue_t *, int *argc, work_item_t** */
 {
     WORK_ITEM_T *pstruWorkItem = LFP_NULL;
 
@@ -96,6 +96,7 @@ LFP_STATIC LFP_INT32 work_queue_destroy(WORK_QUEUE_T *pstruWorkQueue)
     {
         pstruWorkItem->pWorkData = LFP_NULL;
         pstruWorkItem->workHandle = LFP_NULL;
+        LFP_SAFE_FREE(pstruWorkItem);
     }
     (LFP_VOID)lfp_dlist_destroy(&pstruWorkQueue->listHead);
     LFP_SAFE_FREE(pstruWorkQueue);
@@ -180,6 +181,7 @@ LFP_STATIC LFP_INT32 thread_queue_destroy(THREAD_QUEUE_T *pstruThreadQueue)
     LFP_LIST_FOR_EACH_ENTRY(pThreadEntry, &pstruThreadQueue->listHead, node)
     {
         lfp_semaphore_destroy(&pThreadEntry->semphore);
+        LFP_SAFE_FREE(pThreadEntry);
     }
     lfp_dlist_destroy(&pstruThreadQueue->listHead);
     LFP_SAFE_FREE(pstruThreadQueue);
