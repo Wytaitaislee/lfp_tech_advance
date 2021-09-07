@@ -345,6 +345,8 @@ LFP_STATIC LFP_INLINE LFP_INT32 lfp_threadpool_active_the_latest_idle_worker(THR
 * @param[in]  LFP_VOID *pUsrData - work data.
 * @return	  LFP_OK / LFP_ERR
 */
+
+/*threadpool*, *pstruTid, *tid, priority, cpuno, work_handle, argc, ...*/
 LFP_INT32 lfp_threadpool_dispatch(LFP_THREADPOOL_T *pstruThreadPool, 
                                   work_handle workHandle, 
                                   LFP_VOID* pUsrData)
@@ -359,6 +361,7 @@ LFP_INT32 lfp_threadpool_dispatch(LFP_THREADPOOL_T *pstruThreadPool,
 
     if(0 == pstruThreadPool->uiThreadIdle && pstruThreadPool->uiThreadAlive < pstruThreadPool->uiThreadMax)
     {
+        /*thread_detached_create(th-worker, threadpool*, stack, priority)*/
         //if(LFP_OK != lfp_pthread_create())
         //{
         //    LFP_PTHREAD_ERR("create a new worker failed\n");
