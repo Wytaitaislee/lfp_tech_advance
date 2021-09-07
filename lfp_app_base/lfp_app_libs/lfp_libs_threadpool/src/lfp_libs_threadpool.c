@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2021-03-21 17:59:18
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-09-06 22:29:21
+ * @LastEditTime: 2021-09-08 07:28:51
  */
 
 #include <errno.h>
@@ -383,5 +383,9 @@ LFP_INT32 lfp_threadpool_dispatch(LFP_THREADPOOL_T *pstruThreadPool,
 LFP_INT32 lfp_threadpool_destroy(LFP_THREADPOOL_T *pstruThreadPool)
 {
     (LFP_VOID)pstruThreadPool;
+    lfp_dlist_destroy(&pstruThreadPool->pstruWorkQueue.listHead);
+    lfp_dlist_destroy(&pstruThreadPool->pstruThreadQueue.listHead);
+    lfp_mutex_destroy(&pstruThreadPool->mutex);
+    LFP_SAFE_FREE(pstruThreadPool);
     return LFP_OK;
 }
