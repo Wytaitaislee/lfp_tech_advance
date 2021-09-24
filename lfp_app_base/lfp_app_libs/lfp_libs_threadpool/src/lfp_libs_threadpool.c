@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2021-03-21 17:59:18
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-09-21 18:15:24
+ * @LastEditTime: 2021-09-24 23:32:50
  */
 
 #include <errno.h>
@@ -208,7 +208,7 @@ LFP_STATIC LFP_INLINE LFP_VOID lfp_threadpool_set_thread_working(THREAD_ITEM_T *
 
 LFP_STATIC LFP_INT32 lfp_threadpool_work_handle_proc(WORK_ITEM_T *pstruWorkItem)
 {
-    LFP_INT32 iArgc = 0, iArgCnt = 0;
+    LFP_INT32 iArgCnt = 0;
     LFP_VOID*pArgs[LFP_THREADPOOL_MAX_ARGS_NUM]= {LFP_NULL};
 
     LFP_ASSERT_ERR_RET(pstruWorkItem);
@@ -217,17 +217,30 @@ LFP_STATIC LFP_INT32 lfp_threadpool_work_handle_proc(WORK_ITEM_T *pstruWorkItem)
     {
         pArgs[iArgCnt] = va_arg(pstruWorkItem->vaList, LFP_VOID*);
     }
+    va_end(pstruWorkItem->vaList);
+
     switch(pstruWorkItem->iArgc)
     {
+        case 0:
+            pstruWorkItem->workHandle(NULL);
+            break;
         case 1:
             pstruWorkItem->workHandle(pArgs[0]);
             break;
         case 2:
             pstruWorkItem->workHandle(pArgs[0], pArgs[1]);
-            break;
+            break;  
         case 3:
             pstruWorkItem->workHandle(pArgs[0], pArgs[1], pArgs[2]);
             break;
+        case 4:
+            pstruWorkItem->workHandle(pArgs[0], pArgs[1], pArgs[2], pArgs[3]);
+            break;
+        case 5:
+            pstruWorkItem->workHandle(pArgs[0], pArgs[1], pArgs[2], pArgs[3], pArgs[4]);
+            break;
+        default:
+            return LFP_ERR;
     }
     return LFP_OK;
 }

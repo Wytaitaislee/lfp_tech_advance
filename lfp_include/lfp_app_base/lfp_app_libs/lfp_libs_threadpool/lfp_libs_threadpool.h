@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2021-03-21 18:00:21
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-09-21 18:10:30
+ * @LastEditTime: 2021-09-24 23:31:06
  */
 
 #ifndef __LFP_LIBS_THREADPOOL_H__
@@ -14,7 +14,7 @@
 #include "lfp_libs_dlist.h"
 #include "lfp_base.h"
 
-#define LFP_THREADPOOL_MAX_ARGS_NUM (10)    /* Maximum number of thread pool work task parameters */
+#define LFP_THREADPOOL_MAX_ARGS_NUM (5)    /* Maximum number of thread pool work task parameters */
 
 #define LFP_THREADPOOL_CRIT(...)   \
         LFP_UTIL_BASE(UTIL_LEVEL_CRIT, UTIL_MODULE_DLIST, MASK_DLIST, __VA_ARGS__)
