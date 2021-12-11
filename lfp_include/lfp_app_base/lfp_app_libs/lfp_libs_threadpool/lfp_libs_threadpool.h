@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2021-03-21 18:00:21
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-09-24 23:31:06
+ * @LastEditTime: 2021-12-11 16:11:06
  */
 
 #ifndef __LFP_LIBS_THREADPOOL_H__
@@ -25,6 +25,12 @@
 
 typedef LFP_VOID* (*work_handle)(LFP_VOID*, ...);
 
+typedef struct lfp_thpool_list_t
+{
+    LFP_UINT32 uiCount;
+    LFP_DLIST_T node;
+}LFP_THPOOL_LIST_T;
+
 typedef struct work_item_t
 {
     work_handle workHandle;
@@ -33,12 +39,6 @@ typedef struct work_item_t
     LFP_DLIST_T node;
 }WORK_ITEM_T;
 
-typedef struct work_queue_t
-{
-    LFP_UINT32  uiWorkQueueCnt;
-    LFP_DLIST_T listHead;
-}WORK_QUEUE_T;
-
 typedef struct thread_item_t
 {
     LFP_SEM_T   semphore;
@@ -46,12 +46,6 @@ typedef struct thread_item_t
     LFP_TIME_T  uiWorkerTime;
     LFP_DLIST_T node;
 }THREAD_ITEM_T;
-
-typedef struct thread_queue_t
-{
-    LFP_UINT32 uiThreadQueueCnt;
-    LFP_DLIST_T listHead;
-}THREAD_QUEUE_T;
 
 typedef enum
 {
@@ -69,8 +63,8 @@ typedef struct lfp_threadpool_t
     LFP_UINT32 uiThreadIdle;
     LFP_UINT32 uiThreadTimeOut;
     LFP_VOID (*threadpool_worker)(LFP_VOID*);
-    WORK_QUEUE_T *pstruWorkQueue;
-    THREAD_QUEUE_T *pstruThreadQueue;
+    LFP_THPOOL_LIST_T struWorkQueueList;
+    LFP_THPOOL_LIST_T struThreadQueueList;
 }LFP_THREADPOOL_T;
 
 #endif /* end of __LFP_APP_THREADPOOL_H__ */
