@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:58
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-09-04 15:00:31
+ * @LastEditTime: 2021-12-11 16:47:51
  */
 
 #ifndef __LFP_DLIST_H__
@@ -32,7 +32,7 @@ typedef struct lfp_dlist_t
     struct lfp_dlist_t *pNext;
 }LFP_DLIST_T;
 
-/*@fn		  LFP_INT32 lfp_dlist_init(struct LFP_DLIST_T* pList)
+/*@fn		  LFP_INT32 lfp_dlist_init(struct LFP_DLIST_T *pList)
 * @brief 	  create the head node of double list
 * @param[in]  the head ptr whom pointer to the double list
 * @param[out] the same as param[in]
