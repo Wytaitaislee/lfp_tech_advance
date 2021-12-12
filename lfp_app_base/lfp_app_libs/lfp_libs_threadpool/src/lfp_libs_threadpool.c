@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2021-03-21 17:59:18
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-12-11 17:22:17
+ * @LastEditTime: 2021-12-12 15:44:38
  */
 
 #include <errno.h>
@@ -86,7 +86,7 @@ LFP_STATIC WORK_ITEM_T* work_queue_pop(LFP_THPOOL_LIST_T *pstruWorkQueue)
     pstruWorkItem = LFP_LIST_FIRST_ENTRY(&pstruWorkQueue->node, WORK_ITEM_T, node);
     LFP_ASSERT_NULL_RET(pstruWorkItem);
     (LFP_VOID)lfp_dlist_delete(pstruWorkQueue->node.pNext);
-    pstruWorkQueue->uiWorkQueueCnt--;
+    pstruWorkQueue->uiCount--;
     return pstruWorkItem;
 }
 
@@ -100,7 +100,7 @@ LFP_STATIC LFP_INT32 work_queue_destroy(LFP_THPOOL_LIST_T *pstruWorkQueue)
     WORK_ITEM_T *pstruWorkItem = NULL;
 
     LFP_ASSERT_ERR_RET(pstruWorkQueue);
-    pstruWorkQueue->uiWorkQueueCnt = 0;
+    pstruWorkQueue->uiCount = 0;
     LFP_LIST_FOR_EACH_ENTRY(pstruWorkItem, &pstruWorkQueue->node, node)
     {
         pstruWorkItem->workHandle = LFP_NULL;
@@ -136,7 +136,7 @@ LFP_STATIC THREAD_ITEM_T* thread_queue_add(LFP_THPOOL_LIST_T *pstruThreadQueue)
         LFP_SAFE_FREE(pThreadItem);
         return LFP_NULL;
     }
-    pstruThreadQueue->uiThreadQueueCnt++;
+    pstruThreadQueue->uiCount++;
     return pThreadItem;
 }
 
@@ -273,7 +273,7 @@ LFP_STATIC LFP_VOID lfp_threadpool_worker(LFP_VOID *pArgs)
         }
         lfp_mutex_lock(&pstruThreadPool->mutex);
         pstruThreadPool->uiThreadIdle--;
-        pstruWorkItem = work_queue_pop(pstruThreadPool->pstruWorkQueue);
+        pstruWorkItem = work_queue_pop(&pstruThreadPool->struWorkQueueList);
         if(!pstruWorkItem)
         {
             lfp_mutex_unlock(&pstruThreadPool->mutex);
@@ -302,10 +302,10 @@ worker_exit:
 */
 LFP_STATIC LFP_INT32 lfp_threadpool_destroy(LFP_THREADPOOL_T *pstruThreadPool)
 {
-    lfp_mutex_lock(pstruThreadPool->mutex);
+    lfp_mutex_lock(&pstruThreadPool->mutex);
     queue_list_fini(&pstruThreadPool->struThreadQueueList);
     queue_list_fini(&pstruThreadPool->struWorkQueueList);
-    lfp_mutex_unlock(pstruThreadPool->mutex);
+    lfp_mutex_unlock(&pstruThreadPool->mutex);
     lfp_mutex_destroy(&pstruThreadPool->mutex);
     LFP_SAFE_FREE(pstruThreadPool);
     return LFP_OK;
@@ -332,8 +332,8 @@ LFP_INT32 lfp_threadpool_create(LFP_UINT32 uiMaxThreads, LFP_UINT32 uiThreadTime
         LFP_THREADPOOL_ERR("pthreadpool mutex init failed, iRet[%d], err[%s]\n", iRet, strerror(errno));
         goto freeAllRes;
     }
-    if(HPR_OK != queue_list_init(&pstruThreadPool->struThreadQueueList)
-       || HPR_OK != queue_list_init(&pstruThreadPool->struWorkQueueList))
+    if(LFP_OK != queue_list_init(&pstruThreadPool->struThreadQueueList)
+       || LFP_OK != queue_list_init(&pstruThreadPool->struWorkQueueList))
     {
         LFP_THREADPOOL_ERR("pthreadpool workqueue or threadqueue init failed\n");
         LFP_SAFE_FREE(pstruThreadPool);
@@ -424,7 +424,7 @@ LFP_INT32 lfp_threadpool_dispatch(LFP_THREADPOOL_T *pstruThreadPool,
             pstruThreadPool->uiThreadAlive++;
         }
     }
-    if(lfp_threadpool_active_the_latest_idle_worker(pstruThreadPool->pstruThreadQueue))
+    if(lfp_threadpool_active_the_latest_idle_worker(&pstruThreadPool->struThreadQueueList))
     {
         LFP_THREADPOOL_ERR("active the latest idle worker failed\n");
     }
