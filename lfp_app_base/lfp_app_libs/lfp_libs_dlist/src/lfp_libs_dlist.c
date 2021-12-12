@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2020-08-16 16:05:59
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-12-11 16:47:35
+ * @LastEditTime: 2021-12-12 16:55:55
 */
 
 #ifdef LFP_LIBS_DLIST
@@ -43,7 +43,7 @@ do                                                                              
 */
 LFP_INT32 lfp_dlist_init(LFP_DLIST_T *pList)
 {
-    LFP_ASSERT_NULL_RET(ppList);
+    LFP_ASSERT_NULL_RET(pList);
     pList->pPrev = LFP_NULL;
     pList->pNext = LFP_NULL;
     return LFP_OK;
