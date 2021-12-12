@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2021-03-21 17:59:18
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-12-12 15:44:38
+ * @LastEditTime: 2021-12-12 16:54:49
  */
 
 #include <errno.h>
@@ -201,16 +201,7 @@ LFP_STATIC LFP_INLINE LFP_VOID lfp_threadpool_set_thread_working(THREAD_ITEM_T *
 
 LFP_STATIC LFP_INT32 lfp_threadpool_work_handle_proc(WORK_ITEM_T *pstruWorkItem)
 {
-    LFP_INT32 iArgCnt = 0;
-    LFP_VOID*pArgs[LFP_THREADPOOL_MAX_ARGS_NUM]= {LFP_NULL};
-
     LFP_ASSERT_ERR_RET(pstruWorkItem);
-    va_start(pstruWorkItem->vaList, pstruWorkItem->iArgc);
-    for(iArgCnt = 0; iArgCnt < pstruWorkItem->iArgc; iArgCnt++)
-    {
-        pArgs[iArgCnt] = va_arg(pstruWorkItem->vaList, LFP_VOID*);
-    }
-    va_end(pstruWorkItem->vaList);
 
     switch(pstruWorkItem->iArgc)
     {
@@ -218,19 +209,19 @@ LFP_STATIC LFP_INT32 lfp_threadpool_work_handle_proc(WORK_ITEM_T *pstruWorkItem)
             pstruWorkItem->workHandle(NULL);
             break;
         case 1:
-            pstruWorkItem->workHandle(pArgs[0]);
+            pstruWorkItem->workHandle(pstruWorkItem->pArg[0]);
             break;
         case 2:
-            pstruWorkItem->workHandle(pArgs[0], pArgs[1]);
+            pstruWorkItem->workHandle(pstruWorkItem->pArg[0], pstruWorkItem->pArg[1]);
             break;  
         case 3:
-            pstruWorkItem->workHandle(pArgs[0], pArgs[1], pArgs[2]);
+            pstruWorkItem->workHandle(pstruWorkItem->pArg[0], pstruWorkItem->pArg[1], pstruWorkItem->pArg[2]);
             break;
         case 4:
-            pstruWorkItem->workHandle(pArgs[0], pArgs[1], pArgs[2], pArgs[3]);
+            pstruWorkItem->workHandle(pstruWorkItem->pArg[0], pstruWorkItem->pArg[1], pstruWorkItem->pArg[2], pstruWorkItem->pArg[3]);
             break;
         case 5:
-            pstruWorkItem->workHandle(pArgs[0], pArgs[1], pArgs[2], pArgs[3], pArgs[4]);
+            pstruWorkItem->workHandle(pstruWorkItem->pArg[0], pstruWorkItem->pArg[1], pstruWorkItem->pArg[2], pstruWorkItem->pArg[3], pstruWorkItem->pArg[4]);
             break;
         default:
             return LFP_ERR;
@@ -403,9 +394,9 @@ LFP_INT32 lfp_threadpool_dispatch(LFP_THREADPOOL_T *pstruThreadPool,
     LFP_ASSERT_ERR_RET(pstruWorkItem);
     pstruWorkItem->workHandle = workHandle;
     va_start(pstruWorkItem->vaList, iArgc);
-    for(iArgCnt = 0; iArgCnt < iArgc; iArgCnt++)
+    for(iArgCnt = 0; iArgCnt < iArgc && iArgCnt < LFP_THREADPOOL_MAX_PARAM_NUM; iArgCnt++)
     {
-        va_arg(pstruWorkItem->vaList, LFP_VOID*);
+        pstruWorkItem->pArg[iArgCnt] = va_arg(pstruWorkItem->vaList, LFP_VOID*);
     }
     va_end(pstruWorkItem->vaList); 
     

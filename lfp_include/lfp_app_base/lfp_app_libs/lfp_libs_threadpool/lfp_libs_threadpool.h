@@ -4,7 +4,7 @@
  * @Author: wytaitaislee
  * @Date: 2021-03-21 18:00:21
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-12-11 16:11:06
+ * @LastEditTime: 2021-12-12 16:49:27
  */
 
 #ifndef __LFP_LIBS_THREADPOOL_H__
@@ -23,6 +23,8 @@
 #define LFP_THREADPOOL_INFO(...)   \
         LFP_UTIL_BASE(UTIL_LEVEL_INFO, UTIL_MODULE_DLIST, MASK_DLIST, __VA_ARGS__) 
 
+#define LFP_THREADPOOL_MAX_PARAM_NUM (5)
+
 typedef LFP_VOID* (*work_handle)(LFP_VOID*, ...);
 
 typedef struct lfp_thpool_list_t
@@ -35,6 +37,7 @@ typedef struct work_item_t
 {
     work_handle workHandle;
     LFP_INT32   iArgc;
+    LFP_VOID    *pArg[LFP_THREADPOOL_MAX_PARAM_NUM];
     va_list     vaList;
     LFP_DLIST_T node;
 }WORK_ITEM_T;
