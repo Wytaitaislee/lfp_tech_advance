@@ -16,7 +16,7 @@
 [pypi-v-image]: https://img.shields.io/pypi/v/mkdocs.svg
 [pypi-v-link]: https://pypi.org/project/mkdocs/
 [lfp tech advance]: https://github.com/Lee91/lfp_tech_advance
-[lfp documents]: https://lee91.github.io/lfp_tech_advance/
+[lfp documents]: https://wytaitaislee.github.io/lfp_tech_advance/
 [appveyor-image]: https://img.shields.io/appveyor/ci/d0ugal/mkdocs/master.svg
 [appveyor-link]: https://ci.appveyor.com/project/d0ugal/mkdocs
 [codecov-image]: https://codecov.io/github/mkdocs/mkdocs/coverage.svg?branch=master
