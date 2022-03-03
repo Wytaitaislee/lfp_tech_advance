@@ -36,7 +36,9 @@
         "lfp_arch_adapter_semaphore.h": "c",
         "lfp_arch_adapter_pthread.h": "c",
         "lfp_arch_adapter_mutex.h": "c",
-        "lfp_arch_adapter_time.h": "c"
+        "lfp_arch_adapter_time.h": "c",
+        "iostream": "cpp",
+        "ostream": "cpp"
     },
     "cmake.configureOnOpen": true
 }
