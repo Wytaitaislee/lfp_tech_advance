@@ -208,4 +208,4 @@ LFP_SSIZE_T lfp_socket_recvmsg(LFP_INT32 iSocketFd, LFP_MSGHDR_T *pMsg,
  * @return	  LFP_OK
  */
 LFP_INT32 lfp_arch_adapter_socket_register(LFP_VOID);
-#endif /*end of __LINUX_SOCKET_BASE_H__ */
+#endif /*end of __LINUX_SOCKET_LOG_H__ */

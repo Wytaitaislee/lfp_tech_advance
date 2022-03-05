@@ -28,35 +28,32 @@
 #define LFP_SOCKET_SERVER_PORT (8000)
 #define LFP_SOCKET_EXIT_REQUEST_KEYS ("exit")
 
-#define LFP_SOCKET_SERVER_CRIT(...)                                      \
-  LFP_UTIL_BASE(UTIL_LEVEL_CRIT, UTIL_MODULE_SOCKET, MASK_SOCKET_SERVER, \
-                __VA_ARGS__)
-#define LFP_SOCKET_SERVER_ERR(...)                                      \
-  LFP_UTIL_BASE(UTIL_LEVEL_ERR, UTIL_MODULE_SOCKET, MASK_SOCKET_SERVER, \
-                __VA_ARGS__)
-#define LFP_SOCKET_SERVER_INFO(...)                                      \
-  LFP_UTIL_BASE(UTIL_LEVEL_INFO, UTIL_MODULE_SOCKET, MASK_SOCKET_SERVER, \
-                __VA_ARGS__)
+#define LFP_SOCKET_SERVER_CRIT(...)                                   \
+  LFP_LOG_BASE(LOG_LEVEL_CRIT, LOG_MODULE_SOCKET, MASK_SOCKET_SERVER, \
+               __VA_ARGS__)
+#define LFP_SOCKET_SERVER_ERR(...)                                   \
+  LFP_LOG_BASE(LOG_LEVEL_ERR, LOG_MODULE_SOCKET, MASK_SOCKET_SERVER, \
+               __VA_ARGS__)
+#define LFP_SOCKET_SERVER_INFO(...)                                   \
+  LFP_LOG_BASE(LOG_LEVEL_INFO, LOG_MODULE_SOCKET, MASK_SOCKET_SERVER, \
+               __VA_ARGS__)
 
-#define LFP_SOCKET_CLIENT_CRIT(...)                                      \
-  LFP_UTIL_BASE(UTIL_LEVEL_CRIT, UTIL_MODULE_SOCKET, MASK_SOCKET_CLIENT, \
-                __VA_ARGS__)
-#define LFP_SOCKET_CLIENT_ERR(...)                                      \
-  LFP_UTIL_BASE(UTIL_LEVEL_ERR, UTIL_MODULE_SOCKET, MASK_SOCKET_CLIENT, \
-                __VA_ARGS__)
-#define LFP_SOCKET_CLIENT_INFO(...)                                      \
-  LFP_UTIL_BASE(UTIL_LEVEL_INFO, UTIL_MODULE_SOCKET, MASK_SOCKET_CLIENT, \
-                __VA_ARGS__)
+#define LFP_SOCKET_CLIENT_CRIT(...)                                   \
+  LFP_LOG_BASE(LOG_LEVEL_CRIT, LOG_MODULE_SOCKET, MASK_SOCKET_CLIENT, \
+               __VA_ARGS__)
+#define LFP_SOCKET_CLIENT_ERR(...)                                   \
+  LFP_LOG_BASE(LOG_LEVEL_ERR, LOG_MODULE_SOCKET, MASK_SOCKET_CLIENT, \
+               __VA_ARGS__)
+#define LFP_SOCKET_CLIENT_INFO(...)                                   \
+  LFP_LOG_BASE(LOG_LEVEL_INFO, LOG_MODULE_SOCKET, MASK_SOCKET_CLIENT, \
+               __VA_ARGS__)
 
-#define LFP_SOCKET_CTRL_CRIT(...)                                      \
-  LFP_UTIL_BASE(UTIL_LEVEL_CRIT, UTIL_MODULE_SOCKET, MASK_SOCKET_CTRL, \
-                __VA_ARGS__)
-#define LFP_SOCKET_CTRL_ERR(...)                                      \
-  LFP_UTIL_BASE(UTIL_LEVEL_ERR, UTIL_MODULE_SOCKET, MASK_SOCKET_CTRL, \
-                __VA_ARGS__)
-#define LFP_SOCKET_CTRL_INFO(...)                                      \
-  LFP_UTIL_BASE(UTIL_LEVEL_INFO, UTIL_MODULE_SOCKET, MASK_SOCKET_CTRL, \
-                __VA_ARGS__)
+#define LFP_SOCKET_CTRL_CRIT(...) \
+  LFP_LOG_BASE(LOG_LEVEL_CRIT, LOG_MODULE_SOCKET, MASK_SOCKET_CTRL, __VA_ARGS__)
+#define LFP_SOCKET_CTRL_ERR(...) \
+  LFP_LOG_BASE(LOG_LEVEL_ERR, LOG_MODULE_SOCKET, MASK_SOCKET_CTRL, __VA_ARGS__)
+#define LFP_SOCKET_CTRL_INFO(...) \
+  LFP_LOG_BASE(LOG_LEVEL_INFO, LOG_MODULE_SOCKET, MASK_SOCKET_CTRL, __VA_ARGS__)
 
 /* the head data structure */
 typedef struct lfp_socket_package_head_t {

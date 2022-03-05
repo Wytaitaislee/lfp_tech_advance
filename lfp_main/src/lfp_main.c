@@ -3,7 +3,7 @@
  * @Description:lee's firmware platform main entrance.
  * @Author: wytaitaislee
  * @Date: 2021-08-27 23:29:52
- * @LastEditTime: 2022-03-05 22:00:50
+ * @LastEditTime: 2022-03-05 22:12:18
  * @LastEditors: wytaitaislee
  * Copyright 2022 wytaitaislee, All Rights Reserved.
  */
@@ -17,7 +17,7 @@ lfp module registration initialization
 */
 LFP_STATIC LFP_CONST LFP_CODE LFP_COMPONENTS_REGISTER_T
     g_componentsRegister[] = {
-        LFP_MODLUE_REGISTER(lfp_util_module_init),
+        LFP_MODLUE_REGISTER(lfp_log_module_init),
         LFP_MODLUE_REGISTER(lfp_arch_adapter_init),
         // LFP_MODLUE_REGISTER(lfp_app_init),
 };

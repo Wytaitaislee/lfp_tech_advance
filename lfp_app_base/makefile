@@ -13,12 +13,8 @@ APP_ALL = $(libs_app_src-y)
 CUR_OBJS = $(patsubst %.c, %.o, $(wildcard *.c))
 
 INCLUDE_PATH := -I${LFP_ROOT_PATH}/lfp_include/
-INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/include/
-INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/lfp_base_util/
+INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/lfp_util/
 INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/lfp_app_base/
-INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/lfp_app_base/lfp_app_busybox/
-INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/lfp_app_base/lfp_app_libs/
-INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/lfp_app_base/lfp_app_unity_test/
 
 CFLAGS = $(LFP_GLOBAL_FLAGS) $(INCLUDE_PATH)
 

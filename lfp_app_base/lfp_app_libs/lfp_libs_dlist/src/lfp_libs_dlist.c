@@ -3,7 +3,7 @@
  * @Description: Double linked list package library.
  * @Author: wytaitaislee
  * @Date: 2021-08-27 23:29:52
- * @LastEditTime: 2022-03-05 21:50:55
+ * @LastEditTime: 2022-03-05 22:24:00
  * @LastEditors: wytaitaislee
  * Copyright 2022 wytaitaislee, All Rights Reserved.
  */
@@ -30,7 +30,7 @@
  */
 #define LFP_DLIST_NODE_FREE(pNode) \
   do {                             \
-    LFP_RET_IF(pNode)              \
+    LFP_RET_IF(pNode);             \
     pNode->pNext = LFP_NULL;       \
     pNode->pPrev = LFP_NULL;       \
   } while (0);

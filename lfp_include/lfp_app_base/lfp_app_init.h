@@ -10,6 +10,11 @@
 
 #ifndef __LFP_APP_INIT_H__
 #define __LFP_APP_INIT_H__
+
+#include "lfp_base.h"
+#ifdef __cplusplus
+extern "C" {
+#endif
 /**
  * @fn: LFP_INT32 lfp_app_init(LFP_VOID)
  * @breif: Application init main entrance.
@@ -27,5 +32,9 @@ LFP_INT32 lfp_app_init(LFP_VOID);
  * @return {*} LFP_OK
  */
 LFP_INT32 lfp_app_test_init(LFP_VOID);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* end of __LFP_APP_REGISTER_H__ */

@@ -19,7 +19,7 @@
 #ifndef __LFP_LOG_TYPESDEF_H__
 #define __LFP_LOG_TYPESDEF_H__
 
-#include "lfp_typesdef.h"
+#include "lfp_util/__include/lfp_typesdef.h"
 
 #ifdef __cplusplus
 extern "C" {

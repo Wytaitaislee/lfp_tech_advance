@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "lfp_typesdef.h"
+#include "lfp_base.h"
 
 #ifdef __cplusplus
 extern "C" {

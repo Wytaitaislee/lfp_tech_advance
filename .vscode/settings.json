@@ -41,7 +41,10 @@
         "ostream": "cpp",
         "lfp_macros.h": "c",
         "lfp_typesdef.h": "c",
-        "linux_fileio.h": "c"
+        "linux_fileio.h": "c",
+        "lfp_app_libs.h": "c",
+        "lfp_app_unity_test.h": "c",
+        "lfp_log.h": "c"
     },
     "cmake.configureOnOpen": true
 }

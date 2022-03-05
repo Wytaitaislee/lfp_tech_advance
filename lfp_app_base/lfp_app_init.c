@@ -3,16 +3,16 @@
  * @Description: Application registration.
  * @Author: wytaitaislee
  * @Date: 2021-08-27 23:29:52
- * @LastEditTime: 2022-03-05 21:53:01
+ * @LastEditTime: 2022-03-05 22:20:04
  * @LastEditors: wytaitaislee
  * Copyright 2022 wytaitaislee, All Rights Reserved.
  */
 
 #include "lfp_app_init.h"
 
-#include "lfp_app_busybox.h"
-#include "lfp_app_libs.h"
-#include "lfp_app_unity_test.h"
+#include "lfp_app_busybox/lfp_app_busybox.h"
+#include "lfp_app_libs/lfp_app_libs.h"
+#include "lfp_app_unity_test/lfp_app_unity_test.h"
 #include "lfp_base.h"
 
 LFP_INT32 lfp_app_unity_test_init(LFP_VOID);

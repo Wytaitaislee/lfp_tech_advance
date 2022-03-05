@@ -14,15 +14,15 @@
 
 #include "lfp_base.h"
 
-#define LFP_APP_BUSYBOX_CRIT(...)                                           \
-  LFP_UTIL_BASE(UTIL_LEVEL_CRIT, UTIL_MODULE_APP_BUSYBOX, MASK_APP_BUSYBOX, \
-                __VA_ARGS__)
-#define LFP_APP_BUSYBOX_ERR(...)                                           \
-  LFP_UTIL_BASE(UTIL_LEVEL_ERR, UTIL_MODULE_APP_BUSYBOX, MASK_APP_BUSYBOX, \
-                __VA_ARGS__)
-#define LFP_APP_BUSYBOX_INFO(...)                                           \
-  LFP_UTIL_BASE(UTIL_LEVEL_INFO, UTIL_MODULE_APP_BUSYBOX, MASK_APP_BUSYBOX, \
-                __VA_ARGS__)
+#define LFP_APP_BUSYBOX_CRIT(...)                                       \
+  LFP_LOG_BASE(LOG_LEVEL_ERR, LOG_MODULE_APP_BUSYBOX, MASK_APP_BUSYBOX, \
+               __VA_ARGS__)
+#define LFP_APP_BUSYBOX_ERR(...)                                        \
+  LFP_LOG_BASE(LOG_LEVEL_ERR, LOG_MODULE_APP_BUSYBOX, MASK_APP_BUSYBOX, \
+               __VA_ARGS__)
+#define LFP_APP_BUSYBOX_INFO(...)                                       \
+  LFP_LOG_BASE(LOG_LEVEL_ERR, LOG_MODULE_APP_BUSYBOX, MASK_APP_BUSYBOX, \
+               __VA_ARGS__)
 
 typedef LFP_INT32 (*lfp_app_busybox_proc_ptr)(LFP_INT8 iArgs,
                                               LFP_CONST LFP_INT8 **ppArgv);
