@@ -38,7 +38,10 @@
         "lfp_arch_adapter_mutex.h": "c",
         "lfp_arch_adapter_time.h": "c",
         "iostream": "cpp",
-        "ostream": "cpp"
+        "ostream": "cpp",
+        "lfp_macros.h": "c",
+        "lfp_typesdef.h": "c",
+        "linux_fileio.h": "c"
     },
     "cmake.configureOnOpen": true
 }

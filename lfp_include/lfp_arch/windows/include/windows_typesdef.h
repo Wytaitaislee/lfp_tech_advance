@@ -1,15 +1,16 @@
-/*
- * @fileName: linux_typesdef.h
+/***
+ * @FilePath: windows_typesdef.h
  * @Description: redefine the types on windows system.
  * @Author: wytaitaislee
- * @Date: 2020-09-26 18:43:32
+ * @Date: 2021-08-27 23:29:52
+ * @LastEditTime: 2022-03-05 21:20:12
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-04-04 16:06:55
-*/
+ * @Copyright 2022 wytaitaislee, All Rights Reserved.
+ */
 
 #ifndef __WINDOWS_TYPESDEF_H__
 #define __WINDOWS_TYPESDEF_H__
 
-typedef void* 			    LINUX_PTHREAD_HANDLE_T;
+typedef void* LINUX_PTHREAD_HANDLE_T;
 
-#endif	/*end of __WINDOWS_TYPESDEF_H__ */
+#endif /*end of __WINDOWS_TYPESDEF_H__ */

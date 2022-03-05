@@ -1,10 +1,11 @@
-/*
- * @fileName: lfp_app_init.h
- * @Description: Application init
+/***
+ * @FilePath: lfp_app_init.h
+ * @Description: Application init.
  * @Author: wytaitaislee
- * @Date: 2021-04-04 17:29:57
+ * @Date: 2021-08-27 23:29:52
+ * @LastEditTime: 2022-03-05 21:58:01
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-04-04 17:50:36
+ * @Copyright 2022 wytaitaislee, All Rights Reserved.
  */
 
 #ifndef __LFP_APP_INIT_H__

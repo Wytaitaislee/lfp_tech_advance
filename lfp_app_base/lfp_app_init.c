@@ -1,25 +1,26 @@
 /*
- * @fileName: lfp_app_init.c
- * @Description: Application registration
+ * @FilePath: lfp_app_init.c
+ * @Description: Application registration.
  * @Author: wytaitaislee
- * @Date: 2021-04-04 17:03:09
+ * @Date: 2021-08-27 23:29:52
+ * @LastEditTime: 2022-03-05 21:53:01
  * @LastEditors: wytaitaislee
- * @LastEditTime: 2021-08-21 16:34:18
+ * Copyright 2022 wytaitaislee, All Rights Reserved.
  */
 
-#include "lfp_base.h"
 #include "lfp_app_init.h"
-#include "lfp_app_libs.h"
+
 #include "lfp_app_busybox.h"
+#include "lfp_app_libs.h"
 #include "lfp_app_unity_test.h"
+#include "lfp_base.h"
 
 LFP_INT32 lfp_app_unity_test_init(LFP_VOID);
 
-LFP_CONST LFP_CODE LFP_COMPONENTS_REGISTER_T g_lfpAppRegister[] = 
-{
-	LFP_MODLUE_REGISTER(lfp_app_busybox_init),
-	LFP_MODLUE_REGISTER(lfp_app_libs_init),
-	LFP_MODLUE_REGISTER(lfp_app_unity_test_init),
+LFP_CONST LFP_CODE LFP_COMPONENTS_REGISTER_T g_lfpAppRegister[] = {
+    LFP_MODLUE_REGISTER(lfp_app_busybox_init),
+    LFP_MODLUE_REGISTER(lfp_app_libs_init),
+    LFP_MODLUE_REGISTER(lfp_app_unity_test_init),
 };
 
 /**
@@ -29,18 +30,16 @@ LFP_CONST LFP_CODE LFP_COMPONENTS_REGISTER_T g_lfpAppRegister[] =
  * @param[out] NULL
  * @return {*} LFP_OK
  */
-LFP_INT32 lfp_app_init(LFP_VOID)
-{
-	LFP_UINT32 uiModules = 0;
-	
-	for(uiModules = 0; uiModules < LFP_NELEMENTS(g_lfpAppRegister); uiModules++)
-	{
-		if(LFP_NULL != g_lfpAppRegister[uiModules].lfp_components_register)
-		{
-			g_lfpAppRegister[uiModules].lfp_components_register();
-		}
-	}
-	return LFP_OK;
+LFP_INT32 lfp_app_init(LFP_VOID) {
+  LFP_UINT32 uiModules = 0;
+
+  for (uiModules = 0; uiModules < LFP_NELEMENTS(g_lfpAppRegister);
+       uiModules++) {
+    if (LFP_NULL != g_lfpAppRegister[uiModules].lfp_components_register) {
+      g_lfpAppRegister[uiModules].lfp_components_register();
+    }
+  }
+  return LFP_OK;
 }
 
 /**
@@ -50,7 +49,4 @@ LFP_INT32 lfp_app_init(LFP_VOID)
  * @param[out] NULL
  * @return {*} LFP_OK
  */
-LFP_INT32 lfp_app_test_init(LFP_VOID)
-{
-	return LFP_OK;
-}
+LFP_INT32 lfp_app_test_init(LFP_VOID) { return LFP_OK; }
