@@ -11,6 +11,7 @@
 #ifndef __LFP_ARCH_ADAPTER_MUTEX_H__
 #define __LFP_ARCH_ADAPTER_MUTEX_H__
 
+#include "include/lfp_arch_abstract.h"
 #include "lfp_base.h"
 
 /*@fn	      LFP_INT32 lfp_mutex_init(LFP_MUTEX_T *pMutex, LFP_MUTEX_ATTR_T

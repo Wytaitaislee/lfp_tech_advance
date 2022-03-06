@@ -11,6 +11,7 @@
 #ifndef __LFP_ARCH_ADAPTER_FILEIO_H__
 #define __LFP_ARCH_ADAPTER_FILEIO_H__
 
+#include "include/lfp_arch_abstract.h"
 #include "lfp_base.h"
 
 #ifdef __cplusplus

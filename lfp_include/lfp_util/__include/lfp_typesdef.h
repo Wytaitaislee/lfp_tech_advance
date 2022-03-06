@@ -45,7 +45,7 @@ typedef time_t LFP_TIME_T;
 #define LFP_OK (0)
 #define LFP_ERR (-1)
 #define LFP_INVALID_SOCKET (-1)
-#define LFP_NULL (void *)(NULL)
+#define LFP_NULL (void *)(0)
 #define LFP_TRUE (1)
 #define LFP_FALSE (0)
 

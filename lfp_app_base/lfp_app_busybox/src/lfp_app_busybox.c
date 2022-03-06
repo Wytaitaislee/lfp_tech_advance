@@ -3,7 +3,7 @@
  * @Description: the cmd tools for debugging the program.
  * @Author: wytaitaislee
  * @Date: 2021-08-27 23:29:52
- * @LastEditTime: 2022-03-05 21:50:47
+ * @LastEditTime: 2022-03-06 17:29:38
  * @LastEditors: wytaitaislee
  * Copyright 2022 wytaitaislee, All Rights Reserved.
  */
@@ -58,8 +58,8 @@ LFP_STATIC LFP_CONST LFP_CODE LFP_APP_BUSYBOX_T gAppBusyBoxExcel[] = {
 LFP_INT32 lfp_busybox_recv_proc(LFP_APP_BUSYBOX_T *pAppBusybox) {
   LFP_UINT32 uiForEach = 0;
 
-  LFP_RET_IF(pAppBusybox);
-  LFP_RET_IF(pAppBusybox->pCmdHelpInfo);
+  LFP_RET_IF(pAppBusybox, LFP_ERR);
+  LFP_RET_IF(pAppBusybox->pCmdHelpInfo, LFP_ERR);
   for (uiForEach = 0; uiForEach < LFP_NELEMENTS(gAppBusyBoxExcel);
        uiForEach++) {
     if (gAppBusyBoxExcel[uiForEach].pCmdName == pAppBusybox->pCmdName) {

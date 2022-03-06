@@ -11,6 +11,7 @@
 #ifndef __LFP_ARCH_ADAPTER_SOCKET_H__
 #define __LFP_ARCH_ADAPTER_SOCKET_H__
 
+#include "include/lfp_arch_abstract.h"
 #include "lfp_base.h"
 
 /*@fn		  LFP_INT32 lfp_socket_create(LFP_INT32 iProFamily, LFP_INT32

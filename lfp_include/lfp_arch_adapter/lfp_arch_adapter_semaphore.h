@@ -11,6 +11,7 @@
 #ifndef __LFP_ARCH_ADAPTER_SEMAPHORE_H__
 #define __LFP_ARCH_ADAPTER_SEMAPHORE_H__
 
+#include "include/lfp_arch_abstract.h"
 #include "lfp_base.h"
 
 /*@fn		   LFP_INT32 lfp_semaphore_init(LFP_SEM_T *pSem, LFP_INT32

@@ -3,7 +3,7 @@
  * @Description: Socket communication control main entrance.
  * @Author: wytaitaislee
  * @Date: 2021-08-27 23:29:52
- * @LastEditTime: 2022-03-05 21:51:50
+ * @LastEditTime: 2022-03-06 18:52:09
  * @LastEditors: wytaitaislee
  * Copyright 2022 wytaitaislee, All Rights Reserved.
  */
@@ -12,6 +12,9 @@
 
 #include <errno.h>
 
+#include "lfp_arch_adapter_mutex.h"
+#include "lfp_arch_adapter_pthread.h"
+#include "lfp_arch_adapter_time.h"
 #include "lfp_libs_socket.h"
 
 LFP_STATIC LFP_DATA LFP_SOCKET_SERVER_MANAGE_T *pSocketServerManage = LFP_NULL;
@@ -26,9 +29,9 @@ LFP_INT32 lfp_socket_server_manage_init(LFP_VOID) {
   LFP_INT32 iRet = LFP_ERR;
 
   pSocketServerManage = LFP_MALLOC(sizeof(*pSocketServerManage));
-  LFP_RET_IF(pSocketServerManage);
+  LFP_RET_IF(pSocketServerManage, LFP_ERR);
   LFP_BUFF_BEZERO(pSocketServerManage, sizeof(*pSocketServerManage));
-  iRet = lfp_mutex_create(&pSocketServerManage->mutex, LFP_NULL);
+  iRet = lfp_mutex_init(&pSocketServerManage->mutex, LFP_NULL);
   if (LFP_OK != iRet) {
     LFP_SOCKET_CTRL_ERR("create metex err, iRet = %d\n", iRet);
     return LFP_ERR;
@@ -60,8 +63,7 @@ LFP_INT32 lfp_socket_server_manage_fini(LFP_VOID) {
 * @return	  LFP_OK/LFP_ERR
 */
 LFP_INT32 lfp_socket_server_manage_node_recycle(LFP_VOID) {
-  LFP_INT32 uiCnt = 0;
-  time_t struTimeNow;
+  LFP_UINT32 uiCnt = 0;
   LFP_INT32 iExitAliveTime = 0;
 
   if (!pSocketServerManage) {
@@ -76,7 +78,7 @@ LFP_INT32 lfp_socket_server_manage_node_recycle(LFP_VOID) {
       continue;
     }
     iExitAliveTime =
-        struTimeNow -
+        lfp_get_time(LFP_NULL) -
         LFP_SOCKET_THIS_SERVER_DESC(pSocketServerManage, uiCnt)->iExitTime;
     if (iExitAliveTime > LFP_SOCKET_EXIT_ALIVE_PERIOD) {
       lfp_socket_desc_entry_fini(
@@ -97,7 +99,7 @@ LFP_INT32 lfp_socket_server_manage_node_recycle(LFP_VOID) {
  * @return	  LFP_OK/LFP_ERR
  */
 LFP_INT32 lfp_socket_package_entry_init(LFP_SOCKET_PACKAGE_T *pSocketPackage) {
-  LFP_RET_IF(pSocketPackage);
+  LFP_RET_IF(pSocketPackage, LFP_ERR);
 
   LFP_BUFF_BEZERO(&pSocketPackage->struHead, sizeof(pSocketPackage->struHead));
   /* If whether the memory has been allocated */
@@ -105,7 +107,7 @@ LFP_INT32 lfp_socket_package_entry_init(LFP_SOCKET_PACKAGE_T *pSocketPackage) {
     pSocketPackage->iPackageData =
         (LFP_INT8 *)LFP_MALLOC(LFP_SOCKET_MAX_PACKAGE_LEN);
   }
-  LFP_RET_IF(pSocketPackage->iPackageData);
+  LFP_RET_IF(pSocketPackage->iPackageData, LFP_ERR);
   pSocketPackage->struHead.iMaxDataLen = LFP_SOCKET_MAX_PACKAGE_LEN;
   LFP_BUFF_BEZERO(pSocketPackage->iPackageData, LFP_SOCKET_MAX_PACKAGE_LEN);
   return LFP_OK;
@@ -121,7 +123,7 @@ LFP_INT32 lfp_socket_package_entry_init(LFP_SOCKET_PACKAGE_T *pSocketPackage) {
  * @return	  LFP_OK/LFP_ERR
  */
 LFP_INT32 lfp_socket_package_entry_fini(LFP_SOCKET_PACKAGE_T *pSocketPackage) {
-  LFP_RET_IF(pSocketPackage);
+  LFP_RET_IF(pSocketPackage, LFP_ERR);
 
   LFP_SAFE_FREE(pSocketPackage->iPackageData);
   return LFP_OK;
@@ -138,7 +140,7 @@ LFP_INT32 lfp_socket_package_entry_fini(LFP_SOCKET_PACKAGE_T *pSocketPackage) {
 LFP_INT32 lfp_socket_ctrl_entry_init(LFP_SOCKET_CTRL_T *pSocketCtrl) {
   LFP_INT32 iRet = LFP_ERR;
 
-  LFP_RET_IF(pSocketCtrl);
+  LFP_RET_IF(pSocketCtrl, LFP_ERR);
 
   iRet = lfp_socket_package_entry_init(&pSocketCtrl->struRecvCtrl);
   if (LFP_OK != iRet) {
@@ -164,7 +166,7 @@ LFP_INT32 lfp_socket_ctrl_entry_init(LFP_SOCKET_CTRL_T *pSocketCtrl) {
  * @return	  LFP_OK/LFP_ERR
  */
 LFP_INT32 lfp_socket_ctrl_entry_fini(LFP_SOCKET_CTRL_T *pSocketCtrl) {
-  LFP_RET_IF(pSocketCtrl);
+  LFP_RET_IF(pSocketCtrl, LFP_ERR);
 
   if (LFP_OK != lfp_socket_package_entry_fini(&pSocketCtrl->struRecvCtrl)) {
     LFP_SOCKET_CTRL_ERR("server malloc recvCtrl failed\n");
@@ -190,13 +192,13 @@ LFP_INT32 lfp_socket_desc_entry_init(LFP_SOCKET_DESC_T **ppDesc,
   LFP_SOCKET_DESC_T *pDescEntry = LFP_NULL;
   LFP_INT32 iRet = LFP_ERR;
 
-  LFP_RET_IF(ppDesc);
+  LFP_RET_IF(ppDesc, LFP_ERR);
   /* If whether the memory has been allocated */
   if (!(*ppDesc)) {
     *ppDesc = (LFP_SOCKET_DESC_T *)LFP_MALLOC(sizeof(LFP_SOCKET_DESC_T));
   }
   pDescEntry = *ppDesc;
-  LFP_RET_IF(pDescEntry);
+  LFP_RET_IF(pDescEntry, LFP_ERR);
   pDescEntry->iSockFd = iSocket;
   iRet = lfp_socket_ctrl_entry_init(&pDescEntry->struSocketCtrl);
   if (LFP_OK != iRet) {
@@ -220,9 +222,9 @@ LFP_INT32 lfp_socket_desc_entry_fini(LFP_SOCKET_DESC_T **ppDesc) {
   LFP_SOCKET_DESC_T *pDescEntry = LFP_NULL;
   LFP_INT32 iRet = LFP_ERR;
 
-  LFP_RET_IF(ppDesc);
+  LFP_RET_IF(ppDesc, LFP_ERR);
   pDescEntry = *ppDesc;
-  LFP_RET_IF(pDescEntry);
+  LFP_RET_IF(pDescEntry, LFP_ERR);
   iRet = lfp_socket_ctrl_entry_fini(&pDescEntry->struSocketCtrl);
   LFP_SAFE_CLOSE_SOCKET(pDescEntry->iSockFd);
   *ppDesc = LFP_NULL;
@@ -240,8 +242,8 @@ LFP_INT32 lfp_socket_create_subtask(LFP_INT32 iSocket) {
   LFP_UINT32 uiCnt = 0;
   LFP_INT32 iRet = LFP_ERR;
 
-  LFP_RET_IF(iSocket > 0);
-  LFP_RET_IF(pSocketServerManage);
+  LFP_RET_IF(iSocket > 0, LFP_ERR);
+  LFP_RET_IF(pSocketServerManage, LFP_ERR);
 
   lfp_mutex_lock(&pSocketServerManage->mutex);
   for (uiCnt = 0; uiCnt < LFP_NELEMENTS(pSocketServerManage->pSocketDesc);
@@ -261,7 +263,7 @@ LFP_INT32 lfp_socket_create_subtask(LFP_INT32 iSocket) {
   }
   LFP_SOCKET_THIS_SERVER_DESC(pSocketServerManage, uiCnt)->iSockFd = iSocket;
   if (LFP_OK != lfp_pthread_create(
-                    LFP_NULL, LFP_NULL, LFP_NULL, (LFP_VOID *)lfp_socket_proc,
+                    LFP_NULL, 0, 0, (LFP_VOID *)lfp_socket_proc,
                     LFP_SOCKET_THIS_SERVER_DESC(pSocketServerManage, uiCnt))) {
     LFP_SOCKET_CTRL_ERR("create a new socket task err, iSocket = %d\n",
                         iSocket);
@@ -284,10 +286,10 @@ LFP_INT32 lfp_socket_create_subtask(LFP_INT32 iSocket) {
  * @return	  LFP_OK/LFP_ERR
  */
 LFP_INT32 lfp_socket_exit_subtask(LFP_INT32 iSocket) {
-  LFP_INT32 uiCnt = 0;
+  LFP_UINT32 uiCnt = 0;
 
-  LFP_RET_IF(iSocket > 0);
-  LFP_RET_IF(pSocketServerManage);
+  LFP_RET_IF(iSocket > 0, LFP_ERR);
+  LFP_RET_IF(pSocketServerManage, LFP_ERR);
   lfp_mutex_lock(&pSocketServerManage->mutex);
   for (uiCnt = 0; uiCnt < LFP_NELEMENTS(pSocketServerManage->pSocketDesc);
        uiCnt++) {
@@ -315,9 +317,9 @@ LFP_INT32 lfp_socket_exit_subtask(LFP_INT32 iSocket) {
  * @return	  LFP_OK/LFP_ERR
  */
 LFP_INT32 lfp_socket_server_exit(LFP_VOID) {
-  LFP_INT32 uiCnt = 0;
+  LFP_UINT32 uiCnt = 0;
 
-  LFP_RET_IF(pSocketServerManage);
+  LFP_RET_IF(pSocketServerManage, LFP_ERR);
   lfp_mutex_lock(&pSocketServerManage->mutex);
   for (uiCnt = 0; uiCnt < LFP_NELEMENTS(pSocketServerManage->pSocketDesc);
        uiCnt++) {
@@ -372,7 +374,7 @@ LFP_INT32 lfp_socket_client_init(LFP_VOID) {
 LFP_INT32 lfp_socket_recv_data_ctrl(LFP_SOCKET_DESC_T *pDesc) {
   LFP_INT32 iRet = LFP_OK;
 
-  LFP_RET_IF(pDesc);
+  LFP_RET_IF(pDesc, LFP_ERR);
   while (1) {
     if (LFP_OK !=
         lfp_socket_package_entry_init(&pDesc->struSocketCtrl.struRecvCtrl)) {
@@ -404,15 +406,15 @@ LFP_INT32 lfp_socket_recv_data(LFP_SOCKET_DESC_T *pDesc) {
   LFP_INT32 iNeedRecvLen = 0;
   LFP_INT8 *pRecvBuf = LFP_NULL;
 
-  LFP_RET_IF(pDesc);
-  LFP_RET_IF(LFP_SOCKET_THIS_RECV_BODY(pDesc));
+  LFP_RET_IF(pDesc, LFP_ERR);
+  LFP_RET_IF(LFP_SOCKET_THIS_RECV_BODY(pDesc), LFP_ERR);
   iNeedRecvLen = sizeof(LFP_SOCKET_THIS_RECV_HEAD(pDesc));
   LFP_BUFF_BEZERO(LFP_SOCKET_THIS_RECV_BODY(pDesc),
                   LFP_SOCKET_THIS_RECV_HEAD(pDesc).iMaxDataLen);
   LFP_SOCKET_THIS_RECV_HEAD(pDesc).iDataLen = 0;
   pRecvBuf = LFP_SOCKET_THIS_RECV_BODY(pDesc);
   while (iRecvLen < iNeedRecvLen) {
-    iRetLen = lfp_socket_read(pDesc->iSockFd, pRecvBuf + iRecvLen,
+    iRetLen = lfp_socket_read(pDesc->iSockFd, (LFP_VOID *)(pRecvBuf + iRecvLen),
                               iNeedRecvLen - iRecvLen);
     if (iRetLen <= 0) {
       if (EAGAIN == errno || EINTR == errno) { /* end reading this time .*/
@@ -461,7 +463,7 @@ LFP_INT32 lfp_socket_send_data_ctrl(LFP_SOCKET_DESC_T *pDesc) {
   LFP_INT8 *pBodyData = LFP_NULL;
   LFP_INT8 aInputBuf[LFP_SOCKET_MAX_INPUT_CHAR_ONCE] = {0};
 
-  LFP_RET_IF(pDesc);
+  LFP_RET_IF(pDesc, LFP_ERR);
   iOffset = LFP_SOCKET_THIS_BODY_OFFSET(pDesc);
   while (1) {
     if (LFP_OK !=
@@ -510,10 +512,10 @@ send_data_ctrl_exit:
  */
 LFP_INT32 lfp_socket_send_data(LFP_INT32 iSocket, LFP_CONST LFP_INT8 *pData,
                                LFP_INT32 iDataLen) {
-  LFP_RET_IF((iSocket >= 0) && (pData) && (iDataLen > 0));
+  LFP_RET_IF((iSocket >= 0) && (pData) && (iDataLen > 0), LFP_ERR);
 
   LFP_SOCKET_CTRL_ERR("send data to client, iDataLen = %d\n", iDataLen);
-  if (0 > lfp_socket_write(iSocket, pData, iDataLen)) {
+  if (0 > lfp_socket_write(iSocket, (LFP_VOID *)pData, iDataLen)) {
     LFP_SOCKET_CTRL_ERR("send data to err, err = %d\n", errno);
     return LFP_ERR;
   }
@@ -527,8 +529,8 @@ LFP_INT32 lfp_socket_send_data(LFP_INT32 iSocket, LFP_CONST LFP_INT8 *pData,
  * @return	  LFP_OK / LFP_ERR
  */
 LFP_INT32 lfp_socket_module_init(LFP_VOID) {
-  LFP_RET_IF((LFP_OK == lfp_socket_server_manage_init()));
-  LFP_RET_IF((LFP_OK == lfp_socket_server_init()));
+  LFP_RET_IF((LFP_OK == lfp_socket_server_manage_init()), LFP_ERR);
+  LFP_RET_IF((LFP_OK == lfp_socket_server_init()), LFP_ERR);
 
   return LFP_OK;
 }

@@ -9,17 +9,17 @@
  * @Copyright 2022 wytaitaislee, All Rights Reserved.
  */
 
-/***************the dbg util design rules****************************/
-/* 1. every module has it's own idx(LOG_MODULE_DEF_E)
-/* 2. if a module is too large , you can use MODULE_MASK to split it, such as:
-/*		LFP_LOG_BASE(LOG_LEVEL, LOG_PRINTF, LOG_MODULE_MASK1, ...)
-/*		LFP_LOG_BASE(LOG_LEVEL, LOG_PRINTF, LOG_MODULE_MASK2, ...)
-/********************************************************************/
+/***************the dbg util design rules****************************
+ * 1. every module has it's own idx(LOG_MODULE_DEF_E)
+ * 2. if a module is too large , you can use MODULE_MASK to split it, such as:
+ *		LFP_LOG_BASE(LOG_LEVEL, LOG_PRINTF, LOG_MODULE_MASK1, ...)
+ *		LFP_LOG_BASE(LOG_LEVEL, LOG_PRINTF, LOG_MODULE_MASK2, ...)
+ ********************************************************************/
 
 #ifndef __LFP_LOG_TYPESDEF_H__
 #define __LFP_LOG_TYPESDEF_H__
 
-#include "lfp_util/__include/lfp_typesdef.h"
+#include "__include/lfp_typesdef.h"
 
 #ifdef __cplusplus
 extern "C" {

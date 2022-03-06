@@ -3,7 +3,7 @@
  * @Description: Log information control module.
  * @Author: wytaitaislee
  * @Date: 2021-08-27 23:29:52
- * @LastEditTime: 2022-03-06 16:48:34
+ * @LastEditTime: 2022-03-06 17:41:36
  * @LastEditors: wytaitaislee
  * Copyright 2022 wytaitaislee, All Rights Reserved.
  */
@@ -11,9 +11,7 @@
 #include <stdarg.h>
 #include <string.h>
 
-#include "__include/lfp_assert.h"
 #include "lfp_base.h"
-#include "lfp_log/lfp_log.h"
 
 LFP_LOG_CTRL_T *g_pUtilCtrl = NULL;
 

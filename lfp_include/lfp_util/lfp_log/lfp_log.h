@@ -8,16 +8,16 @@
  * @Copyright 2022 wytaitaislee, All Rights Reserved.
  */
 
-/**************************the log design rules*************************/
-/* 1. there are tree different level of the LOG module:
-/*		CRIT : the most important message.
-/*		ERR  ：the message where error happens.
-/*		INFO ：the debugging message.
-/* 2. every module has it's own idx
-/* 3. if a module is too large , you can use MODULE_MASK to split it, such as:
-/*		LFP_LOG_BASE(LOG_LEVEL, LOG_PRINTF, LOG_MODULE_MASK1, ...)
-/*		LFP_LOG_BASE(LOG_LEVEL, LOG_PRINTF, LOG_MODULE_MASK2, ...)
-/************************************************************************/
+/**************************the log design rules*************************
+ * 1. there are tree different level of the LOG module:
+ *		CRIT : the most important message.
+ *		ERR  ：the message where error happens.
+ *		INFO ：the debugging message.
+ * 2. every module has it's own idx
+ * 3. if a module is too large , you can use MODULE_MASK to split it, such as:
+ *		LFP_LOG_BASE(LOG_LEVEL, LOG_PRINTF, LOG_MODULE_MASK1, ...)
+ *		LFP_LOG_BASE(LOG_LEVEL, LOG_PRINTF, LOG_MODULE_MASK2, ...)
+ ************************************************************************/
 
 #ifndef __LFP_LOG_H__
 #define __LFP_LOG_H__

@@ -13,7 +13,7 @@
 
 #include "lfp_arch_adapter.h"
 #include "lfp_base.h"
-#include "lfp_libs_dlist.h"
+#include "lfp_libs_dlist/lfp_libs_dlist.h"
 
 #define LFP_THREADPOOL_MAX_ARGS_NUM \
   (5) /* Maximum number of thread pool work task parameters */

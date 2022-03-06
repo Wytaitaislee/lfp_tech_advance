@@ -3,22 +3,21 @@
  * @Description: threadpool libs.
  * @Author: wytaitaislee
  * @Date: 2021-08-27 23:29:52
- * @LastEditTime: 2022-03-05 21:52:17
+ * @LastEditTime: 2022-03-06 18:02:35
  * @LastEditors: wytaitaislee
  * Copyright 2022 wytaitaislee, All Rights Reserved.
  */
 
-#include "lfp_libs_threadpool.h"
+#include "lfp_libs_threadpool/lfp_libs_threadpool.h"
 
 #include <errno.h>
 #include <stdarg.h>
 
-#include "lfp_arch_abstract.h"
+#include "lfp_arch_adapter.h"
 #include "lfp_arch_adapter_mutex.h"
 #include "lfp_arch_adapter_semaphore.h"
 #include "lfp_arch_adapter_time.h"
-#include "lfp_base.h"
-#include "lfp_libs_dlist.h"
+#include "lfp_libs_dlist/lfp_libs_dlist.h"
 #include "lfp_libs_list.h"
 
 /*@fn		  LFP_STATIC LFP_INT32 queue_list_init(LFP_VOID)
@@ -27,9 +26,7 @@
  * @return	  NULL
  */
 LFP_STATIC LFP_INT32 queue_list_init(LFP_THPOOL_LIST_T *pThpoolList) {
-  LFP_INT32 iRet = LFP_ERR;
-
-  LFP_RET_IF(pThpoolList);
+  LFP_RET_IF(pThpoolList, LFP_ERR);
   pThpoolList->uiCount = 0;
   if (LFP_OK != lfp_dlist_init(&pThpoolList->node)) {
     LFP_THREADPOOL_ERR("dlist init failed\n");
@@ -44,9 +41,7 @@ LFP_STATIC LFP_INT32 queue_list_init(LFP_THPOOL_LIST_T *pThpoolList) {
  * @return	  NULL
  */
 LFP_STATIC LFP_INT32 queue_list_fini(LFP_THPOOL_LIST_T *pThpoolList) {
-  LFP_INT32 iRet = LFP_ERR;
-
-  LFP_RET_IF(pThpoolList);
+  LFP_RET_IF(pThpoolList, LFP_ERR);
   pThpoolList->uiCount = 0;
   if (LFP_OK != lfp_dlist_destroy(&pThpoolList->node)) {
     LFP_THREADPOOL_ERR("dlist init failed\n");
@@ -64,7 +59,7 @@ LFP_STATIC LFP_INT32 queue_list_fini(LFP_THPOOL_LIST_T *pThpoolList) {
  */
 LFP_INT32 work_queue_add(LFP_THPOOL_LIST_T *pstruWorkQueue,
                          WORK_ITEM_T *pstruWorkItem) {
-  LFP_RET_IF(pstruWorkQueue && pstruWorkItem);
+  LFP_RET_IF(pstruWorkQueue && pstruWorkItem, LFP_ERR);
   if (LFP_OK !=
       lfp_dlist_add_tail(&pstruWorkQueue->node, &pstruWorkItem->node)) {
     return LFP_ERR;
@@ -82,10 +77,10 @@ LFP_INT32 work_queue_add(LFP_THPOOL_LIST_T *pstruWorkQueue,
 LFP_STATIC WORK_ITEM_T *work_queue_pop(LFP_THPOOL_LIST_T *pstruWorkQueue) {
   WORK_ITEM_T *pstruWorkItem = LFP_NULL;
 
-  LFP_ASSERT_NULL_RET(pstruWorkQueue);
+  LFP_RET_IF(pstruWorkQueue, LFP_NULL);
   pstruWorkItem =
       LFP_LIST_FIRST_ENTRY(&pstruWorkQueue->node, WORK_ITEM_T, node);
-  LFP_ASSERT_NULL_RET(pstruWorkItem);
+  LFP_RET_IF(pstruWorkItem, LFP_NULL);
   (LFP_VOID) lfp_dlist_delete(pstruWorkQueue->node.pNext);
   pstruWorkQueue->uiCount--;
   return pstruWorkItem;
@@ -100,7 +95,7 @@ LFP_STATIC WORK_ITEM_T *work_queue_pop(LFP_THPOOL_LIST_T *pstruWorkQueue) {
 LFP_STATIC LFP_INT32 work_queue_destroy(LFP_THPOOL_LIST_T *pstruWorkQueue) {
   WORK_ITEM_T *pstruWorkItem = NULL;
 
-  LFP_RET_IF(pstruWorkQueue);
+  LFP_RET_IF(pstruWorkQueue, LFP_ERR);
   pstruWorkQueue->uiCount = 0;
   LFP_LIST_FOR_EACH_ENTRY(pstruWorkItem, &pstruWorkQueue->node, node) {
     pstruWorkItem->workHandle = LFP_NULL;
@@ -121,9 +116,9 @@ LFP_STATIC THREAD_ITEM_T *thread_queue_add(
     LFP_THPOOL_LIST_T *pstruThreadQueue) {
   THREAD_ITEM_T *pThreadItem = LFP_NULL;
 
-  LFP_ASSERT_NULL_RET(pstruThreadQueue);
+  LFP_RET_IF(pstruThreadQueue, LFP_NULL);
   pThreadItem = (THREAD_ITEM_T *)LFP_MALLOC(sizeof(THREAD_ITEM_T));
-  LFP_ASSERT_NULL_RET(pThreadItem);
+  LFP_RET_IF(pThreadItem, LFP_NULL);
   pThreadItem->bWorking = LFP_FALSE;
   if (LFP_OK != lfp_semaphore_init(&pThreadItem->semphore, 0, 0)) {
     LFP_THREADPOOL_ERR("thread semphore init failed\n");
@@ -148,7 +143,7 @@ LFP_STATIC THREAD_ITEM_T *thread_queue_add(
  * @return	  LFP_OK / LFP_ERR
  */
 LFP_STATIC LFP_INT32 thread_queue_delete(THREAD_ITEM_T *pThreadItem) {
-  LFP_RET_IF(pThreadItem);
+  LFP_RET_IF(pThreadItem, LFP_ERR);
   lfp_semaphore_destroy(&pThreadItem->semphore);
   (LFP_VOID) lfp_dlist_delete(&pThreadItem->node);
   LFP_SAFE_FREE(pThreadItem);
@@ -164,7 +159,7 @@ LFP_STATIC LFP_INT32 thread_queue_delete(THREAD_ITEM_T *pThreadItem) {
 LFP_STATIC LFP_INT32 thread_queue_destroy(LFP_THPOOL_LIST_T *pstruThreadQueue) {
   THREAD_ITEM_T *pThreadEntry = LFP_NULL;
 
-  LFP_RET_IF(pstruThreadQueue);
+  LFP_RET_IF(pstruThreadQueue, LFP_ERR);
   LFP_LIST_FOR_EACH_ENTRY(pThreadEntry, &pstruThreadQueue->node, node) {
     lfp_semaphore_destroy(&pThreadEntry->semphore);
     LFP_SAFE_FREE(pThreadEntry);
@@ -203,7 +198,7 @@ lfp_threadpool_set_thread_working(THREAD_ITEM_T *pstruThreadItem) {
 
 LFP_STATIC LFP_INT32
 lfp_threadpool_work_handle_proc(WORK_ITEM_T *pstruWorkItem) {
-  LFP_RET_IF(pstruWorkItem);
+  LFP_RET_IF(pstruWorkItem, LFP_ERR);
 
   switch (pstruWorkItem->iArgc) {
     case 0:
@@ -244,15 +239,15 @@ LFP_STATIC LFP_VOID lfp_threadpool_worker(LFP_VOID *pArgs) {
   LFP_THREADPOOL_T *pstruThreadPool = (LFP_THREADPOOL_T *)pArgs;
   THREAD_ITEM_T *pstruThreadItem = LFP_NULL;
 
-  LFP_ASSERT_VOID_RET(pstruThreadPool);
+  LFP_RET_VOID_IF(pstruThreadPool);
   lfp_mutex_lock(&pstruThreadPool->mutex);
   pstruThreadItem = thread_queue_add(&pstruThreadPool->struThreadQueueList);
   if (!pstruThreadItem) {
     lfp_mutex_unlock(&pstruThreadPool->mutex);
     goto worker_exit;
   }
-  (LFP_VOID) work_queue_add(&pstruThreadPool->struWorkQueueList,
-                            &pstruThreadItem->node);
+  //   (LFP_VOID) wo_queue_add(&pstruThreadPool->struWorkQueueList,
+  //                             &pstruThreadItem->node);
   lfp_mutex_unlock(&pstruThreadPool->mutex);
 
   while (LFP_THREADPOOL_STATE_EXIT != pstruThreadPool->enumState) {
@@ -316,7 +311,7 @@ LFP_INT32 lfp_threadpool_create(LFP_UINT32 uiMaxThreads,
   LFP_THREADPOOL_T *pstruThreadPool = LFP_NULL;
 
   pstruThreadPool = (LFP_THREADPOOL_T *)LFP_MALLOC(sizeof(*pstruThreadPool));
-  LFP_RET_IF(pstruThreadPool);
+  LFP_RET_IF(pstruThreadPool, LFP_ERR);
   LFP_BUFF_BEZERO(pstruThreadPool, sizeof(*pstruThreadPool));
   pstruThreadPool->enumState = LFP_THREADPOOL_STATE_WORKING;
   iRet = lfp_mutex_init(&pstruThreadPool->mutex, LFP_NULL);
@@ -353,7 +348,7 @@ LFP_STATIC LFP_INLINE LFP_INT32 lfp_threadpool_active_the_latest_idle_worker(
     LFP_THPOOL_LIST_T *pstruThreadQueue) {
   THREAD_ITEM_T *pstruThreadItem = LFP_NULL;
   THREAD_ITEM_T *pstruThreadTmp = LFP_NULL;
-  LFP_RET_IF(pstruThreadQueue);
+  LFP_RET_IF(pstruThreadQueue, LFP_ERR);
 
   LFP_LIST_FOR_EACH_ENTRY(pstruThreadTmp, &pstruThreadQueue->node, node) {
     if (!pstruThreadTmp->bWorking &&
@@ -362,7 +357,7 @@ LFP_STATIC LFP_INLINE LFP_INT32 lfp_threadpool_active_the_latest_idle_worker(
       break;
     }
   }
-  LFP_RET_IF(pstruThreadItem);
+  LFP_RET_IF(pstruThreadItem, LFP_ERR);
   lfp_semaphore_post(&pstruThreadItem->semphore);
   return LFP_OK;
 }
@@ -389,9 +384,12 @@ LFP_INT32 lfp_threadpool_dispatch(LFP_THREADPOOL_T *pstruThreadPool,
   LFP_INT32 iArgCnt = 0;
   WORK_ITEM_T *pstruWorkItem = LFP_NULL;
 
-  LFP_RET_IF(pstruThreadPool && workHandle);
+  (LFP_VOID) pPthreadHandle;
+  (LFP_VOID) iPriority;
+  (LFP_VOID) iCpuNo;
+  LFP_RET_IF(pstruThreadPool && workHandle, LFP_ERR);
   pstruWorkItem = (WORK_ITEM_T *)LFP_MALLOC(sizeof(WORK_ITEM_T));
-  LFP_RET_IF(pstruWorkItem);
+  LFP_RET_IF(pstruWorkItem, LFP_ERR);
   pstruWorkItem->workHandle = workHandle;
   va_start(pstruWorkItem->vaList, iArgc);
   for (iArgCnt = 0; iArgCnt < iArgc && iArgCnt < LFP_THREADPOOL_MAX_PARAM_NUM;

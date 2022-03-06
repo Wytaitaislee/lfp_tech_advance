@@ -3,7 +3,7 @@
  * @Description: Socket communication client implementation.
  * @Author: wytaitaislee
  * @Date: 2021-08-27 23:29:52
- * @LastEditTime: 2022-03-05 21:51:33
+ * @LastEditTime: 2022-03-06 18:53:58
  * @LastEditors: wytaitaislee
  * Copyright 2022 wytaitaislee, All Rights Reserved.
  */
@@ -12,6 +12,7 @@
 
 #include <errno.h>
 
+#include "lfp_arch_adapter_time.h"
 #include "lfp_libs_socket.h"
 
 /*@fn		  LFP_INT32 lfp_socket_client_task(LFP_VOID* pArgs)
@@ -27,6 +28,7 @@ LFP_INT32 lfp_socket_client_task(LFP_VOID* pClientArgs) {
   LFP_INT32 iRet = LFP_ERR;
   LFP_PTHREAD_HANDLE_T struSendTid = 0, struRecvTid = 0;
 
+  (LFP_VOID) pClientArgs;
   LFP_BUFF_BEZERO(&struSockAddrIn, sizeof(struSockAddrIn));
 
   iSockClient =
@@ -63,14 +65,14 @@ LFP_INT32 lfp_socket_client_task(LFP_VOID* pClientArgs) {
   }
   */
 
-  if (LFP_OK != lfp_pthread_create(&struRecvTid, LFP_NULL, LFP_NULL,
+  if (LFP_OK != lfp_pthread_create(&struRecvTid, 0, 0,
                                    (LFP_VOID*)lfp_socket_recv_data_ctrl,
                                    (LFP_VOID*)pClientDesc)) {
     iRet = LFP_ERR;
     goto my_return;
   }
 
-  if (LFP_OK != lfp_pthread_create(&struSendTid, LFP_NULL, LFP_NULL,
+  if (LFP_OK != lfp_pthread_create(&struSendTid, 0, 0,
                                    (LFP_VOID*)lfp_socket_send_data_ctrl,
                                    (LFP_VOID*)pClientDesc)) {
     iRet = LFP_ERR;
@@ -86,7 +88,7 @@ LFP_INT32 lfp_socket_client_task(LFP_VOID* pClientArgs) {
       lfp_pthread_cancel(struRecvTid);
       break;
     }
-    lfp_sleep_ms(10);
+    lfp_sleep_ms((LFP_UINT32)10);
   }
 my_return:
   lfp_socket_desc_entry_fini(&pClientDesc);

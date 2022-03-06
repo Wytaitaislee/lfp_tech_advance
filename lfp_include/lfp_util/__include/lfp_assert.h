@@ -43,15 +43,6 @@ extern "C" {
     }                         \
   } while (0);
 
-/* assert return NULL */
-#define LFP_RET_NULL_IF(c)    \
-  do {                        \
-    if (!(c)) {               \
-      __LFP_ASSERT_FORMAT(c); \
-      return LFP_NULL;        \
-    }                         \
-  } while (0);
-
 /* assert return if */
 #define LFP_RET_IF(c, ret)    \
   do {                        \

@@ -3,7 +3,7 @@
  * @Description: Socket communication server implementation.
  * @Author: wytaitaislee
  * @Date: 2021-08-27 23:29:52
- * @LastEditTime: 2022-03-05 21:52:04
+ * @LastEditTime: 2022-03-06 18:53:10
  * @LastEditors: wytaitaislee
  * Copyright 2022 wytaitaislee, All Rights Reserved.
  */
@@ -12,6 +12,8 @@
 
 #include <errno.h>
 
+#include "lfp_arch_adapter_socket.h"
+#include "lfp_arch_adapter_time.h"
 #include "lfp_libs_socket.h"
 
 /*@fn		  LFP_VOID *lfp_socket_proc(LFP_VOID* pSockFd)
@@ -22,10 +24,10 @@
  */
 LFP_INT32 lfp_socket_proc(LFP_VOID* pServerArgs) {
   LFP_SOCKET_DESC_T* pServerDesc = LFP_NULL;
-  LINUX_PTHREAD_HANDLE_T struSendTid = 0, struRecvTid = 0;
+  LFP_PTHREAD_HANDLE_T struSendTid = 0, struRecvTid = 0;
   LFP_INT32 iRet = LFP_ERR;
 
-  LFP_ASSERT(pServerArgs);
+  LFP_RET_IF(pServerArgs, LFP_ERR);
   pServerDesc = (LFP_SOCKET_DESC_T*)pServerArgs;
   /*
           if(lfp_socket_fcntl(pServerDesc->iSockFd, O_NONBLOCK) < 0)
@@ -35,13 +37,13 @@ LFP_INT32 lfp_socket_proc(LFP_VOID* pServerArgs) {
      LFP_ERR; goto my_return;
           }
   */
-  if (LFP_OK != lfp_pthread_create(&struRecvTid, LFP_NULL, LFP_NULL,
+  if (LFP_OK != lfp_pthread_create(&struRecvTid, 0, 0,
                                    (LFP_VOID*)lfp_socket_recv_data_ctrl,
                                    (LFP_VOID*)pServerDesc)) {
     iRet = LFP_ERR;
     goto my_return;
   }
-  if (LFP_OK != lfp_pthread_create(&struSendTid, LFP_NULL, LFP_NULL,
+  if (LFP_OK != lfp_pthread_create(&struSendTid, 0, 0,
                                    (LFP_VOID*)lfp_socket_send_data_ctrl,
                                    (LFP_VOID*)pServerDesc)) {
     iRet = LFP_ERR;
@@ -57,7 +59,7 @@ LFP_INT32 lfp_socket_proc(LFP_VOID* pServerArgs) {
       lfp_pthread_cancel(struRecvTid);
       break;
     }
-    lfp_sleep_ms(10);
+    lfp_sleep_ms((LFP_UINT32)10);
   }
 my_return:
   LFP_LINUX_SOCKET_CRIT("server socket[%d] exit !\n", pServerDesc->iSockFd);
@@ -78,6 +80,7 @@ LFP_INT32 lfp_socket_server_task(LFP_VOID* pArgs) {
   LFP_SOCK_ADDR_T struSockAddrNew;
   LFP_SOCKLEN_T struSockLen;
 
+  (LFP_VOID)(pArgs);
   LFP_SOCKET_SERVER_CRIT("server start\n");
   LFP_BUFF_BEZERO(&struSockAddrIn, sizeof(struSockAddrIn));
   LFP_BUFF_BEZERO(&struSockAddrNew, sizeof(struSockAddrNew));

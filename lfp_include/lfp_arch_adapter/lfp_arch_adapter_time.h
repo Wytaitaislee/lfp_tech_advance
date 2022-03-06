@@ -11,6 +11,7 @@
 #ifndef __LFP_ARCH_ADAPTER_TIME_H__
 #define __LFP_ARCH_ADAPTER_TIME_H__
 
+#include "include/lfp_arch_abstract.h"
 #include "lfp_base.h"
 
 /*@fn		  LFP_INT32 lfp_sleep_ms(LFP_UINT32 uiSleepMsSeconds);

@@ -13,8 +13,9 @@
 
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 
-#include "lfp_base.h"
+#include "lfp_typesdef.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -23,7 +24,7 @@ extern "C" {
 #define LFP_MAX(x, y) ((x > y) ? (x) : (y))
 #define LFP_MIN(x, y) ((x > y) ? (y) : (x))
 #define LFP_BUFF_BEZERO(pStr, len) (memset(pStr, 0, len))
-#define LFP_NELEMENTS(x) (sizeof(x) / sizeof(*(x)))
+#define LFP_NELEMENTS(x) (LFP_UINT32)((sizeof(x) / sizeof(*(x))))
 #define LFP_MALLOC(size) (malloc(size))
 
 /* assert safe free memory */
