@@ -23,7 +23,7 @@ nav:
 - 介绍: introduction/introduction.md
 - 基础组件:
     - logs: util/util_logs.md
-- 适配:
+- 系统抽象:
     - arch: arch/arch.md
     - arch adapter: arch_adapter/arch_adapter.md
 - 应用服务:
@@ -39,23 +39,24 @@ nav:
         - socket: app_base/app_libs/app_socket/app_socket.md
 - 应用: 
     - 关于: app/app.md
-- 头文件:
-    - include: include/include.md
-- 工程控制:
-    - exec: exec/exec.md
-    - linking: lfp_linking/lfp_linking.md
-    - main: main/main.md
-    - menuconfig: menuconfig/menuconfig.md
-    - lfp_rules.make: rules.make/rules.make.md
-- 编码规范:
-    - 编码规范: programming_rules/programming_rules.md
-    - 工具: tools/stats_tools.md
-- 进阶: 
-    - 进阶线路图: roadmapping/roadmapping.md
-    - 扩展:
-        - 通用知识: roadmapping/extensions/extensions.md
-        - whiptail: roadmapping/extensions/whiptail/whiptail.md
-        - markdown语法: roadmapping/extensions/markdown.md
+- 更多:
+    - 头文件组织原则:
+        - include: include/include.md
+    - 编译构建:
+        - exec: exec/exec.md
+        - linking: linking/linking.md
+        - main: main/main.md
+        - menuconfig: menuconfig/menuconfig.md
+        - lfp_rules.make: rules.make/rules.make.md
+    - 编码规范:
+        - 编码规范: programming_rules/programming_rules.md
+        - 工具: roadmapping/extensions/tools/stats_tools.md
+    - 进阶: 
+        - 进阶线路图: roadmapping/roadmapping.md
+        - 扩展:
+            - 通用知识: roadmapping/extensions/extensions.md
+            - whiptail: roadmapping/extensions/whiptail/whiptail.md
+            - markdown语法: roadmapping/extensions/markdown.md
 #theme: readthedocs
 
 # markdown extension
