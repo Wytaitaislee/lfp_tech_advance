@@ -3,7 +3,7 @@
  * @Description: Socket communication control main entrance.
  * @Author: wytaitaislee
  * @Date: 2021-08-27 23:29:52
- * @LastEditTime: 2022-03-06 18:52:09
+ * @LastEditTime: 2022-03-06 20:27:32
  * @LastEditors: wytaitaislee
  * Copyright 2022 wytaitaislee, All Rights Reserved.
  */
@@ -14,6 +14,7 @@
 
 #include "lfp_arch_adapter_mutex.h"
 #include "lfp_arch_adapter_pthread.h"
+#include "lfp_arch_adapter_socket.h"
 #include "lfp_arch_adapter_time.h"
 #include "lfp_libs_socket.h"
 
@@ -415,7 +416,7 @@ LFP_INT32 lfp_socket_recv_data(LFP_SOCKET_DESC_T *pDesc) {
   pRecvBuf = LFP_SOCKET_THIS_RECV_BODY(pDesc);
   while (iRecvLen < iNeedRecvLen) {
     iRetLen = lfp_socket_read(pDesc->iSockFd, (LFP_VOID *)(pRecvBuf + iRecvLen),
-                              iNeedRecvLen - iRecvLen);
+                              (LFP_SIZE_T)(iNeedRecvLen - iRecvLen));
     if (iRetLen <= 0) {
       if (EAGAIN == errno || EINTR == errno) { /* end reading this time .*/
         usleep(20);
@@ -500,17 +501,17 @@ send_data_ctrl_exit:
   return iRet;
 }
 
-/*@fn		  LFP_INT32 lfp_socket_send_data(LFP_INT32 iSocket, LFP_INT8*
+/*@fn		  LFP_INT32 lfp_socket_send_data(LFP_SOCK iSocket, LFP_INT8*
  * pData, LFP_INT32 iDataLen)
  * @brief 	  rsend data to the socket, custom protocol(data package : head
  * + data)
- * @param[in]  LFP_INT32 iSocket - The specified socket
+ * @param[in]  LFP_SOCK iSocket - The specified socket
  * @param[in]  LFP_INT8* pData - the data to send
  * @param[in]  LFP_INT32 iDataLen  - The length of data
  * @param[out] LFP_NULL
  * @return	  LFP_OK / LFP_ERR
  */
-LFP_INT32 lfp_socket_send_data(LFP_INT32 iSocket, LFP_CONST LFP_INT8 *pData,
+LFP_INT32 lfp_socket_send_data(LFP_SOCK iSocket, LFP_CONST LFP_INT8 *pData,
                                LFP_INT32 iDataLen) {
   LFP_RET_IF((iSocket >= 0) && (pData) && (iDataLen > 0), LFP_ERR);
 

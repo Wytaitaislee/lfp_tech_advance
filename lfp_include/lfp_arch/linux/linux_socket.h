@@ -41,8 +41,8 @@ typedef LFP_INT32 LINUX_SOCK;
 #define LFP_LINUX_SOCKET_INFO(...) \
   LFP_LOG_BASE(LOG_LEVEL_INFO, LOG_MODULE_LINUX, MASK_SOCKET, __VA_ARGS__)
 
-/*@fn		  LFP_INT32 linux_socket_create(LFP_INT32 iProFamily, LFP_INT32
- * iSocketType, LFP_INT32 iProtocal)
+/*@fn		  LFP_INT32 linux_socket_create(LFP_INT32 iProFamily,
+ * LFP_INT32 iSocketType, LFP_INT32 iProtocal)
  * @brief 	  create a new socket
  * @param[in]  LFP_INT32 iProFamily - protocol domain
  * @param[in]  LFP_INT32 iSocketType - Flow Control
@@ -50,8 +50,9 @@ typedef LFP_INT32 LINUX_SOCK;
  * @param[out] LFP_NULL
  * @return	  LFP_OK / LFP_ERR
  */
-LFP_INT32 linux_socket_create(LFP_INT32 iProFamily, LFP_INT32 iSocketType,
-                              LFP_INT32 iProtocal);
+LFP_INT32
+linux_socket_create(LFP_INT32 iProFamily, LFP_INT32 iSocketType,
+                    LFP_INT32 iProtocal);
 
 /*@fn		  LFP_INT32 linux_socket_bind(LFP_INT32 iSocketFd, LFP_CONST
  * LINUX_SOCK_ADDR_T *pStruAddr, LINUX_SOCKLEN_T iSockLen)

@@ -3,7 +3,7 @@
  * @Description: Socket communication client implementation.
  * @Author: wytaitaislee
  * @Date: 2021-08-27 23:29:52
- * @LastEditTime: 2022-03-06 18:53:58
+ * @LastEditTime: 2022-03-06 20:34:22
  * @LastEditors: wytaitaislee
  * Copyright 2022 wytaitaislee, All Rights Reserved.
  */
@@ -12,6 +12,8 @@
 
 #include <errno.h>
 
+#include "lfp_arch_adapter_pthread.h"
+#include "lfp_arch_adapter_socket.h"
 #include "lfp_arch_adapter_time.h"
 #include "lfp_libs_socket.h"
 
