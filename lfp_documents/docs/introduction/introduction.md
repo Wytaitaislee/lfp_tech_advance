@@ -44,11 +44,11 @@
 
 ### lfp_arch
 
-**[架构实现层][lfp arch]**，实现不同OS的系统层封装，上层应用业务不感知系统的差异性；
+**[系统实现层][lfp arch]**，实现不同OS的系统层封装，上层应用业务不感知系统的差异性；
 
 ### lfp_arch_adapter
 
-**[架构适配层][lfp arch adapter]**，用以兼容/适配不同的操作系统（或者cpu平台，预留，目前暂时适配不同操作系统）, 用户层无需感知系统的变化；
+**[系统抽象层][lfp arch adapter]**，用以兼容/适配不同的操作系统（或者cpu平台，预留，目前暂时适配不同操作系统）, 用户层无需感知系统的变化；
 
 ### lfp_documents
 
@@ -98,7 +98,7 @@
 [lfp util]: /util/util_logs/
 [lfp arch]:   /arch/arch/
 [lfp arch adapter]: /arch_adapter/arch_adapter/
-[programming rules]: /programming_rules/proogramming_rules/
+[programming rules]: /programming_rules/programming_rules/
 [lfp documents]: https://lee91.github.io/lfp_tech_advance/
 [lfp app base]: /app_base/app_base/
 [lfp app]: /app/app/
