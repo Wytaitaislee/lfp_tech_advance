@@ -4,7 +4,7 @@
  architecture platforms. pthread implement.
  * @Author: wytaitaislee
  * @Date: 2022-03-05 16:42:26
- * @LastEditTime: 2022-03-05 21:54:24
+ * @LastEditTime: 2022-03-06 17:00:27
  * @LastEditors: wytaitaislee
  * Copyright 2022 wytaitaislee, All Rights Reserved.
  */
@@ -51,8 +51,8 @@ LFP_INT32 linux_socket_bind(LFP_INT32 iSocket,
                             LINUX_SOCKLEN_T iSockLen) {
   LFP_INT32 iRet = 0;
 
-  LFP_RET_IF(iSocket > 0);
-  LFP_RET_IF(pStruAddr);
+  LFP_RET_IF((iSocket > 0), LFP_ERR);
+  LFP_RET_IF(pStruAddr, LFP_ERR);
   iRet = bind(iSocket, pStruAddr, iSockLen);
   if (0 != iRet) {
     LFP_LINUX_SOCKET_ERR("binding to socket[%d] errno[%d][%s], iRet[%d]\n",
@@ -73,8 +73,8 @@ LFP_INT32 linux_socket_bind(LFP_INT32 iSocket,
 LFP_INT32 linux_socket_listen(LFP_INT32 iSocket, LFP_INT32 iMaxConnect) {
   LFP_INT32 iRet = 0;
 
-  LFP_RET_IF(iSocket > 0);
-  LFP_RET_IF(iMaxConnect > 0);
+  LFP_RET_IF(iSocket > 0, LFP_ERR);
+  LFP_RET_IF(iMaxConnect > 0, LFP_ERR);
   iRet = listen(iSocket, iMaxConnect);
   if (0 != iRet) {
     LFP_LINUX_SOCKET_ERR("socket[%d] listen err, iRet[%d]\n", iSocket, iRet);
@@ -94,8 +94,8 @@ LFP_INT32 linux_socket_listen(LFP_INT32 iSocket, LFP_INT32 iMaxConnect) {
  */
 LFP_INT32 linux_socket_accept(LFP_INT32 iSocket, LINUX_SOCK_ADDR_T *pStruAddr,
                               LINUX_SOCKLEN_T *pSockLen) {
-  LFP_RET_IF(iSocket > 0);
-  LFP_RET_IF(pStruAddr && pSockLen);
+  LFP_RET_IF(iSocket > 0, LFP_ERR);
+  LFP_RET_IF(pStruAddr && pSockLen, LFP_ERR);
   return accept(iSocket, pStruAddr, pSockLen);
 }
 
@@ -113,8 +113,8 @@ LFP_INT32 linux_socket_connect(LFP_INT32 iSocket,
                                LINUX_SOCKLEN_T iSockLen) {
   LFP_INT32 iRet = 0;
 
-  LFP_RET_IF((iSocket > 0) && (iSockLen > 0));
-  LFP_RET_IF(pStruAddr);
+  LFP_RET_IF((iSocket > 0) && (iSockLen > 0), LFP_ERR);
+  LFP_RET_IF(pStruAddr, LFP_ERR);
   iRet = connect(iSocket, pStruAddr, iSockLen);
   if (0 != iRet) {
     LFP_LINUX_SOCKET_ERR("connect to server[%d] err, iRet[%d]\n", iSocket,
@@ -131,7 +131,7 @@ LFP_INT32 linux_socket_connect(LFP_INT32 iSocket,
  * @return	  LFP_OK / LFP_ERR
  */
 LFP_INT32 linux_socket_close(LFP_INT32 iSocket) {
-  LFP_RET_IF(iSocket);
+  LFP_RET_IF(iSocket, LFP_ERR);
   LFP_SAFE_CLOSE_SOCKET(iSocket);
   return LFP_OK;
 }
@@ -147,8 +147,8 @@ LFP_INT32 linux_socket_close(LFP_INT32 iSocket) {
  */
 LINUX_SSIZE_T linux_socket_write(LFP_INT32 iSocket, LFP_CONST LFP_VOID *pBuf,
                                  LINUX_SIZE_T iLen) {
-  LFP_RET_IF((iSocket > 0) && (iLen > 0));
-  LFP_RET_IF(pBuf);
+  LFP_RET_IF((iSocket > 0) && (iLen > 0), LFP_ERR);
+  LFP_RET_IF(pBuf, LFP_ERR);
   return write(iSocket, pBuf, iLen);
 }
 
@@ -166,8 +166,8 @@ LINUX_SSIZE_T linux_socket_send(LFP_INT32 iSocket, LFP_CONST LFP_VOID *pBuf,
                                 LINUX_SIZE_T iLen, LFP_INT32 iFlags) {
   LINUX_SSIZE_T iSendBytes = 0;
 
-  LFP_RET_IF((iSocket > 0) && (iLen > 0));
-  LFP_RET_IF(pBuf);
+  LFP_RET_IF((iSocket > 0) && (iLen > 0), LFP_ERR);
+  LFP_RET_IF(pBuf, LFP_ERR);
   iSendBytes = send(iSocket, pBuf, iLen, iFlags);
   return ((0 >= iSendBytes) ? LFP_ERR : iSendBytes);
 }
@@ -191,8 +191,8 @@ LINUX_SSIZE_T linux_socket_sendto(LFP_INT32 iSocket, LFP_CONST LFP_VOID *pBuf,
                                   LINUX_SOCKLEN_T iSockLen) {
   LINUX_SSIZE_T iSendBytes = 0;
 
-  LFP_RET_IF((iSocket > 0) && (iLen > 0) && (iSockLen > 0));
-  LFP_RET_IF(pBuf && pDstAddr);
+  LFP_RET_IF((iSocket > 0) && (iLen > 0) && (iSockLen > 0), LFP_ERR);
+  LFP_RET_IF(pBuf && pDstAddr, LFP_ERR);
   iSendBytes = sendto(iSocket, pBuf, iLen, iFlags, pDstAddr, iSockLen);
   return ((0 >= iSendBytes) ? LFP_ERR : iSendBytes);
 }
@@ -211,8 +211,8 @@ LINUX_SSIZE_T linux_socket_sendmsg(LFP_INT32 iSocket,
                                    LFP_INT32 iFlags) {
   LINUX_SSIZE_T iSendBytes = 0;
 
-  LFP_RET_IF((iSocket > 0));
-  LFP_RET_IF(pMsg);
+  LFP_RET_IF((iSocket > 0), LFP_ERR);
+  LFP_RET_IF(pMsg, LFP_ERR);
   iSendBytes = sendmsg(iSocket, pMsg, iFlags);
   return ((0 >= iSendBytes) ? LFP_ERR : iSendBytes);
 }
@@ -228,7 +228,7 @@ LINUX_SSIZE_T linux_socket_sendmsg(LFP_INT32 iSocket,
 LFP_INT32 linux_socket_fcntl(LFP_INT32 iSocket, LFP_INT32 iStyle) {
   LFP_INT32 iFlags = 0;
 
-  LFP_RET_IF(iSocket > 0);
+  LFP_RET_IF(iSocket > 0, LFP_ERR);
   iFlags = fcntl(iSocket, F_GETFL, 0);
 
   return fcntl(iSocket, F_SETFL, iFlags | iStyle);
@@ -245,8 +245,8 @@ LFP_INT32 linux_socket_fcntl(LFP_INT32 iSocket, LFP_INT32 iStyle) {
  */
 LINUX_SSIZE_T linux_socket_read(LFP_INT32 iSocket, LFP_VOID *pBuf,
                                 LINUX_SIZE_T iLen) {
-  LFP_RET_IF((iSocket > 0) && (iLen > 0));
-  LFP_RET_IF(pBuf);
+  LFP_RET_IF((iSocket > 0) && (iLen > 0), LFP_ERR);
+  LFP_RET_IF(pBuf, LFP_ERR);
   return read(iSocket, pBuf, iLen);
 }
 
@@ -262,8 +262,8 @@ LINUX_SSIZE_T linux_socket_read(LFP_INT32 iSocket, LFP_VOID *pBuf,
  */
 LINUX_SSIZE_T linux_socket_recv(LFP_INT32 iSocket, LFP_VOID *pBuf,
                                 LINUX_SIZE_T iLen, LFP_INT32 iFlags) {
-  LFP_RET_IF((iSocket > 0) && (iLen > 0));
-  LFP_RET_IF(pBuf);
+  LFP_RET_IF((iSocket > 0) && (iLen > 0), LFP_ERR);
+  LFP_RET_IF(pBuf, LFP_ERR);
   return recv(iSocket, pBuf, iLen, iFlags);
 }
 
@@ -285,8 +285,8 @@ LINUX_SSIZE_T linux_socket_recvfrom(LFP_INT32 iSocket, LFP_VOID *pBuf,
                                     LINUX_SIZE_T iLen, LFP_INT32 iFlags,
                                     LINUX_SOCK_ADDR_T *pSrcAddr,
                                     LINUX_SOCKLEN_T *pSockLen) {
-  LFP_RET_IF((iSocket > 0) && (iLen > 0));
-  LFP_RET_IF(pBuf && pSrcAddr && pSockLen);
+  LFP_RET_IF((iSocket > 0) && (iLen > 0), LFP_ERR);
+  LFP_RET_IF(pBuf && pSrcAddr && pSockLen, LFP_ERR);
   return recvfrom(iSocket, pBuf, iLen, iFlags, pSrcAddr, pSockLen);
 }
 
@@ -302,7 +302,7 @@ LINUX_SSIZE_T linux_socket_recvfrom(LFP_INT32 iSocket, LFP_VOID *pBuf,
  */
 LINUX_SSIZE_T linux_socket_recvmsg(LFP_INT32 iSocket, LINUX_MSGHDR_T *pMsg,
                                    LFP_INT32 iFlags) {
-  LFP_RET_IF(iSocket > 0);
-  LFP_RET_IF(pMsg);
+  LFP_RET_IF(iSocket > 0, LFP_ERR);
+  LFP_RET_IF(pMsg, LFP_ERR);
   return recvmsg(iSocket, pMsg, iFlags);
 }

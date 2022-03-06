@@ -53,7 +53,7 @@ extern "C" {
   } while (0);
 
 /* assert return if */
-#define LFP_RET_IF(c, iRet)   \
+#define LFP_RET_IF(c, ret)    \
   do {                        \
     if (!(c)) {               \
       __LFP_ASSERT_FORMAT(c); \

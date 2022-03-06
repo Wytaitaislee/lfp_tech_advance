@@ -3,7 +3,7 @@
  * @Description: the file io management on linux system.
  * @Author: wytaitaislee
  * @Date: 2022-03-05 16:42:26
- * @LastEditTime: 2022-03-05 21:53:18
+ * @LastEditTime: 2022-03-06 16:54:47
  * @LastEditors: wytaitaislee
  * Copyright 2022 wytaitaislee, All Rights Reserved.
  */
@@ -24,7 +24,7 @@
 LFP_INT32 linux_fileio_fcntl(LFP_INT32 iFd, LFP_INT32 iStyle) {
   LFP_INT32 iFlags = 0;
 
-  LFP_RET_IF(iFd >= 0);
+  LFP_RET_IF((iFd >= 0), LFP_ERR);
   iFlags = fcntl(iFd, F_GETFL, 0);
 
   return fcntl(iFd, F_SETFL, iFlags | iStyle);

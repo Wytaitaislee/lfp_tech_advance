@@ -3,7 +3,7 @@
  * @Description: Log information control module.
  * @Author: wytaitaislee
  * @Date: 2021-08-27 23:29:52
- * @LastEditTime: 2022-03-05 22:01:11
+ * @LastEditTime: 2022-03-06 16:48:34
  * @LastEditors: wytaitaislee
  * Copyright 2022 wytaitaislee, All Rights Reserved.
  */
@@ -11,7 +11,9 @@
 #include <stdarg.h>
 #include <string.h>
 
+#include "__include/lfp_assert.h"
 #include "lfp_base.h"
+#include "lfp_log/lfp_log.h"
 
 LFP_LOG_CTRL_T *g_pUtilCtrl = NULL;
 
@@ -43,7 +45,7 @@ LFP_INT32 lfp_log_module_init(LFP_VOID) {
   g_pUtilCtrl = (LFP_LOG_CTRL_T *)LFP_MALLOC(sizeof(*g_pUtilCtrl));
 
   __log_settings();
-  LFP_RET_NULL_IF(g_pUtilCtrl);
+  LFP_RET_IF(g_pUtilCtrl, LFP_ERR);
   LFP_BUFF_BEZERO(g_pUtilCtrl, sizeof(*g_pUtilCtrl));
   g_pUtilCtrl->uiUtilLevel = LFP_LOG_DEFAULT_LEVEL;
   g_pUtilCtrl->uiUtilModuleIdx = LFP_LOG_DEFAULT_IDX;
@@ -63,7 +65,7 @@ uiUtilModuleMask)
 */
 LFP_INT32 lfp_log_module_set(LFP_UINT64 uiUtilLevel, LFP_INT64 uiUtilModuleIdx,
                              LFP_UINT64 uiUtilModuleMask) {
-  LFP_RET_NULL_IF(g_pUtilCtrl);
+  LFP_RET_IF(g_pUtilCtrl, LFP_ERR);
 
   if (!(uiUtilLevel || uiUtilModuleIdx || uiUtilModuleMask)) {
     g_pUtilCtrl->uiUtilLevel = LFP_LOG_DEFAULT_LEVEL;
@@ -84,7 +86,7 @@ LFP_INT32 lfp_log_module_set(LFP_UINT64 uiUtilLevel, LFP_INT64 uiUtilModuleIdx,
  * @return	  LFP_OK / LFP_ERR
  */
 LFP_INT32 lfp_log_module_get(LFP_LOG_CTRL_T *pUtilMsg) {
-  LFP_RET_NULL_IF(g_pUtilCtrl && pUtilMsg);
+  LFP_RET_IF((g_pUtilCtrl && pUtilMsg), LFP_ERR);
 
   *pUtilMsg = *g_pUtilCtrl;
   return LFP_OK;
@@ -108,7 +110,7 @@ LFP_INT32 __log_open(LFP_UINT64 iLevel, LFP_UINT64 iModuleIdx,
     printf("%s[%d] get log module error\n", __FUNCTION__, __LINE__);
     return LFP_ERR;
   }
-  LFP_RET_NULL_IF((iLevel < LOG_LEVEL_MAX) && (iLevel >= LOG_LEVEL_CRIT));
+  LFP_RET_IF(((iLevel < LOG_LEVEL_MAX) && (iLevel >= LOG_LEVEL_CRIT)), LFP_ERR);
   if (((1 << iLevel) & struUtil.uiUtilLevel) &&
       (iModuleIdx & struUtil.uiUtilModuleIdx) &&
       (iModuleMask & struUtil.uiUtilModuleMask)) {
@@ -126,7 +128,7 @@ LFP_INT32 __log_open(LFP_UINT64 iLevel, LFP_UINT64 iModuleIdx,
  */
 LFP_CONST LFP_CODE LFP_INT8 *__log_get_maps(LFP_LOG_LEVEL_E enumLevel) {
   LFP_UINT32 uiCnt = 0;
-  LFP_RET_NULL_IF(enumLevel < LOG_LEVEL_MAX);
+  LFP_RET_IF((enumLevel < LOG_LEVEL_MAX), LFP_NULL);
 
   for (uiCnt = 0; uiCnt < LFP_NELEMENTS(g_UtilMap); uiCnt++) {
     if (enumLevel == g_UtilMap[uiCnt].enumLevel) {
@@ -145,7 +147,7 @@ LFP_CONST LFP_CODE LFP_INT8 *__log_get_maps(LFP_LOG_LEVEL_E enumLevel) {
 LFP_CONST LFP_CODE LFP_INT8 *__log_get_file(LFP_CONST LFP_INT8 *pFullPath) {
   LFP_CONST LFP_INT8 *pFile = LFP_NULL;
 
-  LFP_RET_NULL_IF(pFullPath);
+  LFP_RET_IF(pFullPath, LFP_NULL);
   if (LFP_NULL != (pFile = strrchr(pFullPath, '/'))) {
     pFile++; /* offset of char '/' */
   } else {
@@ -183,13 +185,13 @@ LFP_INT32 __log_base(LFP_LOG_LEVEL_E enumLevel, LFP_CONST LFP_INT8 *pFilePath,
     return LFP_ERR;
   }
   pLevelStr = __log_get_maps(enumLevel);
-  LFP_RET_NULL_IF(pLevelStr);
+  LFP_RET_IF(pLevelStr, LFP_ERR);
 
   iLen +=
       snprintf(szPtrBuf + iLen, sizeof(szPtrBuf) - iLen, "[%s][%s][%s][%s][%d]",
                __TIME__, pLevelStr, __log_get_file(pFilePath), pFunc, iLine);
 
-  LFP_RET_NULL_IF(iLen < LFP_LOG_MAX_BUFF_SIZE);
+  LFP_RET_IF((iLen < LFP_LOG_MAX_BUFF_SIZE), LFP_ERR);
   va_start(ap, fmt);
   iLen += vsnprintf(szPtrBuf + iLen, sizeof(szPtrBuf) - iLen, fmt, ap);
   va_end(ap);

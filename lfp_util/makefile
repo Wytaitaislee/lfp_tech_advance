@@ -4,14 +4,13 @@ LFP_ROOT_PATH = $(firstword $(subst ${LFP_PRJ_NAME},${LFP_PRJ_NAME} ,$(shell pwd
 endif
 include $(LFP_ROOT_PATH)/lfp_rules.make
 
-CUR_SRC_PATH := $(shell pwd)/
+CUR_SRC_PATH := ./lfp_log
 
 CUR_SRC = $(foreach dir, $(CUR_SRC_PATH), $(wildcard ${dir}/*.c))
 CUR_OBJS = $(patsubst %.c, %.o, $(CUR_SRC))
 
 INCLUDE_PATH := -I$(LFP_ROOT_PATH)/lfp_include/
-INCLUDE_PATH += -I$(LFP_ROOT_PATH)/lfp_include/include/
-INCLUDE_PATH += -I$(LFP_ROOT_PATH)/lfp_include/lfp_base_util/
+INCLUDE_PATH += -I$(LFP_ROOT_PATH)/lfp_include/lfp_util/
 
 CFLAGS = $(LFP_GLOBAL_FLAGS) $(INCLUDE_PATH)
 

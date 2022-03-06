@@ -16,9 +16,10 @@
 extern "C" {
 #endif
 
-#include "lfp_util/__include/lfp_macros.h"
-#include "lfp_util/__include/lfp_typesdef.h"
-#include "lfp_util/lfp_log/lfp_log.h"
+#include "__include/lfp_assert.h"
+#include "__include/lfp_macros.h"
+#include "__include/lfp_typesdef.h"
+#include "lfp_log/lfp_log.h"
 
 #define LFP_MODLUE_REGISTER(func) \
   { #func, func }

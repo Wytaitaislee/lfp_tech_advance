@@ -44,7 +44,8 @@
         "linux_fileio.h": "c",
         "lfp_app_libs.h": "c",
         "lfp_app_unity_test.h": "c",
-        "lfp_log.h": "c"
+        "lfp_log.h": "c",
+        "lfp_assert.h": "c"
     },
     "cmake.configureOnOpen": true
 }
