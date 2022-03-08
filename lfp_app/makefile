@@ -1,19 +1,19 @@
 ifeq ($(LFP_PRJ_NAME)$(LFP_ROOT_PATH),)
 LFP_PRJ_NAME = lfp_tech_advance
-LFP_ROOT_PATH = $(firstword $(subst ${LFP_PRJ_NAME},${LFP_PRJ_NAME} ,$(shell pwd)))
+LFP_ROOT_PATH = $(firstword $(subst $(LFP_PRJ_NAME),$(LFP_PRJ_NAME) ,$(shell pwd)))
 endif
 
-include ${LFP_ROOT_PATH}/lfp_rules.make
+include $(LFP_ROOT_PATH)/lfp_rules.make
 CUR_PATH = $(shell pwd)
 
 APP_ALL = $(libs_app_src-y)
 
 CUR_OBJS = $(patsubst %.c, %.o, $(wildcard *.c))
 
-INCLUDE_PATH := -I${LFP_ROOT_PATH}/lfp_include/
-INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/lfp_util/
-INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/lfp_app/
-INCLUDE_PATH += -I${LFP_ROOT_PATH}/lfp_include/lfp_app_base/
+INCLUDE_PATH := -I$(LFP_ROOT_PATH)/lfp_include/
+INCLUDE_PATH += -I$(LFP_ROOT_PATH)/lfp_include/lfp_util/
+INCLUDE_PATH += -I$(LFP_ROOT_PATH)/lfp_include/lfp_app/
+INCLUDE_PATH += -I$(LFP_ROOT_PATH)/lfp_include/lfp_app_base/
 
 CFLAGS = $(LFP_GLOBAL_FLAGS) $(INCLUDE_PATH)
 

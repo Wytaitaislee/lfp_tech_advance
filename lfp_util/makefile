@@ -1,12 +1,12 @@
 ifeq ($(LFP_PRJ_NAME)$(LFP_ROOT_PATH),)
 LFP_PRJ_NAME = lfp_tech_advance
-LFP_ROOT_PATH = $(firstword $(subst ${LFP_PRJ_NAME},${LFP_PRJ_NAME} ,$(shell pwd)))
+LFP_ROOT_PATH = $(firstword $(subst $(LFP_PRJ_NAME),$(LFP_PRJ_NAME) ,$(shell pwd)))
 endif
 include $(LFP_ROOT_PATH)/lfp_rules.make
 
 CUR_SRC_PATH := ./lfp_log
 
-CUR_SRC = $(foreach dir, $(CUR_SRC_PATH), $(wildcard ${dir}/*.c))
+CUR_SRC = $(foreach dir, $(CUR_SRC_PATH), $(wildcard $(dir)/*.c))
 CUR_OBJS = $(patsubst %.c, %.o, $(CUR_SRC))
 
 INCLUDE_PATH := -I$(LFP_ROOT_PATH)/lfp_include/
