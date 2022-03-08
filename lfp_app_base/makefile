@@ -6,9 +6,9 @@ endif
 include $(LFP_ROOT_PATH)/lfp_rules.make
 CUR_PATH = $(shell pwd)
 
-include $(CUR_PATH)/lfp_app_linking
+include $(CUR_PATH)/lfp_base_linking
 
-APP_ALL = $(libs_app_src-y)
+APP_ALL = $(libs_base_src-y)
 
 CUR_OBJS = $(patsubst %.c, %.o, $(wildcard *.c))
 
@@ -20,18 +20,18 @@ CFLAGS = $(LFP_GLOBAL_FLAGS) $(INCLUDE_PATH)
 
 $(APP_ALL) = ? || exit -1;
 
-lfp_app = liblfp_app_init.a
+lfp_app = liblfp_base_init.a
 
 app_all:$(APP_ALL)
 
 $(APP_ALL):ECHO_SUB_DIR
 	@for dir in $@; do $(MAKE) -C $$dir ; done
-	@$(MAKE) lfp_app_init
+	@$(MAKE) lfp_base_init
 	
 ECHO_SUB_DIR: 
 	@echo "Compiling " $(APP_ALL) "..." 
 	
-lfp_app_init:$(CUR_OBJS)
+lfp_base_init:$(CUR_OBJS)
 	$(LFP_AR) $(LFP_AR_FLAGS) $(lfp_app) $^
 	cp $(lfp_app) $(LFP_OBJ_PATH)
 

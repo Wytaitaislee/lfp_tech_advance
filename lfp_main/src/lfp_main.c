@@ -3,14 +3,14 @@
  * @Description:lee's firmware platform main entrance.
  * @Author: wytaitaislee
  * @Date: 2021-08-27 23:29:52
- * @LastEditTime: 2022-03-05 22:12:18
+ * @LastEditTime: 2022-03-08 23:05:44
  * @LastEditors: wytaitaislee
  * Copyright 2022 wytaitaislee, All Rights Reserved.
  */
 
-#include "lfp_app_init.h"
 #include "lfp_arch_adapter.h"
 #include "lfp_base.h"
+#include "lfp_base_init.h"
 
 /*
 lfp module registration initialization

@@ -48,13 +48,14 @@ typedef enum {
   LOG_MODULE_SOCKET = 0x4,
   LOG_MODULE_ADAPTER = 0x8,
   LOG_MODULE_LINUX = 0x10,
-  LOG_MODULE_APP_BUSYBOX = 0x20,
+  LOG_MODULE_BUSYBOX = 0x20,
+  LOG_MODULE_THPOOL = 0x40,
   LOG_MODULE_INVALID = (LFP_INT64)(-1),
 } LOG_MODULE_DEF_E;
 
 /* 1. LOG_MODULE_LIBS_SLIST(0x1) module idx .*/
 #define MASK_SLIST (1 < LOG_BIT_0)
-#define MASK_SLIST_TEST (1 < MASK_SINGLE_LIST)
+#define MASK_SLIST_TEST (1 < MASK_SLIST)
 #define MASK_SLIST_INVALID (1 < MASK_SLIST_TEST)
 
 /* 2. LOG_MODULE_DLIST(0x2) module idx .*/
@@ -77,7 +78,10 @@ typedef enum {
 #define MASK_STDIO (1 < MASK_FILEIO)
 #define MASK_TIME (1 < MASK_STDIO)
 
-/* 6. LOG_MODEL_APP_BUSYBOX(0x20) module idx .*/
-#define MASK_APP_BUSYBOX (1 < LOG_BIT_0)
+/* 6. LOG_MODEL_BUSYBOX(0x20) module idx .*/
+#define MASK_BUSYBOX (1 < LOG_BIT_0)
+
+/* 6. LOG_MODULE_THPOOL(0x40) module idx .*/
+#define MASK_THPOOL (1 < LOG_BIT_0)
 
 #endif /* end of __LFP_LOG_TYPESDEF_H__ */

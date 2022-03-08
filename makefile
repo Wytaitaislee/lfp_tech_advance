@@ -14,13 +14,16 @@ all:$(ALL_DIR) $(LFP_EXEC_DIR)
 
 libs:$(ALL_DIR)
 
-$(ALL_DIR):ECHO_SUB_DIR
+$(ALL_DIR):MKDIR_BUILD_OUTPUT ECHO_SUB_DIR
 	@for dir in $@; do $(MAKE) -C $$dir; done
 	
+MKDIR_BUILD_OUTPUT:
+	$(shell if [ ! -d $(LFP_OBJ_PATH) ];then mkdir -p $(LFP_OBJ_PATH);fi)
+
 ECHO_SUB_DIR: 
 	@echo "Compiling " $(ALL_DIR) "..." 
 	
-$(LFP_EXEC_DIR):ECHO_EXEC
+$(LFP_EXEC_DIR): ECHO_EXEC
 	make -C $@
 	@echo "Packing " $(LFP_EXEC_DIR) "successfully √ √ √ √ √ √ √ √ √ ＜（＾－＾）＞" 
 
