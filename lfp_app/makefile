@@ -1,10 +1,5 @@
-ifeq ($(LFP_PRJ_NAME)$(LFP_ROOT_PATH),)
-LFP_PRJ_NAME = lfp_tech_advance
-LFP_ROOT_PATH = $(firstword $(subst $(LFP_PRJ_NAME),$(LFP_PRJ_NAME) ,$(shell pwd)))
-endif
-
+LFP_ROOT_PATH = $(firstword $(subst lfp_tech_advance,lfp_tech_advance ,$(shell pwd)))
 include $(LFP_ROOT_PATH)/lfp_rules.make
-CUR_PATH = $(shell pwd)
 
 APP_ALL = $(libs_app_src-y)
 
