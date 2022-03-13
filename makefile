@@ -1,38 +1,41 @@
 
-libs_src-y :=
-libs_obj-y :=
 include ./lfp_rules.make
-include ./lfp_linking
-$(shell rm -rf .config)
-$(shell touch .config)
+include ./make.build
 
-ALL_DIR = $(libs_src-y)
-LFP_LINK_OBJS = $(libs_obj-y)
-export LFP_LINK_OBJS
+ALL_DIR = $(build_src-y) $(LFP_EXEC_DIR)
 
-all:$(ALL_DIR) $(LFP_EXEC_DIR)
+all: make_env $(ALL_DIR)
 
-libs:$(ALL_DIR)
+all_clean := $(addprefix __clean__, $(ALL_DIR))
 
-$(ALL_DIR):MKDIR_BUILD_OUTPUT ECHO_SUB_DIR
-	@for dir in $@; do $(MAKE) -C $$dir; done
-	
-MKDIR_BUILD_OUTPUT:
-	$(shell if [ ! -d $(LFP_OBJ_PATH) ];then mkdir -p $(LFP_OBJ_PATH);fi)
+make_env: FORCE
+	$(shell if [ ! -d $(LFP_OBJ_PATH) ];then mkdir -p $(LFP_OBJ_PATH); fi)
 
-ECHO_SUB_DIR: 
+$(ALL_DIR):building_steps FORCE
+	cd $@ && make
+
+building_steps:FORCE 
 	@echo "Compiling " $(ALL_DIR) "..." 
 	
-$(LFP_EXEC_DIR): ECHO_EXEC
+$(LFP_EXEC_DIR): building_main FORCE
 	make -C $@
 	@echo "Packing " $(LFP_EXEC_DIR) "successfully √ √ √ √ √ √ √ √ √ ＜（＾－＾）＞" 
 
-ECHO_EXEC:
+building_main:FORCE
 	@echo "Packing " $(LFP_EXEC_DIR) "..." 
 	
-clean:
-	@for dir in $(ALL_DIR); do $(MAKE) -C $$dir clean; done
-	@$(MAKE) -C $(LFP_EXEC_DIR) clean
+clean:FORCE
+	make clean_all_objs
+
+clean_all_objs: $(all_clean) FORCE
+
+$(all_clean): FORCE
+	cd $(patsubst __clean__%, , $@) && make clean
+
+FORCE:
+
+.PHONY:
+	all make_env building_steps building_main clean clean_all_objs FORCE
 
 	
 	
