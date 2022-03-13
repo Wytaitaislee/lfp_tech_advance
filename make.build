@@ -1,0 +1,27 @@
+build_src-y := $(LFP_ROOT_PATH)/lfp_util
+
+ifeq ($(LFP_OS_LINUX), y)
+build_src-y += $(LFP_ROOT_PATH)/lfp_arch/linux
+else
+build_src-y += $(LFP_ROOT_PATH)/lfp_arch/windows
+endif
+
+build_src-y += $(LFP_ROOT_PATH)/lfp_arch_adapter
+
+build_src-y += $(LFP_ROOT_PATH)/lfp_app_base
+
+build_src-y += $(LFP_ROOT_PATH)/lfp_app
+
+build_src-y += $(LFP_ROOT_PATH)/lfp_main
+
+
+
+
+
+
+
+
+
+
+
+
