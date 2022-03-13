@@ -1,6 +1,6 @@
 
 include ./lfp_rules.make
-include ./make.build
+include ./build.config
 
 ALL_DIR = $(build_src-y) $(LFP_EXEC_DIR)
 
