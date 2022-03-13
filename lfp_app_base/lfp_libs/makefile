@@ -1,27 +1,28 @@
-LFP_ROOT_PATH = $(firstword $(subst lfp_tech_advance,lfp_tech_advance ,$(shell pwd)))
-include $(LFP_ROOT_PATH)/lfp_rules.make
 
-CUR_PATH = $(shell pwd)
+include ./build.config
 
-include $(CUR_PATH)/lfp_libs_linking
+ALL_DIR = $(build_src-y)
 
-LIBS_ALL = $(libs_src-y)
+all: $(ALL_DIR)
 
-$(LIBS_ALL) = ? || exit -1;
+all_clean := $(addprefix __clean__, $(ALL_DIR))
 
-libs_all:$(LIBS_ALL)
+$(ALL_DIR):building_steps FORCE
+	cd $@ && make
 
-$(LIBS_ALL):ECHO_LIBS_DIR
-	for dir in $@; do $(MAKE) -C $$dir ; done
-	
-ECHO_LIBS_DIR: 
-	@echo "Compiling $(LIBS_ALL) ..." 
-	
-clean:
-	@for dir in $(LIBS_ALL); do $(MAKE) -C $$dir clean; done
-	@rm -rf ./*a ./*so ./*.o
+building_steps:FORCE 
+	@echo "Compiling " $(ALL_DIR) "..." 
 
+clean:FORCE
+	make clean_all_libs
 
-	
-	
-	
+clean_all_libs: $(all_clean) FORCE
+
+$(all_clean): FORCE
+	cd $(patsubst __clean__%, , $@) && make clean
+
+FORCE:
+
+.PHONY:
+	all make_env building_steps clean clean_all_libs FORCE
+
