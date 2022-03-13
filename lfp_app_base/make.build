@@ -1,0 +1,11 @@
+LFP_ROOT_PATH = $(firstword $(subst lfp_tech_advance,lfp_tech_advance ,$(shell pwd)))
+include $(LFP_ROOT_PATH)/lfp_rules.make
+
+LFP_THIS_ROOT := $(firstword $(subst lfp_app_base,lfp_app_base) , $(shell pwd))
+
+build_src-y := $(LFP_THIS_ROOT)/lfp_busybox
+
+build_src-y += $(LFP_THIS_ROOT)/lfp_libs
+
+build_src-y += $(LFP_THIS_ROOT)/lfp_opensrc
+

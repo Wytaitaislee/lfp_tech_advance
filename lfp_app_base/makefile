@@ -1,45 +1,36 @@
-LFP_ROOT_PATH = $(firstword $(subst lfp_tech_advance,lfp_tech_advance ,$(shell pwd)))
-include $(LFP_ROOT_PATH)/lfp_rules.make
-CUR_PATH = $(shell pwd)
 
-include $(CUR_PATH)/lfp_base_linking
+include ./make.build
 
-APP_ALL = $(libs_base_src-y)
+ALL_DIR = $(build_src-y)
 
-CUR_OBJS = $(patsubst %.c, %.o, $(wildcard *.c))
+all: $(ALL_DIR) building_this
 
-INCLUDE_PATH := -I$(LFP_ROOT_PATH)/lfp_include/
-INCLUDE_PATH += -I$(LFP_ROOT_PATH)/lfp_include/lfp_util/
-INCLUDE_PATH += -I$(LFP_ROOT_PATH)/lfp_include/lfp_app_base/
+all_clean := $(addprefix __clean__, $(ALL_DIR))
 
-CFLAGS = $(LFP_GLOBAL_FLAGS) $(INCLUDE_PATH)
+$(ALL_DIR):building_steps FORCE
+	cd $@ && make
 
-$(APP_ALL) = ? || exit -1;
-
-lfp_app = liblfp_base_init.a
-
-app_all:$(APP_ALL)
-
-$(APP_ALL):ECHO_SUB_DIR
-	@for dir in $@; do $(MAKE) -C $$dir ; done
-	@$(MAKE) lfp_base_init
+building_steps:FORCE 
+	@echo "Compiling " $(ALL_DIR) "..." 
 	
-ECHO_SUB_DIR: 
-	@echo "Compiling " $(APP_ALL) "..." 
-	
-lfp_base_init:$(CUR_OBJS)
-	$(LFP_AR) $(LFP_AR_FLAGS) $(lfp_app) $^
-	cp $(lfp_app) $(LFP_OBJ_PATH)
+building_this: FORCE
+	$(MAKE) -f makefile.this
 
-%.o:%.c
-	$(LFP_CC) $(CFLAGS) -c -o $@ $^
-	
-clean:
-	@for dir in $(APP_ALL); do $(MAKE) -C $$dir clean; done
-	@rm -rf ./*a ./*so ./*.o
+clean:FORCE
+	make clean_all_objs
 
+clean_all_objs: $(all_clean) FORCE
 
+$(all_clean): cleanup_this FORCE
+	cd $(patsubst __clean__%, , $@) && make clean
 
+cleanup_this:FORCE
+	$(MAKE) -f makefile.this clean
+
+FORCE:
+
+.PHONY:
+	all make_env building_steps building_this clean clean_all_objs cleanup_this FORCE
 
 	
 	
