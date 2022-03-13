@@ -2,11 +2,11 @@
 LFP_OS_LINUX = y
 LFP_FLAGS += -DLFP_OS_LINUX
 
-#macro single list
+#macro slist
 LFP_LIBS_SLIST = y
 LFP_FLAGS += -DLFP_LIBS_SLIST
 
-#macro double list
+#macro dlist
 LFP_LIBS_DLIST = y
 LFP_FLAGS += -DLFP_LIBS_DLIST
 
@@ -14,5 +14,6 @@ LFP_FLAGS += -DLFP_LIBS_DLIST
 LFP_LIBS_SOCKET = y
 LFP_FLAGS += -DLFP_LIBS_SOCKET
 
+#macro threadpool
 LFP_LIBS_THREADPOOL = y
 LFP_FLAGS += -DLFP_LIBS_THREADPOOL
