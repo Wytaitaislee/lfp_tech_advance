@@ -1,5 +1,5 @@
 
-include ./make.build
+include make.config
 
 ALL_DIR = $(build_src-y)
 

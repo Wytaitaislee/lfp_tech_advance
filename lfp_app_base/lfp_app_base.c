@@ -1,14 +1,14 @@
 /*
- * @FilePath: lfp_base_init.c
+ * @FilePath: lfp_app_base.c
  * @Description: Application registration.
  * @Author: wytaitaislee
  * @Date: 2021-08-27 23:29:52
- * @LastEditTime: 2022-03-08 22:54:47
+ * @LastEditTime: 2022-03-13 21:15:28
  * @LastEditors: wytaitaislee
  * Copyright 2022 wytaitaislee, All Rights Reserved.
  */
 
-#include "lfp_base_init.h"
+#include "lfp_app_base.h"
 
 #include "lfp_busybox/lfp_busybox.h"
 #include "lfp_libs/lfp_libs.h"
@@ -23,13 +23,13 @@ LFP_CONST LFP_CODE LFP_COMPONENTS_REGISTER_T g_lfpAppRegister[] = {
 };
 
 /**
- * @fn: LFP_INT32 lfp_base_init(LFP_VOID)
+ * @fn: LFP_INT32 lfp_app_base(LFP_VOID)
  * @breif: Application registration
  * @param[in] LFP_VOID
  * @param[out] NULL
  * @return {*} LFP_OK
  */
-LFP_INT32 lfp_base_init(LFP_VOID) {
+LFP_INT32 lfp_app_base(LFP_VOID) {
   LFP_UINT32 uiModules = 0;
 
   for (uiModules = 0; uiModules < LFP_NELEMENTS(g_lfpAppRegister);

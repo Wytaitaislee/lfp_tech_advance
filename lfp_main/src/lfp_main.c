@@ -8,9 +8,9 @@
  * Copyright 2022 wytaitaislee, All Rights Reserved.
  */
 
+#include "lfp_app_base.h"
 #include "lfp_arch_adapter.h"
 #include "lfp_base.h"
-#include "lfp_base_init.h"
 
 /*
 lfp module registration initialization
