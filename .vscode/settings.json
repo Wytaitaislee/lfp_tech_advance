@@ -7,6 +7,9 @@
         "**/.vscode": true
     },
     "files.associations": {
+        "makefile*": "makefile",
+        "make.config": "makefile",
+        "build.config": "makefile",
         "lfp_double_list.h": "c",
         "lfp_app_busybox.h": "c",
         "lfp_arch_adapter_typesdef.h": "c",
@@ -45,7 +48,8 @@
         "lfp_app_libs.h": "c",
         "lfp_app_unity_test.h": "c",
         "lfp_log.h": "c",
-        "lfp_assert.h": "c"
+        "lfp_assert.h": "c",
+        "lfp_threadpool.h": "c"
     },
     "cmake.configureOnOpen": true
 }
