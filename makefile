@@ -30,7 +30,7 @@ clean:FORCE
 clean_all_objs: $(all_clean) FORCE
 
 $(all_clean): FORCE
-	cd $(patsubst __clean__%, , $@) && make clean
+	cd $(patsubst __clean__%, %, $@) && make clean
 
 FORCE:
 
