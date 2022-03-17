@@ -1,5 +1,5 @@
 
-include make.config
+include build.config
 
 ALL_DIR = $(build_src-y)
 
@@ -22,7 +22,7 @@ clean:FORCE
 clean_all_objs: $(all_clean) FORCE
 
 $(all_clean): cleanup_this FORCE
-	cd $(patsubst __clean__%, , $@) && make clean
+	cd $(patsubst __clean__%, %, $@) && make clean
 
 cleanup_this:FORCE
 	$(MAKE) -f makefile.this clean
