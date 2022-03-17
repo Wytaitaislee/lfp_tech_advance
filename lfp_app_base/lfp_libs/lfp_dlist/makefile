@@ -4,9 +4,15 @@ include make.config
 # 2. Compile params
 CPPFLAGS := $(MODULE_INCLUDE_DIR)
 CFLAGS := $(LFP_GLOBAL_FLAGS)
+ifeq ($(TARGET_TYPE), .so)
+    CFLAGS += -fPIC
+endif
 
 # 3. Compile dependencies
-LDFLAGS := -L$(MODULE_DEPS_DIR) $(MODULE_DEPS_LIBS)
+LDFLAGS :=
+ifneq ($(MODULE_DEPS_DIR)$(MODULE_DEPS_LIBS),)
+    LDFLAGS := -L$(MODULE_DEPS_DIR) $(MODULE_DEPS_LIBS)
+endif
 
 # 4. objs
 SRCS := $(foreach dir, $(MODULE_SRC_DIR), $(wildcard $(dir)/*))
@@ -57,7 +63,7 @@ $(MODULE_SUB_DIRS):FORCE
 	cd $@ && make
 
 $(MODULE_CLEAN_SUB_DIRS):FORCE
-	cd $(patsubst __clean__%, , $@) && make clean
+	cd $(patsubst __clean__%, %, $@) && make clean
 
 %.o:%.c
 	$(LFP_CC) $(CPPFLAGS) $(CFLAGS) -c -o $@ $^
