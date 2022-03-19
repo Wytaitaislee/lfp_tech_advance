@@ -15,12 +15,6 @@
 
 #include "lfp_base.h"
 
-#define LFP_SLIST_MODULE_NAME "single list"
-#define LFP_SLIST_SIGN_OK "lfp single list register successfully!"
-#define LFP_SLIST_SIGN_ERR "lfp single list register failed!"
-
-#define LFP_SLIST_ADD_ELEM (10)
-
 #define LFP_SLIST_CRIT(...) \
     LFP_LOG_BASE(LOG_LEVEL_CRIT, LOG_MODULE_SLIST, MASK_SLIST, __VA_ARGS__)
 #define LFP_SLIST_ERR(...) \
