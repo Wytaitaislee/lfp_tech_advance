@@ -3,7 +3,7 @@
  * @Description: Double linked list package library.
  * @Author: wytaitaislee
  * @Date: 2021-08-27 23:29:52
- * @LastEditTime: 2022-03-08 22:51:32
+ * @LastEditTime: 2022-03-19 19:14:49
  * @LastEditors: wytaitaislee
  * Copyright 2022 wytaitaislee, All Rights Reserved.
  */
@@ -15,23 +15,23 @@
 /*@fn		  LFP_DLIST_NODE_MALLOC
  * @brief 	  double linked list node alloc macro.
  */
-#define LFP_DLIST_NODE_MALLOC(pNode)                          \
-  do {                                                        \
-    (pNode) = (LFP_DLIST_T *)LFP_MALLOC(sizeof(LFP_DLIST_T)); \
-    LFP_RET_IF(pNode, LFP_ERR);                               \
-    (pNode)->pNext = LFP_NULL;                                \
-    (pNode)->pPrev = LFP_NULL;                                \
-  } while (0);
+#define LFP_DLIST_NODE_MALLOC(pNode)                              \
+    do {                                                          \
+        (pNode) = (LFP_DLIST_T *)LFP_MALLOC(sizeof(LFP_DLIST_T)); \
+        LFP_RET_IF(pNode, LFP_ERR);                               \
+        (pNode)->pNext = LFP_NULL;                                \
+        (pNode)->pPrev = LFP_NULL;                                \
+    } while (0);
 
 /*@fn		  LFP_DLIST_NODE_FREE
  * @brief 	  double linked list node free macro.
  */
 #define LFP_DLIST_NODE_FREE(pNode) \
-  do {                             \
-    LFP_RET_IF(pNode, LFP_ERR);    \
-    pNode->pNext = LFP_NULL;       \
-    pNode->pPrev = LFP_NULL;       \
-  } while (0);
+    do {                           \
+        LFP_RET_IF(pNode, LFP_OK); \
+        pNode->pNext = LFP_NULL;   \
+        pNode->pPrev = LFP_NULL;   \
+    } while (0);
 
 /*@fn		  LFP_INT32 lfp_dlist_init(struct LFP_DLIST_T *pList)
  * @brief 	  create the head node of double list
@@ -40,10 +40,10 @@
  * @return     LFP_OK/LFP_ERR
  */
 LFP_INT32 lfp_dlist_init(LFP_DLIST_T *pList) {
-  LFP_RET_IF(pList, LFP_ERR);
-  pList->pPrev = LFP_NULL;
-  pList->pNext = LFP_NULL;
-  return LFP_OK;
+    LFP_RET_IF(pList, LFP_ERR);
+    pList->pPrev = LFP_NULL;
+    pList->pNext = LFP_NULL;
+    return LFP_OK;
 }
 
 /*@fn		  LFP_INT32 __lfp_dlist_add(LFP_DLIST_T *pPrev, LFP_DLIST_T
@@ -58,12 +58,12 @@ LFP_INT32 lfp_dlist_init(LFP_DLIST_T *pList) {
 LFP_STATIC LFP_INLINE LFP_INT32 __lfp_dlist_add(LFP_DLIST_T *pPrev,
                                                 LFP_DLIST_T *pNext,
                                                 LFP_DLIST_T *pNewNode) {
-  LFP_RET_IF(pPrev && pNext && pNewNode, LFP_ERR);
-  pNewNode->pPrev = pPrev;
-  pNewNode->pNext = pNext;
-  pPrev->pNext = pNewNode;
-  pNext->pPrev = pNewNode;
-  return LFP_OK;
+    LFP_RET_IF(pPrev && pNext && pNewNode, LFP_ERR);
+    pNewNode->pPrev = pPrev;
+    pNewNode->pNext = pNext;
+    pPrev->pNext = pNewNode;
+    pNext->pPrev = pNewNode;
+    return LFP_OK;
 }
 
 /*@fn		  LFP_INT32 lfp_dlist_add(LFP_DLIST_T *pList, LFP_DLIST_T
@@ -75,9 +75,9 @@ LFP_STATIC LFP_INLINE LFP_INT32 __lfp_dlist_add(LFP_DLIST_T *pPrev,
  * @return	  LFP_OK/LFP_ERR
  */
 LFP_INT32 lfp_dlist_add(LFP_DLIST_T *pList, LFP_DLIST_T *pNewNode) {
-  LFP_RET_IF(pList && pNewNode, LFP_ERR);
+    LFP_RET_IF(pList && pNewNode, LFP_ERR);
 
-  return __lfp_dlist_add(pList, pList->pNext, pNewNode);
+    return __lfp_dlist_add(pList, pList->pNext, pNewNode);
 }
 
 /*@fn		  LFP_INT32 lfp_dlist_add_tail(LFP_DLIST_T *pList, LFP_DLIST_T
@@ -89,9 +89,9 @@ LFP_INT32 lfp_dlist_add(LFP_DLIST_T *pList, LFP_DLIST_T *pNewNode) {
  * @return	  LFP_OK/LFP_ERR
  */
 LFP_INT32 lfp_dlist_add_tail(LFP_DLIST_T *pList, LFP_DLIST_T *pNewNode) {
-  LFP_RET_IF(pList && pNewNode, LFP_ERR);
+    LFP_RET_IF(pList && pNewNode, LFP_ERR);
 
-  return __lfp_dlist_add(pList->pPrev, pList, pNewNode);
+    return __lfp_dlist_add(pList->pPrev, pList, pNewNode);
 }
 
 /*@fn		  LFP_INT32 __lfp_delete_entry(LFP_DLIST_T *pPrev, LFP_DLIST_T
@@ -106,10 +106,10 @@ LFP_INT32 lfp_dlist_add_tail(LFP_DLIST_T *pList, LFP_DLIST_T *pNewNode) {
  */
 LFP_STATIC LFP_INLINE LFP_INT32 __lfp_delete_entry(LFP_DLIST_T *pPrev,
                                                    LFP_DLIST_T *pNext) {
-  LFP_RET_IF(pPrev && pNext, LFP_ERR);
-  pPrev->pNext = pNext;
-  pNext->pPrev = pPrev;
-  return LFP_OK;
+    LFP_RET_IF(pPrev && pNext, LFP_ERR);
+    pPrev->pNext = pNext;
+    pNext->pPrev = pPrev;
+    return LFP_OK;
 }
 
 /*@fn		  LFP_INT32 lfp_dlist_delete(LFP_DLIST_T *pDelNode)
@@ -119,8 +119,8 @@ LFP_STATIC LFP_INLINE LFP_INT32 __lfp_delete_entry(LFP_DLIST_T *pPrev,
  * @return	  LFP_OK/LFP_ERR
  */
 LFP_INT32 lfp_dlist_delete(LFP_DLIST_T *pDelNode) {
-  LFP_RET_IF(pDelNode, LFP_ERR);
-  return __lfp_delete_entry(pDelNode->pPrev, pDelNode->pNext);
+    LFP_RET_IF(pDelNode, LFP_ERR);
+    return __lfp_delete_entry(pDelNode->pPrev, pDelNode->pNext);
 }
 
 /*@fn		  LFP_INT32 lfp_dlist_destroy(LFP_DLIST_T *pList)
@@ -131,17 +131,17 @@ LFP_INT32 lfp_dlist_delete(LFP_DLIST_T *pDelNode) {
  * @return	  LFP_OK/LFP_ERR
  */
 LFP_INT32 lfp_dlist_destroy(LFP_DLIST_T *pList) {
-  LFP_DLIST_T *pTmp = LFP_NULL;
-  LFP_DLIST_T *pWalk = LFP_NULL;
+    LFP_DLIST_T *pTmp = LFP_NULL;
+    LFP_DLIST_T *pWalk = LFP_NULL;
 
-  LFP_RET_IF(pList, LFP_ERR);
-  pWalk = pList;
-  while (pWalk) {
-    pTmp = pWalk;
-    pWalk = pWalk->pNext;
-    LFP_DLIST_NODE_FREE(pTmp);
-  }
-  return LFP_OK;
+    LFP_RET_IF(pList, LFP_ERR);
+    pWalk = pList;
+    while (pWalk) {
+        pTmp = pWalk;
+        pWalk = pWalk->pNext;
+        LFP_DLIST_NODE_FREE(pTmp);
+    }
+    return LFP_OK;
 }
 
 #endif

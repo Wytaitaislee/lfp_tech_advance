@@ -25,15 +25,15 @@
 #include "lfp_log_typesdef.h"
 
 typedef struct lfp_log_map_t {
-  LFP_CONST LFP_INT8 *pLevelStr;
-  LFP_LOG_LEVEL_E enumLevel;
+    LFP_CONST LFP_INT8 *pLevelStr;
+    LFP_LOG_LEVEL_E enumLevel;
 } LFP_LOG_MAP_T;
 
 typedef struct lfp_log_ctrl_t {
-  /* data */
-  LFP_UINT64 uiUtilLevel;
-  LFP_UINT64 uiUtilModuleIdx;
-  LFP_UINT64 uiUtilModuleMask;
+    /* data */
+    LFP_UINT64 uiUtilLevel;
+    LFP_UINT64 uiUtilModuleIdx;
+    LFP_UINT64 uiUtilModuleMask;
 } LFP_LOG_CTRL_T;
 
 /*@fn		  LFP_INT32 lfp_log_module_init(LFP_VOID)
@@ -109,10 +109,10 @@ LFP_INT32 __log_base(LFP_LOG_LEVEL_E enumLevel, LFP_CONST LFP_INT8 *pFilePath,
                      LFP_CONST LFP_INT8 *pFunc, LFP_INT32 iLine,
                      LFP_CONST LFP_INT8 *fmt, ...);
 
-#define LFP_LOG_BASE(LOG_LEVEL, LOG_MODULE_IDX, LOG_MODULE_MASK, ...)       \
-  do {                                                                      \
-    if (LFP_OK == __log_open(LOG_LEVEL, LOG_MODULE_IDX, LOG_MODULE_MASK)) { \
-      __log_base(LOG_LEVEL, __FILE__, __FUNCTION__, __LINE__, __VA_ARGS__); \
-    }                                                                       \
-  } while (0)
+#define LFP_LOG_BASE(LOG_LEVEL, LOG_MODULE_IDX, LOG_MODULE_MASK, ...)             \
+    do {                                                                          \
+        if (LFP_OK == __log_open(LOG_LEVEL, LOG_MODULE_IDX, LOG_MODULE_MASK)) {   \
+            __log_base(LOG_LEVEL, __FILE__, __FUNCTION__, __LINE__, __VA_ARGS__); \
+        }                                                                         \
+    } while (0)
 #endif /* end of __LFP_LOG_H__ */

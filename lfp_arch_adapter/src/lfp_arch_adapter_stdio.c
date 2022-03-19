@@ -4,7 +4,7 @@
  * different OS..
  * @Author: wytaitaislee
  * @Date: 2021-08-27 23:29:52
- * @LastEditTime: 2022-03-05 21:56:29
+ * @LastEditTime: 2022-03-19 19:16:14
  * @LastEditors: wytaitaislee
  * Copyright 2022 wytaitaislee, All Rights Reserved.
  */
@@ -14,9 +14,9 @@
 #include "lfp_arch_adapter_typesdef.h"
 
 #define LFP_GET_STDIO_ENTRY() \
-  (*(LFP_ARCH_ADAPTER_STDIO_T *)LFP_GET_CLASS_ENTRY(stdio))
+    (*(LFP_ARCH_ADAPTER_STDIO_T *)LFP_GET_CLASS_ENTRY(stdio))
 #define LFP_ADAPTER_STDIO_INIT(FUNC) \
-  LFP_ADAPTER_INIT(LFP_GET_STDIO_ENTRY(), FUNC)
+    LFP_ADAPTER_INIT(LFP_GET_STDIO_ENTRY(), FUNC)
 
 /* the definition of stdio io cluster */
 LFP_ARCH_ADAPTER2(LFP_GET_STDIO_ENTRY(), stdio_open, LFP_FILE *,
@@ -39,10 +39,10 @@ LFP_ARCH_ADAPTER1(LFP_GET_STDIO_ENTRY(), stdio_close, LFP_INT32, LFP_FILE *);
  * @return	  LFP_OK
  */
 LFP_INT32 lfp_arch_adapter_stdio_register(LFP_VOID) {
-  //    LFP_ADAPTER_STDIO_INIT(stdio_open);
-  //    LFP_ADAPTER_STDIO_INIT(stdio_seek);
-  //    LFP_ADAPTER_STDIO_INIT(stdio_read);
-  //    LFP_ADAPTER_STDIO_INIT(stdio_write);
-  //    LFP_ADAPTER_STDIO_INIT(stdio_close);
-  return LFP_OK;
+    //    LFP_ADAPTER_STDIO_INIT(stdio_open);
+    //    LFP_ADAPTER_STDIO_INIT(stdio_seek);
+    //    LFP_ADAPTER_STDIO_INIT(stdio_read);
+    //    LFP_ADAPTER_STDIO_INIT(stdio_write);
+    //    LFP_ADAPTER_STDIO_INIT(stdio_close);
+    return LFP_OK;
 }

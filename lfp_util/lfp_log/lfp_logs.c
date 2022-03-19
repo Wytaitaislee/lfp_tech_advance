@@ -3,7 +3,7 @@
  * @Description: Log information control module.
  * @Author: wytaitaislee
  * @Date: 2021-08-27 23:29:52
- * @LastEditTime: 2022-03-06 17:41:36
+ * @LastEditTime: 2022-03-19 19:18:50
  * @LastEditors: wytaitaislee
  * Copyright 2022 wytaitaislee, All Rights Reserved.
  */
@@ -29,8 +29,8 @@ LFP_CONST LFP_DATA LFP_LOG_MAP_T g_UtilMap[] = {
  * @return	  LFP_OK / LFP_ERR
  */
 LFP_STATIC LFP_CODE LFP_INT32 __log_settings(LFP_VOID) {
-  setvbuf(stdout, NULL, _IONBF, 0);
-  return LFP_OK;
+    setvbuf(stdout, NULL, _IONBF, 0);
+    return LFP_OK;
 }
 
 /*@fn		  LFP_INT32 lfp_log_module_init(LFP_VOID)
@@ -40,15 +40,15 @@ LFP_STATIC LFP_CODE LFP_INT32 __log_settings(LFP_VOID) {
  * @return	  LFP_OK / LFP_ERR
  */
 LFP_INT32 lfp_log_module_init(LFP_VOID) {
-  g_pUtilCtrl = (LFP_LOG_CTRL_T *)LFP_MALLOC(sizeof(*g_pUtilCtrl));
+    g_pUtilCtrl = (LFP_LOG_CTRL_T *)LFP_MALLOC(sizeof(*g_pUtilCtrl));
 
-  __log_settings();
-  LFP_RET_IF(g_pUtilCtrl, LFP_ERR);
-  LFP_BUFF_BEZERO(g_pUtilCtrl, sizeof(*g_pUtilCtrl));
-  g_pUtilCtrl->uiUtilLevel = LFP_LOG_DEFAULT_LEVEL;
-  g_pUtilCtrl->uiUtilModuleIdx = LFP_LOG_DEFAULT_IDX;
-  g_pUtilCtrl->uiUtilModuleMask = LFP_LOG_DEFAULT_MASK;
-  return LFP_OK;
+    __log_settings();
+    LFP_RET_IF(g_pUtilCtrl, LFP_ERR);
+    LFP_BUFF_BEZERO(g_pUtilCtrl, sizeof(*g_pUtilCtrl));
+    g_pUtilCtrl->uiUtilLevel = LFP_LOG_DEFAULT_LEVEL;
+    g_pUtilCtrl->uiUtilModuleIdx = LFP_LOG_DEFAULT_IDX;
+    g_pUtilCtrl->uiUtilModuleMask = LFP_LOG_DEFAULT_MASK;
+    return LFP_OK;
 }
 
 /*@fn		  LFP_INT32 lfp_log_module_set(LFP_UINT64 uiUtilLevel,
@@ -63,18 +63,18 @@ uiUtilModuleMask)
 */
 LFP_INT32 lfp_log_module_set(LFP_UINT64 uiUtilLevel, LFP_INT64 uiUtilModuleIdx,
                              LFP_UINT64 uiUtilModuleMask) {
-  LFP_RET_IF(g_pUtilCtrl, LFP_ERR);
+    LFP_RET_IF(g_pUtilCtrl, LFP_ERR);
 
-  if (!(uiUtilLevel || uiUtilModuleIdx || uiUtilModuleMask)) {
-    g_pUtilCtrl->uiUtilLevel = LFP_LOG_DEFAULT_LEVEL;
-    g_pUtilCtrl->uiUtilModuleIdx = LFP_LOG_DEFAULT_IDX;
-    g_pUtilCtrl->uiUtilModuleMask = LFP_LOG_DEFAULT_MASK;
-  } else {
-    g_pUtilCtrl->uiUtilLevel = uiUtilLevel;
-    g_pUtilCtrl->uiUtilModuleIdx = uiUtilModuleIdx;
-    g_pUtilCtrl->uiUtilModuleMask = uiUtilModuleMask;
-  }
-  return LFP_OK;
+    if (!(uiUtilLevel || uiUtilModuleIdx || uiUtilModuleMask)) {
+        g_pUtilCtrl->uiUtilLevel = LFP_LOG_DEFAULT_LEVEL;
+        g_pUtilCtrl->uiUtilModuleIdx = LFP_LOG_DEFAULT_IDX;
+        g_pUtilCtrl->uiUtilModuleMask = LFP_LOG_DEFAULT_MASK;
+    } else {
+        g_pUtilCtrl->uiUtilLevel = uiUtilLevel;
+        g_pUtilCtrl->uiUtilModuleIdx = uiUtilModuleIdx;
+        g_pUtilCtrl->uiUtilModuleMask = uiUtilModuleMask;
+    }
+    return LFP_OK;
 }
 
 /*@fn		  LFP_INT32 lfp_log_module_get(LFP_LOG_CTRL_T *pUtilMsg)
@@ -84,10 +84,10 @@ LFP_INT32 lfp_log_module_set(LFP_UINT64 uiUtilLevel, LFP_INT64 uiUtilModuleIdx,
  * @return	  LFP_OK / LFP_ERR
  */
 LFP_INT32 lfp_log_module_get(LFP_LOG_CTRL_T *pUtilMsg) {
-  LFP_RET_IF((g_pUtilCtrl && pUtilMsg), LFP_ERR);
+    LFP_RET_IF((g_pUtilCtrl && pUtilMsg), LFP_ERR);
 
-  *pUtilMsg = *g_pUtilCtrl;
-  return LFP_OK;
+    *pUtilMsg = *g_pUtilCtrl;
+    return LFP_OK;
 }
 
 /*@fn		 LFP_INT32 __log_open(LFP_UINT64 iLevel, LFP_UINT64 iModuleIdx,
@@ -101,20 +101,20 @@ LFP_INT32 lfp_log_module_get(LFP_LOG_CTRL_T *pUtilMsg) {
  */
 LFP_INT32 __log_open(LFP_UINT64 iLevel, LFP_UINT64 iModuleIdx,
                      LFP_UINT64 iModuleMask) {
-  LFP_LOG_CTRL_T struUtil;
+    LFP_LOG_CTRL_T struUtil;
 
-  LFP_BUFF_BEZERO(&struUtil, sizeof(struUtil));
-  if (LFP_OK != lfp_log_module_get(&struUtil)) {
-    printf("%s[%d] get log module error\n", __FUNCTION__, __LINE__);
+    LFP_BUFF_BEZERO(&struUtil, sizeof(struUtil));
+    if (LFP_OK != lfp_log_module_get(&struUtil)) {
+        printf("%s[%d] get log module error\n", __FUNCTION__, __LINE__);
+        return LFP_ERR;
+    }
+    LFP_RET_IF(((iLevel < LOG_LEVEL_MAX) && (iLevel >= LOG_LEVEL_CRIT)), LFP_ERR);
+    if (((1 << iLevel) & struUtil.uiUtilLevel) &&
+        (iModuleIdx & struUtil.uiUtilModuleIdx) &&
+        (iModuleMask & struUtil.uiUtilModuleMask)) {
+        return LFP_OK;
+    }
     return LFP_ERR;
-  }
-  LFP_RET_IF(((iLevel < LOG_LEVEL_MAX) && (iLevel >= LOG_LEVEL_CRIT)), LFP_ERR);
-  if (((1 << iLevel) & struUtil.uiUtilLevel) &&
-      (iModuleIdx & struUtil.uiUtilModuleIdx) &&
-      (iModuleMask & struUtil.uiUtilModuleMask)) {
-    return LFP_OK;
-  }
-  return LFP_ERR;
 }
 
 /*@fn		  LFP_CONST LFP_CODE LFP_INT8* __log_get_maps(LFP_LOG_LEVEL_E
@@ -125,15 +125,15 @@ LFP_INT32 __log_open(LFP_UINT64 iLevel, LFP_UINT64 iModuleIdx,
  * @return	  the ptr of the str label / LFP_NULL
  */
 LFP_CONST LFP_CODE LFP_INT8 *__log_get_maps(LFP_LOG_LEVEL_E enumLevel) {
-  LFP_UINT32 uiCnt = 0;
-  LFP_RET_IF((enumLevel < LOG_LEVEL_MAX), LFP_NULL);
+    LFP_UINT32 uiCnt = 0;
+    LFP_RET_IF((enumLevel < LOG_LEVEL_MAX), LFP_NULL);
 
-  for (uiCnt = 0; uiCnt < LFP_NELEMENTS(g_UtilMap); uiCnt++) {
-    if (enumLevel == g_UtilMap[uiCnt].enumLevel) {
-      return g_UtilMap[uiCnt].pLevelStr;
+    for (uiCnt = 0; uiCnt < LFP_NELEMENTS(g_UtilMap); uiCnt++) {
+        if (enumLevel == g_UtilMap[uiCnt].enumLevel) {
+            return g_UtilMap[uiCnt].pLevelStr;
+        }
     }
-  }
-  return LFP_NULL;
+    return LFP_NULL;
 }
 
 /*@fn		  LFP_CONST LFP_INT8* __log_get_file(const LFP_INT8 *pFullPath)
@@ -143,16 +143,16 @@ LFP_CONST LFP_CODE LFP_INT8 *__log_get_maps(LFP_LOG_LEVEL_E enumLevel) {
  * @return	  the ptr of the file name / LFP_NULL
  */
 LFP_CONST LFP_CODE LFP_INT8 *__log_get_file(LFP_CONST LFP_INT8 *pFullPath) {
-  LFP_CONST LFP_INT8 *pFile = LFP_NULL;
+    LFP_CONST LFP_INT8 *pFile = LFP_NULL;
 
-  LFP_RET_IF(pFullPath, LFP_NULL);
-  if (LFP_NULL != (pFile = strrchr(pFullPath, '/'))) {
-    pFile++; /* offset of char '/' */
-  } else {
-    pFile = pFullPath; /* file itself */
-  }
+    LFP_RET_IF(pFullPath, LFP_NULL);
+    if (LFP_NULL != (pFile = strrchr(pFullPath, '/'))) {
+        pFile++; /* offset of char '/' */
+    } else {
+        pFile = pFullPath; /* file itself */
+    }
 
-  return pFile;
+    return pFile;
 }
 
 /*@fn		  LFP_INT32 __log_base(LFP_LOG_LEVEL_E enumLevel, LFP_CONST
@@ -169,32 +169,32 @@ INFO...
 LFP_INT32 __log_base(LFP_LOG_LEVEL_E enumLevel, LFP_CONST LFP_INT8 *pFilePath,
                      LFP_CONST LFP_INT8 *pFunc, LFP_INT32 iLine,
                      LFP_CONST LFP_INT8 *fmt, ...) {
-  LFP_INT8 szPtrBuf[LFP_LOG_MAX_BUFF_SIZE] = {0};
-  LFP_CONST LFP_DATA LFP_INT8 *pLevelStr = NULL;
-  LFP_LOG_CTRL_T strupUtilCtrl;
-  LFP_INT32 iLen = 0;
-  va_list ap = {0};
+    LFP_INT8 szPtrBuf[LFP_LOG_MAX_BUFF_SIZE] = {0};
+    LFP_CONST LFP_DATA LFP_INT8 *pLevelStr = NULL;
+    LFP_LOG_CTRL_T strupUtilCtrl;
+    LFP_INT32 iLen = 0;
+    va_list ap = {0};
 
-  LFP_BUFF_BEZERO(&strupUtilCtrl, sizeof(strupUtilCtrl));
-  LFP_ASSERT((enumLevel <= LOG_LEVEL_MAX) && pFilePath && pFunc);
+    LFP_BUFF_BEZERO(&strupUtilCtrl, sizeof(strupUtilCtrl));
+    LFP_ASSERT((enumLevel <= LOG_LEVEL_MAX) && pFilePath && pFunc);
 
-  if (LFP_OK != lfp_log_module_get(&strupUtilCtrl)) {
-    printf("%s get log module error\n", __FUNCTION__);
-    return LFP_ERR;
-  }
-  pLevelStr = __log_get_maps(enumLevel);
-  LFP_RET_IF(pLevelStr, LFP_ERR);
+    if (LFP_OK != lfp_log_module_get(&strupUtilCtrl)) {
+        printf("%s get log module error\n", __FUNCTION__);
+        return LFP_ERR;
+    }
+    pLevelStr = __log_get_maps(enumLevel);
+    LFP_RET_IF(pLevelStr, LFP_ERR);
 
-  iLen +=
-      snprintf(szPtrBuf + iLen, sizeof(szPtrBuf) - iLen, "[%s][%s][%s][%s][%d]",
-               __TIME__, pLevelStr, __log_get_file(pFilePath), pFunc, iLine);
+    iLen +=
+        snprintf(szPtrBuf + iLen, sizeof(szPtrBuf) - iLen, "[%s][%s][%s][%s][%d]",
+                 __TIME__, pLevelStr, __log_get_file(pFilePath), pFunc, iLine);
 
-  LFP_RET_IF((iLen < LFP_LOG_MAX_BUFF_SIZE), LFP_ERR);
-  va_start(ap, fmt);
-  iLen += vsnprintf(szPtrBuf + iLen, sizeof(szPtrBuf) - iLen, fmt, ap);
-  va_end(ap);
+    LFP_RET_IF((iLen < LFP_LOG_MAX_BUFF_SIZE), LFP_ERR);
+    va_start(ap, fmt);
+    iLen += vsnprintf(szPtrBuf + iLen, sizeof(szPtrBuf) - iLen, fmt, ap);
+    va_end(ap);
 
-  szPtrBuf[LFP_LOG_MAX_BUFF_SIZE - 1] = 0;
-  printf("%s", szPtrBuf);
-  return LFP_OK;
+    szPtrBuf[LFP_LOG_MAX_BUFF_SIZE - 1] = 0;
+    printf("%s", szPtrBuf);
+    return LFP_OK;
 }

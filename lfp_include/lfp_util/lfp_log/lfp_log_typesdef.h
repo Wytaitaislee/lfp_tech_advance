@@ -32,25 +32,25 @@ extern "C" {
 #define LFP_LOG_DEFAULT_MASK ((LFP_UINT64)~0)
 
 #define LOG_MASK_NUM \
-  (sizeof(LFP_UINT64) * 8) /* the max mask size every single module. */
+    (sizeof(LFP_UINT64) * 8) /* the max mask size every single module. */
 #define LOG_BIT_0 (0)
 
 typedef enum {
-  LOG_LEVEL_CRIT = 0x1,
-  LOG_LEVEL_ERR = 0x2,
-  LOG_LEVEL_INFO = 0x4,
-  LOG_LEVEL_MAX,
+    LOG_LEVEL_CRIT = 0x1,
+    LOG_LEVEL_ERR = 0x2,
+    LOG_LEVEL_INFO = 0x4,
+    LOG_LEVEL_MAX,
 } LFP_LOG_LEVEL_E;
 
 typedef enum {
-  LOG_MODULE_SLIST = 0x1,
-  LOG_MODULE_DLIST = 0x2,
-  LOG_MODULE_SOCKET = 0x4,
-  LOG_MODULE_ADAPTER = 0x8,
-  LOG_MODULE_LINUX = 0x10,
-  LOG_MODULE_BUSYBOX = 0x20,
-  LOG_MODULE_THPOOL = 0x40,
-  LOG_MODULE_INVALID = (LFP_INT64)(-1),
+    LOG_MODULE_SLIST = 0x1,
+    LOG_MODULE_DLIST = 0x2,
+    LOG_MODULE_SOCKET = 0x4,
+    LOG_MODULE_ADAPTER = 0x8,
+    LOG_MODULE_LINUX = 0x10,
+    LOG_MODULE_BUSYBOX = 0x20,
+    LOG_MODULE_THPOOL = 0x40,
+    LOG_MODULE_INVALID = (LFP_INT64)(-1),
 } LOG_MODULE_DEF_E;
 
 /* 1. LOG_MODULE_LIBS_SLIST(0x1) module idx .*/

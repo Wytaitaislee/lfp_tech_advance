@@ -19,38 +19,38 @@ extern "C" {
 #endif
 
 /* basic assert output format */
-#define __LFP_ASSERT_FORMAT(c)                                                 \
-  do {                                                                         \
-    printf("[%s][warn][%s][%s][%d] %s ,condition err!!\n", __TIME__, __FILE__, \
-           __func__, __LINE__, #c);                                            \
-  } while (0);
+#define __LFP_ASSERT_FORMAT(c)                                                     \
+    do {                                                                           \
+        printf("[%s][warn][%s][%s][%d] %s ,condition err!!\n", __TIME__, __FILE__, \
+               __func__, __LINE__, #c);                                            \
+    } while (0);
 
 /* assert */
-#define LFP_ASSERT(c)         \
-  do {                        \
-    if (!(c)) {               \
-      __LFP_ASSERT_FORMAT(c); \
-      assert(c);              \
-    }                         \
-  } while (0);
+#define LFP_ASSERT(c)               \
+    do {                            \
+        if (!(c)) {                 \
+            __LFP_ASSERT_FORMAT(c); \
+            assert(c);              \
+        }                           \
+    } while (0);
 
 /* assert return NULL */
-#define LFP_RET_VOID_IF(c)    \
-  do {                        \
-    if (!(c)) {               \
-      __LFP_ASSERT_FORMAT(c); \
-      return;                 \
-    }                         \
-  } while (0);
+#define LFP_RET_VOID_IF(c)          \
+    do {                            \
+        if (!(c)) {                 \
+            __LFP_ASSERT_FORMAT(c); \
+            return;                 \
+        }                           \
+    } while (0);
 
 /* assert return if */
-#define LFP_RET_IF(c, ret)    \
-  do {                        \
-    if (!(c)) {               \
-      __LFP_ASSERT_FORMAT(c); \
-      return ret;             \
-    }                         \
-  } while (0);
+#define LFP_RET_IF(c, ret)          \
+    do {                            \
+        if (!(c)) {                 \
+            __LFP_ASSERT_FORMAT(c); \
+            return ret;             \
+        }                           \
+    } while (0);
 
 #ifdef __cplusplus
 }

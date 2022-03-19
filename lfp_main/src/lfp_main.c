@@ -3,7 +3,7 @@
  * @Description:lee's firmware platform main entrance.
  * @Author: wytaitaislee
  * @Date: 2021-08-27 23:29:52
- * @LastEditTime: 2022-03-08 23:05:44
+ * @LastEditTime: 2022-03-19 19:18:45
  * @LastEditors: wytaitaislee
  * Copyright 2022 wytaitaislee, All Rights Reserved.
  */
@@ -38,15 +38,15 @@ LFP_STATIC LFP_CONST LFP_CODE LFP_COMPONENTS_REGISTER_T
  * @return	  LFP_OK/LFP_ERR
  */
 LFP_STATIC LFP_INT32 lfp_wytaitai_main_entrance(LFP_VOID) {
-  LFP_UINT32 uiModules = 0;
+    LFP_UINT32 uiModules = 0;
 
-  for (uiModules = 0; uiModules < LFP_NELEMENTS(g_componentsRegister);
-       uiModules++) {
-    if (LFP_NULL != g_componentsRegister[uiModules].lfp_components_register) {
-      g_componentsRegister[uiModules].lfp_components_register();
+    for (uiModules = 0; uiModules < LFP_NELEMENTS(g_componentsRegister);
+         uiModules++) {
+        if (LFP_NULL != g_componentsRegister[uiModules].lfp_components_register) {
+            g_componentsRegister[uiModules].lfp_components_register();
+        }
     }
-  }
-  return LFP_OK;
+    return LFP_OK;
 }
 
 /*@fn		  LFP_INT32 lfp_wytaitai_test_entrance(LFP_VOID)
@@ -56,16 +56,16 @@ LFP_STATIC LFP_INT32 lfp_wytaitai_main_entrance(LFP_VOID) {
  * @return	  LFP_OK/LFP_ERR
  */
 LFP_STATIC LFP_INT32 lfp_wytaitai_test_entrance(LFP_VOID) {
-  LFP_UINT32 uiModules = 0;
+    LFP_UINT32 uiModules = 0;
 
-  for (uiModules = 0; uiModules < LFP_NELEMENTS(g_componentsTestRegister);
-       uiModules++) {
-    if (LFP_NULL !=
-        g_componentsTestRegister[uiModules].lfp_components_register) {
-      g_componentsTestRegister[uiModules].lfp_components_register();
+    for (uiModules = 0; uiModules < LFP_NELEMENTS(g_componentsTestRegister);
+         uiModules++) {
+        if (LFP_NULL !=
+            g_componentsTestRegister[uiModules].lfp_components_register) {
+            g_componentsTestRegister[uiModules].lfp_components_register();
+        }
     }
-  }
-  return LFP_OK;
+    return LFP_OK;
 }
 
 /*@fn		  LFP_INT32 main(LFP_VOID)
@@ -75,10 +75,10 @@ LFP_STATIC LFP_INT32 lfp_wytaitai_test_entrance(LFP_VOID) {
  * @return	  LFP_OK/LFP_ERR
  */
 LFP_INT32 main(LFP_INT32 argc, LFP_INT8* args[]) {
-  lfp_wytaitai_main_entrance();
-  printf("entrance of main, argc = %d, args[0] = %s\n", argc, args[1]);
-  if (0 != argc && LFP_NULL != args[1]) {
-    lfp_wytaitai_test_entrance();
-  }
-  return LFP_OK;
+    lfp_wytaitai_main_entrance();
+    printf("entrance of main, argc = %d, args[0] = %s\n", argc, args[1]);
+    if (0 != argc && LFP_NULL != args[1]) {
+        lfp_wytaitai_test_entrance();
+    }
+    return LFP_OK;
 }

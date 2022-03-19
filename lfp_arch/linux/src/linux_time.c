@@ -3,7 +3,7 @@
  * @Description: the time revelant management on linux system.
  * @Author: wytaitaislee
  * @Date: 2022-03-05 16:42:26
- * @LastEditTime: 2022-03-05 21:54:36
+ * @LastEditTime: 2022-03-19 19:15:47
  * @LastEditors: wytaitaislee
  * Copyright 2022 wytaitaislee, All Rights Reserved.
  */
@@ -22,8 +22,8 @@
  * @return	  LFP_OK / LFP_ERR
  */
 LFP_INT32 linux_sleep_ms(LFP_UINT32 uiSleepMsSeconds) {
-  usleep(uiSleepMsSeconds * 1000);
-  return LFP_OK;
+    usleep(uiSleepMsSeconds * 1000);
+    return LFP_OK;
 }
 
 /*@fn		  LFP_INT32 linux_sleep_s(LFP_UINT32 uiSleepSeconds)
@@ -33,8 +33,8 @@ LFP_INT32 linux_sleep_ms(LFP_UINT32 uiSleepMsSeconds) {
  * @return	  LFP_OK / LFP_ERR
  */
 LFP_INT32 linux_sleep_s(LFP_UINT32 uiSleepSeconds) {
-  sleep(uiSleepSeconds);
-  return LFP_OK;
+    sleep(uiSleepSeconds);
+    return LFP_OK;
 }
 
 /*@fn		   LFP_TIME_T linux_get_time(LFP_TIME_T *ptTime)
@@ -43,10 +43,10 @@ LFP_INT32 linux_sleep_s(LFP_UINT32 uiSleepSeconds) {
  * @return	   LFP_TIME_T
  */
 LFP_TIME_T linux_get_time(LFP_TIME_T *ptTime) {
-  LFP_TIME_T tTime = time(NULL);
+    LFP_TIME_T tTime = time(NULL);
 
-  if (ptTime) {
-    *ptTime = tTime;
-  }
-  return tTime;
+    if (ptTime) {
+        *ptTime = tTime;
+    }
+    return tTime;
 }

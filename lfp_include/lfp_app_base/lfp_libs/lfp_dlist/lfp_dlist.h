@@ -15,21 +15,17 @@
 
 #include "lfp_base.h"
 
-#define LFP_DLIST_MODULE_NAME "double list"
-#define LFP_DLIST_SIGN_OK "lfp double list register successfully!"
-#define LFP_DLIST_SIGN_ERR "lfp double list register failed!"
-
 #define LFP_DLIST_CRIT(...) \
-  LFP_LOG_BASE(LOG_LEVEL_CRIT, LOG_MODULE_DLIST, MASK_DLIST, __VA_ARGS__)
+    LFP_LOG_BASE(LOG_LEVEL_CRIT, LOG_MODULE_DLIST, MASK_DLIST, __VA_ARGS__)
 #define LFP_DLIST_ERR(...) \
-  LFP_LOG_BASE(LOG_LEVEL_ERR, LOG_MODULE_DLIST, MASK_DLIST, __VA_ARGS__)
+    LFP_LOG_BASE(LOG_LEVEL_ERR, LOG_MODULE_DLIST, MASK_DLIST, __VA_ARGS__)
 #define LFP_DLIST_INFO(...) \
-  LFP_LOG_BASE(LOG_LEVEL_INFO, LOG_MODULE_DLIST, MASK_DLIST, __VA_ARGS__)
+    LFP_LOG_BASE(LOG_LEVEL_INFO, LOG_MODULE_DLIST, MASK_DLIST, __VA_ARGS__)
 
 /*double list structure definition */
 typedef struct lfp_dlist_t {
-  struct lfp_dlist_t *pPrev;
-  struct lfp_dlist_t *pNext;
+    struct lfp_dlist_t *pPrev;
+    struct lfp_dlist_t *pNext;
 } LFP_DLIST_T;
 
 /*@fn		  LFP_INT32 lfp_dlist_init(struct LFP_DLIST_T *pList)

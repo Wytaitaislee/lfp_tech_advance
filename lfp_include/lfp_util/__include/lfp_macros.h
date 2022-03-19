@@ -28,37 +28,37 @@ extern "C" {
 #define LFP_MALLOC(size) (malloc(size))
 
 /* assert safe free memory */
-#define LFP_SAFE_FREE(p)       \
-  do {                         \
-    if (p) {                   \
-      free(p);                 \
-      p = (LFP_VOID*)LFP_NULL; \
-    }                          \
-  } while (0);
+#define LFP_SAFE_FREE(p)              \
+    do {                              \
+        if (p) {                      \
+            free(p);                  \
+            p = (LFP_VOID *)LFP_NULL; \
+        }                             \
+    } while (0);
 
 /* assert safe close file */
-#define LFP_SAFE_CLOSE(p)      \
-  do {                         \
-    if (p) {                   \
-      fclose(p);               \
-      p = (LFP_VOID*)LFP_NULL; \
-    }                          \
-  } while (0);
+#define LFP_SAFE_CLOSE(p)             \
+    do {                              \
+        if (p) {                      \
+            fclose(p);                \
+            p = (LFP_VOID *)LFP_NULL; \
+        }                             \
+    } while (0);
 
 /* assert safe close socket connection */
 #define LFP_SAFE_CLOSE_SOCKET(p) \
-  do {                           \
-    if (p) {                     \
-      close(p);                  \
-      p = -1;                    \
-    }                            \
-  } while (0);
+    do {                         \
+        if (p) {                 \
+            close(p);            \
+            p = -1;              \
+        }                        \
+    } while (0);
 
 /* modules register sign. */
 #define LFP_MODULES_REGISTER_SIGN(util, sign) \
-  do {                                        \
-    util("module %s !\n", sign);              \
-  } while (0);
+    do {                                      \
+        util("module %s !\n", sign);          \
+    } while (0);
 
 #ifdef __cplusplus
 }

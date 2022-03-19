@@ -22,11 +22,12 @@ extern "C" {
 #include "lfp_log/lfp_log.h"
 
 #define LFP_MODLUE_REGISTER(func) \
-  { #func, func }
+    { #func, func }
 
 typedef struct lfp_components_register_t {
-  LFP_CONST LFP_INT8 *pModuleName;
-  LFP_INT32 (*lfp_components_register)(LFP_VOID);
+    LFP_CONST LFP_INT8 *pModuleName;
+    LFP_INT32 (*lfp_components_register)
+    (LFP_VOID);
 } LFP_COMPONENTS_REGISTER_T;
 
 #ifdef __cplusplus

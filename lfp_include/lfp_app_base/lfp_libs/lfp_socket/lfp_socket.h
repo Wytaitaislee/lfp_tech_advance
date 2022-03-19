@@ -19,85 +19,85 @@
 
 #define LFP_SOCKET_MAX_LISTEN (64) /* the maximum listen num */
 #define LFP_SOCKET_MAX_PACKAGE_LEN \
-  (1024 * 1024) /* the maximum size of the single package */
+    (1024 * 1024) /* the maximum size of the single package */
 #define LFP_SOCKET_MAX_INPUT_CHAR_ONCE (1024)
 #define LFP_SOCKET_EXIT_ALIVE_PERIOD \
-  (60 * 10) /* max alive period when the socket exit */
+    (60 * 10) /* max alive period when the socket exit */
 
 #define LFP_SOCKET_SERVER_ADDR ("127.0.0.1")
 #define LFP_SOCKET_SERVER_PORT (8000)
 #define LFP_SOCKET_EXIT_REQUEST_KEYS ("exit")
 
-#define LFP_SOCKET_SERVER_CRIT(...)                                   \
-  LFP_LOG_BASE(LOG_LEVEL_CRIT, LOG_MODULE_SOCKET, MASK_SOCKET_SERVER, \
-               __VA_ARGS__)
-#define LFP_SOCKET_SERVER_ERR(...)                                   \
-  LFP_LOG_BASE(LOG_LEVEL_ERR, LOG_MODULE_SOCKET, MASK_SOCKET_SERVER, \
-               __VA_ARGS__)
-#define LFP_SOCKET_SERVER_INFO(...)                                   \
-  LFP_LOG_BASE(LOG_LEVEL_INFO, LOG_MODULE_SOCKET, MASK_SOCKET_SERVER, \
-               __VA_ARGS__)
+#define LFP_SOCKET_SERVER_CRIT(...)                                     \
+    LFP_LOG_BASE(LOG_LEVEL_CRIT, LOG_MODULE_SOCKET, MASK_SOCKET_SERVER, \
+                 __VA_ARGS__)
+#define LFP_SOCKET_SERVER_ERR(...)                                     \
+    LFP_LOG_BASE(LOG_LEVEL_ERR, LOG_MODULE_SOCKET, MASK_SOCKET_SERVER, \
+                 __VA_ARGS__)
+#define LFP_SOCKET_SERVER_INFO(...)                                     \
+    LFP_LOG_BASE(LOG_LEVEL_INFO, LOG_MODULE_SOCKET, MASK_SOCKET_SERVER, \
+                 __VA_ARGS__)
 
-#define LFP_SOCKET_CLIENT_CRIT(...)                                   \
-  LFP_LOG_BASE(LOG_LEVEL_CRIT, LOG_MODULE_SOCKET, MASK_SOCKET_CLIENT, \
-               __VA_ARGS__)
-#define LFP_SOCKET_CLIENT_ERR(...)                                   \
-  LFP_LOG_BASE(LOG_LEVEL_ERR, LOG_MODULE_SOCKET, MASK_SOCKET_CLIENT, \
-               __VA_ARGS__)
-#define LFP_SOCKET_CLIENT_INFO(...)                                   \
-  LFP_LOG_BASE(LOG_LEVEL_INFO, LOG_MODULE_SOCKET, MASK_SOCKET_CLIENT, \
-               __VA_ARGS__)
+#define LFP_SOCKET_CLIENT_CRIT(...)                                     \
+    LFP_LOG_BASE(LOG_LEVEL_CRIT, LOG_MODULE_SOCKET, MASK_SOCKET_CLIENT, \
+                 __VA_ARGS__)
+#define LFP_SOCKET_CLIENT_ERR(...)                                     \
+    LFP_LOG_BASE(LOG_LEVEL_ERR, LOG_MODULE_SOCKET, MASK_SOCKET_CLIENT, \
+                 __VA_ARGS__)
+#define LFP_SOCKET_CLIENT_INFO(...)                                     \
+    LFP_LOG_BASE(LOG_LEVEL_INFO, LOG_MODULE_SOCKET, MASK_SOCKET_CLIENT, \
+                 __VA_ARGS__)
 
 #define LFP_SOCKET_CTRL_CRIT(...) \
-  LFP_LOG_BASE(LOG_LEVEL_CRIT, LOG_MODULE_SOCKET, MASK_SOCKET_CTRL, __VA_ARGS__)
+    LFP_LOG_BASE(LOG_LEVEL_CRIT, LOG_MODULE_SOCKET, MASK_SOCKET_CTRL, __VA_ARGS__)
 #define LFP_SOCKET_CTRL_ERR(...) \
-  LFP_LOG_BASE(LOG_LEVEL_ERR, LOG_MODULE_SOCKET, MASK_SOCKET_CTRL, __VA_ARGS__)
+    LFP_LOG_BASE(LOG_LEVEL_ERR, LOG_MODULE_SOCKET, MASK_SOCKET_CTRL, __VA_ARGS__)
 #define LFP_SOCKET_CTRL_INFO(...) \
-  LFP_LOG_BASE(LOG_LEVEL_INFO, LOG_MODULE_SOCKET, MASK_SOCKET_CTRL, __VA_ARGS__)
+    LFP_LOG_BASE(LOG_LEVEL_INFO, LOG_MODULE_SOCKET, MASK_SOCKET_CTRL, __VA_ARGS__)
 
 /* the head data structure */
 typedef struct lfp_socket_package_head_t {
-  LFP_INT32 iDataLen;
-  LFP_INT32 iMaxDataLen;
+    LFP_INT32 iDataLen;
+    LFP_INT32 iMaxDataLen;
 } LFP_SCOKET_PACKAGE_HEAD_T;
 
 /* the whole package data structure */
 typedef struct lfp_socket_package_t {
-  LFP_SCOKET_PACKAGE_HEAD_T struHead;
-  LFP_INT8 *iPackageData;
+    LFP_SCOKET_PACKAGE_HEAD_T struHead;
+    LFP_INT8 *iPackageData;
 } LFP_SOCKET_PACKAGE_T;
 
 /* the full duplex data transmission structure */
 typedef struct lfp_socket_ctrl_t {
-  LFP_SOCKET_PACKAGE_T struRecvCtrl;
-  LFP_SOCKET_PACKAGE_T struSendCtrl;
+    LFP_SOCKET_PACKAGE_T struRecvCtrl;
+    LFP_SOCKET_PACKAGE_T struSendCtrl;
 } LFP_SOCKET_CTRL_T;
 
 /* the socket desc structure */
 typedef struct lfp_socket_desc_t {
-  LFP_SOCK iSockFd;
-  LFP_INT32 iExitTime;
-  LFP_SEM_T semSync;
-  LFP_SOCKET_CTRL_T struSocketCtrl;
+    LFP_SOCK iSockFd;
+    LFP_INT32 iExitTime;
+    LFP_SEM_T semSync;
+    LFP_SOCKET_CTRL_T struSocketCtrl;
 } LFP_SOCKET_DESC_T;
 
 typedef struct lfp_socket_server_manage_t {
-  LFP_MUTEX_T mutex;
-  LFP_SOCKET_DESC_T *pSocketDesc[LFP_SOCKET_MAX_LISTEN];
+    LFP_MUTEX_T mutex;
+    LFP_SOCKET_DESC_T *pSocketDesc[LFP_SOCKET_MAX_LISTEN];
 } LFP_SOCKET_SERVER_MANAGE_T;
 
 #define LFP_SOCKET_THIS_SERVER_DESC(pManage, idx) (pManage->pSocketDesc[idx])
 #define LFP_SOCKET_THIS_RECV(pDesc) (pDesc->struSocketCtrl.struRecvCtrl)
 #define LFP_SOCKET_THIS_SEND(pDesc) (pDesc->struSocketCtrl.struSendCtrl)
 #define LFP_SOCKET_THIS_RECV_HEAD(pDesc) \
-  ((LFP_SOCKET_THIS_RECV(pDesc)).struHead)
+    ((LFP_SOCKET_THIS_RECV(pDesc)).struHead)
 #define LFP_SOCKET_THIS_RECV_BODY(pDesc) \
-  (LFP_SOCKET_THIS_RECV(pDesc).iPackageData)
+    (LFP_SOCKET_THIS_RECV(pDesc).iPackageData)
 #define LFP_SOCKET_THIS_SEND_HEAD(pDesc) (LFP_SOCKET_THIS_SEND(pDesc).struHead)
 #define LFP_SOCKET_THIS_SEND_BODY(pDesc) \
-  (LFP_SOCKET_THIS_SEND(pDesc).iPackageData)
+    (LFP_SOCKET_THIS_SEND(pDesc).iPackageData)
 #define LFP_SOCKET_THIS_BODY_OFFSET(pDesc) \
-  (sizeof(pDesc->struSocketCtrl.struSendCtrl.struHead))
+    (sizeof(pDesc->struSocketCtrl.struSendCtrl.struHead))
 
 /*@fn		  LFP_INT32 lfp_socket_module_init(LFP_VOID)
  * @brief 	  socket communication main entrance

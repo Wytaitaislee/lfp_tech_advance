@@ -20,7 +20,7 @@ extern "C" {
 #define LFP_BASE_SUB "0"
 #define __LFP_BASE_VERSION(major, minor, sub) (major##.##minor##.##sub)
 #define LFP_BASE_VERSION \
-  __LFP_BASE_VERSION(LFP_BASE_MAJOR, LFP_BASE_MINOR, LFP_BASE_SUB)
+    __LFP_BASE_VERSION(LFP_BASE_MAJOR, LFP_BASE_MINOR, LFP_BASE_SUB)
 
 #ifdef __cplusplus
 }

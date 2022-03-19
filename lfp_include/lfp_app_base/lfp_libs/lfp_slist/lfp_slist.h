@@ -22,15 +22,15 @@
 #define LFP_SLIST_ADD_ELEM (10)
 
 #define LFP_SLIST_CRIT(...) \
-  LFP_LOG_BASE(LOG_LEVEL_CRIT, LOG_MODULE_SLIST, MASK_SLIST, __VA_ARGS__)
+    LFP_LOG_BASE(LOG_LEVEL_CRIT, LOG_MODULE_SLIST, MASK_SLIST, __VA_ARGS__)
 #define LFP_SLIST_ERR(...) \
-  LFP_LOG_BASE(LOG_LEVEL_ERR, LOG_MODULE_SLIST, MASK_SLIST, __VA_ARGS__)
+    LFP_LOG_BASE(LOG_LEVEL_ERR, LOG_MODULE_SLIST, MASK_SLIST, __VA_ARGS__)
 #define LFP_SLIST_INFO(...) \
-  LFP_LOG_BASE(LOG_LEVEL_INFO, LOG_MODULE_SLIST, MASK_SLIST, __VA_ARGS__)
+    LFP_LOG_BASE(LOG_LEVEL_INFO, LOG_MODULE_SLIST, MASK_SLIST, __VA_ARGS__)
 
 /*single list structure definition */
 typedef struct lfp_slist_t {
-  struct lfp_slist_t *pNext;
+    struct lfp_slist_t *pNext;
 } LFP_SLIST_T;
 
 /*@fn		  LFP_INT32 lfp_slist_init(LFP_SLIST_T* pList)
