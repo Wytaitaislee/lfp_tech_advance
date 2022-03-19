@@ -3,7 +3,7 @@
  * @Description: Double linked list package library.
  * @Author: wytaitaislee
  * @Date: 2021-08-27 23:29:52
- * @LastEditTime: 2022-03-19 19:14:49
+ * @LastEditTime: 2022-03-19 22:42:41
  * @LastEditors: wytaitaislee
  * Copyright 2022 wytaitaislee, All Rights Reserved.
  */
@@ -47,7 +47,7 @@ LFP_INT32 lfp_dlist_init(LFP_DLIST_T *pList) {
 }
 
 /*@fn		  LFP_INT32 __lfp_dlist_add(LFP_DLIST_T *pPrev, LFP_DLIST_T
- * *pNext, LFP_DLIST_T *pNewNode)
+ *                                      *pNext, LFP_DLIST_T *pNewNode)
  * @brief      Insert a new node between two known consecutive entries.
  * @param[in]  LFP_DLIST_T *pPrev - the previous node
  * @param[in]  LFP_DLIST_T *pNext - the next node
@@ -66,8 +66,7 @@ LFP_STATIC LFP_INLINE LFP_INT32 __lfp_dlist_add(LFP_DLIST_T *pPrev,
     return LFP_OK;
 }
 
-/*@fn		  LFP_INT32 lfp_dlist_add(LFP_DLIST_T *pList, LFP_DLIST_T
- * *pNewNode)
+/*@fn		  LFP_INT32 lfp_dlist_add(LFP_DLIST_T *pList, LFP_DLIST_T *pNewNode)
  * @brief      Insert a new node after the specified head.
  * @param[in]  LFP_DLIST_T *pList - the head of list
  * @param[in]  LFP_DLIST_T *pNewNode - new node to be added
@@ -80,8 +79,7 @@ LFP_INT32 lfp_dlist_add(LFP_DLIST_T *pList, LFP_DLIST_T *pNewNode) {
     return __lfp_dlist_add(pList, pList->pNext, pNewNode);
 }
 
-/*@fn		  LFP_INT32 lfp_dlist_add_tail(LFP_DLIST_T *pList, LFP_DLIST_T
- * *pNewNode)
+/*@fn		  LFP_INT32 lfp_dlist_add_tail(LFP_DLIST_T *pList, LFP_DLIST_T *pNewNode)
  * @brief      Insert a new node before the specified head.
  * @param[in]  LFP_DLIST_T *pList - the head of list
  * @param[in]  LFP_DLIST_T *pNewNode - new node to be added
@@ -125,8 +123,7 @@ LFP_INT32 lfp_dlist_delete(LFP_DLIST_T *pDelNode) {
 
 /*@fn		  LFP_INT32 lfp_dlist_destroy(LFP_DLIST_T *pList)
  * @brief 	  destroy the list
- * @param[in]  LFP_DLIST_T *pList -  the head ptr whom pointer to the double
- * linked list
+ * @param[in]  LFP_DLIST_T *pList -  the head ptr whom pointer to the double linked list
  * @param[out] LFP_NULL
  * @return	  LFP_OK/LFP_ERR
  */
@@ -142,6 +139,20 @@ LFP_INT32 lfp_dlist_destroy(LFP_DLIST_T *pList) {
         LFP_DLIST_NODE_FREE(pTmp);
     }
     return LFP_OK;
+}
+
+/*@fn		   LFP_BOOL lfp_dlist_empty(LFP_DLIST_T *pList)
+ * @brief 	   assert if dlist is empty
+ * @param[in]  LFP_DLIST_T *pList -  the head ptr whom pointer to the double linked list
+ * @param[out] LFP_NULL
+ * @return	   LFP_TRUE/LFP_FALSE
+ */
+LFP_BOOL lfp_dlist_empty(LFP_DLIST_T *pList) {
+    LFP_RET_IF(pList, LFP_FALSE);
+    if (pList->pNext == pList->pPrev) {
+        return LFP_TRUE;
+    }
+    return LFP_FALSE;
 }
 
 #endif

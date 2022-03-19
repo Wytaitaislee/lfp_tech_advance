@@ -16,11 +16,11 @@
 #include "lfp_base.h"
 
 #define LFP_DLIST_CRIT(...) \
-    LFP_LOG_BASE(LOG_LEVEL_CRIT, LOG_MODULE_DLIST, MASK_DLIST, __VA_ARGS__)
+    LFP_LOG_BASE(LOG_LEVEL_CRIT, LOG_MODULE_DLIST, MASK_DLIST, ##__VA_ARGS__)
 #define LFP_DLIST_ERR(...) \
-    LFP_LOG_BASE(LOG_LEVEL_ERR, LOG_MODULE_DLIST, MASK_DLIST, __VA_ARGS__)
+    LFP_LOG_BASE(LOG_LEVEL_ERR, LOG_MODULE_DLIST, MASK_DLIST, ##__VA_ARGS__)
 #define LFP_DLIST_INFO(...) \
-    LFP_LOG_BASE(LOG_LEVEL_INFO, LOG_MODULE_DLIST, MASK_DLIST, __VA_ARGS__)
+    LFP_LOG_BASE(LOG_LEVEL_INFO, LOG_MODULE_DLIST, MASK_DLIST, ##__VA_ARGS__)
 
 /*double list structure definition */
 typedef struct lfp_dlist_t {
@@ -71,6 +71,14 @@ LFP_INT32 lfp_dlist_delete(LFP_DLIST_T *pDelNode);
  * @return	  LFP_OK/LFP_ERR
  */
 LFP_INT32 lfp_dlist_destroy(LFP_DLIST_T *pList);
+
+/*@fn		   LFP_BOOL lfp_dlist_empty(LFP_DLIST_T *pList)
+ * @brief 	   assert if dlist is empty
+ * @param[in]  LFP_DLIST_T *pList -  the head ptr whom pointer to the double linked list
+ * @param[out] LFP_NULL
+ * @return	   LFP_TRUE/LFP_FALSE
+ */
+LFP_BOOL lfp_dlist_empty(LFP_DLIST_T *pList);
 
 #endif
 
