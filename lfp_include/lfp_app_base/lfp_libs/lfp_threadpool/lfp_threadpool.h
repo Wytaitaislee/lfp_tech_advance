@@ -62,7 +62,7 @@ typedef struct lfp_threadpool_t {
     LFP_UINT32 uiThreadAlive;
     LFP_UINT32 uiThreadIdle;
     LFP_UINT32 uiThreadTimeOut;
-    LFP_VOID (*threadpool_worker)
+    LFP_VOID(*threadpool_worker)
     (LFP_VOID*);
     LFP_THPOOL_LIST_T struWorkQueueList;
     LFP_THPOOL_LIST_T struThreadQueueList;

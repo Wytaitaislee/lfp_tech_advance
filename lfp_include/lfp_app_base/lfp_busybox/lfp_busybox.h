@@ -15,22 +15,22 @@
 #include "lfp_base.h"
 
 #define LFP_BUSYBOX_CRIT(...) \
-  LFP_LOG_BASE(LOG_LEVEL_ERR, LOG_MODULE_BUSYBOX, MASK_BUSYBOX, __VA_ARGS__)
+    LFP_LOG_BASE(LOG_LEVEL_ERR, LOG_MODULE_BUSYBOX, MASK_BUSYBOX, ##__VA_ARGS__)
 #define LFP_BUSYBOX_ERR(...) \
-  LFP_LOG_BASE(LOG_LEVEL_ERR, LOG_MODULE_BUSYBOX, MASK_BUSYBOX, __VA_ARGS__)
+    LFP_LOG_BASE(LOG_LEVEL_ERR, LOG_MODULE_BUSYBOX, MASK_BUSYBOX, ##__VA_ARGS__)
 #define LFP_BUSYBOX_INFO(...) \
-  LFP_LOG_BASE(LOG_LEVEL_ERR, LOG_MODULE_BUSYBOX, MASK_BUSYBOX, __VA_ARGS__)
+    LFP_LOG_BASE(LOG_LEVEL_ERR, LOG_MODULE_BUSYBOX, MASK_BUSYBOX, ##__VA_ARGS__)
 
 typedef LFP_INT32 (*lfp_busybox_proc_ptr)(LFP_INT8 iArgs,
                                           LFP_CONST LFP_INT8 **ppArgv);
 
 typedef struct lfp_busybox_t {
-  LFP_CONST LFP_INT8 *pCmdName;
-  LFP_CONST LFP_INT8 *pCmdHelpInfo;
-  LFP_INT8 iAuthority;
-  lfp_busybox_proc_ptr pCallbackBusybox;
-  LFP_INT8 iArgs;
-  LFP_CONST LFP_INT8 **ppArgv;
+    LFP_CONST LFP_INT8 *pCmdName;
+    LFP_CONST LFP_INT8 *pCmdHelpInfo;
+    LFP_INT8 iAuthority;
+    lfp_busybox_proc_ptr pCallbackBusybox;
+    LFP_INT8 iArgs;
+    LFP_CONST LFP_INT8 **ppArgv;
 } LFP_BUSYBOX_T;
 
 /*@fn		  LFP_INT32 lfp_busybox_init(LFP_VOID)
