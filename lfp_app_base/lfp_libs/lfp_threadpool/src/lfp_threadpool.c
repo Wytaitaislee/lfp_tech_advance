@@ -3,7 +3,7 @@
  * @Description: threadpool libs.
  * @Author: wytaitaislee
  * @Date: 2021-08-27 23:29:52
- * @LastEditTime: 2022-03-20 12:53:00
+ * @LastEditTime: 2022-03-20 15:31:08
  * @LastEditors: wytaitaislee
  * Copyright 2022 wytaitaislee, All Rights Reserved.
  */
@@ -298,7 +298,7 @@ LFP_STATIC LFP_INT32 lfp_threadpool_destroy(LFP_THREADPOOL_T *pstruThreadPool) {
     return LFP_OK;
 }
 
-/*@fn		  LFP_INT32 lfp_threadpool_create(LFP_UINT32 uiMaxThreads,
+/*@fn		  LFP_THREADPOOL_T *lfp_threadpool_create(LFP_UINT32 uiMaxThreads,
  * LFP_UINT32 uiThreadTimeout)
  * @brief 	  create a threadpool entry.
  * @param[in]  LFP_UINT32 uiMaxThreads - the maximum of the threadpool threads.
@@ -311,30 +311,37 @@ LFP_THREADPOOL_T *lfp_threadpool_create(LFP_UINT32 uiMaxThreads,
     LFP_THREADPOOL_T *pstruThreadPool = LFP_NULL;
 
     pstruThreadPool = (LFP_THREADPOOL_T *)LFP_MALLOC(sizeof(*pstruThreadPool));
-    LFP_RET_IF(pstruThreadPool, LFP_ERR);
+    LFP_RET_IF(pstruThreadPool, LFP_NULL);
     LFP_BUFF_BEZERO(pstruThreadPool, sizeof(*pstruThreadPool));
-    pstruThreadPool->enumState = LFP_THREADPOOL_STATE_WORKING;
+    pstruThreadPool->enumState = LFP_THREADPOOL_STATE_INVALID;
     iRet = lfp_mutex_init(&pstruThreadPool->mutex, LFP_NULL);
     if (LFP_OK != iRet) {
         LFP_THREADPOOL_ERR("pthreadpool mutex init failed, iRet[%d], err[%s]\n",
                            iRet, strerror(errno));
-        goto freeAllRes;
-    }
-    if (LFP_OK != queue_list_init(&pstruThreadPool->struThreadQueueList) ||
-        LFP_OK != queue_list_init(&pstruThreadPool->struWorkQueueList)) {
-        LFP_THREADPOOL_ERR("pthreadpool workqueue or threadqueue init failed\n");
         LFP_SAFE_FREE(pstruThreadPool);
-        return LFP_ERR;
+        return LFP_NULL;
+    }
+    if (LFP_OK != queue_list_init(&pstruThreadPool->struThreadQueueList)) {
+        LFP_THREADPOOL_ERR("pthreadpool threadqueue init failed\n");
+        goto freeResMutex;
+    }
+    if (LFP_OK != queue_list_init(&pstruThreadPool->struWorkQueueList)) {
+        LFP_THREADPOOL_ERR("pthreadpool workqueue init failed\n");
+        goto freeResThreadQ;
     }
     pstruThreadPool->threadpool_worker = lfp_threadpool_worker;
     pstruThreadPool->uiThreadMax = uiMaxThreads;
     pstruThreadPool->uiThreadTimeOut = uiThreadTimeout;
     pstruThreadPool->uiThreadAlive = 0;
     pstruThreadPool->uiThreadIdle = 0;
-    return LFP_OK;
-freeAllRes:
-    (LFP_VOID) lfp_threadpool_destroy(pstruThreadPool);
-    return LFP_ERR;
+    pstruThreadPool->enumState = LFP_THREADPOOL_STATE_WORKING;
+    return pstruThreadPool;
+freeResThreadQ:
+    queue_list_fini(&pstruThreadPool->struThreadQueueList);
+freeResMutex:
+    lfp_mutex_destroy(&pstruThreadPool->mutex);
+    LFP_SAFE_FREE(pstruThreadPool);
+    return LFP_NULL;
 }
 
 /*@fn		  LFP_STATIC LFP_INLINE LFP_INT32
@@ -362,6 +369,31 @@ LFP_STATIC LFP_INLINE LFP_INT32 lfp_threadpool_active_the_latest_idle_worker(
     return LFP_OK;
 }
 
+static LFP_INT32 __lfp_threadpool_detached_create(LFP_VOID *(*workcptr)(LFP_VOID *),
+                                                  LFP_VOID *pHandle) {
+    LFP_PTHREAD_ATTR_T struAttr;
+    LFP_RET_IF(workcptr && pHandle, LFP_ERR);
+
+    LFP_BUFF_BEZERO(&struAttr, sizeof(struAttr));
+
+    if (LFP_OK != lfp_pthread_attr_init(&struAttr)) {
+        return LFP_ERR;
+    }
+
+    if (LFP_OK != lfp_pthread_attr_setdetachstate(&struAttr, LFP_PTHREAD_CREATE_DETACHED)) {
+        goto exit;
+    }
+
+    if (LFP_OK != lfp_pthread_create(LFP_NULL, &struAttr, workcptr, pHandle)) {
+        goto exit;
+    }
+
+    return LFP_OK;
+exit:
+    lfp_pthread_attr_destory(&struAttr);
+    return LFP_ERR;
+}
+
 /*@fn		  LFP_INT32 lfp_threadpool_dispatch(LFP_THREADPOOL_T
 *pstruThreadPool, work_handle workHandle, LFP_VOID* pUsrData)
 * @brief 	  thread dispatch, 1. manage thread worker; 2. activate the most
@@ -372,50 +404,48 @@ idle thread recently
 * @return	  LFP_OK / LFP_ERR
 */
 
-/*threadpool*, *pstruTid, *tid, priority, cpuno, work_handle, argc, ...*/
-/* LFP_INT32 lfp_threadpool_dispatch(LFP_THREADPOOL_T *pstruThreadPool,
+LFP_INT32 lfp_threadpool_dispatch(LFP_VOID *pHandle,
+                                  LFP_INT32 iPriority,
+                                  LFP_INT32 iCpuNo,
                                   work_handle workHandle,
-                                  LFP_VOID* pUsrData) */
-LFP_INT32 lfp_threadpool_dispatch(LFP_THREADPOOL_T *pstruThreadPool,
-                                  LFP_PTHREAD_HANDLE_T *pPthreadHandle,
-                                  LFP_INT32 iPriority, LFP_INT32 iCpuNo,
-                                  work_handle workHandle, LFP_INT32 iArgc,
-                                  ...) {
+                                  LFP_INT32 iArgc, ...) {
     LFP_INT32 iArgCnt = 0;
+    va_list ap;
     WORK_ITEM_T *pstruWorkItem = LFP_NULL;
+    LFP_THREADPOOL_T *pstruThpool = (LFP_THREADPOOL_T *)(pHandle);
 
-    (LFP_VOID) pPthreadHandle;
     (LFP_VOID) iPriority;
     (LFP_VOID) iCpuNo;
-    LFP_RET_IF(pstruThreadPool && workHandle, LFP_ERR);
+    LFP_RET_IF(pstruThpool && workHandle, LFP_ERR);
+    LFP_RET_IF((iArgc <= LFP_THREADPOOL_MAX_ARGS_NUM), LFP_ERR);
+
     pstruWorkItem = (WORK_ITEM_T *)LFP_MALLOC(sizeof(WORK_ITEM_T));
     LFP_RET_IF(pstruWorkItem, LFP_ERR);
+    LFP_BUFF_BEZERO(pstruWorkItem, sizeof(*pstruWorkItem));
     pstruWorkItem->workHandle = workHandle;
-    va_start(pstruWorkItem->vaList, iArgc);
-    for (iArgCnt = 0; iArgCnt < iArgc && iArgCnt < LFP_THREADPOOL_MAX_PARAM_NUM;
-         iArgCnt++) {
-        pstruWorkItem->pArg[iArgCnt] = va_arg(pstruWorkItem->vaList, LFP_VOID *);
+
+    va_start(ap, iArgc);
+    for (iArgCnt = 0; iArgCnt < iArgc; iArgCnt++) {
+        pstruWorkItem->pArg[iArgCnt] = va_arg(ap, LFP_VOID *);
     }
-    va_end(pstruWorkItem->vaList);
+    va_end(ap);
 
-    lfp_mutex_lock(&pstruThreadPool->mutex);
-    work_queue_add(&pstruThreadPool->struWorkQueueList, pstruWorkItem);
+    lfp_mutex_lock(&pstruThpool->mutex);
+    work_queue_add(&pstruThpool->struWorkQueueList, pstruWorkItem);
 
-    if (0 == pstruThreadPool->uiThreadIdle &&
-        pstruThreadPool->uiThreadAlive < pstruThreadPool->uiThreadMax) {
-        /*thread_detached_create(th-worker, threadpool*, stack, priority)*/
-        // if(LFP_OK != lfp_pthread_create())
-        //{
-        //     LFP_PTHREAD_ERR("create a new worker failed\n");
-        // }
-        // else
-        { pstruThreadPool->uiThreadAlive++; }
+    if (0 == pstruThpool->uiThreadIdle &&
+        pstruThpool->uiThreadAlive < pstruThpool->uiThreadMax) {
+        if (LFP_OK != lfp_threadpool_detached_create(lfp_threadpool_worker, pHandle)) {
+            LFP_PTHREAD_ERR("create a new worker failed\n");
+        } else {
+            pstruThpool->uiThreadAlive++;
+        }
     }
     if (lfp_threadpool_active_the_latest_idle_worker(
-            &pstruThreadPool->struThreadQueueList)) {
+            &pstruThpool->struThreadQueueList)) {
         LFP_THREADPOOL_ERR("active the latest idle worker failed\n");
     }
-    lfp_mutex_unlock(&pstruThreadPool->mutex);
+    lfp_mutex_unlock(&pstruThpool->mutex);
 
     return LFP_OK;
 }
