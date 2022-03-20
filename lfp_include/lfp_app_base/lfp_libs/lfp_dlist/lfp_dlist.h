@@ -11,8 +11,6 @@
 #ifndef __LFP_DLIST_H__
 #define __LFP_DLIST_H__
 
-#ifdef LFP_LIBS_DLIST
-
 #include "lfp_base.h"
 
 #define LFP_DLIST_CRIT(...) \
@@ -79,7 +77,5 @@ LFP_INT32 lfp_dlist_destroy(LFP_DLIST_T *pList);
  * @return	   LFP_TRUE/LFP_FALSE
  */
 LFP_BOOL lfp_dlist_empty(LFP_DLIST_T *pList);
-
-#endif
 
 #endif /* end of __LFP_DLIST_H__ */

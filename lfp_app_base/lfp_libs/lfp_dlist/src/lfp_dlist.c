@@ -3,12 +3,10 @@
  * @Description: Double linked list package library.
  * @Author: wytaitaislee
  * @Date: 2021-08-27 23:29:52
- * @LastEditTime: 2022-03-19 22:42:41
+ * @LastEditTime: 2022-03-20 11:47:38
  * @LastEditors: wytaitaislee
  * Copyright 2022 wytaitaislee, All Rights Reserved.
  */
-
-#ifdef LFP_LIBS_DLIST
 
 #include "lfp_dlist.h"
 
@@ -154,5 +152,3 @@ LFP_BOOL lfp_dlist_empty(LFP_DLIST_T *pList) {
     }
     return LFP_FALSE;
 }
-
-#endif
