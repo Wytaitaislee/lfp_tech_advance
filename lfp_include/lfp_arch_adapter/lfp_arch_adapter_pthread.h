@@ -49,6 +49,41 @@ LFP_INT32 lfp_pthread_cancel(LFP_PTHREAD_HANDLE_T hThreadHandle);
  */
 LFP_INT32 lfp_pthread_kill(LFP_PTHREAD_HANDLE_T hThreadHandle, LFP_INT32 iSig);
 
+/*@fn		  LFP_INT32 lfp_pthread_attr_init(LFP_PTHREAD_ATTR_T* pAttr)
+ * @brief 	  initialize thread attributes object
+ * @param[in]  LFP_PTHREAD_ATTR_T* pAttr - the thread identifier
+ * @param[in]  LFP_INT32 iSig - signal type
+ * @param[out] LFP_NULL
+ * @return	  LFP_OK / LFP_ERR
+ */
+LFP_INT32 lfp_pthread_attr_init(LFP_PTHREAD_ATTR_T* pAttr);
+
+/*@fn		  LFP_INT32 lfp_pthread_attr_setdetachstate(LFP_PTHREAD_ATTR_T* pAttr, LFP_INT32 iDetacheState)
+ * @brief 	  set detach state attribute in thread attributes object
+ * @param[in]  LFP_PTHREAD_ATTR_T* pAttr - the attr
+ * @param[in]  LFP_INT32 iDetacheState -  detachstate
+ * @param[out] LFP_NULL
+ * @return	  LFP_OK / LFP_ERR
+ */
+LFP_INT32 lfp_pthread_attr_setdetachstate(LFP_PTHREAD_ATTR_T* pAttr, LFP_INT32 iDetacheState);
+
+/*@fn		  LFP_INT32 lfp_pthread_attr_getdetachstate(LFP_PTHREAD_ATTR_T* pAttr, LFP_INT32 *piDetacheState)
+ * @brief 	  get detach state attribute in thread attributes object
+ * @param[in]  LFP_PTHREAD_ATTR_T* pAttr - the attr
+ * @param[in]  LFP_INT32* piDetacheState -  detachstate
+ * @param[out] LFP_NULL
+ * @return	  LFP_OK / LFP_ERR
+ */
+LFP_INT32 lfp_pthread_attr_getdetachstate(LFP_PTHREAD_ATTR_T* pAttr, LFP_INT32* piDetacheState);
+
+/*@fn		  LFP_INT32 lfp_pthread_attr_destroy(LFP_PTHREAD_ATTR_T* pAttr)
+ * @brief 	  destroy thread attributes object
+ * @param[in]  LFP_PTHREAD_ATTR_T* pAttr - the attr
+ * @param[out] LFP_NULL
+ * @return	  LFP_OK / LFP_ERR
+ */
+LFP_INT32 lfp_pthread_attr_destroy(LFP_PTHREAD_ATTR_T* pAttr);
+
 /*@fn		  LFP_INT32 lfp_arch_adapter_pthread_register(LFP_VOID)
  * @brief 	  the adapter layer register -- pthread cluster register
  * @param[in]  LFP_NULL

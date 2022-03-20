@@ -18,6 +18,7 @@
 typedef pthread_t LINUX_PTHREAD_HANDLE_T;
 typedef pthread_attr_t LINUX_PTHREAD_ATTR_T;
 #define LINUX_PTHREAD_ESRCH ESRCH
+#define LINUX_PTHREAD_CREATE_DETACHED PTHREAD_CREATE_DETACHED
 
 #define LFP_PTHREAD_CRIT(...) \
     LFP_LOG_BASE(LOG_LEVEL_CRIT, LOG_MODULE_LINUX, MASK_PTHREAD, ##__VA_ARGS__)
@@ -61,5 +62,40 @@ LFP_INT32 linux_pthread_cancel(LINUX_PTHREAD_HANDLE_T hThreadHandle);
  */
 LFP_INT32 linux_pthread_kill(LINUX_PTHREAD_HANDLE_T hThreadHandle,
                              LFP_INT32 iSig);
+
+/*@fn		  LFP_INT32 linux_pthread_attr_init(LINUX_PTHREAD_ATTR_T* pAttr)
+ * @brief 	  initialize thread attributes object
+ * @param[in]  LINUX_PTHREAD_ATTR_T* pAttr - the thread identifier
+ * @param[in]  LFP_INT32 iSig - signal type
+ * @param[out] LFP_NULL
+ * @return	  LFP_OK / LFP_ERR
+ */
+LFP_INT32 linux_pthread_attr_init(LINUX_PTHREAD_ATTR_T* pAttr);
+
+/*@fn		  LFP_INT32 linux_pthread_attr_setdetachstate(LINUX_PTHREAD_ATTR_T* pAttr, LFP_INT32 iDetacheState)
+ * @brief 	  set detach state attribute in thread attributes object
+ * @param[in]  LINUX_PTHREAD_ATTR_T* pAttr - the attr
+ * @param[in]  LFP_INT32 iDetacheState -  detachstate
+ * @param[out] LFP_NULL
+ * @return	  LFP_OK / LFP_ERR
+ */
+LFP_INT32 linux_pthread_attr_setdetachstate(LINUX_PTHREAD_ATTR_T* pAttr, LFP_INT32 iDetacheState);
+
+/*@fn		  LFP_INT32 linux_pthread_attr_getdetachstate(LINUX_PTHREAD_ATTR_T* pAttr, LFP_INT32 *piDetacheState)
+ * @brief 	  get detach state attribute in thread attributes object
+ * @param[in]  LINUX_PTHREAD_ATTR_T* pAttr - the attr
+ * @param[in]  LFP_INT32* piDetacheState -  detachstate
+ * @param[out] LFP_NULL
+ * @return	  LFP_OK / LFP_ERR
+ */
+LFP_INT32 linux_pthread_attr_getdetachstate(LINUX_PTHREAD_ATTR_T* pAttr, LFP_INT32* piDetacheState);
+
+/*@fn		  LFP_INT32 linux_pthread_attr_destroy(LINUX_PTHREAD_ATTR_T* pAttr)
+ * @brief 	  destroy thread attributes object
+ * @param[in]  LINUX_PTHREAD_ATTR_T* pAttr - the attr
+ * @param[out] LFP_NULL
+ * @return	  LFP_OK / LFP_ERR
+ */
+LFP_INT32 linux_pthread_attr_destroy(LINUX_PTHREAD_ATTR_T* pAttr);
 
 #endif /*end of __LINUX_PTHREAD_H__ */

@@ -4,7 +4,7 @@
  * different OS.
  * @Author: wytaitaislee
  * @Date: 2021-08-27 23:29:52
- * @LastEditTime: 2022-03-06 18:14:15
+ * @LastEditTime: 2022-03-20 14:38:20
  * @LastEditors: wytaitaislee
  * Copyright 2022 wytaitaislee, All Rights Reserved.
  */
@@ -26,7 +26,14 @@ LFP_ARCH_ADAPTER1(LFP_GET_PTHREAD_ENTRY(), pthread_cancel, LFP_INT32,
                   LFP_PTHREAD_HANDLE_T);
 LFP_ARCH_ADAPTER2(LFP_GET_PTHREAD_ENTRY(), pthread_kill, LFP_INT32,
                   LFP_PTHREAD_HANDLE_T, LFP_INT32);
-
+LFP_ARCH_ADAPTER1(LFP_GET_PTHREAD_ENTRY(), pthread_attr_init, LFP_INT32,
+                  LFP_PTHREAD_ATTR_T*);
+LFP_ARCH_ADAPTER2(LFP_GET_PTHREAD_ENTRY(), pthread_attr_setdetachstate, LFP_INT32,
+                  LFP_PTHREAD_ATTR_T*, LFP_INT32);
+LFP_ARCH_ADAPTER2(LFP_GET_PTHREAD_ENTRY(), pthread_attr_getdetachstate, LFP_INT32,
+                  LFP_PTHREAD_ATTR_T*, LFP_INT32*);
+LFP_ARCH_ADAPTER1(LFP_GET_PTHREAD_ENTRY(), pthread_attr_destroy, LFP_INT32,
+                  LFP_PTHREAD_ATTR_T*);
 /*@fn		  LFP_INT32 lfp_arch_adapter_pthread_register(LFP_VOID)
  * @brief 	  the adapter layer register -- pthread cluster register
  * @param[in]  LFP_NULL
@@ -37,5 +44,9 @@ LFP_INT32 lfp_arch_adapter_pthread_register(LFP_VOID) {
     LFP_ADAPTER_PTHREAD_INIT(pthread_create);
     LFP_ADAPTER_PTHREAD_INIT(pthread_cancel);
     LFP_ADAPTER_PTHREAD_INIT(pthread_kill);
+    LFP_ADAPTER_PTHREAD_INIT(pthread_attr_init);
+    LFP_ADAPTER_PTHREAD_INIT(pthread_attr_setdetachstate);
+    LFP_ADAPTER_PTHREAD_INIT(pthread_attr_getdetachstate);
+    LFP_ADAPTER_PTHREAD_INIT(pthread_attr_destroy);
     return LFP_OK;
 }
