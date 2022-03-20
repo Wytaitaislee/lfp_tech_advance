@@ -12,8 +12,6 @@
 #ifndef __LFP_LIBS_SOCKET_H__
 #define __LFP_LIBS_SOCKET_H__
 
-#ifdef LFP_LIBS_SOCKET
-
 #include "lfp_arch_adapter.h" /* in order to import system dependency related header files */
 #include "lfp_base.h"
 
@@ -312,7 +310,5 @@ LFP_INT32 lfp_socket_send_data_ctrl(LFP_SOCKET_DESC_T *pDesc);
  * @return	  LFP_OK / LFP_ERR
  */
 LFP_INT32 lfp_socket_recv_data(LFP_SOCKET_DESC_T *pDesc);
-
-#endif
 
 #endif /* end of __LFP_LIBS_SOCKET_H__ */

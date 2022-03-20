@@ -3,12 +3,10 @@
  * @Description: Socket communication server implementation.
  * @Author: wytaitaislee
  * @Date: 2021-08-27 23:29:52
- * @LastEditTime: 2022-03-19 19:15:15
+ * @LastEditTime: 2022-03-20 11:46:50
  * @LastEditors: wytaitaislee
  * Copyright 2022 wytaitaislee, All Rights Reserved.
  */
-
-#ifdef LFP_LIBS_SOCKET
 
 #include <errno.h>
 
@@ -129,5 +127,3 @@ LFP_INT32 lfp_socket_server_task(LFP_VOID* pArgs) {
     lfp_socket_create_ctrl_fini();
     return LFP_OK;
 }
-
-#endif

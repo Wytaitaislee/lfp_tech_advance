@@ -3,12 +3,10 @@
  * @Description: Socket communication client implementation.
  * @Author: wytaitaislee
  * @Date: 2021-08-27 23:29:52
- * @LastEditTime: 2022-03-19 19:15:02
+ * @LastEditTime: 2022-03-20 11:46:40
  * @LastEditors: wytaitaislee
  * Copyright 2022 wytaitaislee, All Rights Reserved.
  */
-
-#ifdef LFP_LIBS_SOCKET
 
 #include <errno.h>
 
@@ -98,5 +96,3 @@ my_return:
     LFP_SAFE_CLOSE_SOCKET(iSockClient);
     return iRet;
 }
-
-#endif
