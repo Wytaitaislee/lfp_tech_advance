@@ -3,12 +3,10 @@
  * @Description: Single linked list package library.
  * @Author: wytaitaislee
  * @Date: 2021-08-27 23:29:52
- * @LastEditTime: 2022-03-19 19:14:25
+ * @LastEditTime: 2022-03-20 11:51:24
  * @LastEditors: wytaitaislee
  * Copyright 2022 wytaitaislee, All Rights Reserved.
  */
-
-#ifdef LFP_LIBS_SLIST
 
 #include "lfp_slist.h"
 
@@ -166,15 +164,16 @@ LFP_INT32 lfp_slist_destroy(LFP_SLIST_T *pList) {
     return LFP_OK;
 }
 
-/*@fn		  LFP_INT32 lfp_slist_module_test_init(LFP_VOID)
- * @brief 	  the single list test module main entrance.
- * @param[in]  LFP_VOID
- * @param[out] NULL
- * @return	  LFP_OK/LFP_ERR
+/*@fn		   LFP_BOOL lfp_slist_empty(LFP_SLIST_T *pList)
+ * @brief 	   assert if slist is empty
+ * @param[in]  LFP_SLIST_T *pList -  the head ptr whom pointer to the single linked list
+ * @param[out] LFP_NULL
+ * @return	   LFP_TRUE/LFP_FALSE
  */
-LFP_INT32 lfp_slist_module_test_init(LFP_VOID) {
-    LFP_MODULES_REGISTER_SIGN(LFP_SLIST_CRIT, LFP_SLIST_SIGN_OK);
-    return LFP_OK;
+LFP_BOOL lfp_slist_empty(LFP_SLIST_T *pList) {
+    LFP_RET_IF(pList, LFP_FALSE);
+    if (pList->pNext == pList) {
+        return LFP_TRUE;
+    }
+    return LFP_FALSE;
 }
-
-#endif

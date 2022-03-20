@@ -11,8 +11,6 @@
 #ifndef __LFP_SLIST_H__
 #define __LFP_SLIST_H__
 
-#ifdef LFP_LIBS_SLIST
-
 #include "lfp_base.h"
 
 #define LFP_SLIST_CRIT(...) \
@@ -75,6 +73,12 @@ LFP_INT32 lfp_slist_delete(LFP_SLIST_T *pList, LFP_SLIST_T *pDelNode);
  */
 LFP_INT32 lfp_slist_destroy(LFP_SLIST_T *pList);
 
-#endif
+/*@fn		   LFP_BOOL lfp_slist_empty(LFP_SLIST_T *pList)
+ * @brief 	   assert if slist is empty
+ * @param[in]  LFP_SLIST_T *pList -  the head ptr whom pointer to the single linked list
+ * @param[out] LFP_NULL
+ * @return	   LFP_TRUE/LFP_FALSE
+ */
+LFP_BOOL lfp_slist_empty(LFP_SLIST_T *pList);
 
 #endif /* end of __LFP_SLIST_H__ */
