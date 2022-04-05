@@ -3,13 +3,33 @@
  * @Description: Double linked list package library.
  * @Author: wytaitaislee
  * @Date: 2021-08-27 23:29:52
- * @LastEditTime: 2022-03-20 11:47:38
+ * @LastEditTime: 2022-04-05 18:00:51
  * @LastEditors: wytaitaislee
  * Copyright 2022 wytaitaislee, All Rights Reserved.
  */
 
 #include "lfp_dlist.h"
 
+/*@fn		  LFP_DLIST_HEAD_INIT
+ * @brief 	  double linked list head init(struct entity).
+ */
+#define LFP_DLIST_HEAD_INIT(struList) \
+    { &(struList), &(struList) }
+
+#define LFP_DLIST_HEAD(struListName) \
+    LFP_DLIST_T struListName = LFP_DLIST_HEAD_INIT(struListName)
+}
+
+/*@fn		  LFP_DLIST_INIT
+ * @brief 	  double linked list head init(ptr entity).
+ */
+#define LFP_DLIST_INIT(pList)       \
+    do {                            \
+        LFP_RET_IF(pList, LFP_ERR); \
+        (pList)->pNext = pList;     \
+        (pList)->pPrev = pList;     \
+    } while (0)
+;
 /*@fn		  LFP_DLIST_NODE_MALLOC
  * @brief 	  double linked list node alloc macro.
  */
@@ -38,9 +58,7 @@
  * @return     LFP_OK/LFP_ERR
  */
 LFP_INT32 lfp_dlist_init(LFP_DLIST_T *pList) {
-    LFP_RET_IF(pList, LFP_ERR);
-    pList->pPrev = LFP_NULL;
-    pList->pNext = LFP_NULL;
+    LFP_DLIST_INIT(pList);
     return LFP_OK;
 }
 
@@ -147,7 +165,7 @@ LFP_INT32 lfp_dlist_destroy(LFP_DLIST_T *pList) {
  */
 LFP_BOOL lfp_dlist_empty(LFP_DLIST_T *pList) {
     LFP_RET_IF(pList, LFP_FALSE);
-    if (pList->pNext == pList->pPrev) {
+    if (pList->pNext == pList) {
         return LFP_TRUE;
     }
     return LFP_FALSE;
