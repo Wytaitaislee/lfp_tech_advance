@@ -31,7 +31,7 @@ typedef LFP_VOID* (*work_handle)(LFP_VOID*, ...);
 
 typedef struct lfp_thpool_list_t {
     LFP_UINT32 uiCount;
-    LFP_DLIST_T node;
+    LFP_DLIST_T listHead;
 } LFP_THPOOL_LIST_T;
 
 typedef struct work_item_t {
