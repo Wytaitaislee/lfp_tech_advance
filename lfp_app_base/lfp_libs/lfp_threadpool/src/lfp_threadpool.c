@@ -3,7 +3,7 @@
  * @Description: threadpool libs.
  * @Author: wytaitaislee
  * @Date: 2021-08-27 23:29:52
- * @LastEditTime: 2022-04-05 20:18:22
+ * @LastEditTime: 2022-04-05 20:23:48
  * @LastEditors: wytaitaislee
  * Copyright 2022 wytaitaislee, All Rights Reserved.
  */
@@ -163,7 +163,7 @@ LFP_STATIC LFP_INT32 __thread_queue_destroy(LFP_THPOOL_LIST_T *pstruThreadQueue)
         lfp_semaphore_destroy(&pThreadEntry->semphore);
         LFP_SAFE_FREE(pThreadEntry);
     }
-    lfp_dlist_destroy(&pstruThreadQueue->node);
+    lfp_dlist_destroy(&pstruThreadQueue->listHead);
     pstruThreadQueue = LFP_NULL;
     return LFP_OK;
 }
@@ -354,7 +354,7 @@ LFP_STATIC LFP_INT32 __lfp_threadpool_active_the_latest_idle_worker(
     THREAD_ITEM_T *pstruThreadTmp = LFP_NULL;
     LFP_RET_IF(pstruThreadQueue, LFP_ERR);
 
-    LFP_LIST_FOR_EACH_ENTRY(pstruThreadTmp, &pstruThreadQueue->node, node) {
+    LFP_LIST_FOR_EACH_ENTRY(pstruThreadTmp, &pstruThreadQueue->listHead, node) {
         if (!pstruThreadTmp->bWorking &&
             pstruThreadTmp->uiWorkerTime > pstruThreadItem->uiWorkerTime) {
             pstruThreadItem = pstruThreadTmp;
