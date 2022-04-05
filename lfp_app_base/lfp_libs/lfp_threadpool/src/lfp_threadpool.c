@@ -3,7 +3,7 @@
  * @Description: threadpool libs.
  * @Author: wytaitaislee
  * @Date: 2021-08-27 23:29:52
- * @LastEditTime: 2022-04-05 20:23:48
+ * @LastEditTime: 2022-04-05 20:34:06
  * @LastEditors: wytaitaislee
  * Copyright 2022 wytaitaislee, All Rights Reserved.
  */
@@ -296,15 +296,15 @@ LFP_STATIC LFP_INT32 __lfp_threadpool_destroy(LFP_THREADPOOL_T *pstruThreadPool)
     return LFP_OK;
 }
 
-/*@fn		  LFP_THREADPOOL_T *__lfp_threadpool_create(LFP_UINT32 uiMaxThreads,
+/*@fn		  LFP_THREADPOOL_T *lfp_threadpool_create(LFP_UINT32 uiMaxThreads,
  * LFP_UINT32 uiThreadTimeout)
  * @brief 	  create a threadpool entry.
  * @param[in]  LFP_UINT32 uiMaxThreads - the maximum of the threadpool threads.
  * @param[in]  LFP_UINT32 uiThreadTimeout - work thread timeout
  * @return	  LFP_OK / LFP_ERR
  */
-LFP_THREADPOOL_T *__lfp_threadpool_create(LFP_UINT32 uiMaxThreads,
-                                          LFP_UINT32 uiThreadTimeout) {
+LFP_THREADPOOL_T *lfp_threadpool_create(LFP_UINT32 uiMaxThreads,
+                                        LFP_UINT32 uiThreadTimeout) {
     LFP_INT32 iRet = LFP_ERR;
     LFP_THREADPOOL_T *pstruThreadPool = LFP_NULL;
 
