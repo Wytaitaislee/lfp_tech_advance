@@ -25,15 +25,6 @@ typedef struct lfp_slist_t {
     struct lfp_slist_t *pNext;
 } LFP_SLIST_T;
 
-/*@fn		  LFP_INT32 lfp_slist_init(LFP_SLIST_T* pList)
- * @brief 	  create the head node of single linked list
- * @param[in]  LFP_SLIST_T *pList the head ptr whom pointer to the single linked
- * list
- * @param[out] the same as param[in]
- * @return     LFP_OK/LFP_ERR
- */
-LFP_INT32 lfp_slist_init(LFP_SLIST_T *pList);
-
 /*@fn		  LFP_INT32 lfp_slist_add(LFP_SLIST_T *pList, LFP_SLIST_T
  * *pNewNode)
  * @brief      Insert a new node after the specified head.

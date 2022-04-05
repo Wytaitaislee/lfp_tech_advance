@@ -3,15 +3,26 @@
  * @Description: Single linked list package library.
  * @Author: wytaitaislee
  * @Date: 2021-08-27 23:29:52
- * @LastEditTime: 2022-03-20 11:51:24
+ * @LastEditTime: 2022-04-05 17:29:32
  * @LastEditors: wytaitaislee
  * Copyright 2022 wytaitaislee, All Rights Reserved.
  */
 
 #include "lfp_slist.h"
 
+/*@fn		  LFP_SLIST_HEAD_INIT
+ * @brief 	  list head init(struct entity).
+ */
+#define LFP_SLIST_HEAD_INIT(struList) \
+    { &(struList) }
+
+#define LFP_SLIST_HEAD(struListName)                                  \
+    do {                                                              \
+        LFP_SLIST_T struListName = LFP_SLIST_HEAD_INIT(struListName); \
+    } while (0);
+
 /*@fn		  LFP_SLIST_INIT
- * @brief 	  single linked list init macro.
+ * @brief 	  list head init(ptr entity).
  */
 #define LFP_SLIST_INIT(pNode)       \
     do {                            \
@@ -38,20 +49,6 @@
         LFP_SAFE_FREE(pNode);      \
         pNode = LFP_NULL;          \
     } while (0);
-
-/*@fn		  LFP_INT32 lfp_slist_init(LFP_SLIST_T* pList)
- * @brief 	  create the head node of single linked list
- * @param[in]  LFP_SLIST_T *pList the head ptr whom pointer to the single linked
- * list
- * @param[out] the same as param[in]
- * @return     LFP_OK/LFP_ERR
- */
-LFP_INT32 lfp_slist_init(LFP_SLIST_T *pList) {
-    LFP_RET_IF(pList, LFP_ERR);
-    LFP_SLIST_NODE_MALLOC(pList);
-    LFP_SLIST_INIT(pList);
-    return LFP_OK;
-}
 
 /*@fn		  LFP_INT32 __lfp_slist_add(LFP_SLIST_T *pPrev, LFP_SLIST_T
  * *pNext, LFP_SLIST_T *pNewNode)
@@ -171,7 +168,7 @@ LFP_INT32 lfp_slist_destroy(LFP_SLIST_T *pList) {
  * @return	   LFP_TRUE/LFP_FALSE
  */
 LFP_BOOL lfp_slist_empty(LFP_SLIST_T *pList) {
-    LFP_RET_IF(pList, LFP_FALSE);
+    LFP_RET_IF(pList, LFP_TRUE);
     if (pList->pNext == pList) {
         return LFP_TRUE;
     }
