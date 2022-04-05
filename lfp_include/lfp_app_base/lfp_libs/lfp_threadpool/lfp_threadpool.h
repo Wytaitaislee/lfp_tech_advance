@@ -15,8 +15,7 @@
 #include "lfp_base.h"
 #include "lfp_dlist/lfp_dlist.h"
 
-#define LFP_THREADPOOL_MAX_ARGS_NUM \
-    (5) /* Maximum number of thread pool work task parameters */
+#define LFP_THREADPOOL_MAX_ARGS_NUM (5) /* Maximum number of thread pool work task parameters */
 
 #define LFP_THREADPOOL_CRIT(...) \
     LFP_LOG_BASE(LOG_LEVEL_CRIT, LOG_MODULE_THPOOL, MASK_THPOOL, ##__VA_ARGS__)
@@ -38,7 +37,6 @@ typedef struct work_item_t {
     work_handle workHandle;
     LFP_INT32 iArgc;
     LFP_VOID* pArg[LFP_THREADPOOL_MAX_PARAM_NUM];
-    va_list vaList;
     LFP_DLIST_T node;
 } WORK_ITEM_T;
 
