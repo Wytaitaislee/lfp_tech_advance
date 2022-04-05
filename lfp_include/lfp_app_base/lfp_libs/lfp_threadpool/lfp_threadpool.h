@@ -68,11 +68,11 @@ typedef struct lfp_threadpool_t {
     LFP_THPOOL_LIST_T struThreadQueueList;
 } LFP_THREADPOOL_T;
 
-/*@fn		  LFP_THREADPOOL_T *lfp_threadpool_create(LFP_UINT32 uiMaxThreads, LFP_UINT32 uiThreadTimeout)
+/*@fn		  LFP_THREADPOOL_T *lfp_threadpool_init(LFP_UINT32 uiMaxThreads, LFP_UINT32 uiThreadTimeout)
  * @brief 	  create a threadpool entry.
  * @param[in]  LFP_UINT32 uiMaxThreads - the maximum of the threadpool threads.
  * @param[in]  LFP_UINT32 uiThreadTimeout - work thread timeout
  * @return	  LFP_OK / LFP_ERR
  */
-LFP_THREADPOOL_T* lfp_threadpool_create(LFP_UINT32 uiMaxThreads, LFP_UINT32 uiThreadTimeout);
+LFP_THREADPOOL_T* lfp_threadpool_init(LFP_UINT32 uiMaxThreads, LFP_UINT32 uiThreadTimeout);
 #endif /* end of __LFP_APP_THREADPOOL_H__ */
