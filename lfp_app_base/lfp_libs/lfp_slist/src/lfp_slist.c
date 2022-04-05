@@ -3,7 +3,7 @@
  * @Description: Single linked list package library.
  * @Author: wytaitaislee
  * @Date: 2021-08-27 23:29:52
- * @LastEditTime: 2022-04-05 17:03:44
+ * @LastEditTime: 2022-04-05 18:02:39
  * @LastEditors: wytaitaislee
  * Copyright 2022 wytaitaislee, All Rights Reserved.
  */
@@ -11,23 +11,21 @@
 #include "lfp_slist.h"
 
 /*@fn		  LFP_SLIST_HEAD_INIT
- * @brief 	  list head init(struct entity).
+ * @brief 	  single linked list head init(struct entity).
  */
 #define LFP_SLIST_HEAD_INIT(struList) \
     { &(struList) }
 
-#define LFP_SLIST_HEAD(struListName)                                  \
-    do {                                                              \
-        LFP_SLIST_T struListName = LFP_SLIST_HEAD_INIT(struListName); \
-    } while (0);
+#define LFP_SLIST_HEAD(struListName) \
+    LFP_SLIST_T struListName = LFP_SLIST_HEAD_INIT(struListName)
 
 /*@fn		  LFP_SLIST_INIT
- * @brief 	  list head init(ptr entity).
+ * @brief 	  single linked list head init(ptr entity).
  */
-#define LFP_SLIST_INIT(pNode)       \
+#define LFP_SLIST_INIT(pList)       \
     do {                            \
-        LFP_RET_IF(pNode, LFP_ERR); \
-        (pNode)->pNext = pNode;     \
+        LFP_RET_IF(pList, LFP_ERR); \
+        (pList)->pNext = pList;     \
     } while (0);
 
 /*@fn		  LFP_SLIST_NODE_MALLOC
@@ -144,6 +142,7 @@ LFP_INT32 lfp_slist_delete(LFP_SLIST_T *pList, LFP_SLIST_T *pDelNode) {
         }
         pWalk = pWalk->pNext;
     }
+    LFP_RET_IF(pWalk, LFP_OK);
     if (LFP_OK != __lfp_delete_entry(pWalk, pDelNode->pNext)) {
         LFP_SLIST_ERR("delete node[%p] failed\n", pDelNode);
         return LFP_ERR;
