@@ -3,7 +3,7 @@
  * @Description: Double linked list package library.
  * @Author: wytaitaislee
  * @Date: 2021-08-27 23:29:52
- * @LastEditTime: 2022-04-05 18:00:51
+ * @LastEditTime: 2022-04-05 20:23:01
  * @LastEditors: wytaitaislee
  * Copyright 2022 wytaitaislee, All Rights Reserved.
  */
@@ -18,7 +18,6 @@
 
 #define LFP_DLIST_HEAD(struListName) \
     LFP_DLIST_T struListName = LFP_DLIST_HEAD_INIT(struListName)
-}
 
 /*@fn		  LFP_DLIST_INIT
  * @brief 	  double linked list head init(ptr entity).
