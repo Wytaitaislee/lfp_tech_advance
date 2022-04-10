@@ -73,4 +73,19 @@ typedef struct lfp_threadpool_t {
  * @return	  LFP_OK / LFP_ERR
  */
 LFP_THREADPOOL_T* lfp_threadpool_init(LFP_UINT32 uiMaxThreads, LFP_UINT32 uiThreadTimeout);
+
+/*@fn		  LFP_INT32 lfp_threadpool_dispatch(LFP_VOID *pHandle, LFP_INT32 iPriority,
+                                  LFP_INT32 iCpuNo, work_handle workHandle,
+                                  LFP_INT32 iArgc, ...)
+ * @brief 	  thread dispatch, 1. manage thread worker; 2. activate the most
+ *              idle thread recently
+ * @param[in]  LFP_VOID *pHandle - threadpool entrty ptr(convert to void)
+ * @param[in]  LFP_INT32 iPriority - thread priority
+ * @param[in]  work_handle workHandle - work function ptr entry.
+ * @param[in]  LFP_INT32 iArgc,... - input params.
+ * @return	  LFP_OK / LFP_ERR
+ */
+LFP_INT32 lfp_threadpool_dispatch(LFP_VOID* pHandle, LFP_INT32 iPriority,
+                                  LFP_INT32 iCpuNo, work_handle workHandle,
+                                  LFP_INT32 iArgc, ...);
 #endif /* end of __LFP_APP_THREADPOOL_H__ */
