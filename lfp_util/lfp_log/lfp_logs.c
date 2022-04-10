@@ -1,10 +1,10 @@
 /*
- * @FilePath: lfp_logs.c
+ * @FilePath     : lfp_logs.c
  * @Description: Log information control module.
  * @Author: wytaitaislee
  * @Date: 2021-08-27 23:29:52
- * @LastEditTime: 2022-03-19 19:18:50
- * @LastEditors: wytaitaislee
+ * @LastEditTime : 2022-04-10 15:30:29
+ * @LastEditors  : wytaitaislee
  * Copyright 2022 wytaitaislee, All Rights Reserved.
  */
 
@@ -16,10 +16,10 @@
 LFP_LOG_CTRL_T *g_pUtilCtrl = NULL;
 
 LFP_CONST LFP_DATA LFP_LOG_MAP_T g_UtilMap[] = {
-    {"CRIT", LOG_LEVEL_CRIT},
-    {"ERR", LOG_LEVEL_ERR},
-    {"INFO", LOG_LEVEL_INFO},
-    {LFP_NULL, LOG_LEVEL_MAX},
+    {"CRIT", CRIT_COLOR, LOG_LEVEL_CRIT},
+    {"ERR", ERR_COLOR, LOG_LEVEL_ERR},
+    {"INFO", INFO_COLOR, LOG_LEVEL_INFO},
+    {LFP_NULL, INFO_COLOR, LOG_LEVEL_MAX},
 };
 
 /*@fn		  LFP_INT32 __log_settings(LFP_VOID)
@@ -117,20 +117,20 @@ LFP_INT32 __log_open(LFP_UINT64 iLevel, LFP_UINT64 iModuleIdx,
     return LFP_ERR;
 }
 
-/*@fn		  LFP_CONST LFP_CODE LFP_INT8* __log_get_maps(LFP_LOG_LEVEL_E
+/*@fn		  LFP_CONST LFP_CODE LFP_LOG_MAP_T* __log_get_maps(LFP_LOG_LEVEL_E
  * enumLevel)
  * @brief 	  get level str label by enum item.
  * @param[in]  LFP_LOG_LEVEL_E enumLevel - enum level
  * @param[out] LFP_NULL
- * @return	  the ptr of the str label / LFP_NULL
+ * @return	  the ptr of dbg level / LFP_NULL
  */
-LFP_CONST LFP_CODE LFP_INT8 *__log_get_maps(LFP_LOG_LEVEL_E enumLevel) {
+LFP_CONST LFP_CODE LFP_LOG_MAP_T *__log_get_maps(LFP_LOG_LEVEL_E enumLevel) {
     LFP_UINT32 uiCnt = 0;
     LFP_RET_IF((enumLevel < LOG_LEVEL_MAX), LFP_NULL);
 
     for (uiCnt = 0; uiCnt < LFP_NELEMENTS(g_UtilMap); uiCnt++) {
         if (enumLevel == g_UtilMap[uiCnt].enumLevel) {
-            return g_UtilMap[uiCnt].pLevelStr;
+            return &g_UtilMap[uiCnt];
         }
     }
     return LFP_NULL;
@@ -170,7 +170,7 @@ LFP_INT32 __log_base(LFP_LOG_LEVEL_E enumLevel, LFP_CONST LFP_INT8 *pFilePath,
                      LFP_CONST LFP_INT8 *pFunc, LFP_INT32 iLine,
                      LFP_CONST LFP_INT8 *fmt, ...) {
     LFP_INT8 szPtrBuf[LFP_LOG_MAX_BUFF_SIZE] = {0};
-    LFP_CONST LFP_DATA LFP_INT8 *pLevelStr = NULL;
+    LFP_CONST LFP_LOG_MAP_T *pMapItem = NULL;
     LFP_LOG_CTRL_T strupUtilCtrl;
     LFP_INT32 iLen = 0;
     va_list ap = {0};
@@ -182,12 +182,13 @@ LFP_INT32 __log_base(LFP_LOG_LEVEL_E enumLevel, LFP_CONST LFP_INT8 *pFilePath,
         printf("%s get log module error\n", __FUNCTION__);
         return LFP_ERR;
     }
-    pLevelStr = __log_get_maps(enumLevel);
-    LFP_RET_IF(pLevelStr, LFP_ERR);
+    pMapItem = __log_get_maps(enumLevel);
+    LFP_RET_IF(pMapItem, LFP_ERR);
 
     iLen +=
-        snprintf(szPtrBuf + iLen, sizeof(szPtrBuf) - iLen, "[%s][%s][%s][%s][%d]",
-                 __TIME__, pLevelStr, __log_get_file(pFilePath), pFunc, iLine);
+        snprintf(szPtrBuf + iLen, sizeof(szPtrBuf) - iLen, "%s[%s][%s][%s][%s][%d]",
+                 pMapItem->pColor, __TIME__, pMapItem->pLevelStr,
+                 __log_get_file(pFilePath), pFunc, iLine);
 
     LFP_RET_IF((iLen < LFP_LOG_MAX_BUFF_SIZE), LFP_ERR);
     va_start(ap, fmt);
@@ -195,6 +196,6 @@ LFP_INT32 __log_base(LFP_LOG_LEVEL_E enumLevel, LFP_CONST LFP_INT8 *pFilePath,
     va_end(ap);
 
     szPtrBuf[LFP_LOG_MAX_BUFF_SIZE - 1] = 0;
-    printf("%s", szPtrBuf);
+    printf("%s%s", szPtrBuf, COLOR_NONE);
     return LFP_OK;
 }

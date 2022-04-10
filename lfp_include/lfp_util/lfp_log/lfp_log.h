@@ -24,8 +24,17 @@
 
 #include "lfp_log_typesdef.h"
 
+#define COLOR_NONE "\e[0m"
+#define COLOR_LRED "\e[1;31m"
+#define COLOR_LGREEN "\e[1;32m"
+
+#define CRIT_COLOR COLOR_LGREEN
+#define ERR_COLOR COLOR_LRED
+#define INFO_COLOR COLOR_NONE
+
 typedef struct lfp_log_map_t {
     LFP_CONST LFP_INT8 *pLevelStr;
+    LFP_CONST LFP_INT8 *pColor;
     LFP_LOG_LEVEL_E enumLevel;
 } LFP_LOG_MAP_T;
 
