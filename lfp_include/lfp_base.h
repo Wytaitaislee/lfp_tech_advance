@@ -17,6 +17,7 @@ extern "C" {
 #endif
 
 #include "__include/lfp_assert.h"
+#include "__include/lfp_errcode.h"
 #include "__include/lfp_macros.h"
 #include "__include/lfp_typesdef.h"
 #include "lfp_log/lfp_log.h"
@@ -26,7 +27,7 @@ extern "C" {
 
 typedef struct lfp_components_register_t {
     LFP_CONST LFP_INT8 *pModuleName;
-    LFP_INT32 (*lfp_components_register)
+    LFP_INT32(*lfp_components_register)
     (LFP_VOID);
 } LFP_COMPONENTS_REGISTER_T;
 
