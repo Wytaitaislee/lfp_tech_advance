@@ -29,12 +29,12 @@ extern "C" {
 
 /* assert safe free memory */
 #define LFP_SAFE_FREE(p)              \
-    do {                              \
-        if (p) {                      \
-            free(p);                  \
-            p = (LFP_VOID *)LFP_NULL; \
-        }                             \
-    } while (0);
+do {                              \
+    if (p) {                      \
+        free(p);                  \
+        p = (LFP_VOID *)LFP_NULL; \
+    }                             \
+} while (0);
 
 /* assert safe close file */
 #define LFP_SAFE_CLOSE(p)             \
@@ -53,13 +53,7 @@ extern "C" {
             p = -1;              \
         }                        \
     } while (0);
-
-/* modules register sign. */
-#define LFP_MODULES_REGISTER_SIGN(util, sign) \
-    do {                                      \
-        util("module %s !\n", sign);          \
-    } while (0);
-
+    
 #ifdef __cplusplus
 }
 #endif

@@ -122,13 +122,11 @@ LFP_STATIC LFP_CODE LFP_INT32 (*lfp_adapter_register[])(LFP_VOID) = {
  * @return	  LFP_OK/LFP_ERR
  */
 LFP_INT32 lfp_arch_adapter_init(LFP_VOID) {
-    LFP_UINT32 uiRegisterModules = 0;
+    LFP_UINT32 uiModules = 0;
 
-    for (uiRegisterModules = 0;
-         uiRegisterModules < LFP_NELEMENTS(lfp_adapter_register);
-         uiRegisterModules++) {
-        if (LFP_NULL != lfp_adapter_register[uiRegisterModules]) {
-            lfp_adapter_register[uiRegisterModules]();
+    for (uiModules = 0; uiModules < LFP_NELEMENTS(lfp_adapter_register); uiModules++) {
+        if (LFP_NULL != lfp_adapter_register[uiModules]) {
+            lfp_adapter_register[uiModules]();
         }
     }
     return LFP_OK;

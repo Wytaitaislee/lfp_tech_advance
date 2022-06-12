@@ -40,8 +40,7 @@ LFP_STATIC LFP_CONST LFP_CODE LFP_COMPONENTS_REGISTER_T
 LFP_STATIC LFP_INT32 lfp_wytaitai_main_entrance(LFP_VOID) {
     LFP_UINT32 uiModules = 0;
 
-    for (uiModules = 0; uiModules < LFP_NELEMENTS(g_componentsRegister);
-         uiModules++) {
+    for (uiModules = 0; uiModules < LFP_NELEMENTS(g_componentsRegister); uiModules++) {
         if (LFP_NULL != g_componentsRegister[uiModules].lfp_components_register) {
             g_componentsRegister[uiModules].lfp_components_register();
         }
@@ -58,10 +57,8 @@ LFP_STATIC LFP_INT32 lfp_wytaitai_main_entrance(LFP_VOID) {
 LFP_STATIC LFP_INT32 lfp_wytaitai_test_entrance(LFP_VOID) {
     LFP_UINT32 uiModules = 0;
 
-    for (uiModules = 0; uiModules < LFP_NELEMENTS(g_componentsTestRegister);
-         uiModules++) {
-        if (LFP_NULL !=
-            g_componentsTestRegister[uiModules].lfp_components_register) {
+    for (uiModules = 0; uiModules < LFP_NELEMENTS(g_componentsTestRegister); uiModules++) {
+        if (LFP_NULL != g_componentsTestRegister[uiModules].lfp_components_register) {
             g_componentsTestRegister[uiModules].lfp_components_register();
         }
     }
