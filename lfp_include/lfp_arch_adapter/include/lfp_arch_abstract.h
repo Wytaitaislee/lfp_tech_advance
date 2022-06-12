@@ -23,6 +23,7 @@ extern "C" {
 /* X86, 32. */
 #if defined(linux) || defined(unix) || defined(__unix__) || defined(__linux__)
 #include "linux/linux.h"
+#define LFP_AF_UNIX (LINUX_AF_UNIX)
 #define LFP_AF_INET (LINUX_AF_INET)
 #define LFP_SOCK_STREAM (LINUX_SOCK_STREAM)
 #define LFP_IPPROTO_TCP (LINUX_IPPROTO_TCP)
@@ -56,6 +57,7 @@ extern "C" {
 /* socket relevant typesdef */
 DEFINE_ARCH_TYPESDEF_ADAPTER(SOCK_ADDR_T);
 DEFINE_ARCH_TYPESDEF_ADAPTER(SOCK_ADDRIN_T);
+DEFINE_ARCH_TYPESDEF_ADAPTER(SOCK_ADDRUN_T);
 DEFINE_ARCH_TYPESDEF_ADAPTER(SOCKLEN_T);
 DEFINE_ARCH_TYPESDEF_ADAPTER(MSGHDR_T);
 DEFINE_ARCH_TYPESDEF_ADAPTER(SOCK);

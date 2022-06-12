@@ -9,6 +9,7 @@
  */
 
 #include "lfp_busybox.h"
+#include "lfp_busybox_server.h"
 
 #define LFP_BUSYBOX_REGISTER(name, help, auth, proc) \
     { name, help, auth, proc, 0, 0 }
@@ -28,20 +29,19 @@
  * @param[out] LFP_NULL
  * @return	  LFP_OK
  */
-LFP_STATIC LFP_INT32 __lfp_busybox_gettime(LFP_INT8 iArgs,
-                                           LFP_CONST LFP_INT8 **ppArgv) {
+LFP_STATIC LFP_INT32 __lfp_busybox_gettime(LFP_INT8 iArgs, LFP_CONST LFP_INT8 **ppArgv) {
     (LFP_VOID) iArgs;
     (LFP_VOID) ppArgv;
     return LFP_OK;
 }
 
 /*@fn
- * @brief 	  the usrbusybox excel.
+ * @brief 	  the usrbusybox table.
  * @param[in]  NULL
  * @param[out] NULL
  * @return	  NULL
  */
-LFP_STATIC LFP_CONST LFP_CODE LFP_BUSYBOX_T gAppBusyBoxExcel[] = {
+LFP_STATIC LFP_CONST LFP_CODE LFP_BUSYBOX_T gAppBusyBoxTb[] = {
     LFP_BUSYBOX_REGISTER(LFP_BUSYBOX_DEFINE_GETTIME,
                          LFP_BUSYBOX_DEFINE_GETTIME_HELP, 0,
                          __lfp_busybox_gettime),
@@ -60,12 +60,11 @@ LFP_INT32 lfp_busybox_recv_proc(LFP_BUSYBOX_T *pAppBusybox) {
 
     LFP_RET_IF(pAppBusybox, LFP_ERR);
     LFP_RET_IF(pAppBusybox->pCmdHelpInfo, LFP_ERR);
-    for (uiForEach = 0; uiForEach < LFP_NELEMENTS(gAppBusyBoxExcel);
-         uiForEach++) {
-        if (gAppBusyBoxExcel[uiForEach].pCmdName == pAppBusybox->pCmdName) {
+
+    for (uiForEach = 0; uiForEach < LFP_NELEMENTS(gAppBusyBoxTb); uiForEach++) {
+        if (gAppBusyBoxTb[uiForEach].pCmdName == pAppBusybox->pCmdName) {
             if (pAppBusybox->pCallbackBusybox) {
-                return pAppBusybox->pCallbackBusybox(pAppBusybox->iArgs,
-                                                     pAppBusybox->ppArgv);
+                return pAppBusybox->pCallbackBusybox(pAppBusybox->iArgs, pAppBusybox->ppArgv);
             }
         }
     }
@@ -73,10 +72,18 @@ LFP_INT32 lfp_busybox_recv_proc(LFP_BUSYBOX_T *pAppBusybox) {
     return LFP_ERR;
 }
 
+
 /*@fn		  LFP_INT32 lfp_busybox_init(LFP_VOID)
  * @brief 	  loading usr command modules
  * @param[in]  LFP_VOID
  * @param[out] LFP_NULL
  * @return	  LFP_OK / LFP_ERR
  */
-LFP_INT32 lfp_busybox_init(LFP_VOID) { return LFP_OK; }
+LFP_INT32 lfp_busybox_init(LFP_VOID) { 
+
+    if(LFP_OK != lfp_pthread_create(LFP_NULL, 0, 512, lfp_busybox_server, NULL)){
+        printf("busybox unix server create failed\n");
+        return LFP_ERR;
+    }
+    return LFP_OK; 
+}

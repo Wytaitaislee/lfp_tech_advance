@@ -13,6 +13,7 @@
 
 #include <arpa/inet.h>
 #include <netinet/in.h>
+#include <sys/un.h>
 #include <sys/socket.h>
 
 #include "lfp_base.h"
@@ -27,9 +28,11 @@ do
 /* socket relevant typesdef */
 typedef struct sockaddr LINUX_SOCK_ADDR_T;
 typedef struct sockaddr_in LINUX_SOCK_ADDRIN_T;
+typedef struct sockaddr_un LINUX_SOCK_ADDRUN_T;
 typedef socklen_t LINUX_SOCKLEN_T;
 typedef struct msghdr LINUX_MSGHDR_T;
 typedef LFP_INT32 LINUX_SOCK;
+#define LINUX_AF_UNIX AF_UNIX
 #define LINUX_AF_INET AF_INET
 #define LINUX_SOCK_STREAM SOCK_STREAM
 #define LINUX_IPPROTO_TCP IPPROTO_TCP
